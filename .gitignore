@@ -1,0 +1,16 @@
+API_Load_Download_Songs/bin
+API_Load_Download_Songs/obj
+API_Load_Download_Songs/Migrations
+API_MongoDB/bin
+API_MongoDB/obj
+API_MongoDB/Migrations
+API_SQL/bin
+API_SQL/obj
+API_SQL/Migrations
+WPF/DAMComponentLibrary/bin
+WPF/DAMMatrix/bin
+WPF/DAMMatrix/obj
+WPF/.vs/
+WPF/DAMComponentLibrary/obj/
+WPF/DAMComponentLibrary/obj/Debug/
+ 

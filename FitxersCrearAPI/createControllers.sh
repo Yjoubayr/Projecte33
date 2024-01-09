@@ -1,0 +1,1 @@
+dotnet aspnet-codegenerator controller -name CategoryController -async -api -m Category -dc DataContext -outDir Controllers
