@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "cat.boscdelacoma.reproductormusica"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "cat.boscdelacoma.reproductormusica"
