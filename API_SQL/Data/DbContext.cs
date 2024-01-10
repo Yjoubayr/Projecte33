@@ -7,6 +7,9 @@ namespace mba.basquet {
         public DbSet<Canco> Cancons { get; set; }
         public DbSet<Album> Albums { get; set; }
 
+        public DbSet<Grup> Grups { get; set; }
+        public DbSet<Artista> Artistes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
