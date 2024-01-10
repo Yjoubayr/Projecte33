@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Nnw6gY3akRIKcn4NENRs7KlyEsNhYXFAh2LXEUyT7YEbzS1cYVNn/Rtbsszec5IEEUuiy5qZ/QKH6SxwWNP63A==",
+  "dgSpecHash": "+raFgbEGwMKEyJpSUBIYfZEzpEUMbtXSU/VYpjaTZZJHOGaG1BehreSVrWqQgjlGb0avSSKLfGPv+O6VDIWTQg==",
   "success": true,
-  "projectFilePath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/APIMONGO/API/ReproductorMusica.csproj",
+  "projectFilePath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
   "expectedPackageFiles": [
     "/home/marc/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/home/marc/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",

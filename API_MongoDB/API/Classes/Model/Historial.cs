@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace API.Classes.Model
 {
@@ -6,6 +6,7 @@ namespace API.Classes.Model
     {
         [BsonId]
         public string IDDispositiu {get; set;} = null!;
-        
+        public ICollection<Canco> canco {get; set;} = null!;
+
     }
 }

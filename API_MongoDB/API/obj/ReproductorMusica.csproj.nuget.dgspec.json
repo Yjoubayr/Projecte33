@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/APIMONGO/API/ReproductorMusica.csproj": {}
+    "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj": {}
   },
   "projects": {
-    "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/APIMONGO/API/ReproductorMusica.csproj": {
+    "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/APIMONGO/API/ReproductorMusica.csproj",
+        "projectUniqueName": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
         "projectName": "ReproductorMusica",
-        "projectPath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/APIMONGO/API/ReproductorMusica.csproj",
+        "projectPath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
         "packagesPath": "/home/marc/.nuget/packages/",
-        "outputPath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/APIMONGO/API/obj/",
+        "outputPath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/marc/.nuget/NuGet/NuGet.Config"
