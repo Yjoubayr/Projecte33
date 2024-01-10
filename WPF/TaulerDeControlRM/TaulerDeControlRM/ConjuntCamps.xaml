@@ -16,6 +16,6 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
         </Grid>
-        <Button x:Name="btAfegirCamp" Grid.Row="1" Content="Afegeix camp" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btAfegirCampClick"/>
+        <Button x:Name="btAfegirCamp" Grid.Row="1" Content="Afegeix camp de cerca" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btAfegirCampClick"/>
     </Grid>
 </UserControl>

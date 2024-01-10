@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <local:ConjuntCamps HorizontalAlignment="Left" Margin="231,86,0,0" VerticalAlignment="Top"/>
-
+        <local:Cercador HorizontalAlignment="Left" Margin="268,62,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

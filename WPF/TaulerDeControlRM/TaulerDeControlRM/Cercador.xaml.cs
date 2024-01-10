@@ -23,6 +23,21 @@ namespace TaulerDeControlRM
         public Cercador()
         {
             InitializeComponent();
+
+            List<string> cmbOrdreValues = new List<string>
+            { "Reproduccions", "Durada", "Data" };
+
+            // Assign the collection to the ComboBox's ItemsSource
+            cmbOrdre.ItemsSource = cmbOrdreValues;
+
+            List<string> cmbSentitValues = new List<string>
+            { "Ascendent", "Descendent" };
+            cmbSentit.ItemsSource = cmbSentitValues;
+
+            List<string> cmbTipusResultatValues = new List<string>
+            { "Cançó", "Artista", "Album", "Llista de reproducció" };
+            cmbTipusResultat.ItemsSource = cmbTipusResultatValues;
+
         }
     }
 }

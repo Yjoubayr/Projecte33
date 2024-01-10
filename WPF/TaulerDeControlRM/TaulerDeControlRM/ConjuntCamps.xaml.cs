@@ -21,17 +21,33 @@ namespace TaulerDeControlRM
     /// </summary>
     public partial class ConjuntCamps : UserControl
     {
-        private string[] possibleValues = { "Value1", "Value2", "Value3" };
-
+        private string[] campsDeCerca = { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
         public ConjuntCamps()
         {
             InitializeComponent();
-            /*Camp.btClick += this.btEliminarClick;*/
         }
 
         private void btAfegirCampClick(object sender, RoutedEventArgs e)
         {
             Camp newCamp = new Camp();
+            string[] campsDeCercaRestants = campsDeCerca;
+
+            foreach (UIElement child in gridCampsCerca.Children)
+            {
+                if (child is Camp)
+                {
+                    // Assuming GetSelectedValue is a method you've defined in your Camp class
+                    string selectedValue = (child as Camp).GetSelectedValue();
+
+                    // Check if the selected value is not null or empty before subtracting
+                    if (!string.IsNullOrEmpty(selectedValue))
+                    {
+                        campsDeCercaRestants = campsDeCercaRestants.Except(new string[] { selectedValue }).ToArray();
+                    }
+                }
+            }
+
+            newCamp.SetPossibleValues(campsDeCercaRestants);
 
             Button btEliminar = new Button();
             btEliminar.Content = "x";
@@ -54,7 +70,6 @@ namespace TaulerDeControlRM
 
             Grid.SetRow(btEliminar, gridCampsCerca.RowDefinitions.Count - 1);
             Grid.SetColumn(btEliminar, 1);
-            MessageBox.Show(gridCampsCerca.RowDefinitions.Count.ToString());
         }
         private void btEliminarClick(object sender, RoutedEventArgs e)
         {

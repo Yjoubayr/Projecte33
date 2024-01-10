@@ -29,8 +29,6 @@ namespace TaulerDeControlRM
         public void SetPossibleValues(string[] values)
         {
             CMBcamp.ItemsSource = values;
-            if (values.Length > 0)
-                CMBcamp.SelectedIndex = 0;
         }
 
         // Method to get the selected value from the ComboBox
