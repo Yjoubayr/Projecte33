@@ -1,12 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace dymj.ReproductorMusica.API_SQL 
-{
-    public class Canco
-    {
+namespace dymj.ReproductorMusica {
+    public partial class Canco {
         [Key]
-        public int IdCanco { get; set; }
+        public string ID { get; set; }
+        [MaxLength(20)]
         public string Nom { get; set; }
-        public string Imagen { get; set; }
+        public string NomLlista { get; set; }
+        public string NomDispositiu { get; set; }
+
+        public ICollection<Album>? LAlbums { get; set; }      
+
     }
 }
