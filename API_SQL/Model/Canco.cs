@@ -9,7 +9,7 @@ namespace dymj.ReproductorMusica {
         public string NomLlista { get; set; }
         public string NomDispositiu { get; set; }
 
-        public ICollection<Album>? LAlbums { get; set; }      
+        public Album? AlbumObj { get; set; }      
 
     }
 }
