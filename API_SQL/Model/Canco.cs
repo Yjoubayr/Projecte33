@@ -10,5 +10,7 @@ namespace dymj.ReproductorMusica {
         public string NomDispositiu { get; set; }
 
         public ICollection<Album>? LAlbums { get; set; }
+        public ICollection<Music>? LMusics { get; set; }
+        public ICollection<Grup>? LGrups { get; set; }
     }
 }
