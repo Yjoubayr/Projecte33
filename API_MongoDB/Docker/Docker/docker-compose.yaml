@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:4.2
+    restart: always
+    command: --auth
+    environment:
+      MONGO_INITDB_DATABASE: initial
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: a
+    ports:
+      - "27017:27017"
+    volumes:
+      # - ./server/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro  
+      - ../../mongodata:/data/db  
+    networks:
+      - code-network
+
+networks:
+    code-network:
+        driver: bridge
+
+  

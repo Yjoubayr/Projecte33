@@ -1,0 +1,12 @@
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.deps.json
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.dll
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.pdb
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.csproj.AssemblyReference.cache
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.AssemblyInfoInputs.cache
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.AssemblyInfo.cs
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.csproj.CoreCompileInputs.cache
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.dll
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\refint\DAMSecurityLib.dll
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.pdb
+C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\ref\DAMSecurityLib.dll
