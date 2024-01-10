@@ -9,6 +9,6 @@ namespace dymj.ReproductorMusica {
         public string NomLlista { get; set; }
         public string NomDispositiu { get; set; }
 
-        public ICollection<Canco>? Cancons { get; set; }
+        public ICollection<Canco>? LCancons { get; set; }
     }
 }
