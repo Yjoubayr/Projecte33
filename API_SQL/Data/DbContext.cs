@@ -9,7 +9,7 @@ namespace mba.basquet {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new CanconsConfiguration());
+            
         }
     }
 }
