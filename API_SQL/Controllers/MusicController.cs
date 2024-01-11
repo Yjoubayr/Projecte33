@@ -20,15 +20,15 @@ namespace API_SQL.Controllers
             _context = context;
         }
 
-        // GET: api/Music
-        [HttpGet]
+        // GET: api/Music/getMusics
+        [HttpGet("getMusics")]
         public async Task<ActionResult<IEnumerable<Music>>> GetArtistes()
         {
             return await _context.Artistes.ToListAsync();
         }
 
-        // GET: api/Music/5
-        [HttpGet("{Nom}")]
+        // GET: api/Music/getMusic/JustinBieber
+        [HttpGet("getMusic/{Nom}")]
         public async Task<ActionResult<Music>> GetMusic(string Nom)
         {
             var music = await _context.Artistes.FindAsync(Nom);
@@ -41,9 +41,9 @@ namespace API_SQL.Controllers
             return music;
         }
 
-        // PUT: api/Music/5
+        // PUT: api/Music/putMusic/JustinBieber
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{Nom}")]
+        [HttpPut("putMusic/{Nom}")]
         public async Task<IActionResult> PutMusic(string Nom, Music music)
         {
             if (Nom != music.Nom)
@@ -72,9 +72,9 @@ namespace API_SQL.Controllers
             return NoContent();
         }
 
-        // POST: api/Music
+        // POST: api/Music/postMusic
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("postMusic")]
         public async Task<ActionResult<Music>> PostMusic(Music music)
         {
             _context.Artistes.Add(music);
@@ -97,8 +97,8 @@ namespace API_SQL.Controllers
             return CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
         }
 
-        // DELETE: api/Music/5
-        [HttpDelete("{Nom}")]
+        // DELETE: api/Music/deleteMusic/JustinBieber
+        [HttpDelete("deleteMusic/{Nom}")]
         public async Task<IActionResult> DeleteMusic(string Nom)
         {
             var music = await _context.Artistes.FindAsync(Nom);
