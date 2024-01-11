@@ -20,21 +20,34 @@ namespace TaulerDeControlRM
     /// </summary>
     public partial class Camp : UserControl
     {
+        private string previousSelectedValue;
         public event EventHandler ButtonClicked;
         public Camp()
         {
             InitializeComponent();
+
+            cmbCamp.SelectionChanged += cmbCamp_SelectionChanged;
         }
         // Method to set the possible values for the ComboBox
-        public void SetPossibleValues(string[] values)
+        public void SetPossibleValues(List<String> values)
         {
-            CMBcamp.ItemsSource = values;
+            cmbCamp.ItemsSource = values;
         }
 
         // Method to get the selected value from the ComboBox
         public string GetSelectedValue()
         {
-            return CMBcamp.SelectedItem?.ToString();
+            return cmbCamp.SelectedItem?.ToString();
+        }
+
+        private void cmbCamp_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Check if the selected value can be changed
+            if(cmbCamp.SelectedItem != null)
+            {
+                cmbCamp.IsEnabled = false;
+                ConjuntCamps.campsDeCercaRestants.Remove(cmbCamp.SelectedItem.ToString());
+            }
         }
     }
 }

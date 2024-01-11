@@ -21,7 +21,8 @@ namespace TaulerDeControlRM
     /// </summary>
     public partial class ConjuntCamps : UserControl
     {
-        private string[] campsDeCerca = { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
+        private static string[] campsDeCerca = { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
+        public static List<string> campsDeCercaRestants = ConjuntCamps.campsDeCerca.ToList();
         public ConjuntCamps()
         {
             InitializeComponent();
@@ -30,24 +31,8 @@ namespace TaulerDeControlRM
         private void btAfegirCampClick(object sender, RoutedEventArgs e)
         {
             Camp newCamp = new Camp();
-            string[] campsDeCercaRestants = campsDeCerca;
 
-            foreach (UIElement child in gridCampsCerca.Children)
-            {
-                if (child is Camp)
-                {
-                    // Assuming GetSelectedValue is a method you've defined in your Camp class
-                    string selectedValue = (child as Camp).GetSelectedValue();
-
-                    // Check if the selected value is not null or empty before subtracting
-                    if (!string.IsNullOrEmpty(selectedValue))
-                    {
-                        campsDeCercaRestants = campsDeCercaRestants.Except(new string[] { selectedValue }).ToArray();
-                    }
-                }
-            }
-
-            newCamp.SetPossibleValues(campsDeCercaRestants);
+            newCamp.SetPossibleValues(ConjuntCamps.campsDeCercaRestants);
 
             Button btEliminar = new Button();
             btEliminar.Content = "x";
@@ -79,21 +64,53 @@ namespace TaulerDeControlRM
             if (rowIndex >= 0 && rowIndex < gridCampsCerca.RowDefinitions.Count)
             {
                 // Remove the Camp UserControl
-                UIElement campToRemove = gridCampsCerca.Children.Cast<UIElement>()
+                Camp campToRemove = gridCampsCerca.Children
+                    .OfType<Camp>()  // Filter to include only elements of type Camp
                     .FirstOrDefault(child => Grid.GetRow(child) == rowIndex && Grid.GetColumn(child) == 0);
 
                 if (campToRemove != null)
                 {
+                    if (campToRemove.cmbCamp.SelectedItem != null)
+                    {
+                        ConjuntCamps.campsDeCercaRestants.Add(campToRemove.cmbCamp.SelectedItem.ToString());
+                    }
                     gridCampsCerca.Children.Remove(campToRemove);
                 }
 
                 // Remove the "x" button
                 gridCampsCerca.Children.Remove(sender as UIElement);
 
-                // Remove the row definition
-                gridCampsCerca.RowDefinitions.RemoveAt(rowIndex);
+                // Move up any Camp UserControls that are below the one that was removed
+                foreach (UIElement element in gridCampsCerca.Children)
+                {
+                    if (Grid.GetRow(element) > rowIndex)
+                    {
+                        Grid.SetRow(element, Grid.GetRow(element) - 1);
+                    }
+
+                }
+
+                // Remove last row
+                gridCampsCerca.RowDefinitions.RemoveAt(gridCampsCerca.RowDefinitions.Count - 1);
             }
         }
 
-    }
+
+        public static void GetElementsAtGridPosition(Grid grid, int row, int column)
+        {
+            List<UIElement> elements = new List<UIElement>();
+
+            foreach (UIElement element in grid.Children)
+            {
+                int elementRow = Grid.GetRow(element);
+                int elementColumn = Grid.GetColumn(element);
+
+                if (elementRow == row && elementColumn == column)
+                {
+                    MessageBox.Show(element.ToString());
+                }
+            }
+        }
+
+}
 }
