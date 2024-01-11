@@ -9,11 +9,11 @@ namespace dymj.ReproductorMusica {
         public DbSet<Extensio> Extensions { get; set; }
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Music> Artistes { get; set; }
-
+        public DbSet<Llista> Llista { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
         }
-        public DbSet<dymj.ReproductorMusica.Llista> Llista { get; set; } = default!;
     }
 }
