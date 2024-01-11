@@ -20,18 +20,25 @@ namespace API_SQL.Controllers
             _context = context;
         }
 
-        // GET: api/Canco
+        /// <summary>
+        /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
+        /// </summary>
+        /// <returns>Task<ActionResult<IEnumerable<Canco>>></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Canco>>> GetCancons()
         {
             return await _context.Cancons.ToListAsync();
         }
 
-        // GET: api/Canco/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Canco>> GetCanco(string id)
+
+        /// <summary>
+        /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una canco
+        /// </summary>
+        /// <returns>Task<ActionResult<Canco>></returns>
+        [HttpGet("getCanco/{ID}")]
+        public async Task<ActionResult<Canco>> GetCanco(string ID)
         {
-            var canco = await _context.Cancons.FindAsync(id);
+            var canco = await _context.Cancons.FindAsync(ID);
 
             if (canco == null)
             {
@@ -41,12 +48,15 @@ namespace API_SQL.Controllers
             return canco;
         }
 
-        // PUT: api/Canco/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCanco(string id, Canco canco)
+        
+        /// <summary>
+        /// Accedeix a la ruta /api/Canco/getCanco/{ID} per modificar una canco
+        /// </summary>
+        /// <returns>Task<IActionResult></returns>
+        [HttpPut("putLlista/{ID}")]
+        public async Task<IActionResult> PutCanco(string ID, Canco canco)
         {
-            if (id != canco.ID)
+            if (ID != canco.ID)
             {
                 return BadRequest();
             }
@@ -59,7 +69,7 @@ namespace API_SQL.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CancoExists(id))
+                if (!CancoExists(ID))
                 {
                     return NotFound();
                 }
@@ -72,9 +82,12 @@ namespace API_SQL.Controllers
             return NoContent();
         }
 
-        // POST: api/Canco
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        
+        /// <summary>
+        /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
+        /// </summary>
+        /// <returns>Task<ActionResult<Canco>></returns>
+        [HttpPost("postCanco")]
         public async Task<ActionResult<Canco>> PostCanco(Canco canco)
         {
             _context.Cancons.Add(canco);
@@ -94,14 +107,18 @@ namespace API_SQL.Controllers
                 }
             }
 
-            return CreatedAtAction("GetCanco", new { id = canco.ID }, canco);
+            return CreatedAtAction("GetCanco", new { ID = canco.ID }, canco);
         }
 
-        // DELETE: api/Canco/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCanco(string id)
+        
+        /// <summary>
+        /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una canco
+        /// </summary>
+        /// <returns>Task<IActionResult></returns>
+        [HttpDelete("deleteCanco/{ID}")]
+        public async Task<IActionResult> DeleteCanco(string ID)
         {
-            var canco = await _context.Cancons.FindAsync(id);
+            var canco = await _context.Cancons.FindAsync(ID);
             if (canco == null)
             {
                 return NotFound();
@@ -113,9 +130,14 @@ namespace API_SQL.Controllers
             return NoContent();
         }
 
-        private bool CancoExists(string id)
+        /// <summary>
+        /// Comprova si existeix una canco
+        /// </summary>
+        /// <param name="ID">Identificador de la Canco</param>
+        /// <returns>bool</returns>
+        private bool CancoExists(string ID)
         {
-            return _context.Cancons.Any(e => e.ID == id);
+            return _context.Cancons.Any(e => e.ID == ID);
         }
     }
 }

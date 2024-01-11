@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace dymj.ReproductorMusica {
     public partial class Album {
-        [Key]
         [MaxLength(20)]
         public string Titol { get; set; }
         public int Any { get; set; }
