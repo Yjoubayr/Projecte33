@@ -25,7 +25,7 @@ namespace TaulerDeControlRM
             InitializeComponent();
 
             List<string> cmbOrdreValues = new List<string>
-            { "Reproduccions", "Durada", "Data" };
+            { "Reproduccions", "Data Creació" , "Data Reproducció" };
 
             // Assign the collection to the ComboBox's ItemsSource
             cmbOrdre.ItemsSource = cmbOrdreValues;
@@ -35,7 +35,7 @@ namespace TaulerDeControlRM
             cmbSentit.ItemsSource = cmbSentitValues;
 
             List<string> cmbTipusResultatValues = new List<string>
-            { "Cançó", "Artista", "Album", "Llista de reproducció" };
+            { "Cançons", "Artistes", "Albums", "Llistes de reproducció" };
             cmbTipusResultat.ItemsSource = cmbTipusResultatValues;
 
         }
