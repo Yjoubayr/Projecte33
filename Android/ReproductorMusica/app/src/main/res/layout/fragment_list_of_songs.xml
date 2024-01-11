@@ -2,19 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListOfSongsFragment">
+    tools:context=".ListOfSongsFragment"
+    android:background="@color/negro_semi_transparente"
+    >
 
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:padding="20dp"
        android:background="@drawable/backgruond_frame_create_track"
+       android:layout_gravity="bottom"
        >
 
       <ListView
           android:id="@+id/List"
           android:layout_width="match_parent"
-          android:layout_height="400dp">
+          android:layout_height="300dp">
       </ListView>
 
       <RelativeLayout
