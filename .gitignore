@@ -7,10 +7,8 @@ API_MongoDB/Migrations
 API_SQL/bin
 API_SQL/obj
 API_SQL/Migrations
-WPF/DAMComponentLibrary/bin
-WPF/DAMMatrix/bin
-WPF/DAMMatrix/obj
+WPF/TaulerDeControlRM/bin
+WPF/TaulerDeControlRM/obj
 WPF/.vs/
-WPF/DAMComponentLibrary/obj/
-WPF/DAMComponentLibrary/obj/Debug/
+WPF/TaulerDeControlRM/obj/Debug/
  
