@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,20 +38,39 @@ class ListOfSongsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_of_songs, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_of_songs, container, false)
+
+        val createNewPlaylist: RelativeLayout = view.findViewById(R.id.CreateNewPlayList)
+
+        createNewPlaylist.setOnClickListener {
+            // Crear una instancia del fragmento TrackName
+            val trackNameFragment = TrackName()
+
+            // Obtener el FragmentManager desde el Activity
+            val fragmentManager = requireActivity().supportFragmentManager
+
+            // Iniciar una transacción de fragmento
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+            // Configurar la animación de fadeIn
+            val fadeIn: Animation = AlphaAnimation(0f, 1f)
+            fadeIn.duration = 500 // Duración de la animación en milisegundos
+            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+
+            // Reemplazar el contenido actual con el fragmento TrackName
+            transaction.replace(R.id.fragment_container, trackNameFragment)
+
+            // Agregar la transacción al back stack
+            transaction.addToBackStack(null)
+
+            // Confirmar la transacción
+            transaction.commit()
+        }
+
+        return view
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ListOfSongsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ListOfSongsFragment().apply {

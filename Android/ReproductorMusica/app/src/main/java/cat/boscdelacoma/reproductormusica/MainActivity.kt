@@ -39,5 +39,26 @@ class MainActivity : AppCompatActivity() {
             // Confirmar la transacción
             transaction.commit()
         }
+
+        val addplaylist: TextView = findViewById(R.id.AddList)
+
+        addplaylist.setOnClickListener(){
+            val trackName = TrackName()
+
+            val fragmentManager = supportFragmentManager
+
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+            val fadeIn: Animation = AlphaAnimation(0f, 1f)
+            fadeIn.duration = 500
+
+            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+
+            transaction.replace(R.id.fragment_container, trackName)
+
+            transaction.addToBackStack(null)
+
+            transaction.commit()
+        }
     }
 }
