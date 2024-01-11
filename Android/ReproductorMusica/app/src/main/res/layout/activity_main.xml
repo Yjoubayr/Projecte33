@@ -71,6 +71,7 @@
         android:layout_marginBottom="80dp"
         >
         <TextView
+            android:id="@+id/AddSongToTrack"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:background="@drawable/addsongplaylist"

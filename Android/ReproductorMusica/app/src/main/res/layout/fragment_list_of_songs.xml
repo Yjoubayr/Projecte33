@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListOfSongsFragment">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="20dp"
+       android:background="@drawable/backgruond_frame_create_track"
+       >
+
+      <ListView
+          android:id="@+id/List"
+          android:layout_width="match_parent"
+          android:layout_height="400dp">
+      </ListView>
+
+      <RelativeLayout
+          android:id="@+id/CreateNewPlayList"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/List"
+          android:background="@drawable/btn"
+          android:padding="16dp">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:text="+"
+             android:textSize="20dp" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="Create new Playlist"
+             android:textSize="20dp" />
+      </RelativeLayout>
+
+   </RelativeLayout>
+
+</FrameLayout>
