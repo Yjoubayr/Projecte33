@@ -14,5 +14,6 @@ namespace dymj.ReproductorMusica {
         {
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
         }
+        public DbSet<dymj.ReproductorMusica.Llista> Llista { get; set; } = default!;
     }
 }

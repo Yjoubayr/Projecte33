@@ -28,10 +28,10 @@ namespace API_SQL.Controllers
         }
 
         // GET: api/Music/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Music>> GetMusic(string id)
+        [HttpGet("{Nom}")]
+        public async Task<ActionResult<Music>> GetMusic(string Nom)
         {
-            var music = await _context.Artistes.FindAsync(id);
+            var music = await _context.Artistes.FindAsync(Nom);
 
             if (music == null)
             {
@@ -43,10 +43,10 @@ namespace API_SQL.Controllers
 
         // PUT: api/Music/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMusic(string id, Music music)
+        [HttpPut("{Nom}")]
+        public async Task<IActionResult> PutMusic(string Nom, Music music)
         {
-            if (id != music.Nom)
+            if (Nom != music.Nom)
             {
                 return BadRequest();
             }
@@ -59,7 +59,7 @@ namespace API_SQL.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MusicExists(id))
+                if (!MusicExists(Nom))
                 {
                     return NotFound();
                 }
@@ -94,14 +94,14 @@ namespace API_SQL.Controllers
                 }
             }
 
-            return CreatedAtAction("GetMusic", new { id = music.Nom }, music);
+            return CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
         }
 
         // DELETE: api/Music/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMusic(string id)
+        [HttpDelete("{Nom}")]
+        public async Task<IActionResult> DeleteMusic(string Nom)
         {
-            var music = await _context.Artistes.FindAsync(id);
+            var music = await _context.Artistes.FindAsync(Nom);
             if (music == null)
             {
                 return NotFound();
