@@ -12,5 +12,6 @@ namespace dymj.ReproductorMusica {
         public ICollection<Album>? LAlbums { get; set; }
         public ICollection<Music>? LMusics { get; set; }
         public ICollection<Grup>? LGrups { get; set; }
+        public ICollection<Extensio>? LExtensions { get; set; }
     }
 }

@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace dymj.ReproductorMusica {
-    public partial class Grup {
+    public partial class Extensio {
         [Key]
         public string Nom {get; set;}
-        public ICollection<Music>? LMusics {get; set;}
         public ICollection<Canco>? LCancons { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace dymj.ReproductorMusica {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<Canco> Cancons { get; set; }
         public DbSet<Album> Albums { get; set; }
-
+        public DbSet<Extensio> Extensions { get; set; }
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Music> Artistes { get; set; }
 
