@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace dymj.ReproductorMusica {
+namespace dymj.ReproductorMusica.API_SQL.Model {
     public partial class Canco {
         [Key]
         public string ID { get; set; }

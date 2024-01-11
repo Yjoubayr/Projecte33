@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace dymj.ReproductorMusica {
+namespace dymj.ReproductorMusica.API_SQL.Model {
     public partial class Album {
         [MaxLength(20)]
         public string Titol { get; set; }

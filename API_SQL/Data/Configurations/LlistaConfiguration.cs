@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace dymj.ReproductorMusica {
+namespace dymj.ReproductorMusica.API_SQL.Configurations {
     public class LlistesConfiguration : IEntityTypeConfiguration<Llista> {
         public void Configure(EntityTypeBuilder<Llista> builder)
         {

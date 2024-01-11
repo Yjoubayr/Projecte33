@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using dymj.ReproductorMusica;
+using dymj.ReproductorMusica.API_SQL.Model;
 
-namespace API_SQL.Controllers
+namespace dymj.ReproductorMusica.API_SQL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
