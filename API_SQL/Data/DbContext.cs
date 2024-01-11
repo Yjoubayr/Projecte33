@@ -12,7 +12,7 @@ namespace dymj.ReproductorMusica {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.ApplyConfiguration(new LlistesConfiguration());
         }
     }
 }
