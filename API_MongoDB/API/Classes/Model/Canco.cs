@@ -9,6 +9,6 @@ namespace API.Classes.Model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _id { get ; set; } = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
-        public Binary cancion {get; set;} = null!;
+        public byte[] cancion {get; set;} = null!;
     }
 }

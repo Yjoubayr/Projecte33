@@ -2,14 +2,16 @@ using API.Classes.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.Configure<ReproMusicaDBSettings>(
-    builder.Configuration.GetSection("ReproductorMusicaBD")
+builder.Services.Configure<MongoDBSettings>(
+    builder.Configuration.GetSection("ReproductorMusicaDB")
 );
 
-
+builder.Services.AddSingleton<API.Services.CancoService>();
+builder.Services.AddSingleton<API.Services.HistorialService>();
+builder.Services.AddSingleton<API.Services.LletraService>();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -21,5 +23,5 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
+app.Run();

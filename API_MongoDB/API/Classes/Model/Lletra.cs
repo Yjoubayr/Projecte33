@@ -2,7 +2,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace API.Classes.Model
 {
-    public class Lletres
+    public class Lletra
     {
         [BsonId]
         public string IDLletra {get; set;} = null!;

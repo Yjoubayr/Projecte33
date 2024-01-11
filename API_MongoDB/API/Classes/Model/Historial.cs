@@ -6,6 +6,7 @@ namespace API.Classes.Model
     {
         [BsonId]
         public string IDDispositiu {get; set;} = null!;
+        [BsonElement("Canco")]
         public ICollection<Canco> canco {get; set;} = null!;
 
     }
