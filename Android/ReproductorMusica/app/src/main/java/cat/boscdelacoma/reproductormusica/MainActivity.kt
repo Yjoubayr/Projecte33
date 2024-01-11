@@ -1,4 +1,5 @@
 package cat.boscdelacoma.reproductormusica
+
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation

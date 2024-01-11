@@ -1,10 +1,14 @@
 package cat.boscdelacoma.reproductormusica
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import com.google.android.material.textfield.TextInputEditText
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +37,27 @@ class TrackName : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_track_name, container, false)
+        val view = inflater.inflate(R.layout.fragment_track_name, container, false)
+
+        val confirmbtn: TextView = view.findViewById(R.id.Confirm)
+        val playlistname = view.findViewById<TextInputEditText>(R.id.PlayListName)
+
+        confirmbtn.setOnClickListener {
+            val playlistNameText = playlistname.text.toString().trim()
+
+            if (playlistNameText.isNotEmpty()) {
+                //Crear carpeta el nom te que ser el de playlistNameText
+
+                val intent = Intent(requireContext(), Llist::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireContext(), "Ingresa un nombre de lista válido", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return view
     }
+
 
     companion object {
         /**

@@ -53,6 +53,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/PlayListName"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
