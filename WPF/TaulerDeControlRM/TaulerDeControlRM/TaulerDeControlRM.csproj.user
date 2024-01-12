@@ -16,6 +16,9 @@
     <Compile Update="ConjuntCamps.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="menuPujarCanco.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Camp.xaml">
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="menuPujarCanco.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
