@@ -10,3 +10,16 @@ C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DA
 C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\refint\DAMSecurityLib.dll
 C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.pdb
 C:\Users\marcg\Documents\Programacio\C.G.S_DAM2\CsharpEncriptacio\DAMSecurity\DAMSecurityLib\obj\Debug\net6.0\ref\DAMSecurityLib.dll
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.deps.json
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.dll
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.pdb
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.csproj.AssemblyReference.cache
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.GeneratedMSBuildEditorConfig.editorconfig
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.AssemblyInfoInputs.cache
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.AssemblyInfo.cs
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.csproj.CoreCompileInputs.cache
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.sourcelink.json
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.dll
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\refint\DAMSecurityLib.dll
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.pdb
+E:\Informatica\GradoSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\DAMSecurityLib\obj\Debug\net6.0\ref\DAMSecurityLib.dll

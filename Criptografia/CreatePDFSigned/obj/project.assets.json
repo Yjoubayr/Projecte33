@@ -5165,11 +5165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\CrearPDFSignat\\CreatePDFSigned\\CreatePDFSigned.csproj",
+      "projectUniqueName": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
       "projectName": "CreatePDFSigned",
-      "projectPath": "C:\\Users\\user\\Documents\\CrearPDFSignat\\CreatePDFSigned\\CreatePDFSigned.csproj",
+      "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\CrearPDFSignat\\CreatePDFSigned\\obj\\",
+      "outputPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5191,8 +5191,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\user\\Documents\\CrearPDFSignat\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-              "projectPath": "C:\\Users\\user\\Documents\\CrearPDFSignat\\DAMSecurityLib\\DAMSecurityLib.csproj"
+            "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+              "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
             }
           }
         }

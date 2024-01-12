@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DAMSecurityLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55ee7fb018af9d3717f646cacd56bbeeb35d7acb")]
 [assembly: System.Reflection.AssemblyProductAttribute("DAMSecurityLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DAMSecurityLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

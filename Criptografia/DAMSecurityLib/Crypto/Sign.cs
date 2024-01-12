@@ -29,6 +29,10 @@ using iText.IO.Source;
 using Org.BouncyCastle.Utilities;
 using Org.BouncyCastle.Asn1.IsisMtt.Ocsp;
 using Org.BouncyCastle.Pkix;
+using System.Text.Json;
+using Newtonsoft.Json;
+using System.Dynamic;
+using Aspose.Pdf.Operators;
 
 namespace DAMSecurityLib.Crypto
 {
@@ -37,6 +41,62 @@ namespace DAMSecurityLib.Crypto
     /// </summary>
     public class Sign
     {
+
+        public void CreatePDFWithJsonList(string rutaPdf, string jsonList)
+        {
+
+
+            try
+            {
+                dynamic jsonData = JsonConvert.DeserializeObject<ExpandoObject>(jsonList);
+
+                // Crear el documento PDF
+                using (PdfWriter writer = new PdfWriter(rutaPdf))
+                {
+                    using (PdfDocument pdfDocument = new PdfDocument(writer))
+                    {
+                        using (Document document = new Document(pdfDocument))
+                        {
+                            // Agregar cada propiedad del objeto dinámico al PDF de manera estructurada
+                            foreach (var property in jsonData)
+                            {
+                                string propertyName = property.Key;
+                                object propertyValue = property.Value;
+
+                                if (propertyValue is List<object>)
+                                {
+                                    // Si el valor es una lista, formatearla como una lista en el PDF
+                                    document.Add(new Paragraph($"{propertyName}:"));
+                                    foreach (var item in (List<object>)propertyValue)
+                                    {
+                                        document.Add(new ListItem(item.ToString()));
+                                    }
+                                }
+                                else
+                                {
+                                    // Si no es una lista, agregar como un párrafo normal
+                                    document.Add(new Paragraph($"{propertyName}: {propertyValue}"));
+                                }
+                            }
+                        }
+                    }
+                }
+                Console.WriteLine("PDF Creat correctament");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al crear el PDF con la lista JSON: " + ex.Message);
+            }
+        }
+        public void createPDFsignedMarc(String certPath, String certPass, String output, String PdfRoute)
+        {
+            using (X509Certificate2 cert = new X509Certificate2(certPath, certPass))
+            {
+                byte[] bytes = File.ReadAllBytes(PdfRoute);
+                InitCertificate(certPath, certPass);
+                SignPdf(PdfRoute, output, true);
+            }
+        }
 
         #region Private attributes
 
@@ -83,7 +143,7 @@ namespace DAMSecurityLib.Crypto
             IX509Certificate[] chain = new IX509Certificate[chainEntries.Length];
             for (int i = 0; i < chainEntries.Length; i++)
                 chain[i] = new X509CertificateBC(chainEntries[i].Certificate);
-            PrivateKeySignature signature = new PrivateKeySignature(new PrivateKeyBC(key), "SHA256");
+                PrivateKeySignature signature = new PrivateKeySignature(new PrivateKeyBC(key), "SHA256");
 
             using (PdfReader pdfReader = new PdfReader(inputFileName))
             using (FileStream result = File.Create(outputFileName))
@@ -205,6 +265,7 @@ namespace DAMSecurityLib.Crypto
             }
 
         }
+  
         private static byte[] CreatePDFinMemory()
         {
             using (MemoryStream memoryStream = new MemoryStream())
@@ -233,6 +294,7 @@ namespace DAMSecurityLib.Crypto
                 File.WriteAllBytes("C:\\Users\\marcg\\Documents\\Programacio\\C.G.S_DAM2\\CsharpEncriptacio\\DAMSecurity\\signedpdf.pdf", outputBytes);
             }
         }
+
         public void ValidateSignature(string pdfFileName)
         {
             using (PdfReader pdfReader = new PdfReader(pdfFileName))
