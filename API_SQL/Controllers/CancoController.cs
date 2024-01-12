@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Services;
+using dymj.ReproductorMusica.API_SQL.Data;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
 {
@@ -17,9 +18,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly CancoService _cancoService;
 
-        public CancoController(CancoService CancoService)
+        public CancoController(DataContext context, CancoService cancoService)
         {
-            _cancoService = CancoService;
+            _context = context;
+            _cancoService = cancoService;
         }
 
         /// <summary>
@@ -28,11 +30,12 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <returns>Un array de totes les cancons</returns>
         [HttpGet("getCancons/start/{start}/limit/{limit}")]
         public async Task<ActionResult<IEnumerable<Canco>>> GetCancons(int start,int limit)
-        {
-            return await _cancoService.GetAsync(start,limit);
+        {        
+            return await _context.Cancons.ToListAsync();
+            //return await _cancoService.GetAsync(_context,start,limit);
         }
 
-
+/*
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una canco
         /// </summary>
@@ -67,7 +70,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             updatedCanco.ID = canco.ID;
 
-            await _libraryService.UpdateAsync(ID, updatedCanco);
+            await _cancoService.UpdateAsync(ID, updatedCanco);
 
             return NoContent();
         }
@@ -77,7 +80,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
         /// </summary>
         /// <returns>La verificacio de que s ha inserit correctament</returns>
-        [HttpPost("postCanco")]
+        /*[HttpPost("postCanco")]
         public async Task<IActionResult> PostCanco(Canco canco)
         {
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la llibreria i retornar un error 409
@@ -118,10 +121,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _cancoService.RemoveAsync(id);
+            await _cancoService.RemoveAsync(ID);
 
             return NoContent();
-        }
+        }*/
 
     }
 }

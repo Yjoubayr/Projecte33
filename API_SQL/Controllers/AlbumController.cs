@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
+using dymj.ReproductorMusica.API_SQL.Data;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
 {

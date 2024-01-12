@@ -1,5 +1,7 @@
 using dymj.ReproductorMusica;
 using Microsoft.EntityFrameworkCore;
+using dymj.ReproductorMusica.API_SQL.Model;
+using dymj.ReproductorMusica.API_SQL.Configuration;
 
 namespace dymj.ReproductorMusica.API_SQL.Data {
     public class DataContext : DbContext {
@@ -15,6 +17,7 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
         {
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
+            modelBuilder.ApplyConfiguration(new ParticipaConfiguration());
         }
     }
 }

@@ -1,5 +1,5 @@
 using Newtonsoft.Json.Serialization;
-using dymj.ReproductorMusica;
+using dymj.ReproductorMusica.API_SQL.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +13,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 
+builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.CancoService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
