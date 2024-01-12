@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.textfield.TextInputEditText
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,6 +45,7 @@ class TrackName : Fragment() {
         val view = inflater.inflate(R.layout.fragment_track_name, container, false)
 
         val confirmbtn: TextView = view.findViewById(R.id.Confirm)
+        val exitbtn: TextView = view.findViewById(R.id.Exit)
         val playlistname = view.findViewById<TextInputEditText>(R.id.PlayListName)
 
         confirmbtn.setOnClickListener {
@@ -61,12 +65,13 @@ class TrackName : Fragment() {
 
 
 
-
-                val intent = Intent(requireContext(), Llist::class.java)
-                startActivity(intent)
             } else {
                 Toast.makeText(requireContext(), "Ingresa un nombre de lista válido", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        exitbtn.setOnClickListener {
+            (activity as? MainActivity)?.tornarDesDeFragment()
         }
 
         return view
