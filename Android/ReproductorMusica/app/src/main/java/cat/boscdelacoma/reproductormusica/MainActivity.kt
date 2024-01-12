@@ -62,4 +62,8 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
     }
+
+    public fun tornarDesDeFragment() {
+        supportFragmentManager.popBackStack()
+    }
 }
