@@ -7,9 +7,17 @@ API_MongoDB/Migrations
 API_SQL/bin
 API_SQL/obj
 API_SQL/Migrations
-WPF/TaulerDeControlRM/obj/Debug
-WPF/TaulerDeControlRM/TaulerDeControlRM/obj
-WPF/TaulerDeControlRM/TaulerDeControlRM/obj/Debug
-WPF/TaulerDeControlRM/.vs
-WPF/.vs/
- 
+# Ignore Visual Studio files and directories
+WPF/TaulerDeControlRM/.vs/
+
+# Ignore build artifacts and directories
+WPF/TaulerDeControlRM/obj/
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/
+WPF/TaulerDeControlRM/TaulerDeControlRM/bin/
+
+# Ignore specific files
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/project.assets.json
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/project.nuget.cache
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/TaulerDeControlRM.csproj.nuget.dgspec.json
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/Debug/net6.0-windows/TaulerDeControlRM.GeneratedMSBuildEditorConfig.editorconfig
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/Debug/net6.0-windows/TaulerDeControlRM.sourcelink.json
