@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using dymj.ReproductorMusica;
+using dymj.ReproductorMusica.API_SQL.Model;
+using dymj.ReproductorMusica.API_SQL.Services;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
 {
@@ -14,31 +15,32 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     public class CancoController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly CancoService _cancoService;
 
-        public CancoController(DataContext context)
+        public CancoController(CancoService CancoService)
         {
-            _context = context;
+            _cancoService = CancoService;
         }
 
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
         /// </summary>
-        /// <returns>Task<ActionResult<IEnumerable<Canco>>></returns>
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Canco>>> GetCancons()
+        /// <returns>Un array de totes les cancons</returns>
+        [HttpGet("getCancons/start/{start}/limit/{limit}")]
+        public async Task<ActionResult<IEnumerable<Canco>>> GetCancons(int start,int limit)
         {
-            return await _context.Cancons.ToListAsync();
+            return await _cancoService.GetAsync(start,limit);
         }
 
 
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una canco
         /// </summary>
-        /// <returns>Task<ActionResult<Canco>></returns>
+        /// <returns>L objecte de la canco consultada</returns>
         [HttpGet("getCanco/{ID}")]
         public async Task<ActionResult<Canco>> GetCanco(string ID)
         {
-            var canco = await _context.Cancons.FindAsync(ID);
+            var canco = await _cancoService.GetAsync(ID);
 
             if (canco == null)
             {
@@ -52,32 +54,20 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCanco/{ID} per modificar una canco
         /// </summary>
-        /// <returns>Task<IActionResult></returns>
+        /// <returns>La verificacio de que s ha modificat correctament</returns>
         [HttpPut("putLlista/{ID}")]
-        public async Task<IActionResult> PutCanco(string ID, Canco canco)
+        public async Task<IActionResult> PutCanco(string ID, Canco updatedCanco)
         {
-            if (ID != canco.ID)
+            var canco = await _cancoService.GetAsync(ID);
+
+            if (canco is null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(canco).State = EntityState.Modified;
+            updatedCanco.ID = canco.ID;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CancoExists(ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _libraryService.UpdateAsync(ID, updatedCanco);
 
             return NoContent();
         }
@@ -86,18 +76,21 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
         /// </summary>
-        /// <returns>Task<ActionResult<Canco>></returns>
+        /// <returns>La verificacio de que s ha inserit correctament</returns>
         [HttpPost("postCanco")]
-        public async Task<ActionResult<Canco>> PostCanco(Canco canco)
+        public async Task<IActionResult> PostCanco(Canco canco)
         {
-            _context.Cancons.Add(canco);
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la llibreria i retornar un error 409
+            IActionResult result;
+
             try
             {
-                await _context.SaveChangesAsync();
+                await _cancoService.CreateAsync(canco);
+                result = CreatedAtAction(nameof(Get), new { ID = canco.ID }, canco);
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
-                if (CancoExists(canco.ID))
+                if (_cancoService.GetAsync(canco.ID) == null)
                 {
                     return Conflict();
                 }
@@ -107,37 +100,28 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 }
             }
 
-            return CreatedAtAction("GetCanco", new { ID = canco.ID }, canco);
+            return result;
         }
 
         
         /// <summary>
         /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una canco
         /// </summary>
-        /// <returns>Task<IActionResult></returns>
+        /// <returns>La verificacio de que s ha eliminat correctament</returns>
         [HttpDelete("deleteCanco/{ID}")]
         public async Task<IActionResult> DeleteCanco(string ID)
         {
-            var canco = await _context.Cancons.FindAsync(ID);
-            if (canco == null)
+            var canco = await _cancoService.GetAsync(ID);
+            
+            if (canco is null)
             {
                 return NotFound();
             }
 
-            _context.Cancons.Remove(canco);
-            await _context.SaveChangesAsync();
+            await _cancoService.RemoveAsync(id);
 
             return NoContent();
         }
 
-        /// <summary>
-        /// Comprova si existeix una canco
-        /// </summary>
-        /// <param name="ID">Identificador de la Canco</param>
-        /// <returns>bool</returns>
-        private bool CancoExists(string ID)
-        {
-            return _context.Cancons.Any(e => e.ID == ID);
-        }
     }
 }
