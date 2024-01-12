@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background"
-    >
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_centerInParent="true"
-        >
-    </view>
+        android:layout_height="match_parent"
+        tools:itemCount="10"
+        tools:listitem="@layout/song_item"        >
+
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
