@@ -64,6 +64,8 @@ class TrackName : Fragment() {
                 }
 
 
+                val intent = Intent(context ,Llist::class.java)
+                startActivity(intent)
 
             } else {
                 Toast.makeText(requireContext(), "Ingresa un nombre de lista válido", Toast.LENGTH_SHORT).show()

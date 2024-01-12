@@ -31,8 +31,7 @@ import javax.xml.transform.URIResolver
 class Audio {
 
     var titol: String? = ""
-    var autor: String? = ""
-    lateinit var uri: Uri
+    var path: String? = ""
     var duration: String? = ""
     var mediaPlayer: MediaPlayer = MediaPlayer()
 
