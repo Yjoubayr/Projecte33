@@ -1,7 +1,7 @@
 using dymj.ReproductorMusica;
 using Microsoft.EntityFrameworkCore;
 
-namespace dymj.ReproductorMusica {
+namespace dymj.ReproductorMusica.API_SQL.Data {
     public class DataContext : DbContext {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<Canco> Cancons { get; set; }
