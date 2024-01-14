@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
 
@@ -13,7 +14,7 @@ public class CancoService
     }
 
     public async Task<List<Canco>> GetAsync(int start,int limit) {
-        await _context.Cancons.ToListAsync();
+        return await _context.Cancons.ToListAsync();
     }
         //await _context.Cancons.Find(c => true).Skip(start).Limit(limit).ToListAsync();
 
