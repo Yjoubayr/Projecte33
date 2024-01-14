@@ -31,11 +31,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpGet("getCancons/start/{start}/limit/{limit}")]
         public async Task<ActionResult<IEnumerable<Canco>>> GetCancons(int start,int limit)
         {        
-            return await _context.Cancons.ToListAsync();
-            //return await _cancoService.GetAsync(_context,start,limit);
+            //return await _context.Cancons.ToListAsync();
+            return await _cancoService.GetAsync(start,limit);
         }
 
-/*
+
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una canco
         /// </summary>
@@ -80,7 +80,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
         /// </summary>
         /// <returns>La verificacio de que s ha inserit correctament</returns>
-        /*[HttpPost("postCanco")]
+        [HttpPost("postCanco")]
         public async Task<IActionResult> PostCanco(Canco canco)
         {
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la llibreria i retornar un error 409
@@ -89,7 +89,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             try
             {
                 await _cancoService.CreateAsync(canco);
-                result = CreatedAtAction(nameof(Get), new { ID = canco.ID }, canco);
+                result = CreatedAtAction("GetParaula", new { ID = canco.ID }, canco);
             }
             catch (DbUpdateException ex)
             {
@@ -124,7 +124,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _cancoService.RemoveAsync(ID);
 
             return NoContent();
-        }*/
+        }
 
     }
 }
