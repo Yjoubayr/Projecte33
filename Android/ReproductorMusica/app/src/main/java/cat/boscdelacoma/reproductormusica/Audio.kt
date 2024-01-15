@@ -27,6 +27,7 @@ import java.io.InputStreamReader
 import java.io.IOException
 import java.io.OutputStream
 import javax.xml.transform.URIResolver
+import kotlin.io.path.Path
 
 class Audio {
 
@@ -105,9 +106,11 @@ class Audio {
         }
     }
 
-    private fun getLists(context: Context) {
+    public fun getLists(context: Context?) {
+        val fullPath = Path(Environment.DIRECTORY_MUSIC).toAbsolutePath()
 
-        var pathMusic = File(Environment.DIRECTORY_MUSIC, "")
+        var pathMusic = File(Environment.DIRECTORY_MUSIC)
+        pathMusic.listFiles()
         /*Toast.makeText(
             context,
             pathMusic.absolutePath,
@@ -117,7 +120,8 @@ class Audio {
         val directories =  File(pathMusic.absolutePath).list { dir, name -> File(dir, name).isDirectory}
         Toast.makeText(
             context,
-            directories.contentToString(),
+            pathMusic.listFiles().contentToString()
+            ,
             Toast.LENGTH_LONG
         ).show()
 
