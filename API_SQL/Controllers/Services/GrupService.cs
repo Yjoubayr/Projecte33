@@ -8,7 +8,7 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 /// <summary>
 /// Classe que proporciona serveis per a la gestió de grups de música.
 /// </summary>
-public class GrupServei
+public class GrupService
 {
     private readonly DataContext _context;
 
@@ -36,11 +36,8 @@ public class GrupServei
     /// <returns>Grup de música corresponent al nom especificat.</returns>
     public async Task<Grup?> GetAsync(string Nom) =>
         await _context.Grups
-                            .Include(x => x.LListes)
-                            .Include(x => x.LAlbums)
+                            .Include(x => x.LCancons)
                             .Include(x => x.LMusics)
-                            .Include(x => x.LGrups)
-                            .Include(x => x.LExtensions)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
     /// <summary>
@@ -70,8 +67,8 @@ public class GrupServei
     /// </summary>
     /// <param name="Nom">Nom del grup de música a eliminar.</param>
     public async Task RemoveAsync(string Nom) {
-        var grup = await _context.Grup.FindAsync(ID);
-        _context.Grup.Remove(grup);
+        var grup = await _context.Grups.FindAsync(Nom);
+        _context.Grups.Remove(grup);
         await _context.SaveChangesAsync();
     }
 }

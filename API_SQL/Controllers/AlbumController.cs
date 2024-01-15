@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
+using dymj.ReproductorMusica.API_SQL.Services;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
 {
@@ -15,24 +16,26 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     public class AlbumController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly AlbumService _albumService;
 
-        public AlbumController(DataContext context)
+        public AlbumController(DataContext context, AlbumService albumService)
         {
             _context = context;
+            _albumService = albumService;
         }
 
         // GET: api/Album
-        [HttpGet]
+        [HttpGet("getAlbums")]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
             return await _context.Albums.ToListAsync();
         }
 
         // GET: api/Album/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Album>> GetAlbum(string id)
+        [HttpGet("getAlbums/{Titol}/{Any}")]
+        public async Task<ActionResult<Album>> GetAlbum(string Titol, int Any)
         {
-            var album = await _context.Albums.FindAsync(id);
+            var album = await _albumService.GetAsync(Titol, Any);
 
             if (album == null)
             {
@@ -44,48 +47,39 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         // PUT: api/Album/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlbum(string id, Album album)
+        [HttpPut("putAlbum/{Titol}/{Any}")]
+        public async Task<IActionResult> PutAlbum(string Titol, int Any, Album updatedAlbum)
         {
-            if (id != album.Titol)
-            {
-                return BadRequest();
+            var album = await _albumService.GetAsync(Titol, Any);
+
+            if (album is null) {
+                return NotFound();
             }
 
-            _context.Entry(album).State = EntityState.Modified;
+            updatedAlbum.Titol = Titol;
+            updatedAlbum.Any = Any;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlbumExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _albumService.UpdateAsync(Titol, Any, updatedAlbum);
 
             return NoContent();
         }
 
         // POST: api/Album
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Album>> PostAlbum(Album album)
+        [HttpPost("postAlbum")]
+        public async Task<IActionResult> PostAlbum(Album album)
         {
-            _context.Albums.Add(album);
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la llibreria i retornar un error 409
+            IActionResult result;
+
             try
             {
-                await _context.SaveChangesAsync();
+                await _albumService.CreateAsync(album);
+                result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any }, album);
             }
             catch (DbUpdateException)
             {
-                if (AlbumExists(album.Titol))
+                if (_albumService.GetAsync(album.Titol, album.Any) == null)
                 {
                     return Conflict();
                 }
@@ -95,28 +89,23 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 }
             }
 
-            return CreatedAtAction("GetAlbum", new { id = album.Titol }, album);
+            return result;
         }
 
         // DELETE: api/Album/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlbum(string id)
+        [HttpDelete("deleteAlbum/{Titol}/{Any}")]
+        public async Task<IActionResult> DeleteAlbum(string Titol, int Any)
         {
-            var album = await _context.Albums.FindAsync(id);
+            var album = await _albumService.GetAsync(Titol, Any);
+            
             if (album == null)
             {
                 return NotFound();
             }
 
-            _context.Albums.Remove(album);
-            await _context.SaveChangesAsync();
+            await _albumService.RemoveAsync(Titol, Any);
 
             return NoContent();
-        }
-
-        private bool AlbumExists(string id)
-        {
-            return _context.Albums.Any(e => e.Titol == id);
         }
     }
 }

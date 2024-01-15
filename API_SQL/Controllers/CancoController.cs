@@ -28,7 +28,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
         /// </summary>
         /// <returns>Un array de totes les cancons</returns>
-        [HttpGet("getCancons/start/{start}/limit/{limit}")]
+        [HttpGet("getCancons")]
         public async Task<ActionResult<IEnumerable<Canco>>> GetCancons()
         {        
             return await _cancoService.GetAsync();
@@ -88,9 +88,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             try
             {
                 await _cancoService.CreateAsync(canco);
-                result = CreatedAtAction("GetParaula", new { ID = canco.ID }, canco);
+                result = CreatedAtAction("GetCanco", new { ID = canco.ID }, canco);
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 if (_cancoService.GetAsync(canco.ID) == null)
                 {
