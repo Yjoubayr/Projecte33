@@ -104,4 +104,49 @@ class Audio {
             false
         }
     }
+
+    private fun getLists(context: Context) {
+
+        var pathMusic = File(Environment.DIRECTORY_MUSIC, "")
+        /*Toast.makeText(
+            context,
+            pathMusic.absolutePath,
+            Toast.LENGTH_LONG
+        ).show()*/
+
+        val directories =  File(pathMusic.absolutePath).list { dir, name -> File(dir, name).isDirectory}
+        Toast.makeText(
+            context,
+            directories.contentToString(),
+            Toast.LENGTH_LONG
+        ).show()
+
+
+        /*
+                val contentResolver: ContentResolver = context.contentResolver
+
+                // Especifiquem les columnes que volem seleccionar
+                val projection = arrayOf(
+                    MediaStore.Audio.Media.DISPLAY_NAME
+                )
+
+                // Amb aquesta seleccio ens assegurem de que nomes siguin carpetes
+                val selectionFolders = "${MediaStore.Audio.Media.IS_MUSIC} != 0"
+
+                val cursor = contentResolver.query(
+                    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                    projection,
+                    selectionFolders,
+                    null,
+                    null
+                )
+
+                cursor?.use { cursor ->
+                    val carpetesTrobades = HashSet<String>()
+
+                    while (cursor.moveToNext()) {
+                        val folderPath =
+                    }
+                }*/
+    }
 }
