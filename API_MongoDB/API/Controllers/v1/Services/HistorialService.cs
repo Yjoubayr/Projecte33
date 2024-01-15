@@ -1,5 +1,5 @@
 using API.Classes.Model;
-using API.Controllers.historial;
+using API.Controllers;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -13,13 +13,13 @@ public class HistorialService
         IOptions<MongoDBSettings> DatabaseSettings)
     {
         var mongoClient = new MongoClient(
-            DatabaseSettings.Value.ConnectionURI);
+            DatabaseSettings.Value.ConnectionString);
 
         var mongoDatabase = mongoClient.GetDatabase(
             DatabaseSettings.Value.DatabaseName);
 
         _HistorialCollection = mongoDatabase.GetCollection<Historial>(
-            DatabaseSettings.Value.CollectionName);
+            DatabaseSettings.Value.HistorialCollectionName);
     }
 
     public async Task<List<Historial>> GetAsync() =>

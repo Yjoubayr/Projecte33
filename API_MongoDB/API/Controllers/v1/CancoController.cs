@@ -1,11 +1,13 @@
 using API.Classes.Model;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace API.Controllers.lletra;
+
+namespace API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 public class CancoController : ControllerBase
 {
     private readonly CancoService _CancoService;
@@ -14,8 +16,10 @@ public class CancoController : ControllerBase
         _CancoService = cancoService;
 
     [HttpGet]
-    public async Task<List<Canco>> Get() =>
-        await _CancoService.GetAsync();
+    public async Task<List<Canco>> Get() {
+        return await _CancoService.GetAsync();
+    }
+     
 
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Canco>> Get(string id)
@@ -35,7 +39,7 @@ public class CancoController : ControllerBase
     {
         await _CancoService.CreateAsync(newCanco);
 
-        return CreatedAtAction(nameof(Get), new { id = newCanco._id }, newCanco);
+        return CreatedAtAction(nameof(Get), new { id = newCanco.Id }, newCanco);
     }
 
     [HttpPut("{id:length(24)}")]
@@ -48,7 +52,7 @@ public class CancoController : ControllerBase
             return NotFound();
         }
 
-        updatedCanco._id = canco._id;
+        updatedCanco.Id = canco.Id;
 
         await _CancoService.UpdateAsync(id, updatedCanco);
 

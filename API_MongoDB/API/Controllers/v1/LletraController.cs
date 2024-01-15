@@ -2,10 +2,10 @@ using API.Classes.Model;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers.lletra;
+namespace API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 public class LletraController : ControllerBase
 {
     private readonly LletraService _LletraService;
@@ -34,6 +34,7 @@ public class LletraController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(Lletra newLletra)
     {
+        
         await _LletraService.CreateAsync(newLletra);
 
         return CreatedAtAction(nameof(Get), new { id = newLletra.IDLletra }, newLletra);

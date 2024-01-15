@@ -8,7 +8,7 @@ namespace API.Classes.Model
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? _id { get ; set; } = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
+        public string? Id { get; set; } = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
         public byte[] cancion {get; set;} = null!;
     }
 }

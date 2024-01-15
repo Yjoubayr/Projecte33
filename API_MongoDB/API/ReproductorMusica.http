@@ -1,6 +1,5 @@
-@ReproductorMusica_HostAddress = http://localhost:5013
+@ReproductorMusica_HostAddress = http://localhost:5050
 
-GET {{ReproductorMusica_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

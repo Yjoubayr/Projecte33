@@ -12,13 +12,13 @@ public class LletraService
         IOptions<MongoDBSettings> DatabaseSettings)
     {
         var mongoClient = new MongoClient(
-            DatabaseSettings.Value.ConnectionURI);
+            DatabaseSettings.Value.ConnectionString);
 
         var mongoDatabase = mongoClient.GetDatabase(
             DatabaseSettings.Value.DatabaseName);
 
         _LletraCollection = mongoDatabase.GetCollection<Lletra>(
-            DatabaseSettings.Value.CollectionName);
+            DatabaseSettings.Value.LletraCollectionName);
     }
 
     public async Task<List<Lletra>> GetAsync() =>

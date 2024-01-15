@@ -2,10 +2,10 @@ using API.Classes.Model;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers.historial;
+namespace API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 public class HistorialController : ControllerBase
 {
     private readonly HistorialService _HistorialService;

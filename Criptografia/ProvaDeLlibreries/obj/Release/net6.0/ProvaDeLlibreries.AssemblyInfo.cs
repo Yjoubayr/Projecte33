@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProvaDeLlibreries")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55ee7fb018af9d3717f646cacd56bbeeb35d7acb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5749d05c9d94197c29fc6c0334469f0237c9dea3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProvaDeLlibreries")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProvaDeLlibreries")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
