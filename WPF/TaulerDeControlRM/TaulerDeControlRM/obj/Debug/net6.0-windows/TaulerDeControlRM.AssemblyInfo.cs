@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaulerDeControlRM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae79bb1185dcbbef3dd83103a14464e00bad664b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaulerDeControlRM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaulerDeControlRM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

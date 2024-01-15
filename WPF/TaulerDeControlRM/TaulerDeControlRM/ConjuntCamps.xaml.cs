@@ -21,8 +21,24 @@ namespace TaulerDeControlRM
     /// </summary>
     public partial class ConjuntCamps : UserControl
     {
-        private static string[] campsDeCerca = { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
-        public static List<string> campsDeCercaRestants = ConjuntCamps.campsDeCerca.ToList();
+        private static List<string> valors;
+        public static List<string> valorsRestants;
+        public static readonly DependencyProperty BtTextProperty =
+            DependencyProperty.Register("BtText", typeof(string), typeof(ConjuntCamps));
+        public static List<string> Valors
+        {
+            get { return valors; }
+            set
+            {
+                valors = value;
+                valorsRestants = valors;
+            }
+        }
+        public string BtText
+        {
+            get { return (string)GetValue(BtTextProperty); }
+            set { SetValue(BtTextProperty, value); }
+        }
         public ConjuntCamps()
         {
             InitializeComponent();
@@ -30,9 +46,9 @@ namespace TaulerDeControlRM
 
         private void btAfegirCampClick(object sender, RoutedEventArgs e)
         {
-            Camp newCamp = new Camp();
+            Camp newValue = new Camp();
 
-            newCamp.SetPossibleValues(ConjuntCamps.campsDeCercaRestants);
+            newValue.SetPossibleValues(ConjuntCamps.valorsRestants);
 
             Button btEliminar = new Button();
             btEliminar.Content = "x";
@@ -42,18 +58,18 @@ namespace TaulerDeControlRM
             btEliminar.Click += btEliminarClick;
 
             // Add a new RowDefinition to the Grid
-            gridCampsCerca.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            gridValues.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
             // Set the content of the new row to the new Camp UserControl
-            gridCampsCerca.Children.Add(newCamp);
+            gridValues.Children.Add(newValue);
 
             // Set the Grid.Row property for the new Camp UserControl
-            Grid.SetRow(newCamp, gridCampsCerca.RowDefinitions.Count - 1);
-            Grid.SetColumn(newCamp, 0);
+            Grid.SetRow(newValue, gridValues.RowDefinitions.Count - 1);
+            Grid.SetColumn(newValue, 0);
 
-            gridCampsCerca.Children.Add(btEliminar);
+            gridValues.Children.Add(btEliminar);
 
-            Grid.SetRow(btEliminar, gridCampsCerca.RowDefinitions.Count - 1);
+            Grid.SetRow(btEliminar, gridValues.RowDefinitions.Count - 1);
             Grid.SetColumn(btEliminar, 1);
         }
         private void btEliminarClick(object sender, RoutedEventArgs e)
@@ -61,27 +77,27 @@ namespace TaulerDeControlRM
             // Find the corresponding row index
             int rowIndex = Grid.GetRow(sender as UIElement);
 
-            if (rowIndex >= 0 && rowIndex < gridCampsCerca.RowDefinitions.Count)
+            if (rowIndex >= 0 && rowIndex < gridValues.RowDefinitions.Count)
             {
                 // Remove the Camp UserControl
-                Camp campToRemove = gridCampsCerca.Children
+                Camp campToRemove = gridValues.Children
                     .OfType<Camp>()  // Filter to include only elements of type Camp
                     .FirstOrDefault(child => Grid.GetRow(child) == rowIndex && Grid.GetColumn(child) == 0);
 
                 if (campToRemove != null)
                 {
-                    if (campToRemove.cmbCamp.SelectedItem != null)
+                    if (campToRemove.cmbValue.SelectedItem != null)
                     {
-                        ConjuntCamps.campsDeCercaRestants.Add(campToRemove.cmbCamp.SelectedItem.ToString());
+                        ConjuntCamps.valorsRestants.Add(campToRemove.cmbValue.SelectedItem.ToString());
                     }
-                    gridCampsCerca.Children.Remove(campToRemove);
+                    gridValues.Children.Remove(campToRemove);
                 }
 
                 // Remove the "x" button
-                gridCampsCerca.Children.Remove(sender as UIElement);
+                gridValues.Children.Remove(sender as UIElement);
 
                 // Move up any Camp UserControls that are below the one that was removed
-                foreach (UIElement element in gridCampsCerca.Children)
+                foreach (UIElement element in gridValues.Children)
                 {
                     if (Grid.GetRow(element) > rowIndex)
                     {
@@ -91,7 +107,7 @@ namespace TaulerDeControlRM
                 }
 
                 // Remove last row
-                gridCampsCerca.RowDefinitions.RemoveAt(gridCampsCerca.RowDefinitions.Count - 1);
+                gridValues.RowDefinitions.RemoveAt(gridValues.RowDefinitions.Count - 1);
             }
         }
 

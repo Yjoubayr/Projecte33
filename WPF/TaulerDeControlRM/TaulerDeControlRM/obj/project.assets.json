@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Projecte2 WPF\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Projecte 2 wpf updated\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
       "projectName": "TaulerDeControlRM",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\Projecte2 WPF\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\Projecte 2 wpf updated\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\Projecte2 WPF\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\Projecte 2 wpf updated\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

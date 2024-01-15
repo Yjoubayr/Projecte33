@@ -26,27 +26,27 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
 
-            cmbCamp.SelectionChanged += cmbCamp_SelectionChanged;
+            cmbValue.SelectionChanged += cmbValue_SelectionChanged;
         }
         // Method to set the possible values for the ComboBox
         public void SetPossibleValues(List<String> values)
         {
-            cmbCamp.ItemsSource = values;
+            cmbValue.ItemsSource = values;
         }
 
         // Method to get the selected value from the ComboBox
         public string GetSelectedValue()
         {
-            return cmbCamp.SelectedItem?.ToString();
+            return cmbValue.SelectedItem?.ToString();
         }
 
-        private void cmbCamp_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cmbValue_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Check if the selected value can be changed
-            if(cmbCamp.SelectedItem != null)
+            if(cmbValue.SelectedItem != null)
             {
-                cmbCamp.IsEnabled = false;
-                ConjuntCamps.campsDeCercaRestants.Remove(cmbCamp.SelectedItem.ToString());
+                cmbValue.IsEnabled = false;
+                ConjuntCamps.valorsRestants.Remove(cmbValue.SelectedItem.ToString());
             }
         }
     }

@@ -24,6 +24,10 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
 
+            cvCampsCerca.BtText = "Afegir camp";
+
+            ConjuntCamps.Valors= new List<string> { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
+
             List<string> cmbOrdreValues = new List<string>
             { "Reproduccions", "Data Creació" , "Data Reproducció" };
 

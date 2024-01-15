@@ -10,7 +10,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="cmbCamp" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,15,0,15" Width="120"/>
-        <TextBox x:Name="txbCercadorCamp" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,15,0,15" TextWrapping="Wrap" Text="" Width="151"/>
+        <ComboBox x:Name="cmbValue" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,15,0,15" Width="120"/>
+        <ComboBox x:Name="cmbValue2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,15,0,15" IsTextSearchEnabled="True" Text="" Width="151"/>
     </Grid>
 </UserControl>
