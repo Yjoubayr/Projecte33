@@ -10,12 +10,13 @@ class DownloadSongs : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_downloadsongs)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val songList = listOf(
+        val songList = mutableListOf<SongAdapter.SongItem>()
 
-            SongAdapter.SongItem(songName ="Song 1"),
-            SongAdapter.SongItem(songName = "Song 2"),
-            // Add other SongItem objects as needed
-        )
+        for (i in 1..60) {
+            val songName = "Song $i"
+            val songItem = SongAdapter.SongItem(songName = songName)
+            songList.add(songItem)
+        }
         val adapter = SongAdapter(songList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
