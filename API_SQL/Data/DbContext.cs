@@ -12,7 +12,8 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Music> Artistes { get; set; }
         public DbSet<Llista> Llista { get; set; }
-        
+        public DbSet<Participa> Participa { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
