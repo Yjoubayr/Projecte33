@@ -20,14 +20,12 @@ public class LletraController : ControllerBase
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Lletra>> Get(string id)
     {
-        Console.WriteLine(id);
         var Lletra = await _LletraService.GetAsync(id);
-
         if (Lletra is null)
         {
             return NotFound();
         }
-
+        
         return Lletra;
     }
 

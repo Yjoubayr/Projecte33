@@ -26,15 +26,15 @@ public class HistorialService
         await _HistorialCollection.Find(_ => true).ToListAsync();
 
     public async Task<Historial?> GetAsync(string id) =>
-        await _HistorialCollection.Find(x => x.IDDispositiu == id).FirstOrDefaultAsync();
+        await _HistorialCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
     public async Task CreateAsync(Historial newHistorial) =>
         await _HistorialCollection.InsertOneAsync(newHistorial);
 
     public async Task UpdateAsync(string id, Historial updatedHistorial) =>
-        await _HistorialCollection.ReplaceOneAsync(x => x.IDDispositiu == id, updatedHistorial);
+        await _HistorialCollection.ReplaceOneAsync(x => x.Id == id, updatedHistorial);
 
     public async Task RemoveAsync(string id) =>
-        await _HistorialCollection.DeleteOneAsync(x => x.IDDispositiu == id);
+        await _HistorialCollection.DeleteOneAsync(x => x.Id == id);
 
     
 }

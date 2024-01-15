@@ -3,7 +3,7 @@ using API.Classes.Model;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<MongoDBSettings>(
-    builder.Configuration.GetSection("ReproductorMusicaDB")
+    builder.Configuration.GetSection("ReproductorMusicaDatabase")
 );
 
 builder.Services.AddSingleton<API.Services.CancoService>();
@@ -23,5 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseAuthorization();
+app.MapControllers();
 //app.UseHttpsRedirection();
 app.Run();

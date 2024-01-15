@@ -25,16 +25,16 @@ public class LletraService
         await _LletraCollection.Find(_ => true).ToListAsync();
 
     public async Task<Lletra?> GetAsync(string id) =>
-        await _LletraCollection.Find(x => x.IDLletra == id).FirstOrDefaultAsync();
+        await _LletraCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Lletra newLletra) =>
         await _LletraCollection.InsertOneAsync(newLletra);
 
     public async Task UpdateAsync(string id, Lletra updatedLletra) =>
-        await _LletraCollection.ReplaceOneAsync(x => x.IDLletra == id, updatedLletra);
+        await _LletraCollection.ReplaceOneAsync(x => x.Id == id, updatedLletra);
 
     public async Task RemoveAsync(string id) =>
-        await _LletraCollection.DeleteOneAsync(x => x.IDLletra == id);
+        await _LletraCollection.DeleteOneAsync(x => x.Id == id);
 
     
 }
