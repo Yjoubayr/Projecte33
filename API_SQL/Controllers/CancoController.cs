@@ -27,7 +27,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
         /// </summary>
-        /// <returns>Un array de totes les cancons</returns>
+        /// <returns>Una llista de totes les cancons</returns>
         [HttpGet("getCancons")]
         public async Task<ActionResult<IEnumerable<Canco>>> GetCancons()
         {        
@@ -38,7 +38,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una canco
         /// </summary>
-        /// <returns>L objecte de la canco consultada</returns>
+        /// <param name="ID">ID de la Canco a consultar</param>
+        /// <returns>L'objecte de la Canco consultada</returns>
         [HttpGet("getCanco/{ID}")]
         public async Task<ActionResult<Canco>> GetCanco(string ID)
         {
@@ -56,7 +57,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/getCanco/{ID} per modificar una canco
         /// </summary>
-        /// <returns>La verificacio de que s ha modificat correctament</returns>
+        /// <param name="ID">ID de la Canco a modificar</param>
+        /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
+        /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
         [HttpPut("putLlista/{ID}")]
         public async Task<IActionResult> PutCanco(string ID, Canco updatedCanco)
         {
@@ -78,7 +81,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
         /// </summary>
-        /// <returns>La verificacio de que s ha inserit correctament</returns>
+        /// <param name="canco">L'objecte de la Canco a modificar</param>
+        /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
         [HttpPost("postCanco")]
         public async Task<IActionResult> PostCanco(Canco canco)
         {
@@ -109,7 +113,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una canco
         /// </summary>
-        /// <returns>La verificacio de que s ha eliminat correctament</returns>
+        /// <param name="ID">ID de la Canco a eliminar</param>
+        /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>
         [HttpDelete("deleteCanco/{ID}")]
         public async Task<IActionResult> DeleteCanco(string ID)
         {
