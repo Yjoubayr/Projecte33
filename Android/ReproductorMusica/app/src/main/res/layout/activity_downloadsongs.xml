@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".download">
+    tools:context=".DownloadSongs">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -12,4 +12,6 @@
         tools:listitem="@layout/song_item">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
 </RelativeLayout>
