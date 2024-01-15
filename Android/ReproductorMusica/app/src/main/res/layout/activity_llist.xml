@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:background="@color/background"
-    android:padding="40dp"
+    android:padding="30dp"
     >
 
     <TextView
@@ -17,12 +17,17 @@
         android:textColor="@color/white"
         android:background="@drawable/returnbtn"
         android:textAlignment="center"
+        android:layout_marginBottom="20dp"
         />
 
-    <ListView
-        android:id="@+id/listSongs"
-        android:gravity="center"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        tools:itemCount="11"
+        tools:listitem="@layout/track_item"
+        android:padding="20dp"
+        android:background="@drawable/shapedownloadsong"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
