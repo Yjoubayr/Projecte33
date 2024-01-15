@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ReproductorMusica"
         tools:targetApi="31">
         <activity
+            android:name=".song_item"
+            android:exported="false" />
+        <activity
+            android:name=".Song"
+            android:exported="false" />
+        <activity
             android:name=".DownloadSongs"
             android:exported="true">
             <intent-filter>
@@ -23,13 +29,10 @@
         </activity>
         <activity
             android:name=".Llist"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>-->
+            android:exported="true" />
     </application>
 
 </manifest>

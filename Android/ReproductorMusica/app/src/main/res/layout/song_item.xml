@@ -10,7 +10,7 @@
 
     <!-- Square Image -->
     <ImageView
-        android:id="@+id/squareImage"
+        android:id="@+id/Square_Image"
         android:padding="15dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -22,7 +22,7 @@
 
     <!-- Textbox -->
     <TextView
-        android:id="@+id/textBox"
+        android:id="@+id/Text_Box"
         android:layout_width="0dp"
         android:textStyle="bold"
         android:layout_height="wrap_content"
@@ -38,13 +38,12 @@
 
 
     <!-- Download Logo -->
-
-    <ImageView
-        android:id="@+id/downloadLogo"
+    <TextView
+        android:id="@+id/Download_Logo"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="20dp"
-        android:src="@drawable/btn_download"
+        android:background="@drawable/btn_download"
         android:layout_gravity="center_vertical"/>
 
 </LinearLayout>

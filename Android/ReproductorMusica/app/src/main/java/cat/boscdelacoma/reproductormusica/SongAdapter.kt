@@ -1,18 +1,21 @@
 package cat.boscdelacoma.reproductormusica
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 
 class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<SongAdapter.ViewHolder>() {
 
-        data class SongItem(val songName: String) // Afegir img i download logo
+        data class SongItem(val songName: String)
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.song_item, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_song_item, parent, false)
             return ViewHolder(view)
         }
 
@@ -23,8 +26,13 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
             holder.textBox.text = currentItem.songName
             // Set other data as needed
 
-            // Add click listeners or other actions as needed
-        }
+            holder.downloadLogo.setOnClickListener {
+                // TODO: Download song
+                Toast.makeText(holder.itemView.context, "Downloading song...", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(holder.itemView.context, MainActivity::class.java)
+                holder.itemView.context.startActivity(intent)
+            }        }
 
         override fun getItemCount(): Int {
             return songList.size
@@ -33,7 +41,6 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
         class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val squareImage: ImageView = itemView.findViewById(R.id.squareImage)
             val textBox: TextView = itemView.findViewById(R.id.textBox)
-            val downloadLogo: ImageView = itemView.findViewById(R.id.downloadLogo)
-            // Add other views as needed
+            val downloadLogo: TextView = itemView.findViewById(R.id.downloadLogo)
         }
 }
