@@ -29,10 +29,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// </summary>
         /// <returns>Un array de totes les cancons</returns>
         [HttpGet("getCancons/start/{start}/limit/{limit}")]
-        public async Task<ActionResult<IEnumerable<Canco>>> GetCancons(int start,int limit)
+        public async Task<ActionResult<IEnumerable<Canco>>> GetCancons()
         {        
-            //return await _context.Cancons.ToListAsync();
-            return await _cancoService.GetAsync(start,limit);
+            return await _cancoService.GetAsync();
         }
 
 
