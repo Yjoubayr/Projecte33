@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/app_name"
+
             />
         <TextView
             android:id="@+id/play_track"
