@@ -18,12 +18,10 @@
         android:scaleType="centerCrop"
         android:layout_gravity="center_vertical"
         android:background="@drawable/shape"
-        android:backgroundTint="#000000"/>
+        android:backgroundTint="@color/black"/>
 
     <!-- Textbox -->
-
-    <!-- Download Logo -->
-    <EditText
+    <TextView
         android:id="@+id/textBox"
         android:layout_width="0dp"
         android:textStyle="bold"
@@ -38,6 +36,8 @@
         android:clickable="false"
         android:layout_gravity="center_vertical"/>
 
+
+    <!-- Download Logo -->
 
     <ImageView
         android:id="@+id/downloadLogo"
