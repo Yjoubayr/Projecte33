@@ -38,17 +38,14 @@ class Audio {
 
     constructor() {}
 
-    public fun createFolder(folderName: String): Boolean {
-
-        return try {
-            val values = ContentValues()
-            values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_MUSIC + "/" + folderName)
-            values.put(MediaStore.Images.Media.IS_PENDING, true)
-            true
-
-        } catch (e: IOException) {
-            false
+    fun createFolder(carpetaNombre: String): Boolean {
+        if (carpetaNombre.isNotEmpty()) {
+            val carpetaPath =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString() + File.separator + carpetaNombre
+            val carpeta = File(carpetaPath)
+            return carpeta.mkdirs()
         }
+        return false
     }
 
     public fun saveSong(songName: String, folderName: String, inputStream: InputStream, context: Context): Boolean {
