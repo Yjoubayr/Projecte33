@@ -48,6 +48,14 @@ class Audio {
         return false
     }
 
+    public fun getFile(fileName: String): File {
+        val directory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString())
+        if(directory.isDirectory) {
+            val files = directory.listFiles()
+        }
+        return File()
+    }
+
     public fun saveSong(songName: String, folderName: String, inputStream: InputStream, context: Context): Boolean {
 
         return try {
