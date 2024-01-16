@@ -7,18 +7,16 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 
 public class CancoService
 {
-    private readonly DataContext _context;
-    public CancoService(DataContext context)
+    public CancoService()
     {
-        _context = context;
     }
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
     /// </summary>
     /// <returns>El llistat de Cancons</returns>
-    public async Task<List<Canco>> GetAsync() {
-        return await _context.Cancons.ToListAsync();
+    public async Task<List<Canco>> GetAsync(DataContext context) {
+        return await context.Cancons.ToListAsync();
     }
     
     /// <summary>
@@ -26,8 +24,8 @@ public class CancoService
     /// </summary>
     /// <param name="ID">ID de la Canco a obtenir</param>
     /// <returns>L'objecte de la Canco</returns>
-    public async Task<Canco?> GetAsync(string ID) =>
-        await _context.Cancons
+    public async Task<Canco?> GetAsync(string ID, DataContext context) =>
+        await context.Cancons
                             .Include(x => x.LListes)
                             .Include(x => x.LAlbums)
                             .Include(x => x.LMusics)
@@ -40,8 +38,8 @@ public class CancoService
     /// </summary>
     /// <param name="newCanco">L'objecte de la Canco a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
-    public async Task CreateAsync(Canco newCanco) =>
-        _context.Cancons.Add(newCanco); 
+    public async Task CreateAsync(Canco newCanco, DataContext context) =>
+        await context.Cancons.AddAsync(newCanco);
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/putCanco/{ID} per modificar una Canco
@@ -49,12 +47,12 @@ public class CancoService
     /// <param name="ID">ID de la canco a modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
     /// <returns>Verciicacio de que la Canco s'ha modificat correctament</returns>
-    public async Task UpdateAsync(string ID, Canco updatedCanco) {
+    public async Task UpdateAsync(string ID, Canco updatedCanco, DataContext context) {
         
         if (ID == updatedCanco.ID)
         {
-            _context.Entry(updatedCanco).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            context.Entry(updatedCanco).State = EntityState.Modified;
+            await context.SaveChangesAsync();
             //await _context.Cancons.ReplaceOneAsync(x => x.ID == ID, updatedCanco);
         }
 
@@ -65,10 +63,10 @@ public class CancoService
     /// </summary>
     /// <param name="ID">ID de la Canco a eliminar</param>
     /// <returns>Verciicacio de que la Canco s'ha eliminat correctament</returns>
-    public async Task RemoveAsync(string ID) {
-        var canco = await _context.Cancons.FindAsync(ID);
+    public async Task RemoveAsync(string ID, DataContext context) {
+        var canco = await context.Cancons.FindAsync(ID);
         
-        _context.Cancons.Remove(canco);
-        await _context.SaveChangesAsync();
+        context.Cancons.Remove(canco);
+        await context.SaveChangesAsync();
     }
 }

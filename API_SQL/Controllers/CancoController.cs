@@ -31,7 +31,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpGet("getCancons")]
         public async Task<ActionResult<IEnumerable<Canco>>> GetCancons()
         {        
-            return await _cancoService.GetAsync();
+            return await _cancoService.GetAsync(_context);
         }
 
 
@@ -43,7 +43,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpGet("getCanco/{ID}")]
         public async Task<ActionResult<Canco>> GetCanco(string ID)
         {
-            var canco = await _cancoService.GetAsync(ID);
+            var canco = await _cancoService.GetAsync(ID, _context);
 
             if (canco == null)
             {
@@ -63,7 +63,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("putLlista/{ID}")]
         public async Task<IActionResult> PutCanco(string ID, Canco updatedCanco)
         {
-            var canco = await _cancoService.GetAsync(ID);
+            var canco = await _cancoService.GetAsync(ID, _context);
 
             if (canco is null)
             {
@@ -72,7 +72,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             updatedCanco.ID = canco.ID;
 
-            await _cancoService.UpdateAsync(ID, updatedCanco);
+            await _cancoService.UpdateAsync(ID, updatedCanco, _context);
 
             return NoContent();
         }
@@ -91,12 +91,12 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             try
             {
-                await _cancoService.CreateAsync(canco);
+                await _cancoService.CreateAsync(canco, _context);
                 result = CreatedAtAction("GetCanco", new { ID = canco.ID }, canco);
             }
             catch (DbUpdateException)
             {
-                if (_cancoService.GetAsync(canco.ID) == null)
+                if (_cancoService.GetAsync(canco.ID, _context) == null)
                 {
                     return Conflict();
                 }
@@ -118,14 +118,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpDelete("deleteCanco/{ID}")]
         public async Task<IActionResult> DeleteCanco(string ID)
         {
-            var canco = await _cancoService.GetAsync(ID);
+            var canco = await _cancoService.GetAsync(ID, _context);
             
             if (canco is null)
             {
                 return NotFound();
             }
 
-            await _cancoService.RemoveAsync(ID);
+            await _cancoService.RemoveAsync(ID, _context);
 
             return NoContent();
         }
