@@ -18,10 +18,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly CancoService _cancoService;
 
-        public CancoController(DataContext context, CancoService cancoService)
+        public CancoController(DataContext context)
         {
             _context = context;
-            _cancoService = cancoService;
+            _cancoService = new CancoService(context);
         }
 
         /// <summary>
