@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
 
 class TrackAdapter(private val trackList: List<TrackItem>): RecyclerView.Adapter<TrackAdapter.ViewHolder>(){
     data class TrackItem(val trackName: String)
@@ -34,7 +33,7 @@ class TrackAdapter(private val trackList: List<TrackItem>): RecyclerView.Adapter
         holder.trackName.text = currentItem.trackName
         holder.deleteTrack.setOnClickListener {
             //TODO : Backend, eliminar la cançó de la llista
-            Toast.makeText(holder.itemView.context, "Track deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, holder.trackName.text.toString() +" deleted", Toast.LENGTH_SHORT).show()
         }
         holder.playtrack.setOnClickListener {
             //TODO: Backend, agafar les cançons de la llista i reproduir-les
