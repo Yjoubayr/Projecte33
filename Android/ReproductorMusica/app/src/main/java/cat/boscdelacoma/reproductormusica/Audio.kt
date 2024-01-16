@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SimpleCursorAdapter
@@ -38,16 +39,17 @@ class Audio {
 
     constructor() {}
 
-    public fun createFolder(folderName: String): Boolean {
-
-        return try {
-            val values = ContentValues()
-            values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_MUSIC + "/" + folderName)
-            values.put(MediaStore.Images.Media.IS_PENDING, true)
-            true
-
+    public fun saveFileExample(songName: String, folderName: String, inputStream: InputStream, context: Context): Boolean {
+        try {
+            return saveSong(songName,folderName,inputStream,context)
         } catch (e: IOException) {
-            false
+            Log.d("Error::", e.localizedMessage)
+            Toast.makeText(
+                context,
+                e.localizedMessage,
+                Toast.LENGTH_LONG
+            ).show()
+            return false
         }
     }
 
@@ -59,7 +61,7 @@ class Audio {
             mediaPlayer.setDataSource(
                 fd.fileDescriptor,
                 fd.startOffset,
-                fd.length
+                fd.length!!
             )
 
             fd.close()

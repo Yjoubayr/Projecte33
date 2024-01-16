@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.textfield.TextInputEditText
 import java.io.IOException
+import java.io.InputStream
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,6 +31,14 @@ class TrackName : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private val TAG: String = "ReproductorMusica"
+
+
+
+    private lateinit var inputStream: InputStream
+    private lateinit var song: String
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,9 +69,28 @@ class TrackName : Fragment() {
 
                 var audio = Audio()
 
-                if(audio.createFolder(playlistNameText) == true) {
+                song = "back_in_black.mp3"
+
+                Toast.makeText(
+                    context,
+                    "Fins aqui" + " -- " + song.toString(),
+                    Toast.LENGTH_LONG
+                ).show()
+                Log.d("::boix", "boix")
+
+                Log.d(TAG, song)
+                inputStream = requireContext().assets.open(song)
+
+                if(audio.saveFileExample(song, playlistNameText, inputStream, requireContext()) == true) {
                     Log.d(TAG, "Carpeta creada")
+                } else {
+                    Log.d(TAG, "La carpeta no s'ha pogut crear")
                 }
+
+
+
+
+
 
 
                 val intent = Intent(context ,Llist::class.java)
