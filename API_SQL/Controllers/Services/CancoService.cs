@@ -7,16 +7,18 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 
 public class CancoService
 {
-    public CancoService()
+    private readonly DataContext _context;
+    public CancoService(DataContext context)
     {
+        _context = context;
     }
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
     /// </summary>
     /// <returns>El llistat de Cancons</returns>
-    public async Task<List<Canco>> GetAsync(DataContext context) {
-        return await context.Cancons.ToListAsync();
+    public async Task<List<Canco>> GetAsync() {
+        return await _context.Cancons.ToListAsync();
     }
     
     /// <summary>
@@ -38,8 +40,11 @@ public class CancoService
     /// </summary>
     /// <param name="newCanco">L'objecte de la Canco a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
-    public async Task CreateAsync(Canco newCanco, DataContext context) =>
+    public async Task CreateAsync(Canco newCanco, DataContext context) {
         await context.Cancons.AddAsync(newCanco);
+        await context.SaveChangesAsync();
+    }
+   
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/putCanco/{ID} per modificar una Canco
