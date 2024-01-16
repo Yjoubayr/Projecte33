@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.CancoService>();
 builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.GrupService>();
+builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.AlbumService>();
+builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.MusicService>(); 
+
 
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddNewtonsoftJson(options =>

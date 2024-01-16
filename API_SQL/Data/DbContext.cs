@@ -10,7 +10,7 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
         public DbSet<Album> Albums { get; set; }
         public DbSet<Extensio> Extensions { get; set; }
         public DbSet<Grup> Grups { get; set; }
-        public DbSet<Music> Artistes { get; set; }
+        public DbSet<Music> Musics { get; set; }
         public DbSet<Llista> Llista { get; set; }
         public DbSet<Participa> Participa { get; set; }
 
