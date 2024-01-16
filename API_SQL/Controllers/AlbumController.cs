@@ -18,10 +18,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly AlbumService _albumService;
 
-        public AlbumController(DataContext context, AlbumService albumService)
+        public AlbumController(DataContext context)
         {
             _context = context;
-            _albumService = albumService;
+            _albumService = new AlbumService(context);
         }
 
         /// <summary>
