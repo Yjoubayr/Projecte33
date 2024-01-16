@@ -41,7 +41,7 @@ public class CancoService
     /// <param name="newCanco">L'objecte de la Canco a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
     public async Task CreateAsync(Canco newCanco) =>
-        _context.Cancons.Add(newCanco);
+        _context.Cancons.Add(newCanco); 
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/putCanco/{ID} per modificar una Canco
