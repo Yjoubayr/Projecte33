@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
+using dymj.ReproductorMusica.API_SQL.Services;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
 {
@@ -15,24 +16,33 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     public class MusicController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly MusicService _musicService;
 
-        public MusicController(DataContext context)
+        public MusicController(DataContext context, MusicService musicService)
         {
             _context = context;
+            _musicService = musicService;
         }
 
-        // GET: api/Music/getMusics
+        /// <summary>
+        /// Accedeix a la ruta /api/Music/getMusics per obtenir tots els músics
+        /// </summary>
+        /// <returns>Una llista de tots els musics</returns>
         [HttpGet("getMusics")]
-        public async Task<ActionResult<IEnumerable<Music>>> GetArtistes()
+        public async Task<ActionResult<IEnumerable<Music>>> GetMusics()
         {
-            return await _context.Artistes.ToListAsync();
+            return await _musicService.GetAsync();
         }
 
-        // GET: api/Music/getMusic/JustinBieber
+        /// <summary>
+        /// Accedeix a la ruta /api/Music/getMusic/{Nom} per obtenir un músic
+        /// </summary>
+        /// <param name="Nom">Nom del músic a consultar</param>
+        /// <returns>L'objecte del músic consultat</returns>
         [HttpGet("getMusic/{Nom}")]
         public async Task<ActionResult<Music>> GetMusic(string Nom)
         {
-            var music = await _context.Artistes.FindAsync(Nom);
+            var music = await _musicService.GetAsync(Nom);
 
             if (music == null)
             {
@@ -42,50 +52,45 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return music;
         }
 
-        // PUT: api/Music/putMusic/JustinBieber
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Accedeix a la ruta /api/Music/putMusic/{Nom} per modificar un músic
+        /// </summary>
+        /// <param name="Nom">Nom del músic a modificar</param>
+        /// <param name="updatedMusic">L'objecte del músic a modificar</param>
+        /// <returns>Verificació que el músic s'ha modificat correctament</returns>
         [HttpPut("putMusic/{Nom}")]
-        public async Task<IActionResult> PutMusic(string Nom, Music music)
+        public async Task<IActionResult> PutMusic(string Nom, Music updatedMusic)
         {
-            if (Nom != music.Nom)
-            {
-                return BadRequest();
-            }
+            var music = await _musicService.GetAsync(Nom);
 
-            _context.Entry(music).State = EntityState.Modified;
+            if (music is null)
+            {
+                return NotFound();
+            }
+            updatedMusic.Nom = music.Nom;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MusicExists(Nom))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _musicService.UpdateAsync(Nom, updatedMusic);
 
             return NoContent();
         }
 
-        // POST: api/Music/postMusic
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+       /// <summary>
+       /// Accedeix a la ruta /api/Music/postMusic per crear un músic
+       /// </summary>
+       /// <param name="music">L'objecte del músic a modificar</param>
+       /// <returns>Verificació que el músic s'ha creat correctament</returns>
         [HttpPost("postMusic")]
-        public async Task<ActionResult<Music>> PostMusic(Music music)
+        public async Task<IActionResult> PostMusic(Music music)
         {
-            _context.Artistes.Add(music);
+            IActionResult result;
             try
             {
-                await _context.SaveChangesAsync();
+                await _musicService.CreateAsync(music);
+                result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
             }
             catch (DbUpdateException)
             {
-                if (MusicExists(music.Nom))
+                if (_musicService.GetAsync(music.Nom) == null)
                 {
                     return Conflict();
                 }
@@ -95,28 +100,26 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 }
             }
 
-            return CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
+            return result;
         }
 
-        // DELETE: api/Music/deleteMusic/JustinBieber
+        /// <summary>
+        /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} per eliminar un músic
+        /// </summary>
+        /// <param name="Nom">Nom del músic a eliminar</param>
+        /// <returns>Verificació que el músic s'ha eliminat correctament</returns>
         [HttpDelete("deleteMusic/{Nom}")]
         public async Task<IActionResult> DeleteMusic(string Nom)
         {
-            var music = await _context.Artistes.FindAsync(Nom);
-            if (music == null)
+            var music = await _musicService.GetAsync(Nom);
+            if (music is null)
             {
                 return NotFound();
             }
 
-            _context.Artistes.Remove(music);
-            await _context.SaveChangesAsync();
+            await _musicService.RemoveAsync(Nom);
 
             return NoContent();
-        }
-
-        private bool MusicExists(string id)
-        {
-            return _context.Artistes.Any(e => e.Nom == id);
         }
     }
 }

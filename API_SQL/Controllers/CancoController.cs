@@ -60,7 +60,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="ID">ID de la Canco a modificar</param>
         /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
         /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-        [HttpPut("putLlista/{ID}")]
+        [HttpPut("putCanco/{ID}")]
         public async Task<IActionResult> PutCanco(string ID, Canco updatedCanco)
         {
             var canco = await _cancoService.GetAsync(ID);
