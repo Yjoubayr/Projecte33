@@ -21,7 +21,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         public MusicController(DataContext context, MusicService musicService)
         {
             _context = context;
-            _musicService = musicService;
+            _musicService = new MusicService(context);
         }
 
         /// <summary>
