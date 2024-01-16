@@ -1,19 +1,33 @@
 package cat.boscdelacoma.reproductormusica
 
-import android.Manifest
+import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
-import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.MediaMetadataRetriever
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.SimpleCursorAdapter
 import android.widget.Toast
-import androidx.core.content.PermissionChecker.checkSelfPermission
+import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
+import androidx.loader.content.CursorLoader
+import java.io.BufferedReader
 import java.io.File
-import java.io.IOException
+import java.io.FileOutputStream
 import java.io.InputStream
-
+import java.io.InputStreamReader
+import java.io.IOException
+import java.io.OutputStream
+import javax.xml.transform.URIResolver
+import kotlin.io.path.Path
 
 class Audio {
 
@@ -92,9 +106,11 @@ class Audio {
         }
     }
 
-    private fun getLists(context: Context) {
+    public fun getLists(context: Context?) {
+        val fullPath = Path(Environment.DIRECTORY_MUSIC).toAbsolutePath()
 
-        var pathMusic = File(Environment.DIRECTORY_MUSIC, "")
+        var pathMusic = File(Environment.DIRECTORY_MUSIC)
+        pathMusic.listFiles()
         /*Toast.makeText(
             context,
             pathMusic.absolutePath,
@@ -104,7 +120,8 @@ class Audio {
         val directories =  File(pathMusic.absolutePath).list { dir, name -> File(dir, name).isDirectory}
         Toast.makeText(
             context,
-            directories.contentToString(),
+            pathMusic.listFiles().contentToString()
+            ,
             Toast.LENGTH_LONG
         ).show()
 
