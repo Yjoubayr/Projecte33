@@ -10,6 +10,7 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         public string NomDispositiu { get; set; }
 
         public ICollection<Llista>? LListes { get; set; }
+        public ICollection<Versio>? LVersions { get; set; }
         public ICollection<Album>? LAlbums { get; set; }
         public ICollection<Music>? LMusics { get; set; }
         public ICollection<Grup>? LGrups { get; set; }
