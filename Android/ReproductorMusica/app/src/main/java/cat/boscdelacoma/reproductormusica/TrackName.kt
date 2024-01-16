@@ -60,13 +60,14 @@ class TrackName : Fragment() {
 
                 var audio = Audio()
 
-                /*if(audio.createFolder(playlistNameText)) {
+                if(audio.createFolder(playlistNameText)) {
                     val intent = Intent(context ,Llist::class.java)
                     startActivity(intent)
-                }*/
+                }
                 inputStream = requireContext().assets.open(song)
 
-                if(audio.saveSong(song, playlistNameText, inputStream, requireContext())) {
+                //if(audio.saveSong(song, playlistNameText, inputStream, requireContext())) {
+                if(audio.getFile(song) != null) {
                     val intent = Intent(context ,Llist::class.java)
                     startActivity(intent)
                 }

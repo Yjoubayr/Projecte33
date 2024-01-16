@@ -46,9 +46,16 @@ class Audio {
             return carpeta.mkdirs()
         }
         return false
+    }
 
-
-
+    public fun getFile(fileName: String): File? {
+        val directory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString())
+        if(directory.isDirectory) {
+            val listFiles = directory.listFiles()
+            val file = listFiles?.filter { it.isFile && it.name == fileName }
+            return file!!.get(0)
+        }
+        return null
     }
 
     public fun saveSong(songName: String, folderName: String, inputStream: InputStream, context: Context): Boolean {
@@ -111,20 +118,8 @@ class Audio {
 
         var pathMusic = File(Environment.DIRECTORY_MUSIC)
         pathMusic.listFiles()
-        /*Toast.makeText(
-            context,
-            pathMusic.absolutePath,
-            Toast.LENGTH_LONG
-        ).show()*/
 
         val directories =  File(pathMusic.absolutePath).list { dir, name -> File(dir, name).isDirectory}
-        Toast.makeText(
-            context,
-            pathMusic.listFiles().contentToString()
-            ,
-            Toast.LENGTH_LONG
-        ).show()
-
 
         /*
                 val contentResolver: ContentResolver = context.contentResolver
