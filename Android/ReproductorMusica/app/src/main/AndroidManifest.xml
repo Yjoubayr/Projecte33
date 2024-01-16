@@ -16,9 +16,6 @@
             android:name=".song_item"
             android:exported="false" />
         <activity
-            android:name=".Song"
-            android:exported="false" />
-        <activity
             android:name=".DownloadSongs"
             android:exported="true">
             <intent-filter>

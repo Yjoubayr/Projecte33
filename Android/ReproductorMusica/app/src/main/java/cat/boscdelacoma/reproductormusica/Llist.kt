@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 
 
 class Llist : AppCompatActivity() {
@@ -20,7 +21,17 @@ class Llist : AppCompatActivity() {
         setContentView(R.layout.activity_llist)
 
         val returnBtn : TextView = findViewById(R.id.returnBtn)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val trackList: MutableList<TrackAdapter.TrackItem> = mutableListOf()
 
+        for (i in 1..60) {
+            val trackName = "Track $i"
+            val trackItem = TrackAdapter.TrackItem(trackName = trackName)
+            trackList.add(trackItem)
+        }
+        val adapter = TrackAdapter(trackList)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        recyclerView.adapter = adapter
         returnBtn.setOnClickListener(){
             val intent = Intent(this ,MainActivity::class.java)
             startActivity(intent)

@@ -46,7 +46,7 @@
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:background="@drawable/simulador_imatge"
+                android:background="@mipmap/cover"
                 />
 
             <TextView

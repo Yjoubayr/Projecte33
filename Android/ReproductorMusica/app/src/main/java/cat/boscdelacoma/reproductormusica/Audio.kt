@@ -1,32 +1,19 @@
 package cat.boscdelacoma.reproductormusica
 
-import android.content.ContentResolver
+import android.Manifest
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.MediaMetadataRetriever
+import android.content.pm.PackageManager
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.SimpleCursorAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
-import androidx.loader.content.CursorLoader
-import java.io.BufferedReader
+import androidx.core.content.PermissionChecker.checkSelfPermission
 import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.InputStreamReader
 import java.io.IOException
-import java.io.OutputStream
-import javax.xml.transform.URIResolver
+import java.io.InputStream
+
 
 class Audio {
 
