@@ -185,22 +185,6 @@ class MainActivity : AppCompatActivity() {
         seekBarAudio.max = (mediaPlayer.duration / 1000).toInt()
     }
 
-    private fun initializeSong(songName: String) {
-
-        val fd = assets.openFd(songName)
-
-        mediaPlayer.setDataSource(
-            fd.fileDescriptor,
-            fd.startOffset,
-            fd.length
-        )
-
-        fd.close()
-
-        mediaPlayer.prepare()
-        seekBarAudio.max = (mediaPlayer.duration / 1000).toInt()
-    }
-
     private fun startAudio() {
 
         mediaPlayer = MediaPlayer()
