@@ -33,6 +33,7 @@ class Audio {
 
     var titol: String? = ""
     var path: String? = ""
+    lateinit var uri: Uri
     var duration: String? = ""
     var mediaPlayer: MediaPlayer = MediaPlayer()
 
