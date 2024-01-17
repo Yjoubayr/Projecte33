@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         botoPlayPause = findViewById(R.id.startSong)
 
-        seekBarAudio = findViewById(R.id.seekBarAudio)
+        seekBarAudio = findViewById(R.id.progressBar)
 
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 
@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
 
         mediaPlayer.start()
 
-        botoPlayPause.setImageResource(R.drawable.icon_pause)
+        botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
         botoPlayPause.scaleType = ImageView.ScaleType.CENTER_INSIDE
         audioIniciat = true
 
@@ -221,7 +221,7 @@ class MainActivity : AppCompatActivity() {
     private fun pauseAudio() {
         progressLevel = mediaPlayer.getCurrentPosition()
         mediaPlayer.pause()
-        botoPlayPause.setImageResource(R.drawable.icon_play)
+        botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
         botoPlayPause.scaleType = ImageView.ScaleType.CENTER_INSIDE
         audioIniciat = false
     }
@@ -230,7 +230,7 @@ class MainActivity : AppCompatActivity() {
         progressLevel = 0
         mediaPlayer.stop()
         seekBarAudio.setProgress(progressLevel)
-        botoPlayPause.setImageResource(R.drawable.icon_play)
+        botoPlayPause.setBackgroundResource(R.drawable.playbtn)
         botoPlayPause.scaleType = ImageView.ScaleType.CENTER_INSIDE
         audioIniciat = false
     }

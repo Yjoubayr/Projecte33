@@ -51,24 +51,6 @@ class Audio {
     }
 
 
-    public fun obtenirDades(context: Context, uri: Uri): Audio {
-        val retriever = MediaMetadataRetriever()
-        var audio = Audio()
-
-        try {
-            audio.uri = uri
-            retriever.setDataSource(context, audio.uri)
-            audio.titol = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
-            audio.duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
-            audio.autor = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR)
-
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } finally {
-            retriever.release()
-            return audio
-        }
-    }
 
     public fun getFile(fileName: String): File? {
         val directory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString())
@@ -174,5 +156,24 @@ class Audio {
                         val folderPath =
                     }
                 }*/
+    }
+}
+
+public fun obtenirDades(context: Context, uri: Uri): Audio {
+    val retriever = MediaMetadataRetriever()
+    var audio = Audio()
+
+    try {
+        audio.uri = uri
+        retriever.setDataSource(context, audio.uri)
+        audio.titol = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
+        audio.duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
+        audio.autor = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR)
+
+    } catch (e: IOException) {
+        e.printStackTrace()
+    } finally {
+        retriever.release()
+        return audio
     }
 }
