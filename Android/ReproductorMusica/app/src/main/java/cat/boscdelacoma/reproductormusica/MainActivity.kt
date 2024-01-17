@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -20,8 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var cancoEscollida: String = "false"
     private lateinit var audio: Audio
 
-    private lateinit var botoStop: ImageButton
-    private lateinit var botoPlayPause: ImageButton
+    private lateinit var botoPlayPause: TextView
     private lateinit var seekBarAudio: SeekBar
     private lateinit var song: Audio
     private var mediaPlayer: MediaPlayer = MediaPlayer()
@@ -104,7 +104,6 @@ class MainActivity : AppCompatActivity() {
                 data?.data?.let { uri ->
                     audio.uri = uri
                     audio.titol = "back_in_black.mp3"
-                    //saveSong(this, audio.uri, audio.titol!!)
 
                     if (audio == obtenirDades(this, audio.uri)) {
                         startActivity(intent)
@@ -215,7 +214,6 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer.start()
 
         botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
-        botoPlayPause.scaleType = ImageView.ScaleType.CENTER_INSIDE
         audioIniciat = true
 
     }
@@ -224,7 +222,6 @@ class MainActivity : AppCompatActivity() {
         progressLevel = mediaPlayer.getCurrentPosition()
         mediaPlayer.pause()
         botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
-        botoPlayPause.scaleType = ImageView.ScaleType.CENTER_INSIDE
         audioIniciat = false
     }
 
