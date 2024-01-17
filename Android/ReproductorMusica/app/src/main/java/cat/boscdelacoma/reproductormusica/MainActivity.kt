@@ -83,6 +83,8 @@ class MainActivity : AppCompatActivity() {
 
             transaction.commit()
         }
+
+        initMainActivity()
     }
 
     public fun tornarDesDeFragment() {
