@@ -33,6 +33,7 @@ class Audio {
 
     var titol: String? = ""
     var path: String? = ""
+    var autor: String? = ""
     lateinit var uri: Uri
     var duration: String? = ""
     var mediaPlayer: MediaPlayer = MediaPlayer()
@@ -47,6 +48,26 @@ class Audio {
             return carpeta.mkdirs()
         }
         return false
+    }
+
+
+    public fun obtenirDades(context: Context, uri: Uri): Audio {
+        val retriever = MediaMetadataRetriever()
+        var audio = Audio()
+
+        try {
+            audio.uri = uri
+            retriever.setDataSource(context, audio.uri)
+            audio.titol = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
+            audio.duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
+            audio.autor = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR)
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } finally {
+            retriever.release()
+            return audio
+        }
     }
 
     public fun getFile(fileName: String): File? {
