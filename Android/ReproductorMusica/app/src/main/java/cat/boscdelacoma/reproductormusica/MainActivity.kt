@@ -230,7 +230,6 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer.stop()
         seekBarAudio.setProgress(progressLevel)
         botoPlayPause.setBackgroundResource(R.drawable.playbtn)
-        botoPlayPause.scaleType = ImageView.ScaleType.CENTER_INSIDE
         audioIniciat = false
     }
 }
