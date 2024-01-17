@@ -61,15 +61,20 @@ class TrackName : Fragment() {
                 var audio = Audio()
 
                 if(audio.createFolder(playlistNameText)) {
-                    val intent = Intent(context ,Llist::class.java)
+                    val intent = Intent(context,Llist::class.java)
                     startActivity(intent)
+                } else {
+                    Toast.makeText(context, "La carpeta no s'ha pogut crear", Toast.LENGTH_SHORT).show()
                 }
-                inputStream = requireContext().assets.open(song)
+
 
                 //if(audio.saveSong(song, playlistNameText, inputStream, requireContext())) {
                 if(audio.getFile(song) != null) {
-                    val intent = Intent(context ,Llist::class.java)
+                    val intent = Intent(context,Llist::class.java)
                     startActivity(intent)
+                    Toast.makeText(context, "Fitxer obtingut", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, audio.getFile(song).toString(), Toast.LENGTH_SHORT).show()
                 }
 
             } else {

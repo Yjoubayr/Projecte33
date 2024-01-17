@@ -50,12 +50,17 @@ class Audio {
 
     public fun getFile(fileName: String): File? {
         val directory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString())
-        if(directory.isDirectory) {
-            val listFiles = directory.listFiles()
-            val file = listFiles?.filter { it.isFile && it.name == fileName }
-            return file!!.get(0)
+        try {
+            if(directory.isDirectory) {
+                val listFiles = directory.listFiles()
+                val file = listFiles?.filter { it.name == fileName }
+                return file!!.get(0)
+            } else {
+                return null
+            }
+        } catch (e: Exception) {
+            return null
         }
-        return null
     }
 
     public fun saveSong(songName: String, folderName: String, inputStream: InputStream, context: Context): Boolean {

@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
 
+
         AddSongToTrack.setOnClickListener {
             // Crear una instancia del fragmento
             val listOfSongsFragment = ListOfSongsFragment()
