@@ -19,7 +19,7 @@ class TrackSongs : AppCompatActivity() {
         val returnBtn : TextView = findViewById(R.id.back)
 
         val list = Audio().getSongList(playlistName.toString())
-
+        SongInTrackAdapter.folderName = playlistName.toString()
         for (i in 1..list.size) {
             val songName = list[i-1].toString()
             val songItem = SongInTrackAdapter.SongItem(songName = songName)

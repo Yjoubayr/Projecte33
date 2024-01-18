@@ -1,36 +1,13 @@
 package cat.boscdelacoma.reproductormusica
 
 import android.app.DownloadManager
-import android.content.ContentResolver
-import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.MediaMetadataRetriever
 import android.media.MediaPlayer
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.SimpleCursorAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.net.toUri
-import androidx.loader.content.CursorLoader
-import java.io.BufferedReader
 import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.io.IOException
-import java.io.OutputStream
-import javax.xml.transform.URIResolver
-import kotlin.io.path.Path
 
 class Audio {
 
@@ -53,22 +30,13 @@ class Audio {
         }
         return false
     }
-    public fun getFile(fileName: String): File? {
-        val directory = File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString()
-        )
-        try {
-            if (directory.isDirectory) {
-                val listFiles = directory.listFiles()
-                val file = listFiles?.filter { it.name == fileName }
-                return file!!.get(0)
-            } else {
-                return null
-            }
-        } catch (e: Exception) {
-            return null
-        }
-    }
+
+    /**
+     * Ens ajuda a descarregar una cançó a partir d'una URL.
+     * @param context Context de l'activitat.
+     * @param songUrl URL de la cançó.
+     * @return {Unit} No retorna res.
+    * */
     fun downloadSongAPI(context: Context, songUrl: String) {
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val request = DownloadManager.Request(Uri.parse(songUrl))
@@ -85,20 +53,11 @@ class Audio {
 
         Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
     }
-
-    fun getMusicFiles(){
-        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-        val files = musicDirectory.listFiles()
-        for (file in files) {
-            if (file.name.endsWith(".mp3")) {
-                val mediaPlayer = MediaPlayer()
-                mediaPlayer.setDataSource(file.absolutePath)
-                mediaPlayer.prepare()
-                mediaPlayer.start()
-            }
-        }
-    }
-
+    /**
+     * Obte una llista de noms de fitxers al directori de música,
+     * excluint els fitxers ocults i aquells que acaben amb ".mp3".
+     * @return {ArrayList<String>} Llistat dels noms.
+     */
     fun getAllFilesList(): ArrayList<String> {
         val list: ArrayList<String> = ArrayList()
         val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
@@ -108,10 +67,7 @@ class Audio {
             for (file in files) {
                 val path = file.absolutePath
                 val relativePath = path.substring(path.lastIndexOf("/") + 1)
-
-                // Verificar si el archivo no es oculto
                 if (!file.isHidden && !relativePath.startsWith(".")) {
-                    // Verificar si el archivo no es un archivo de audio
                     if (!path.endsWith(".mp3")) {
                         list.add(relativePath)
                     }
@@ -121,6 +77,11 @@ class Audio {
 
         return list
     }
+    /**
+     * Ens permet borrar una carpeta del directori de musica.
+     * @param folderName Nom de la carpeta.
+     * @return {Unit} No retorna res.
+     * */
     fun deleteFileInMusicFolder(fileName: String) {
         val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
         val file = File(musicDirectory, fileName)
@@ -138,8 +99,14 @@ class Audio {
         }
     }
 
-    fun deleteMusicInTrack(currentItemSong: String) {
-        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+    /**
+     * Ens permet borrar una canço d'un directori en especific
+     * @param currentItemSong Nom de la canço.
+     * @param FolderName Nom de la carpeta.
+     * @return {Unit} No retorna res.
+     * */
+    fun deleteMusicInTrack(currentItemSong: String, FolderName: String) {
+        val musicDirectory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC), FolderName)
         val file = File(musicDirectory, currentItemSong)
 
         if (file.exists()) {
@@ -154,6 +121,11 @@ class Audio {
             Log.d("File", "El archivo $currentItemSong no existe en la carpeta de música.")
         }
     }
+    /**
+     * Ens permet obtenir una llista de cançons d'un directori en especific
+     * @param FolderName Nom de la carpeta.
+     * @return {ArrayList<String>} Llistat dels noms.
+     * */
     fun getSongList(FolderName: String): ArrayList<String> {
         val list: ArrayList<String> = ArrayList()
         val musicDirectory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC), FolderName)

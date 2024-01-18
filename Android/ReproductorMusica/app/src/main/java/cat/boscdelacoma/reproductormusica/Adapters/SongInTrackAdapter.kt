@@ -10,11 +10,14 @@ import cat.boscdelacoma.reproductormusica.R
 
 class SongInTrackAdapter(private val songList: List<SongItem>): RecyclerView.Adapter<SongInTrackAdapter.ViewHolder>(){
 
-
     data class SongItem(val songName: String)
+    companion object {
+        lateinit var folderName: String
+    }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val SongName: TextView = itemView.findViewById(R.id.songname)
         val deleteSong: TextView = itemView.findViewById(R.id.delete_song)
+        val playsong : TextView = itemView.findViewById(R.id.play_song)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.song_in_track_item, parent, false)
@@ -30,9 +33,15 @@ class SongInTrackAdapter(private val songList: List<SongItem>): RecyclerView.Ada
 
         holder.deleteSong.setOnClickListener {
             val currentItemSong = currentItem.songName
-            Audio().deleteMusicInTrack(currentItemSong)
+            Audio().deleteMusicInTrack(currentItemSong, folderName)
+        }
+
+        holder.playsong.setOnClickListener {
+
         }
 
 
     }
+
+
 }
