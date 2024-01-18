@@ -156,13 +156,13 @@ class Audio {
     }
     fun getSongList(FolderName: String): ArrayList<String> {
         val list: ArrayList<String> = ArrayList()
-        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val musicDirectory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC), FolderName)
         val files = musicDirectory.listFiles()
 
         if (files != null) {
             for (file in files) {
                 val path = file.absolutePath
-                val relativePath = path.substring(path.lastIndexOf("/") + 1)
+                val relativePath = path.substring(path.lastIndexOf(File.separator) + 1)
 
                 // Verificar si el archivo no es oculto
                 if (!file.isHidden && !relativePath.startsWith(".")) {
@@ -174,7 +174,7 @@ class Audio {
         }
 
         return list
-
     }
+
 }
 
