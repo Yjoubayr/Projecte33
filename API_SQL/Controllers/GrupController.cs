@@ -15,24 +15,33 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     public class GrupController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly GrupService _grupService;
 
         public GrupController(DataContext context)
         {
             _context = context;
+            _grupService = new GrupService(context);
         }
 
-        // GET: api/Grup
-        [HttpGet]
+        /// <summary>
+        /// Accedeix a la ruta /api/Grup/getGrups per obtenir tots els grups
+        /// </summary>
+        /// <returns>Una llista de tots els grups</returns>
+        [HttpGet("getGrups")]
         public async Task<ActionResult<IEnumerable<Grup>>> GetGrups()
         {
             return await _context.Grups.ToListAsync();
         }
 
-        // GET: api/Grup/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Grup>> GetGrup(string id)
+        /// <summary>
+        /// Accedeix a la ruta /api/Grup/getGrup/{Nom} per obtenir un Grup
+        /// </summary>
+        /// <param name="Nom"></param>
+        /// <returns></returns>
+        [HttpGet("getGrup/{Nom}")]
+        public async Task<ActionResult<Grup>> GetGrup(string Nom)
         {
-            var grup = await _context.Grups.FindAsync(id);
+            var grup = await _context.Grups.FindAsync(Nom);
 
             if (grup == null)
             {
@@ -44,10 +53,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         // PUT: api/Grup/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGrup(string id, Grup grup)
+        [HttpPut("putGrup/{Nom}")]
+        public async Task<IActionResult> PutGrup(string Nom, Grup grup)
         {
-            if (id != grup.Nom)
+            if (Nom != grup.Nom)
             {
                 return BadRequest();
             }
@@ -60,7 +69,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GrupExists(id))
+                if (!GrupExists(Nom))
                 {
                     return NotFound();
                 }
@@ -75,7 +84,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         // POST: api/Grup
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("postGrup")]
         public async Task<ActionResult<Grup>> PostGrup(Grup grup)
         {
             _context.Grups.Add(grup);
@@ -95,14 +104,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 }
             }
 
-            return CreatedAtAction("GetGrup", new { id = grup.Nom }, grup);
+            return CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
         }
 
         // DELETE: api/Grup/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGrup(string id)
+        [HttpDelete("deleteGrup/{Nom}")]
+        public async Task<IActionResult> DeleteGrup(string Nom)
         {
-            var grup = await _context.Grups.FindAsync(id);
+            var grup = await _context.Grups.FindAsync(Nom);
             if (grup == null)
             {
                 return NotFound();

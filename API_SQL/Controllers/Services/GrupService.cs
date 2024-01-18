@@ -44,19 +44,23 @@ public class GrupService
     /// Crea un nou grup de música a la base de dades.
     /// </summary>
     /// <param name="newGrup">Dades del nou grup de música.</param>
-    public async Task CreateAsync(Grup newGrup) =>
+    /// <returns>Verificació de que el grup de música s'ha creat correctament.</returns>
+    public async Task CreateAsync(Grup newGrup) {
         await _context.Grups.AddAsync(newGrup);
+        await _context.SaveChangesAsync();
+    }
 
     /// <summary>
     /// Actualitza les dades d'un grup de música existent a la base de dades.
     /// </summary>
     /// <param name="Nom">Nom del grup de música a actualitzar.</param>
-    /// <param name="updateGrup">Dades actualitzades del grup de música.</param>
-    public async Task UpdateAsync(string Nom, Grup updateGrup) {
+    /// <param name="updatedGrup">Dades actualitzades del grup de música.</param>
+    /// <returns>Verificació de que el grup de música s'ha actualitzat correctament.</returns>
+    public async Task UpdateAsync(string Nom, Grup updatedGrup) {
         
-        if (Nom == updateGrup.Nom)
+        if (Nom == updatedGrup.Nom)
         {
-            _context.Entry(updateGrup).State = EntityState.Modified;
+            _context.Entry(updatedGrup).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
@@ -66,6 +70,7 @@ public class GrupService
     /// Elimina un grup de música de la base de dades a partir del seu nom.
     /// </summary>
     /// <param name="Nom">Nom del grup de música a eliminar.</param>
+    /// <returns>Verificació de que el grup de música s'ha eliminat correctament.</returns>
     public async Task RemoveAsync(string Nom) {
         var grup = await _context.Grups.FindAsync(Nom);
         _context.Grups.Remove(grup);

@@ -86,7 +86,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPost("postAlbum")]
         public async Task<IActionResult> PostAlbum(Album album)
         {
-            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la llibreria i retornar un error 409
+            // Considerar la possibilitat de comprovar previament si existeix el nom de la llibreria i retornar un error 409
             IActionResult result;
 
             try

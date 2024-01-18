@@ -59,7 +59,6 @@ public class CancoService
         {
             _context.Entry(updatedCanco).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            //await _context.Cancons.ReplaceOneAsync(x => x.ID == ID, updatedCanco);
         }
 
     }
