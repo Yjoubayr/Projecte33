@@ -37,8 +37,11 @@ public class MusicService
     /// </summary>
     /// <param name="newMusic">L'objecte del músic a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
-    public async Task CreateAsync(Music newMusic) =>
+    public async Task CreateAsync(Music newMusic) {
         await _context.Musics.AddAsync(newMusic);
+        await _context.SaveChangesAsync();
+    }
+        
 
     /// <summary>
     /// Accedeix a la ruta /api/Music/putMusic/{Nom} per modificar una Canco
