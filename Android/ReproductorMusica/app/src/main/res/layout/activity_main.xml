@@ -96,7 +96,6 @@
                 android:layout_height="match_parent"
                 android:thumbTint="@color/white"
                 android:progressTint="@color/black"
-                android:progress="10"
                 android:progressBackgroundTint="@color/white"
                 android:scaleY="1"
                 android:scaleX="1"

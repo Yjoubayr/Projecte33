@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
 
-
         AddSongToTrack.setOnClickListener {
             // Crear una instancia del fragmento
             val listOfSongsFragment = ListOfSongsFragment()
@@ -105,6 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun updateSeekBar() {
         handler.postDelayed(object : Runnable {
+
             override fun run() {
                 if (mediaPlayer.isPlaying) {
                     val currentPosition = mediaPlayer.currentPosition
@@ -120,8 +120,4 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacksAndMessages(null) // Detener la actualización de la SeekBar
 
     }
-
-
-
-
 }
