@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
+using dymj.ReproductorMusica.API_SQL.Services;
 using dymj.ReproductorMusica.API_SQL.Data;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
@@ -17,6 +18,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly GrupService _grupService;
 
+        /// <summary>
+        /// Constructor de la classe GrupController
+        /// Tambe crearem un objecte de la classe GrupService passant-li el contexte de dades
+        /// </summary>
+        /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public GrupController(DataContext context)
         {
             _context = context;
@@ -69,7 +75,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             updatedGrup.Nom = grup.Nom;
 
-            await _grupService.UpdateAsync(Nom, updatedGrup);
+            await _grupService.UpdateAsync(updatedGrup);
 
             return NoContent();
         }
@@ -80,14 +86,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="grup">L'objecte del Grup a crear</param>
         /// <returns>Verificacio de que el Grup s'ha creat correctament</returns>
         [HttpPost("postGrup")]
-        public async Task<ActionResult<Grup>> PostGrup(Grup grup)
+        public async Task<IActionResult> PostGrup(Grup grup)
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del grup i retornar un error 409
             IActionResult result;
 
             try
             {
-                await _cancoService.CreateAsync(canco);
+                await _grupService.CreateAsync(grup);
                 result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
             }
             catch (DbUpdateException)
@@ -123,11 +129,6 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _grupService.RemoveAsync(grup);
 
             return NoContent();
-        }
-
-        private bool GrupExists(string id)
-        {
-            return _context.Grups.Any(e => e.Nom == id);
         }
     }
 }

@@ -77,7 +77,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             updatedAlbum.Titol = album.Titol;
             updatedAlbum.Any = album.Any;
 
-            await _albumService.UpdateAsync(Titol, Any, updatedAlbum);
+            await _albumService.UpdateAsync(updatedAlbum);
 
             return NoContent();
         }
@@ -129,7 +129,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _albumService.RemoveAsync(Titol, Any);
+            await _albumService.RemoveAsync(album);
 
             return NoContent();
         }

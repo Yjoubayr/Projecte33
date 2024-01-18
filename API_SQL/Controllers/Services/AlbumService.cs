@@ -53,15 +53,14 @@ public class AlbumService
     /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
     /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
     public async Task UpdateAsync(Album updatedAlbum) {
-        _context.Entry(updatedCanco).State = EntityState.Modified;
+        _context.Entry(updatedAlbum).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
     /// Accedeix a la ruta /api/Album/deleteAlbum/{Titol}/{Any} per eliminar un album
     /// </summary>
-    /// <param name="Titol">Titol de l'album a eliminar</param>
-    /// <param name="Any">Any de l'album a eliminar</param>
+    /// <param name="album">L'objecte de l'Album a eliminar</param>
     /// <returns>Verificacio de que l'Album s'ha eliminat correctament</returns>
     public async Task RemoveAsync(Album album) {
         _context.Albums.Remove(album);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
+using dymj.ReproductorMusica.API_SQL.Services;
 using dymj.ReproductorMusica.API_SQL.Data;
 
 namespace dymj.ReproductorMusica.API_SQL.Controller
@@ -15,14 +16,17 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     public class LlistaController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly LlistaService _llistaService;
 
         /// <summary>
         /// Constructor de la classe LlistaController
+        /// Tambe crearem un objecte de la classe LlistaService passant-li el contexte de dades
         /// </summary>
         /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public LlistaController(DataContext context)
         {
             _context = context;
+            _llistaService = new LlistaService(context);
         }
 
         // GET: api/Llista

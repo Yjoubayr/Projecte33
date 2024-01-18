@@ -62,7 +62,7 @@ public class CancoService
     /// <summary>
     /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una Canco
     /// </summary>
-    /// <param name="canco">Objecte de la Canco a eliminar</param>
+    /// <param name="canco">L'objecte de la Canco a eliminar</param>
     /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>
     public async Task RemoveAsync(Canco canco) {        
         _context.Cancons.Remove(canco);

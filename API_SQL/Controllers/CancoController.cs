@@ -20,6 +20,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         /// <summary>
         /// Constructor de la classe CancoController
+        /// Tambe crearem un objecte de la classe CancoService passant-li el contexte de dades
         /// </summary>
         /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public CancoController(DataContext context)
@@ -76,7 +77,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             updatedCanco.ID = canco.ID;
 
-            await _cancoService.UpdateAsync(ID, updatedCanco);
+            await _cancoService.UpdateAsync(updatedCanco);
 
             return NoContent();
         }
