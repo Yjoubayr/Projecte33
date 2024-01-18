@@ -50,7 +50,8 @@ public class MusicService
     /// <param name="updatedMusic">L'objecte del Music a modificar</param>
     /// <returns>Verificacio que el Music s'ha modificat correctament</returns>
     public async Task UpdateAsync(Music updatedMusic) {
-        _context.Entry(updatedMusic).State = EntityState.Modified;
+        var musicOriginal = await GetAsync(updatedMusic.Nom);
+        _context.Entry(musicOriginal).CurrentValues.SetValues(updatedMusic);
         await _context.SaveChangesAsync();
     }
 

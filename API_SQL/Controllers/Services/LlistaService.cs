@@ -53,7 +53,8 @@ public class LlistaService
     /// <param name="updatedLlista">L'objecte de la Llista de reproduccio a modificar</param>
     /// <returns>Verificacio de que la Llista de reproduccio s'ha modificat correctament</returns>
     public async Task UpdateAsync(Llista updatedLlista) {
-        _context.Entry(updatedLlista).State = EntityState.Modified;
+        var llistaOriginal = await GetAsync(updatedLlista.MACAddress, updatedLlista.NomLlista);
+        _context.Entry(llistaOriginal).CurrentValues.SetValues(updatedLlista);
         await _context.SaveChangesAsync();
     }
 

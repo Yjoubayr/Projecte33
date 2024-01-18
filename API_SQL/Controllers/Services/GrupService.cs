@@ -56,7 +56,8 @@ public class GrupService
     /// <param name="updatedGrup">Dades actualitzades del grup de musica.</param>
     /// <returns>Verificacio de que el grup de musica s'ha actualitzat correctament.</returns>
     public async Task UpdateAsync(Grup updatedGrup) {
-        _context.Entry(updatedGrup).State = EntityState.Modified;
+        var grupOriginal = await GetAsync(updatedGrup.Nom);
+        _context.Entry(grupOriginal).CurrentValues.SetValues(updatedGrup);
         await _context.SaveChangesAsync();
     }
 

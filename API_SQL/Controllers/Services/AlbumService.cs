@@ -53,7 +53,8 @@ public class AlbumService
     /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
     /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
     public async Task UpdateAsync(Album updatedAlbum) {
-        _context.Entry(updatedAlbum).State = EntityState.Modified;
+        var albumOriginal = await GetAsync(updatedAlbum.Titol, updatedAlbum.Any, updatedAlbum.IDCanco);
+        _context.Entry(albumOriginal).CurrentValues.SetValues(updatedAlbum);
         await _context.SaveChangesAsync();
     }
 
