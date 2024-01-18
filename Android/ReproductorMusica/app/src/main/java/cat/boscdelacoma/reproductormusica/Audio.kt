@@ -86,54 +86,57 @@ class Audio {
         Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
     }
 
-    fun getMusicFiles(context: Context) {
+    fun getMusicFiles(){
         val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-        val uri: Uri? = MediaStore.Audio.Media.getContentUriForPath(musicDirectory.absolutePath)
-        val projection = arrayOf(
-            MediaStore.Audio.Media._ID,
-            MediaStore.Audio.Media.DATA
-        )
-
-        val selection = "${MediaStore.Audio.Media.DATA} like ?"
-        val selectionArgs = arrayOf("${musicDirectory.absolutePath}%")
-
-        val sortOrder = "${MediaStore.Audio.Media.DEFAULT_SORT_ORDER} ASC"
-
-        val contentResolver: ContentResolver = context.contentResolver
-        val cursor =
-            uri?.let { contentResolver.query(it, projection, selection, selectionArgs, sortOrder) }
-
-        if (cursor != null) {
-            try {
-                while (cursor.moveToNext()) {
-                    val filePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA))
-                    if (filePath.endsWith(".mp3")) {
-                        Toast.makeText(context, filePath, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            } catch (e: Exception) {
-                Log.e("getMusicFiles", "Error while processing music files", e)
-            } finally {
-                cursor.close()
+        val files = musicDirectory.listFiles()
+        for (file in files) {
+            if (file.name.endsWith(".mp3")) {
+                val mediaPlayer = MediaPlayer()
+                mediaPlayer.setDataSource(file.absolutePath)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
             }
         }
     }
 
     fun getAllFilesList(): ArrayList<String> {
         val list: ArrayList<String> = ArrayList()
-        val musicDirectory =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
         val files = musicDirectory.listFiles()
+
         if (files != null) {
             for (file in files) {
                 val path = file.absolutePath
-                if (path.endsWith(".mp3")){
-                    continue;
+                val relativePath = path.substring(path.lastIndexOf("/") + 1)
+
+                // Verificar si el archivo no es oculto
+                if (!file.isHidden && !relativePath.startsWith(".")) {
+                    // Verificar si el archivo no es un archivo de audio
+                    if (!path.endsWith(".mp3")) {
+                        list.add(relativePath)
+                    }
                 }
-                list.add(path)
             }
         }
+
         return list
     }
+    fun deleteFileInMusicFolder(fileName: String) {
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val file = File(musicDirectory, fileName)
+
+        if (file.exists()) {
+            val success = file.delete()
+
+            if (success) {
+                Log.d("File", "El archivo $fileName se ha borrado correctamente.")
+            } else {
+                Log.d("File", "El archivo $fileName no se ha podido borrar.")
+            }
+        } else {
+            Log.d("File", "El archivo $fileName no existe en la carpeta de música.")
+        }
+    }
+
 }
 
