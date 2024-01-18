@@ -27,15 +27,15 @@ public class CancoService
     }
     
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una Canco
+    /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} per obtenir una Canco
     /// </summary>
-    /// <param name="ID">ID de la Canco a obtenir</param>
+    /// <param name="IDCanco">Identificador de la Canco a obtenir</param>
     /// <returns>L'objecte de la Canco</returns>
-    public async Task<Canco?> GetAsync(string ID) =>
+    public async Task<Canco?> GetAsync(string IDCanco) =>
         await _context.Cancons
                             .Include(x => x.LListes)
                             .Include(x => x.LMusics)
-                            .FirstOrDefaultAsync(x => x.ID == ID);
+                            .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/postCanco per crear una Canco
@@ -43,14 +43,14 @@ public class CancoService
     /// <param name="newCanco">L'objecte de la Canco a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
     public async Task CreateAsync(Canco newCanco) {
-        newCanco.ID = Guid.NewGuid().ToString();
+        newCanco.IDCanco = Guid.NewGuid().ToString();
         await _context.Cancons.AddAsync(newCanco);
         await _context.SaveChangesAsync();
     }
    
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/putCanco/{ID} per modificar una Canco
+    /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} per modificar una Canco
     /// </summary>
     /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
@@ -60,7 +60,7 @@ public class CancoService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una Canco
+    /// Accedeix a la ruta /api/Canco/deleteCanco/{IDCanco} per eliminar una Canco
     /// </summary>
     /// <param name="canco">L'objecte de la Canco a eliminar</param>
     /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>

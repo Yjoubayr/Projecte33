@@ -41,14 +41,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
 
         /// <summary>
-        /// Accedeix a la ruta /api/Canco/getCanco/{ID} per obtenir una canco
+        /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} per obtenir una canco
         /// </summary>
-        /// <param name="ID">ID de la Canco a consultar</param>
+        /// <param name="IDCanco">Identifiador de la Canco a consultar</param>
         /// <returns>L'objecte de la Canco consultada</returns>
-        [HttpGet("getCanco/{ID}")]
-        public async Task<ActionResult<Canco>> GetCanco(string ID)
+        [HttpGet("getCanco/{IDCanco}")]
+        public async Task<ActionResult<Canco>> GetCanco(string IDCanco)
         {
-            var canco = await _cancoService.GetAsync(ID);
+            var canco = await _cancoService.GetAsync(IDCanco);
 
             if (canco == null)
             {
@@ -60,22 +60,22 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         
         /// <summary>
-        /// Accedeix a la ruta /api/Canco/getCanco/{ID} per modificar una canco
+        /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} per modificar una canco
         /// </summary>
-        /// <param name="ID">ID de la Canco a modificar</param>
+        /// <param name="IDCanco">Identifiador de la Canco a modificar</param>
         /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
         /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-        [HttpPut("putCanco/{ID}")]
-        public async Task<IActionResult> PutCanco(string ID, Canco updatedCanco)
+        [HttpPut("putCanco/{IDCanco}")]
+        public async Task<IActionResult> PutCanco(string IDCanco, Canco updatedCanco)
         {
-            var canco = await _cancoService.GetAsync(ID);
+            var canco = await _cancoService.GetAsync(IDCanco);
 
             if (canco is null)
             {
                 return NotFound();
             }
 
-            updatedCanco.ID = canco.ID;
+            updatedCanco.IDCanco = canco.IDCanco;
 
             await _cancoService.UpdateAsync(updatedCanco);
 
@@ -97,11 +97,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             try
             {
                 await _cancoService.CreateAsync(canco);
-                result = CreatedAtAction("GetCanco", new { ID = canco.ID }, canco);
+                result = CreatedAtAction("GetCanco", new { IDCanco = canco.IDCanco }, canco);
             }
             catch (DbUpdateException)
             {
-                if (_cancoService.GetAsync(canco.ID) != null)
+                if (_cancoService.GetAsync(canco.IDCanco) != null)
                 {
                     return Conflict();
                 }
@@ -116,14 +116,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         
         /// <summary>
-        /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una canco
+        /// Accedeix a la ruta /api/Canco/deleteCanco/{IDCanco} per eliminar una canco
         /// </summary>
-        /// <param name="ID">ID de la Canco a eliminar</param>
+        /// <param name="IDCanco">Identifiador de la Canco a eliminar</param>
         /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>
-        [HttpDelete("deleteCanco/{ID}")]
-        public async Task<IActionResult> DeleteCanco(string ID)
+        [HttpDelete("deleteCanco/{IDCanco}")]
+        public async Task<IActionResult> DeleteCanco(string IDCanco)
         {
-            var canco = await _cancoService.GetAsync(ID);
+            var canco = await _cancoService.GetAsync(IDCanco);
             
             if (canco is null)
             {
