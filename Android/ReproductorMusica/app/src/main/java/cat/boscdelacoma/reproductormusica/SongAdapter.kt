@@ -31,8 +31,10 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
                 // Aqui va la logica per poder descarregar les cançons
                 Toast.makeText(holder.itemView.context, "Downloading song...", Toast.LENGTH_SHORT).show()
                 val intent = Intent(holder.itemView.context, MainActivity::class.java)
+
                 holder.itemView.context.startActivity(intent)
-                    audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+                audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+
             }
         }
 

@@ -104,8 +104,17 @@ class Audio {
         Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
     }
 
-    fun getSongNameFromApi(){
-
+    fun getMusicFiles(){
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val files = musicDirectory.listFiles()
+        for (file in files) {
+            if (file.name.endsWith(".mp3")) {
+                val mediaPlayer = MediaPlayer()
+                mediaPlayer.setDataSource(file.absolutePath)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+            }
+        }
     }
 }
 
