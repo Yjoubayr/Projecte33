@@ -17,17 +17,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : AppCompatActivity() {
-    private var progressLevel = 0
-    private var cancoEscollida: String = "false"
-    private lateinit var audio: Audio
-
     private lateinit var botoPlayPause: TextView
-    private lateinit var seekBarAudio: SeekBar
-    private lateinit var song: Audio
     private var mediaPlayer: MediaPlayer = MediaPlayer()
-    private var audioIniciat = false
+    private lateinit var seekBarAudio: SeekBar
     private lateinit var handler: Handler
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +76,8 @@ class MainActivity : AppCompatActivity() {
 
             transaction.commit()
         }
-
+        mediaPlayer = MediaPlayer.create(this, R.raw.back_in_black)
+        handler = Handler()
         initMainActivity()
     }
 
@@ -92,128 +86,42 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initMainActivity() {
-
         botoPlayPause = findViewById(R.id.startSong)
-
         seekBarAudio = findViewById(R.id.progressBar)
 
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                data?.data?.let { uri ->
-                    audio.uri = uri
-                    audio.titol = "back_in_black.mp3"
-
-                    if (audio == obtenirDades(this, audio.uri)) {
-                        startActivity(intent)
-                    }
-                }
-            }
-        }
-
         botoPlayPause.setOnClickListener {
-            if (audioIniciat == false) {
-                startAudio()
+            if (mediaPlayer.isPlaying) {
+                botoPlayPause.setBackgroundResource(R.drawable.playbtn)
+
+                mediaPlayer.pause()
             } else {
-                pauseAudio()
+                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
+                mediaPlayer.start()
+                updateSeekBar()
+
             }
         }
 
-        song = Audio()
-
     }
-
-    private fun initializeSeekBar() {
-        seekBarAudio?.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seek: SeekBar,
-                                           progress: Int, fromUser: Boolean) {
-                if(fromUser) {
-                    mediaPlayer?.seekTo(progress)
-                }
-            }
-
-            override fun onStartTrackingTouch(seek: SeekBar) {
-                if (progressLevel == seek.max) {
-                    stopAudio()
-                    seekBarAudio.setProgress(progressLevel)
-                }
-            }
-
-            override fun onStopTrackingTouch(seek: SeekBar) {
-                if (progressLevel == seek.max) {
-                    stopAudio()
-                    seekBarAudio.setProgress(progressLevel)
-                } else {
-                    progressLevel = seek.progress
-                    mediaPlayer.seekTo(progressLevel * 1000)
-                    seekBarAudio.setProgress(progressLevel)
-                }
-            }
-        })
-    }
-
-    private fun initializeTimer() {
-        handler = Handler()
-        handler.postDelayed(object : Runnable{
+    private fun updateSeekBar() {
+        handler.postDelayed(object : Runnable {
             override fun run() {
-                try{
-                    seekBarAudio.progress = mediaPlayer!!.currentPosition / 1000
-                    handler.postDelayed(this, 1000)
-                }catch (e: Exception){
-                    seekBarAudio.progress = 0
+                if (mediaPlayer.isPlaying) {
+                    val currentPosition = mediaPlayer.currentPosition
+                    seekBarAudio.progress = currentPosition
+                    handler.postDelayed(this, 500) // Actualizar cada segundo
                 }
             }
-        },0)
+        }, 0)
     }
-
-    private fun initializeMediaPlayer(file: String) {
-
-        val fd = assets.openFd(file)
-
-        mediaPlayer.setDataSource(
-            fd.fileDescriptor,
-            fd.startOffset,
-            fd.length
-        )
-
-        fd.close()
-
-        mediaPlayer.prepare()
-        seekBarAudio.max = (mediaPlayer.duration / 1000).toInt()
-    }
-
-    private fun startAudio() {
-
-        mediaPlayer = MediaPlayer()
-
-        initializeMediaPlayer("back_in_black.mp3")
-
-        mediaPlayer.seekTo(progressLevel)
-        initializeTimer()
-        initializeSeekBar()
-
-        mediaPlayer.start()
-
-        botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
-        audioIniciat = true
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.release()
+        handler.removeCallbacksAndMessages(null) // Detener la actualización de la SeekBar
 
     }
 
-    private fun pauseAudio() {
-        progressLevel = mediaPlayer.getCurrentPosition()
-        mediaPlayer.pause()
-        botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
-        audioIniciat = false
-    }
 
-    private fun stopAudio() {
-        progressLevel = 0
-        mediaPlayer.stop()
-        seekBarAudio.setProgress(progressLevel)
-        botoPlayPause.setBackgroundResource(R.drawable.playbtn)
-        audioIniciat = false
-    }
+
+
 }
