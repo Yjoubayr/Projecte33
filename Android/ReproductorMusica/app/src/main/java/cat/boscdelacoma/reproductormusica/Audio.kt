@@ -138,5 +138,43 @@ class Audio {
         }
     }
 
+    fun deleteMusicInTrack(currentItemSong: String) {
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val file = File(musicDirectory, currentItemSong)
+
+        if (file.exists()) {
+            val success = file.delete()
+
+            if (success) {
+                Log.d("File", "El archivo $currentItemSong se ha borrado correctamente.")
+            } else {
+                Log.d("File", "El archivo $currentItemSong no se ha podido borrar.")
+            }
+        } else {
+            Log.d("File", "El archivo $currentItemSong no existe en la carpeta de música.")
+        }
+    }
+    fun getSongList(FolderName: String): ArrayList<String> {
+        val list: ArrayList<String> = ArrayList()
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val files = musicDirectory.listFiles()
+
+        if (files != null) {
+            for (file in files) {
+                val path = file.absolutePath
+                val relativePath = path.substring(path.lastIndexOf("/") + 1)
+
+                // Verificar si el archivo no es oculto
+                if (!file.isHidden && !relativePath.startsWith(".")) {
+                    if (path.endsWith(".mp3")) {
+                        list.add(relativePath)
+                    }
+                }
+            }
+        }
+
+        return list
+
+    }
 }
 

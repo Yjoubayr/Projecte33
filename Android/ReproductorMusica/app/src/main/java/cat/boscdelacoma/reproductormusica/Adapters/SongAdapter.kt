@@ -1,4 +1,4 @@
-package cat.boscdelacoma.reproductormusica
+package cat.boscdelacoma.reproductormusica.Adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,11 +8,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import cat.boscdelacoma.reproductormusica.Audio
+import cat.boscdelacoma.reproductormusica.MainActivity
+import cat.boscdelacoma.reproductormusica.R
 
 
 class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<SongAdapter.ViewHolder>() {
 
-        data class SongItem(val songName: String)
+
+    data class SongItem(val songName: String)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_song_item, parent, false)

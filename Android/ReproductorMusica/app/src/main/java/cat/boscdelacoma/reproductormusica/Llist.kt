@@ -1,13 +1,11 @@
 package cat.boscdelacoma.reproductormusica
 
-import android.R.attr.path
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import cat.boscdelacoma.reproductormusica.Adapters.TrackAdapter
 
 
 class Llist : AppCompatActivity() {
@@ -30,12 +28,16 @@ class Llist : AppCompatActivity() {
             val trackItem = TrackAdapter.TrackItem(trackName = trackName)
             trackList.add(trackItem)
         }
+
         val adapter = TrackAdapter(trackList)
         recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+
+
+
         returnBtn.setOnClickListener(){
-            val intent = Intent(this ,MainActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 

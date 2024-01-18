@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".TrackSongs">
+
+    <TextView
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/returnbtn" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/track_name"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:text="Track-Tittle"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:id="@+id/recyclerView"
+        android:background="@drawable/backgruond_frame_create_track"
+        android:padding="45dp"
+        android:layout_alignParentBottom="true"
+        tools:listitem="@layout/song_in_track_item"
+        />
+</RelativeLayout>
