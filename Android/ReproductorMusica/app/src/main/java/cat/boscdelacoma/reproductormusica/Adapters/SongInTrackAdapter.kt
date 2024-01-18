@@ -1,12 +1,15 @@
 package cat.boscdelacoma.reproductormusica.Adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.Audio
+import cat.boscdelacoma.reproductormusica.MainActivity
 import cat.boscdelacoma.reproductormusica.R
+import cat.boscdelacoma.reproductormusica.TrackSongs
 
 class SongInTrackAdapter(private val songList: List<SongItem>): RecyclerView.Adapter<SongInTrackAdapter.ViewHolder>(){
 
@@ -37,7 +40,10 @@ class SongInTrackAdapter(private val songList: List<SongItem>): RecyclerView.Ada
         }
 
         holder.playsong.setOnClickListener {
-
+            val absolutepath = Audio().getAbsolutePathMp3File(currentItem.songName, folderName)
+            val intent = Intent(holder.itemView.context, MainActivity::class.java)
+            intent.putExtra("absolutepathsong", absolutepath)
+            holder.itemView.context.startActivity(intent)
         }
 
 

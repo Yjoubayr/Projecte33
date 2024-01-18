@@ -55,10 +55,7 @@ class TrackName : Fragment() {
             val playlistNameText = playlistname.text.toString().trim()
 
             if (playlistNameText.isNotEmpty()) {
-                //Crear carpeta el nom te que ser el de playlistNameText
-
                 var audio = Audio()
-
                 if(audio.createFolder(playlistNameText)) {
                     val intent = Intent(context,Llist::class.java)
                     startActivity(intent)

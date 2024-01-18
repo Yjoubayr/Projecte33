@@ -26,9 +26,63 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
         val returnBtn : TextView = findViewById(R.id.back)
+
+        returnBtn.setOnClickListener(){
+            finish()
+        }
+
+
+        initMainActivity()
+    }
+
+    fun tornarDesDeFragment() {
+        supportFragmentManager.popBackStack()
+    }
+
+    private fun initMainActivity() {
+        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+
+        botoPlayPause = findViewById(R.id.startSong)
+        seekBarAudio = findViewById(R.id.progressBar)
+
+        mediaPlayer.setDataSource(absolutepathsong)
+        mediaPlayer.prepare()
+        botoPlayPause.setOnClickListener {
+            if (mediaPlayer.isPlaying) {
+                botoPlayPause.setBackgroundResource(R.drawable.playbtn)
+                mediaPlayer.pause()
+            } else {
+                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
+                mediaPlayer.start()
+            }
+        }
+
+    }
+    private fun updateSeekBar() {
+        handler.postDelayed(object : Runnable {
+
+            override fun run() {
+                if (mediaPlayer.isPlaying) {
+                    val currentPosition = mediaPlayer.currentPosition
+                    seekBarAudio.progress = currentPosition
+                    handler.postDelayed(this, 500) // Actualizar cada segundo
+                }
+            }
+        }, 0)
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.release()
+        handler.removeCallbacksAndMessages(null) // Detener la actualización de la SeekBar
+
+    }
+
+    private fun showFragments(){
+        val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
+        val addplaylist: TextView = findViewById(R.id.AddList)
+
+
         AddSongToTrack.setOnClickListener {
             // Crear una instancia del fragmento
             val listOfSongsFragment = ListOfSongsFragment()
@@ -56,7 +110,6 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
 
-        val addplaylist: TextView = findViewById(R.id.AddList)
 
         addplaylist.setOnClickListener(){
             val trackName = TrackName()
@@ -76,54 +129,5 @@ class MainActivity : AppCompatActivity() {
 
             transaction.commit()
         }
-        mediaPlayer = MediaPlayer.create(this, R.raw.back_in_black)
-        handler = Handler()
-        initMainActivity()
-        seekBarAudio.max = mediaPlayer.duration
-
-        returnBtn.setOnClickListener(){
-            finish()
-        }
-    }
-
-    fun tornarDesDeFragment() {
-        supportFragmentManager.popBackStack()
-    }
-
-    private fun initMainActivity() {
-        botoPlayPause = findViewById(R.id.startSong)
-        seekBarAudio = findViewById(R.id.progressBar)
-
-        botoPlayPause.setOnClickListener {
-            if (mediaPlayer.isPlaying) {
-                botoPlayPause.setBackgroundResource(R.drawable.playbtn)
-
-                mediaPlayer.pause()
-            } else {
-                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
-                mediaPlayer.start()
-                updateSeekBar()
-
-            }
-        }
-
-    }
-    private fun updateSeekBar() {
-        handler.postDelayed(object : Runnable {
-
-            override fun run() {
-                if (mediaPlayer.isPlaying) {
-                    val currentPosition = mediaPlayer.currentPosition
-                    seekBarAudio.progress = currentPosition
-                    handler.postDelayed(this, 500) // Actualizar cada segundo
-                }
-            }
-        }, 0)
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        mediaPlayer.release()
-        handler.removeCallbacksAndMessages(null) // Detener la actualización de la SeekBar
-
     }
 }

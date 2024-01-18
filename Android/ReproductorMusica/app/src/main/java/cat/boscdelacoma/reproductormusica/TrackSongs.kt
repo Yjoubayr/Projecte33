@@ -17,7 +17,9 @@ class TrackSongs : AppCompatActivity() {
         val trackSongList : MutableList<SongInTrackAdapter.SongItem> = mutableListOf()
         val playlistName = intent.getStringExtra("playlistName")
         val returnBtn : TextView = findViewById(R.id.back)
+        val tittle : TextView = findViewById(R.id.track_name)
 
+        tittle.text = playlistName.toString()
         val list = Audio().getSongList(playlistName.toString())
         SongInTrackAdapter.folderName = playlistName.toString()
         for (i in 1..list.size) {
