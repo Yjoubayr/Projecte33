@@ -34,7 +34,7 @@ public class AlbumService
     /// <returns>L'objecte de l'Album trobat</returns>
     public async Task<Album?> GetAsync(string Titol, int Any) =>
         await _context.Albums
-                            .Include(x => x.LCancons)
+                            //.Include(x => x.LCancons)
                             .FirstOrDefaultAsync(x => x.Titol == Titol && x.Any == Any);
 
     /// <summary>

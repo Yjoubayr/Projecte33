@@ -29,82 +29,74 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             _llistaService = new LlistaService(context);
         }
 
-        // GET: api/Llista
-        [HttpGet]
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/getLlistes per obtenir totes les llistes
+        /// </summary>
+        /// <returns>Una llista de totes les llistes de reproduccio</returns>
+        [HttpGet("getLlistes")]
         public async Task<ActionResult<IEnumerable<Llista>>> GetLlista()
         {
-            return await _context.Llista.ToListAsync();
+            return await _llistaService.GetAsync();
         }
 
-        // GET: api/Llista/5
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/getLlista/{MACAddress}/{NomLlista} per obtenir una Llista de reproduccio
+        /// </summary>
+        /// <param name="MACAddress">MACAddress de la Llista de reproduccio a consultar</param>
+        /// <param name="NomLlista">Nom de la Llista de reproduccio a consultar</param>
+        /// <returns>L'objecte de la Llista de reproduccio consultada</returns>
         [HttpGet("getLlista/{MACAddress}/{NomLlista}")]
         public async Task<ActionResult<Llista>> GetLlista(string MACAddress, string NomLlista)
         {
-            if (_context.Llista == null || _context.Llista.FirstOrDefault(l => l.MACAddress == MACAddress && l.NomLlista == NomLlista) == null)
+            var llista = await _llistaService.GetAsync(MACAddress, NomLlista);
+
+            if (llista == null)
             {
                 return NotFound();
             }
 
-            else
-            {
-                var llista = await _context.Llista
-                                            .Include(l => l.LCancons)
-                                            .FirstOrDefaultAsync(l => l.MACAddress == MACAddress && l.NomLlista == NomLlista);
-                
-                if (llista == null) {
-                    return NotFound();
-                }
-
-                return llista;
-            }
+            return llista;
         }
 
-        // PUT: api/Llista/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista} per modificar una Llista de reproduccio
+        /// </summary>
+        /// <param name="MACAddress">MACAddress de la Llista de reproduccio a modificar</param>
+        /// <param name="NomLlista">Nom de la Llista de reproduccio a modificar</param>
+        /// <param name="updatedLlista">L'objecte de la Llista de reproduccio a modificar</param>
         [HttpPut("putLlista/{MACAddress}/{NomLlista}")]
-        public async Task<IActionResult> PutLlista(string MACAddress, string NomLlista, Llista llista)
+        public async Task<IActionResult> PutLlista(string MACAddress, string NomLlista, Llista updatedLlista)
         {
-            if (MACAddress != llista.MACAddress || NomLlista != llista.NomLlista)
+            var llista = await _llistaService.GetAsync(MACAddress, NomLlista);
+            
+            if (llista is null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
+            updatedLlista.MACAddress = llista.MACAddress;
+            updatedLlista.NomLlista = llista.NomLlista;
 
-            _context.Entry(llista).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (_context.Llista.Find(llista.MACAddress, llista.NomLlista) == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _llistaService.UpdateAsync(updatedLlista);
 
             return NoContent();
         }
 
-        // POST: api/Llista
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/postLlista per crear una Llista de reproduccio
+        /// </summary>
+        /// <param name="llista">L'objecte de la Llista de reproduccio a crear</param>
+        /// <returns>Verificacio de que la Llista de reproduccio s'ha creat correctament</returns>
+        [HttpPost("postLlista")]
         public async Task<ActionResult<Llista>> PostLlista(Llista llista)
         {
-            if (_context.Llista == null)
-            {
-                return Problem("Entity set 'DataContext.Llista'  is null.");
-            } 
+            // Considerar la possibilitat de comprovar previament si existeix el nom de la llista i retornar un error 409
+            IActionResult result;
 
-            _context.Llista.Add(llista);
-            
             try
             {
+                await _llistaService.CreateAsync(llista);
+                result = CreatedAtAction("GetLlista", new { MACAddress = llista.MACAddress, NomLlista = llista.NomLlista }, llista);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)

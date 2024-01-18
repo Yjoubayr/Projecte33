@@ -18,7 +18,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly MusicService _musicService;
 
-        public MusicController(DataContext context, MusicService musicService)
+        public MusicController(DataContext context)
         {
             _context = context;
             _musicService = new MusicService(context);
@@ -69,7 +69,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             updatedMusic.Nom = music.Nom;
 
-            await _musicService.UpdateAsync(Nom, updatedMusic);
+            await _musicService.UpdateAsync(updatedMusic);
 
             return NoContent();
         }
@@ -82,6 +82,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPost("postMusic")]
         public async Task<IActionResult> PostMusic(Music music)
         {
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom del music i retornar un error 409
             IActionResult result;
             try
             {
@@ -90,7 +91,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
-                if (_musicService.GetAsync(music.Nom) == null)
+                if (_musicService.GetAsync(music.Nom) != null)
                 {
                     return Conflict();
                 }
@@ -117,7 +118,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _musicService.RemoveAsync(Nom);
+            await _musicService.RemoveAsync(music);
 
             return NoContent();
         }

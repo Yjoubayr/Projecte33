@@ -36,8 +36,8 @@ public class GrupService
     /// <returns>Grup de musica corresponent al nom especificat.</returns>
     public async Task<Grup?> GetAsync(string Nom) =>
         await _context.Grups
-                            .Include(x => x.LCancons)
                             .Include(x => x.LMusics)
+                            .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
     /// <summary>

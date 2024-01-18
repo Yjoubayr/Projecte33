@@ -34,7 +34,7 @@ public class CancoService
     public async Task<Canco?> GetAsync(string IDCanco) =>
         await _context.Cancons
                             .Include(x => x.LListes)
-                            .Include(x => x.LMusics)
+                            .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);
 
     /// <summary>

@@ -24,18 +24,18 @@ public class MusicService
     /// <summary>
     /// Accedeix a la ruta /api/Music/getMusic/{Nom} per obtenir una Canco
     /// </summary>
-    /// <param name="Nom">Nom del músic a obtenir</param>
-    /// <returns>L'objecte del músic</returns>
+    /// <param name="Nom">Nom del Music a obtenir</param>
+    /// <returns>L'objecte del Music</returns>
     public async Task<Music?> GetAsync(string Nom) =>
         await _context.Musics
                             .Include(x => x.LGrups)
-                            .Include(x => x.LCancons)
+                            .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
     /// <summary>
     /// Accedeix a la ruta /api/Music/postMusic per crear un Music
     /// </summary>
-    /// <param name="newMusic">L'objecte del músic a crear</param>
+    /// <param name="newMusic">L'objecte del Music a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
     public async Task CreateAsync(Music newMusic) {
         await _context.Musics.AddAsync(newMusic);
@@ -46,27 +46,20 @@ public class MusicService
     /// <summary>
     /// Accedeix a la ruta /api/Music/putMusic/{Nom} per modificar una Canco
     /// </summary>
-    /// <param name="Nom">Nom del músic a modificar</param>
-    /// <param name="updatedMusic">L'objecte del músic a modificar</param>
-    /// <returns>Verificacio que el músic s'ha modificat correctament</returns>
-    public async Task UpdateAsync(string Nom, Music updatedMusic) {
-        
-        if (Nom == updatedMusic.Nom)
-        {
-            _context.Entry(updatedMusic).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-
+    /// <param name="Nom">Nom del Music a modificar</param>
+    /// <param name="updatedMusic">L'objecte del Music a modificar</param>
+    /// <returns>Verificacio que el Music s'ha modificat correctament</returns>
+    public async Task UpdateAsync(Music updatedMusic) {
+        _context.Entry(updatedMusic).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} per eliminar un músic
+    /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} per eliminar un Music
     /// </summary>
-    /// <param name="Nom">Nom del músic a eliminar</param>
-    /// <returns>Verificacio de que el músic s'ha eliminat correctament</returns>
-    public async Task RemoveAsync(string Nom) {
-        var music = await _context.Musics.FindAsync(Nom);
-        
+    /// <param name="Music">L'objecte del Music a eliminar</param>
+    /// <returns>Verificacio de que el Music s'ha eliminat correctament</returns>
+    public async Task RemoveAsync(Music music) {
         _context.Musics.Remove(music);
         await _context.SaveChangesAsync();
     }

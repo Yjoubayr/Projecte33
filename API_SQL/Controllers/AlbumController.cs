@@ -20,6 +20,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
         /// <summary>
         /// Constructor de la classe AlbumController
+        /// Tambe crearem un objecte de la classe AlbumService passant-li el contexte de dades
         /// </summary>
         /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public AlbumController(DataContext context)
@@ -90,7 +91,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPost("postAlbum")]
         public async Task<IActionResult> PostAlbum(Album album)
         {
-            // Considerar la possibilitat de comprovar previament si existeix el nom de la llibreria i retornar un error 409
+            // Considerar la possibilitat de comprovar previament si existeix el nom de l'album i retornar un error 409
             IActionResult result;
 
             try

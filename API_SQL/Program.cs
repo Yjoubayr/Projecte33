@@ -10,6 +10,7 @@ builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.CancoServi
 builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.GrupService>();
 builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.AlbumService>();
 builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.MusicService>(); 
+builder.Services.AddSingleton<dymj.ReproductorMusica.API_SQL.Services.LlistaService>(); 
 
 
 builder.Services.AddControllers();
