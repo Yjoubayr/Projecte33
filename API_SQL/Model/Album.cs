@@ -5,9 +5,7 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         [MaxLength(20)]
         public string Titol { get; set; }
         public int Any { get; set; }
-        public string IDCanco { get; set; }
+        public String IDCanco { get; set; }
         public Canco? CancoObj {get; set;}
-
-        //public ICollection<Canco>? LCancons { get; set; }
     }
 }

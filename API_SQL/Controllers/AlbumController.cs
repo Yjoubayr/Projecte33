@@ -46,10 +46,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="Titol">Titol de l'Album a consultar</param>
         /// <param name="Any">Any de l'Album a consultar</param>
         /// <returns>L'objecte de l'Album consultat</returns>
-        [HttpGet("getAlbum/{Titol}/{Any}")]
-        public async Task<ActionResult<Album>> GetAlbum(string Titol, int Any)
+        [HttpGet("getAlbum/{Titol}/{Any}/{IDCanco}")]
+        public async Task<ActionResult<Album>> GetAlbum(string Titol, int Any, string IDCanco)
         {
-            var album = await _albumService.GetAsync(Titol, Any);
+            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
 
             if (album == null)
             {
@@ -58,7 +58,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             return album;
         }
-
+/*
         /// <summary>
         /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any} per modificar un album
         /// </summary>
@@ -82,7 +82,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             return NoContent();
         }
-
+*/
         /// <summary>
         /// Accedeix a la ruta /api/Album/postAlbum per crear un album
         /// </summary>
@@ -97,11 +97,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             try
             {
                 await _albumService.CreateAsync(album);
-                result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any }, album);
+                result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any, IDCanco = album.IDCanco }, album);
             }
             catch (DbUpdateException)
             {
-                if (_albumService.GetAsync(album.Titol, album.Any) != null)
+                if (_albumService.GetAsync(album.Titol, album.Any, album.IDCanco) != null)
                 {
                     return Conflict();
                 }
@@ -113,7 +113,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             return result;
         }
-
+/*
         /// <summary>
         /// Accedeix a la ruta /api/Album/deleteAlbum/{Titol}/{Any} per eliminar un album
         /// </summary>
@@ -133,6 +133,6 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _albumService.RemoveAsync(album);
 
             return NoContent();
-        }
+        }*/
     }
 }

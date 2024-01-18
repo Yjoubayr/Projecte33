@@ -55,7 +55,9 @@ public class CancoService
     /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
     public async Task UpdateAsync(Canco updatedCanco) {
-        _context.Entry(updatedCanco).State = EntityState.Modified;
+        var cancoOriginal = await GetAsync(updatedCanco.IDCanco);
+        _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
+        //_context.Entry(updatedCanco).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 

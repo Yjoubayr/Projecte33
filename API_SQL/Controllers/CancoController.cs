@@ -70,7 +70,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var canco = await _cancoService.GetAsync(IDCanco);
 
-            if (canco is null)
+            if (canco is null || IDCanco != updatedCanco.IDCanco)
             {
                 return NotFound();
             }
