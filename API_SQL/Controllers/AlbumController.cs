@@ -18,6 +18,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly AlbumService _albumService;
 
+        /// <summary>
+        /// Constructor de la classe AlbumController
+        /// </summary>
+        /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public AlbumController(DataContext context)
         {
             _context = context;
@@ -31,7 +35,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpGet("getAlbums")]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-            return await _context.Albums.ToListAsync();
+            return await _albumService.GetAsync();
         }
 
 
@@ -96,7 +100,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
-                if (_albumService.GetAsync(album.Titol, album.Any) == null)
+                if (_albumService.GetAsync(album.Titol, album.Any) != null)
                 {
                     return Conflict();
                 }
@@ -120,7 +124,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var album = await _albumService.GetAsync(Titol, Any);
             
-            if (album == null)
+            if (album is null)
             {
                 return NotFound();
             }

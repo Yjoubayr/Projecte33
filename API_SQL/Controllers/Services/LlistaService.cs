@@ -8,6 +8,11 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class LlistaServicce
 {
     private readonly DataContext _context;
+
+    /// <summary>
+    /// Constructor de la classe LlistaService
+    /// </summary>
+    /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
     public LlistaService(DataContext context)
     {
         _context = context;
@@ -30,7 +35,7 @@ public class LlistaServicce
     public async Task<Llista?> GetAsync(string MACAddress, string NomLlista) =>
         await _context.Llistes
                             .Include(x => x.LCancons)
-                            .FirstOrDefaultAsync(x => x.MACAddress == MACAddress && x.NomLlista == NomLlista);ç
+                            .FirstOrDefaultAsync(x => x.MACAddress == MACAddress && x.NomLlista == NomLlista);
 
     /// <summary>
     /// Accedeix a la ruta /api/Llista/postLlista per crear una Llista de reproduccio
@@ -52,8 +57,8 @@ public class LlistaServicce
     public async Task UpdateAsync(string MACAddress, string NomLlista, Llista updatedLlista) {
         var llista = await _context.Llistes
                             .FirstOrDefaultAsync(x => x.MACAddress == MACAddress && x.NomLlista == NomLlista);
-        
-        if (MACAddress == updatedLlista.MACAddress && NomLlista == updatedLlista.NomLlista && llista != null)
+
+        if (MACAddress == updatedLlista.MACAddress && NomLlista == updatedLlista.NomLlista)
         {
             _context.Entry(updatedLlista).State = EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -69,7 +74,7 @@ public class LlistaServicce
     /// <param name="NomLlista">Nom de la Llista de reproduccio a eliminar</param>
     /// <returns>Verificacio de que la Llista de reproduccio s'ha eliminat correctament</returns>
     public async Task RemoveAsync(string MACAddress, string NomLlista) {
-        var llista = await _context.Llistes
+        var llista =  await _context.Llistes
                             .FirstOrDefaultAsync(x => x.MACAddress == MACAddress && x.NomLlista == NomLlista);
 
         if (llista != null) {

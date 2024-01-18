@@ -8,6 +8,11 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class AlbumService
 {
     private readonly DataContext _context;
+
+    /// <summary>
+    /// Constructor de la classe AlbumService
+    /// </summary>
+    /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
     public AlbumService(DataContext context)
     {
         _context = context;
@@ -45,21 +50,11 @@ public class AlbumService
     /// <summary>
     /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any} per modificar un album
     /// </summary>
-    /// <param name="Titol">Titol de l'Album a modificar</param>
-    /// <param name="Any">Any de l'Album a modificar</param>
     /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
     /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
-    public async Task UpdateAsync(string Titol, int Any, Album updatedAlbum) {
-        var album = await _context.Albums
-                            .FirstOrDefaultAsync(x => x.Titol == Titol && x.Any == Any);
-        
-        if (Titol == updatedAlbum.Titol && Any == updatedAlbum.Any && album != null)
-        {
-            _context.Entry(updatedAlbum).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        } else {
-            return NotFound();
-        }
+    public async Task UpdateAsync(Album updatedAlbum) {
+        _context.Entry(updatedCanco).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 
     /// <summary>
@@ -68,13 +63,8 @@ public class AlbumService
     /// <param name="Titol">Titol de l'album a eliminar</param>
     /// <param name="Any">Any de l'album a eliminar</param>
     /// <returns>Verificacio de que l'Album s'ha eliminat correctament</returns>
-    public async Task RemoveAsync(string Titol, int Any) {
-        var album = await _context.Albums
-                            .FirstOrDefaultAsync(x => x.Titol == Titol && x.Any == Any);
-
-        if (album != null) {
-            _context.Albums.Remove(album);
-            await _context.SaveChangesAsync();
-        }
+    public async Task RemoveAsync(Album album) {
+        _context.Albums.Remove(album);
+        await _context.SaveChangesAsync();
     }
 }

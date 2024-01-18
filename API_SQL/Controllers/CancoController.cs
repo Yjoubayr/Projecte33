@@ -18,6 +18,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         private readonly DataContext _context;
         private readonly CancoService _cancoService;
 
+        /// <summary>
+        /// Constructor de la classe CancoController
+        /// </summary>
+        /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public CancoController(DataContext context)
         {
             _context = context;
@@ -96,7 +100,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
-                if (_cancoService.GetAsync(canco.ID) == null)
+                if (_cancoService.GetAsync(canco.ID) != null)
                 {
                     return Conflict();
                 }
@@ -125,7 +129,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _cancoService.RemoveAsync(ID);
+            await _cancoService.RemoveAsync(canco);
 
             return NoContent();
         }

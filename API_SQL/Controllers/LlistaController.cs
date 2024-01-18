@@ -16,6 +16,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
 
+        /// <summary>
+        /// Constructor de la classe LlistaController
+        /// </summary>
+        /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public LlistaController(DataContext context)
         {
             _context = context;

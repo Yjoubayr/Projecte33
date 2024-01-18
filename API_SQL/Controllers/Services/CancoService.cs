@@ -52,29 +52,19 @@ public class CancoService
     /// <summary>
     /// Accedeix a la ruta /api/Canco/putCanco/{ID} per modificar una Canco
     /// </summary>
-    /// <param name="ID">ID de la canco a modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-    public async Task UpdateAsync(string ID, Canco updatedCanco) {
-        
-        if (ID == updatedCanco.ID)
-        {
-            _context.Entry(updatedCanco).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        } else {
-            return NotFound();
-        }
-
+    public async Task UpdateAsync(Canco updatedCanco) {
+        _context.Entry(updatedCanco).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una Canco
     /// </summary>
-    /// <param name="ID">ID de la Canco a eliminar</param>
+    /// <param name="canco">Objecte de la Canco a eliminar</param>
     /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>
-    public async Task RemoveAsync(string ID) {
-        var canco = await _context.Cancons.FindAsync(ID);
-        
+    public async Task RemoveAsync(Canco canco) {        
         _context.Cancons.Remove(canco);
         await _context.SaveChangesAsync();
     }
