@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private lateinit var botoPlayPause: TextView
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
-
+        val returnBtn : TextView = findViewById(R.id.back)
         AddSongToTrack.setOnClickListener {
             // Crear una instancia del fragmento
             val listOfSongsFragment = ListOfSongsFragment()
@@ -78,9 +79,14 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer = MediaPlayer.create(this, R.raw.back_in_black)
         handler = Handler()
         initMainActivity()
+        seekBarAudio.max = mediaPlayer.duration
+
+        returnBtn.setOnClickListener(){
+            finish()
+        }
     }
 
-    public fun tornarDesDeFragment() {
+    fun tornarDesDeFragment() {
         supportFragmentManager.popBackStack()
     }
 
