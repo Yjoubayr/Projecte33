@@ -12,13 +12,13 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Music> Musics { get; set; }
         public DbSet<Llista> Llista { get; set; }
-        public DbSet<Participa> Participa { get; set; }
+        public DbSet<Tocar> Tocar { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
-            modelBuilder.ApplyConfiguration(new ParticipaConfiguration());
+            modelBuilder.ApplyConfiguration(new TocarConfiguration());
         }
     }
 }
