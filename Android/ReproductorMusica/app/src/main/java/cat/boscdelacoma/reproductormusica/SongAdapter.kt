@@ -34,14 +34,14 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
 
                 holder.itemView.context.startActivity(intent)
                 audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+
                 audio.getMusicFiles(context = holder.itemView.context)
+                val files = audio.getAllFilesList()
             }
         }
-
         override fun getItemCount(): Int {
             return songList.size
         }
-
         class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val squareImage: ImageView = itemView.findViewById(R.id.squareImage)
             val textBox: TextView = itemView.findViewById(R.id.textBox)

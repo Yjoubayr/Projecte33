@@ -118,5 +118,22 @@ class Audio {
             }
         }
     }
+
+    fun getAllFilesList(): ArrayList<String> {
+        val list: ArrayList<String> = ArrayList()
+        val musicDirectory =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val files = musicDirectory.listFiles()
+        if (files != null) {
+            for (file in files) {
+                val path = file.absolutePath
+                if (path.endsWith(".mp3")){
+                    continue;
+                }
+                list.add(path)
+            }
+        }
+        return list
+    }
 }
 
