@@ -34,7 +34,6 @@ class ListOfSongsFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        audio.getLists(context)
     }
 
     override fun onCreateView(

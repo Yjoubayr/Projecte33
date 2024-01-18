@@ -1,5 +1,6 @@
 package cat.boscdelacoma.reproductormusica
 
+import android.app.DownloadManager
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
@@ -17,6 +18,7 @@ import android.widget.LinearLayout
 import android.widget.SimpleCursorAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.net.toUri
 import androidx.loader.content.CursorLoader
 import java.io.BufferedReader
@@ -50,8 +52,6 @@ class Audio {
         }
         return false
     }
-
-
     public fun getFile(fileName: String): File? {
         val directory = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString()
@@ -68,26 +68,44 @@ class Audio {
             return null
         }
     }
+    fun getMp3File(fileName: String): MediaPlayer? {
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val file = File(musicDirectory, fileName)
 
-    fun getMp3File(fileName : String): MediaPlayer?{
-        val directory = File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString()
-        )
-        try {
-            if (directory.isDirectory) {
-                val listFiles = directory.listFiles()
-                val file = listFiles?.filter { it.name == fileName }
+        return try {
+            if (file.exists()) {
                 val mediaPlayer = MediaPlayer()
-                mediaPlayer.setDataSource(file!!.get(0).absolutePath)
+                mediaPlayer.setDataSource(file.absolutePath)
                 mediaPlayer.prepare()
-                return mediaPlayer
+                mediaPlayer
             } else {
-                return null
+                null
             }
         } catch (e: Exception) {
-            return null
+            e.printStackTrace()
+            null
         }
     }
 
+    fun downloadSongAPI(context: Context, songUrl: String) {
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val request = DownloadManager.Request(Uri.parse(songUrl))
+
+        request.setTitle("Descarga de canción")
+        request.setDescription("Descargando archivo MP3")
+
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val fileName = "cancion_descargada.mp3"
+        val destinationFile = File(musicDirectory, fileName)
+        request.setDestinationUri(Uri.fromFile(destinationFile))
+
+        val downloadId = downloadManager.enqueue(request)
+
+        Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
+    }
+
+    fun getSongNameFromApi(){
+
+    }
 }
 
