@@ -37,8 +37,10 @@ public class AlbumService
     /// </summary>
     /// <param name="newAlbum">L'objecte de l'Album a crear</param>
     /// <returns>Verificacio de que l'Album s'ha creat correctament</returns>
-    public async Task CreateAsync(Album newAlbum) =>
+    public async Task CreateAsync(Album newAlbum) {
         await _context.Albums.AddAsync(newAlbum);
+        await _context.SaveChangesAsync();
+    }
 
     /// <summary>
     /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any} per modificar un album
@@ -55,6 +57,8 @@ public class AlbumService
         {
             _context.Entry(updatedAlbum).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+        } else {
+            return NotFound();
         }
     }
 

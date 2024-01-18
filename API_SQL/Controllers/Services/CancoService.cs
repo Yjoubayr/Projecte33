@@ -34,10 +34,7 @@ public class CancoService
     public async Task<Canco?> GetAsync(string ID) =>
         await _context.Cancons
                             .Include(x => x.LListes)
-                            .Include(x => x.LAlbums)
                             .Include(x => x.LMusics)
-                            .Include(x => x.LGrups)
-                            .Include(x => x.LExtensions)
                             .FirstOrDefaultAsync(x => x.ID == ID);
 
     /// <summary>
@@ -64,6 +61,8 @@ public class CancoService
         {
             _context.Entry(updatedCanco).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+        } else {
+            return NotFound();
         }
 
     }
