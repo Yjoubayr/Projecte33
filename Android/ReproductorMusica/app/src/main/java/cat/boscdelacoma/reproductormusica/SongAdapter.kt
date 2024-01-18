@@ -34,7 +34,7 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
 
                 holder.itemView.context.startActivity(intent)
                 audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-
+                audio.getMusicFiles(context = holder.itemView.context)
             }
         }
 

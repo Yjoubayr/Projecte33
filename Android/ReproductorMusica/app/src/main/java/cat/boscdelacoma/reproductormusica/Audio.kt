@@ -13,6 +13,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SimpleCursorAdapter
@@ -68,25 +69,6 @@ class Audio {
             return null
         }
     }
-    fun getMp3File(fileName: String): MediaPlayer? {
-        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-        val file = File(musicDirectory, fileName)
-
-        return try {
-            if (file.exists()) {
-                val mediaPlayer = MediaPlayer()
-                mediaPlayer.setDataSource(file.absolutePath)
-                mediaPlayer.prepare()
-                mediaPlayer
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
-    }
-
     fun downloadSongAPI(context: Context, songUrl: String) {
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val request = DownloadManager.Request(Uri.parse(songUrl))
@@ -104,15 +86,35 @@ class Audio {
         Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
     }
 
-    fun getMusicFiles(){
+    fun getMusicFiles(context: Context) {
         val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-        val files = musicDirectory.listFiles()
-        for (file in files) {
-            if (file.name.endsWith(".mp3")) {
-                val mediaPlayer = MediaPlayer()
-                mediaPlayer.setDataSource(file.absolutePath)
-                mediaPlayer.prepare()
-                mediaPlayer.start()
+        val uri: Uri? = MediaStore.Audio.Media.getContentUriForPath(musicDirectory.absolutePath)
+        val projection = arrayOf(
+            MediaStore.Audio.Media._ID,
+            MediaStore.Audio.Media.DATA
+        )
+
+        val selection = "${MediaStore.Audio.Media.DATA} like ?"
+        val selectionArgs = arrayOf("${musicDirectory.absolutePath}%")
+
+        val sortOrder = "${MediaStore.Audio.Media.DEFAULT_SORT_ORDER} ASC"
+
+        val contentResolver: ContentResolver = context.contentResolver
+        val cursor =
+            uri?.let { contentResolver.query(it, projection, selection, selectionArgs, sortOrder) }
+
+        if (cursor != null) {
+            try {
+                while (cursor.moveToNext()) {
+                    val filePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA))
+                    if (filePath.endsWith(".mp3")) {
+                        Toast.makeText(context, filePath, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("getMusicFiles", "Error while processing music files", e)
+            } finally {
+                cursor.close()
             }
         }
     }
