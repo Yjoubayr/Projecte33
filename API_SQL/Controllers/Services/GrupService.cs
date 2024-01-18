@@ -6,7 +6,7 @@ using dymj.ReproductorMusica.API_SQL.Data;
 namespace dymj.ReproductorMusica.API_SQL.Services;
 
 /// <summary>
-/// Classe que proporciona serveis per a la gestió de grups de música.
+/// Classe que proporciona serveis per a la gestio de grups de musica.
 /// </summary>
 public class GrupService
 {
@@ -22,18 +22,18 @@ public class GrupService
     }
 
     /// <summary>
-    /// Obté tots els grups de música de la base de dades.
+    /// Obte tots els grups de musica de la base de dades.
     /// </summary>
-    /// <returns>Llista de grups de música.</returns>
+    /// <returns>Llista de grups de musica.</returns>
     public async Task<List<Grup>> GetAsync() {
         return await _context.Grups.ToListAsync();
     }
 
     /// <summary>
-    /// Obté un grup de música específic a partir del seu nom.
+    /// Obte un grup de musica especific a partir del seu nom.
     /// </summary>
-    /// <param name="Nom">Nom del grup de música.</param>
-    /// <returns>Grup de música corresponent al nom especificat.</returns>
+    /// <param name="Nom">Nom del grup de musica.</param>
+    /// <returns>Grup de musica corresponent al nom especificat.</returns>
     public async Task<Grup?> GetAsync(string Nom) =>
         await _context.Grups
                             .Include(x => x.LCancons)
@@ -41,21 +41,21 @@ public class GrupService
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
     /// <summary>
-    /// Crea un nou grup de música a la base de dades.
+    /// Crea un nou grup de musica a la base de dades.
     /// </summary>
-    /// <param name="newGrup">Dades del nou grup de música.</param>
-    /// <returns>Verificació de que el grup de música s'ha creat correctament.</returns>
+    /// <param name="newGrup">Dades del nou grup de musica.</param>
+    /// <returns>Verificacio de que el grup de musica s'ha creat correctament.</returns>
     public async Task CreateAsync(Grup newGrup) {
         await _context.Grups.AddAsync(newGrup);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Actualitza les dades d'un grup de música existent a la base de dades.
+    /// Actualitza les dades d'un grup de musica existent a la base de dades.
     /// </summary>
-    /// <param name="Nom">Nom del grup de música a actualitzar.</param>
-    /// <param name="updatedGrup">Dades actualitzades del grup de música.</param>
-    /// <returns>Verificació de que el grup de música s'ha actualitzat correctament.</returns>
+    /// <param name="Nom">Nom del grup de musica a actualitzar.</param>
+    /// <param name="updatedGrup">Dades actualitzades del grup de musica.</param>
+    /// <returns>Verificacio de que el grup de musica s'ha actualitzat correctament.</returns>
     public async Task UpdateAsync(string Nom, Grup updatedGrup) {
         
         if (Nom == updatedGrup.Nom)
@@ -67,10 +67,10 @@ public class GrupService
     }
 
     /// <summary>
-    /// Elimina un grup de música de la base de dades a partir del seu nom.
+    /// Elimina un grup de musica de la base de dades a partir del seu nom.
     /// </summary>
-    /// <param name="Nom">Nom del grup de música a eliminar.</param>
-    /// <returns>Verificació de que el grup de música s'ha eliminat correctament.</returns>
+    /// <param name="Nom">Nom del grup de musica a eliminar.</param>
+    /// <returns>Verificacio de que el grup de musica s'ha eliminat correctament.</returns>
     public async Task RemoveAsync(string Nom) {
         var grup = await _context.Grups.FindAsync(Nom);
         _context.Grups.Remove(grup);

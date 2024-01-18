@@ -86,7 +86,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPost("postCanco")]
         public async Task<IActionResult> PostCanco(Canco canco)
         {
-            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la llibreria i retornar un error 409
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
             IActionResult result;
 
             try

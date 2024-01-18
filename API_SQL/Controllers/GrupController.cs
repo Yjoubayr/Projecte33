@@ -30,18 +30,18 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpGet("getGrups")]
         public async Task<ActionResult<IEnumerable<Grup>>> GetGrups()
         {
-            return await _context.Grups.ToListAsync();
+            return await _grupService.GetAsync();
         }
 
         /// <summary>
         /// Accedeix a la ruta /api/Grup/getGrup/{Nom} per obtenir un Grup
         /// </summary>
-        /// <param name="Nom"></param>
-        /// <returns></returns>
+        /// <param name="Nom">Nom del Grup a consultar</param>
+        /// <returns>L'objecte del Grup consultat</returns>
         [HttpGet("getGrup/{Nom}")]
         public async Task<ActionResult<Grup>> GetGrup(string Nom)
         {
-            var grup = await _context.Grups.FindAsync(Nom);
+            var grup = await _grupService.GetAsync(Nom);
 
             if (grup == null)
             {
@@ -51,50 +51,48 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return grup;
         }
 
-        // PUT: api/Grup/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Accedeix a la ruta /api/Grup/putGrup/{Nom} per modificar un grup
+        /// </summary>
+        /// <param name="Nom">Nom del Grup a modificar</param>
+        /// <param name="grup">Objecte del Grup a modificar</param>
+        /// <returns>Verificacio de que el Grup s'ha modificat correctament</returns>
         [HttpPut("putGrup/{Nom}")]
-        public async Task<IActionResult> PutGrup(string Nom, Grup grup)
+        public async Task<IActionResult> PutGrup(string Nom, Grup updatedGrup)
         {
-            if (Nom != grup.Nom)
+            var grup = await _grupService.GetAsync(Nom);
+
+            if (grup is null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(grup).State = EntityState.Modified;
+            updatedGrup.Nom = grup.Nom;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GrupExists(Nom))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _grupService.UpdateAsync(Nom, updatedGrup);
 
             return NoContent();
         }
 
-        // POST: api/Grup
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Accedeix a la ruta /api/Grup/postGrup per crear un grup
+        /// </summary>
+        /// <param name="grup">L'objecte del Grup a crear</param>
+        /// <returns>Verificacio de que el Grup s'ha creat correctament</returns>
         [HttpPost("postGrup")]
         public async Task<ActionResult<Grup>> PostGrup(Grup grup)
         {
-            _context.Grups.Add(grup);
+            // Considerar la possibilitat de comprovar previament si existeix el nom del grup i retornar un error 409
+            IActionResult result;
+
             try
             {
-                await _context.SaveChangesAsync();
+                await _cancoService.CreateAsync(canco);
+                result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
             }
             catch (DbUpdateException)
             {
-                if (GrupExists(grup.Nom))
+                if (_grupService.GetAsync(grup.Nom) == null)
                 {
                     return Conflict();
                 }
@@ -104,21 +102,25 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 }
             }
 
-            return CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
+            return result;
         }
 
-        // DELETE: api/Grup/5
+        /// <summary>
+        /// Accedeix a la ruta /api/Grup/deleteGrup/{Nom} per eliminar un grup
+        /// </summary>
+        /// <param name="Nom">Nom del Grup a eliminar</param>
+        /// <returns>Verificacio de que el Grup s'ha eliminat correctament</returns>
         [HttpDelete("deleteGrup/{Nom}")]
         public async Task<IActionResult> DeleteGrup(string Nom)
         {
-            var grup = await _context.Grups.FindAsync(Nom);
-            if (grup == null)
+            var grup = await _grupService.GetAsync(Nom);
+            
+            if (grup is null)
             {
                 return NotFound();
             }
 
-            _context.Grups.Remove(grup);
-            await _context.SaveChangesAsync();
+            await _grupService.RemoveAsync(grup);
 
             return NoContent();
         }

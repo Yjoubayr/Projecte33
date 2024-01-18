@@ -8,6 +8,11 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class CancoService
 {
     private readonly DataContext _context;
+
+    /// <summary>
+    /// Constructor de la classe CancoService
+    /// </summary>
+    /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
     public CancoService(DataContext context)
     {
         _context = context;
@@ -52,7 +57,7 @@ public class CancoService
     /// </summary>
     /// <param name="ID">ID de la canco a modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
-    /// <returns>Verciicacio de que la Canco s'ha modificat correctament</returns>
+    /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
     public async Task UpdateAsync(string ID, Canco updatedCanco) {
         
         if (ID == updatedCanco.ID)
@@ -67,7 +72,7 @@ public class CancoService
     /// Accedeix a la ruta /api/Canco/deleteCanco/{ID} per eliminar una Canco
     /// </summary>
     /// <param name="ID">ID de la Canco a eliminar</param>
-    /// <returns>Verciicacio de que la Canco s'ha eliminat correctament</returns>
+    /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>
     public async Task RemoveAsync(string ID) {
         var canco = await _context.Cancons.FindAsync(ID);
         
