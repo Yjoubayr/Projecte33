@@ -15,25 +15,56 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
-    private var progressLevel = 0
-    private var cancoEscollida: String = "false"
-    private lateinit var audio: Audio
-
     private lateinit var botoPlayPause: TextView
-    private lateinit var seekBarAudio: SeekBar
-    private lateinit var song: Audio
     private var mediaPlayer: MediaPlayer = MediaPlayer()
-    private var audioIniciat = false
-    private lateinit var handler: Handler
-
+    private lateinit var seekBarAudio: SeekBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val returnBtn : TextView = findViewById(R.id.back)
 
+        returnBtn.setOnClickListener(){
+            finish()
+        }
+
+
+        initMainActivity()
+        showFragments()
+    }
+
+    fun tornarDesDeFragment() {
+        supportFragmentManager.popBackStack()
+    }
+
+    private fun initMainActivity() {
+
+        botoPlayPause = findViewById(R.id.startSong)
+        seekBarAudio = findViewById(R.id.progressBar)
+        //val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+
+        //mediaPlayer.setDataSource(absolutepathsong)
+       // mediaPlayer.prepare()
+
+
+        botoPlayPause.setOnClickListener {
+            if (mediaPlayer.isPlaying) {
+                botoPlayPause.setBackgroundResource(R.drawable.playbtn)
+                mediaPlayer.pause()
+            } else {
+                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
+                mediaPlayer.start()
+            }
+        }
+
+    }
+
+    private fun showFragments(){
         val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
+        val addplaylist: TextView = findViewById(R.id.AddList)
 
 
         AddSongToTrack.setOnClickListener {
@@ -63,7 +94,6 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
 
-        val addplaylist: TextView = findViewById(R.id.AddList)
 
         addplaylist.setOnClickListener(){
             val trackName = TrackName()
@@ -83,137 +113,5 @@ class MainActivity : AppCompatActivity() {
 
             transaction.commit()
         }
-
-        initMainActivity()
-    }
-
-    public fun tornarDesDeFragment() {
-        supportFragmentManager.popBackStack()
-    }
-
-    private fun initMainActivity() {
-
-        botoPlayPause = findViewById(R.id.startSong)
-
-        seekBarAudio = findViewById(R.id.progressBar)
-
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                data?.data?.let { uri ->
-                    audio.uri = uri
-                    audio.titol = "back_in_black.mp3"
-
-                    if (audio == obtenirDades(this, audio.uri)) {
-                        startActivity(intent)
-                    }
-                }
-            }
-        }
-
-        botoPlayPause.setOnClickListener {
-            if (audioIniciat == false) {
-                startAudio()
-            } else {
-                pauseAudio()
-            }
-        }
-
-        song = Audio()
-
-    }
-
-    private fun initializeSeekBar() {
-        seekBarAudio?.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seek: SeekBar,
-                                           progress: Int, fromUser: Boolean) {
-                if(fromUser) {
-                    mediaPlayer?.seekTo(progress)
-                }
-            }
-
-            override fun onStartTrackingTouch(seek: SeekBar) {
-                if (progressLevel == seek.max) {
-                    stopAudio()
-                    seekBarAudio.setProgress(progressLevel)
-                }
-            }
-
-            override fun onStopTrackingTouch(seek: SeekBar) {
-                if (progressLevel == seek.max) {
-                    stopAudio()
-                    seekBarAudio.setProgress(progressLevel)
-                } else {
-                    progressLevel = seek.progress
-                    mediaPlayer.seekTo(progressLevel * 1000)
-                    seekBarAudio.setProgress(progressLevel)
-                }
-            }
-        })
-    }
-
-    private fun initializeTimer() {
-        handler = Handler()
-        handler.postDelayed(object : Runnable{
-            override fun run() {
-                try{
-                    seekBarAudio.progress = mediaPlayer!!.currentPosition / 1000
-                    handler.postDelayed(this, 1000)
-                }catch (e: Exception){
-                    seekBarAudio.progress = 0
-                }
-            }
-        },0)
-    }
-
-    private fun initializeMediaPlayer(file: String) {
-
-        val fd = assets.openFd(file)
-
-        mediaPlayer.setDataSource(
-            fd.fileDescriptor,
-            fd.startOffset,
-            fd.length
-        )
-
-        fd.close()
-
-        mediaPlayer.prepare()
-        seekBarAudio.max = (mediaPlayer.duration / 1000).toInt()
-    }
-
-    private fun startAudio() {
-
-        mediaPlayer = MediaPlayer()
-
-        initializeMediaPlayer("back_in_black.mp3")
-
-        mediaPlayer.seekTo(progressLevel)
-        initializeTimer()
-        initializeSeekBar()
-
-        mediaPlayer.start()
-
-        botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
-        audioIniciat = true
-
-    }
-
-    private fun pauseAudio() {
-        progressLevel = mediaPlayer.getCurrentPosition()
-        mediaPlayer.pause()
-        botoPlayPause.setBackgroundResource(R.drawable.pause_circle_outline)
-        audioIniciat = false
-    }
-
-    private fun stopAudio() {
-        progressLevel = 0
-        mediaPlayer.stop()
-        seekBarAudio.setProgress(progressLevel)
-        botoPlayPause.setBackgroundResource(R.drawable.playbtn)
-        audioIniciat = false
     }
 }

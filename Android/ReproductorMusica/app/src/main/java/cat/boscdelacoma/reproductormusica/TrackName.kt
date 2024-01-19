@@ -31,7 +31,6 @@ class TrackName : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private val TAG: String = "ReproductorMusica"
-    private val song: String = "back_in_black.mp3"
     private lateinit var inputStream: InputStream
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,34 +48,20 @@ class TrackName : Fragment() {
         val view = inflater.inflate(R.layout.fragment_track_name, container, false)
 
         val confirmbtn: TextView = view.findViewById(R.id.Confirm)
-        val exitbtn: TextView = view.findViewById(R.id.Exit)
+        val exitbtn: TextView = view.findViewById(R.id.back)
         val playlistname = view.findViewById<TextInputEditText>(R.id.PlayListName)
 
         confirmbtn.setOnClickListener {
             val playlistNameText = playlistname.text.toString().trim()
 
             if (playlistNameText.isNotEmpty()) {
-                //Crear carpeta el nom te que ser el de playlistNameText
-
                 var audio = Audio()
-
                 if(audio.createFolder(playlistNameText)) {
                     val intent = Intent(context,Llist::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(context, "La carpeta no s'ha pogut crear", Toast.LENGTH_SHORT).show()
                 }
-
-
-                //if(audio.saveSong(song, playlistNameText, inputStream, requireContext())) {
-                if(audio.getFile(song) != null) {
-                    val intent = Intent(context,Llist::class.java)
-                    startActivity(intent)
-                    Toast.makeText(context, "Fitxer obtingut", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context, audio.getFile(song).toString(), Toast.LENGTH_SHORT).show()
-                }
-
             } else {
                 Toast.makeText(requireContext(), "Ingresa un nombre de lista válido", Toast.LENGTH_SHORT).show()
             }

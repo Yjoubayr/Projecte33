@@ -1,33 +1,15 @@
 package cat.boscdelacoma.reproductormusica
 
-import android.content.ContentResolver
-import android.content.ContentValues
+import android.app.DownloadManager
 import android.content.Context
-import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.MediaMetadataRetriever
 import android.media.MediaPlayer
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
-import android.provider.MediaStore
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.SimpleCursorAdapter
+import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
-import androidx.loader.content.CursorLoader
-import java.io.BufferedReader
 import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.io.IOException
-import java.io.OutputStream
-import javax.xml.transform.URIResolver
-import kotlin.io.path.Path
+import java.nio.file.Files
+import java.nio.file.Path
 
 class Audio {
 
@@ -40,140 +22,193 @@ class Audio {
 
     constructor() {}
 
+
+    /**
+     * Metode que ens ajuda a crear una carpeta en el directori de musica.
+     * @param carpetaNombre Nom de la carpeta.
+     * @return {Boolean} Retorna true si s'ha creat la carpeta.
+     * */
     fun createFolder(carpetaNombre: String): Boolean {
         if (carpetaNombre.isNotEmpty()) {
             val carpetaPath =
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString() + File.separator + carpetaNombre
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+                    .toString() + File.separator + carpetaNombre
             val carpeta = File(carpetaPath)
             return carpeta.mkdirs()
         }
         return false
     }
 
+    /**
+     * Ens ajuda a descarregar una cançó a partir d'una URL.
+     * @param context Context de l'activitat.
+     * @param songUrl URL de la cançó.
+     * @return {Unit} No retorna res.
+     * */
+    fun downloadSongAPI(context: Context, songUrl: String) {
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val request = DownloadManager.Request(Uri.parse(songUrl))
 
+        request.setTitle("Descarga de canción")
+        request.setDescription("Descargando archivo MP3")
 
-    public fun getFile(fileName: String): File? {
-        val directory = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString())
-        try {
-            if(directory.isDirectory) {
-                val listFiles = directory.listFiles()
-                val file = listFiles?.filter { it.name == fileName }
-                return file!!.get(0)
-            } else {
-                return null
-            }
-        } catch (e: Exception) {
-            return null
-        }
+        val musicDirectory =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val fileName = "cancion_descargada.mp3"
+        val destinationFile = File(musicDirectory, fileName)
+        request.setDestinationUri(Uri.fromFile(destinationFile))
+
+        val downloadId = downloadManager.enqueue(request)
+
+        Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
     }
 
-    public fun saveSong(songName: String, folderName: String, inputStream: InputStream, context: Context): Boolean {
+    /**
+     * Obte una llista de noms de fitxers al directori de música,
+     * excluint els fitxers ocults i aquells que acaben amb ".mp3".
+     * @return {ArrayList<String>} Llistat dels noms.
+     */
+    fun getAllFilesList(): ArrayList<String> {
+        val list: ArrayList<String> = ArrayList()
+        val musicDirectory =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val files = musicDirectory.listFiles()
 
-        return try {
-            val fd = context.assets.openFd(songName)
-
-            mediaPlayer.setDataSource(
-                fd.fileDescriptor,
-                fd.startOffset,
-                fd.length
-            )
-
-            fd.close()
-
-            val values = ContentValues()
-            values.put(MediaStore.Audio.Media.TITLE, songName)
-            values.put(MediaStore.MediaColumns.DISPLAY_NAME, songName)
-            values.put(MediaStore.MediaColumns.MIME_TYPE, "audio/mp3")
-            values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_MUSIC + "/" + folderName)
-            values.put(MediaStore.Audio.Media.DURATION, mediaPlayer.duration)
-            values.put(MediaStore.Images.Media.IS_PENDING, true)
-
-
-
-            val saveAudio =
-                context.contentResolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values)
-
-            if (saveAudio != null) {
-                val outputStream = saveAudio!!.let { context.contentResolver.openOutputStream(it) }
-                val buffer = ByteArray(1024)
-                var length: Int
-                while (inputStream.read(buffer).also { length = it } > 0) {
-                    outputStream?.write(buffer, 0, length)
-                }
-                outputStream?.flush()
-                outputStream?.close()
-                inputStream?.close()
-            }
-
-            Toast.makeText(
-                context,
-                "Audio guardat",
-                Toast.LENGTH_LONG
-            ).show()
-            true
-            
-        } catch (e: IOException) {
-            Toast.makeText(
-                context,
-                e.localizedMessage,
-                Toast.LENGTH_LONG
-            ).show()
-            false
-        }
-    }
-
-    public fun getLists(context: Context?) {
-        val fullPath = Path(Environment.DIRECTORY_MUSIC).toAbsolutePath()
-
-        var pathMusic = File(Environment.DIRECTORY_MUSIC)
-        pathMusic.listFiles()
-
-        val directories =  File(pathMusic.absolutePath).list { dir, name -> File(dir, name).isDirectory}
-
-        /*
-                val contentResolver: ContentResolver = context.contentResolver
-
-                // Especifiquem les columnes que volem seleccionar
-                val projection = arrayOf(
-                    MediaStore.Audio.Media.DISPLAY_NAME
-                )
-
-                // Amb aquesta seleccio ens assegurem de que nomes siguin carpetes
-                val selectionFolders = "${MediaStore.Audio.Media.IS_MUSIC} != 0"
-
-                val cursor = contentResolver.query(
-                    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-                    projection,
-                    selectionFolders,
-                    null,
-                    null
-                )
-
-                cursor?.use { cursor ->
-                    val carpetesTrobades = HashSet<String>()
-
-                    while (cursor.moveToNext()) {
-                        val folderPath =
+        if (files != null) {
+            for (file in files) {
+                val path = file.absolutePath
+                val relativePath = path.substring(path.lastIndexOf("/") + 1)
+                if (!file.isHidden && !relativePath.startsWith(".")) {
+                    if (!path.endsWith(".mp3")) {
+                        list.add(relativePath)
                     }
-                }*/
+                }
+            }
+        }
+
+        return list
+    }
+
+    /**
+     * Ens permet borrar una carpeta del directori de musica.
+     * @param folderName Nom de la carpeta.
+     * @return {Unit} No retorna res.
+     * */
+    fun deleteFileInMusicFolder(fileName: String) {
+        val musicDirectory =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val file = File(musicDirectory, fileName)
+
+        if (file.exists()) {
+            val success = file.delete()
+
+            if (success) {
+                Log.d("File", "El archivo $fileName se ha borrado correctamente.")
+            } else {
+                Log.d("File", "El archivo $fileName no se ha podido borrar.")
+            }
+        } else {
+            Log.d("File", "El archivo $fileName no existe en la carpeta de música.")
+        }
+    }
+
+    /**
+     * Ens permet borrar una canço d'un directori en especific
+     * @param currentItemSong Nom de la canço.
+     * @param FolderName Nom de la carpeta.
+     * @return {Unit} No retorna res.
+     * */
+    fun deleteMusicInTrack(currentItemSong: String, FolderName: String) {
+        val musicDirectory = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC),
+            FolderName
+        )
+        val file = File(musicDirectory, currentItemSong)
+
+        if (file.exists()) {
+            val success = file.delete()
+
+            if (success) {
+                Log.d("File", "El archivo $currentItemSong se ha borrado correctamente.")
+            } else {
+                Log.d("File", "El archivo $currentItemSong no se ha podido borrar.")
+            }
+        } else {
+            Log.d("File", "El archivo $currentItemSong no existe en la carpeta de música.")
+        }
+    }
+
+    /**
+     * Ens permet obtenir una llista de cançons d'un directori en especific
+     * @param FolderName Nom de la carpeta.
+     * @return {ArrayList<String>} Llistat dels noms.
+     * */
+    fun getSongList(FolderName: String): ArrayList<String> {
+        val list: ArrayList<String> = ArrayList()
+        val musicDirectory = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC),
+            FolderName
+        )
+        val files = musicDirectory.listFiles()
+
+        if (files != null) {
+            for (file in files) {
+                val path = file.absolutePath
+                val relativePath = path.substring(path.lastIndexOf(File.separator) + 1)
+
+                // Verificar si el archivo no es oculto
+                if (!file.isHidden && !relativePath.startsWith(".")) {
+                    if (path.endsWith(".mp3")) {
+                        list.add(relativePath)
+                    }
+                }
+            }
+        }
+
+        return list
+    }
+
+    /**
+     * Ens permet obtenir la ruta absoluta d'un fitxer mp3.
+     * @param fileName Nom del fitxer.
+     * @param folderName Nom de la carpeta.
+     * @return {String} Ruta absoluta del fitxer.
+     * */
+    fun getAbsolutePathMp3File(fileName: String, folderName: String): String {
+        val musicDirectory = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC),
+            folderName
+        )
+        val files = musicDirectory.listFiles()
+        if (files != null) {
+            for (file in files) {
+                val path = file.absolutePath
+                val relativePath = path.substring(path.lastIndexOf(File.separator) + 1)
+                if (!file.isHidden && !relativePath.startsWith(".") && relativePath == fileName){
+                    return path.toString()
+                }else{
+                    return ""
+                }
+            }
+        }else{
+            return ""
+        }
+        return ""
+    }
+
+    /**
+     * Ens permet crear un link d'una canço dins d'un directori
+     * @param OriginalFilePath Nom del fitxer
+     * @param FolderName Nom de la carpeta
+     * @return {Unit} No retorna res
+     * */
+    fun PutSonIntoPlayList(OriginalFilePath: Path, FolderName: Path) {
+        try {
+            Files.createSymbolicLink(FolderName, OriginalFilePath)
+
+        } catch (e: Exception) {
+            println("Error en crear l'enllaç: ${e.message}")
+        }
     }
 }
 
-public fun obtenirDades(context: Context, uri: Uri): Audio {
-    val retriever = MediaMetadataRetriever()
-    var audio = Audio()
-
-    try {
-        audio.uri = uri
-        retriever.setDataSource(context, audio.uri)
-        audio.titol = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
-        audio.duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
-        audio.autor = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR)
-
-    } catch (e: IOException) {
-        e.printStackTrace()
-    } finally {
-        retriever.release()
-        return audio
-    }
-}

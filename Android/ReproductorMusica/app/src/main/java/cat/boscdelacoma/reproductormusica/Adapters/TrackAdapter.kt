@@ -1,13 +1,16 @@
-package cat.boscdelacoma.reproductormusica
+package cat.boscdelacoma.reproductormusica.Adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import cat.boscdelacoma.reproductormusica.Audio
+import cat.boscdelacoma.reproductormusica.MainActivity
+import cat.boscdelacoma.reproductormusica.R
+import cat.boscdelacoma.reproductormusica.TrackSongs
 
 class TrackAdapter(private val trackList: List<TrackItem>): RecyclerView.Adapter<TrackAdapter.ViewHolder>(){
     data class TrackItem(val trackName: String)
@@ -29,14 +32,17 @@ class TrackAdapter(private val trackList: List<TrackItem>): RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = trackList[position]
 
-        // Set data to views in the ViewHolder
         holder.trackName.text = currentItem.trackName
+
         holder.deleteTrack.setOnClickListener {
-            //TODO : Backend, eliminar la cançó de la llista
-            Toast.makeText(holder.itemView.context, holder.trackName.text.toString() +" deleted", Toast.LENGTH_SHORT).show()
+            val currentItemTitle = currentItem.trackName
+            Audio().deleteFileInMusicFolder(currentItemTitle)
         }
+
         holder.playtrack.setOnClickListener {
-            //TODO: Backend, agafar les cançons de la llista i reproduir-les
+            val intent = Intent(holder.itemView.context, TrackSongs::class.java)
+            intent.putExtra("playlistName", currentItem.trackName)
+            holder.itemView.context.startActivity(intent)
             Toast.makeText(holder.itemView.context, "Track playing", Toast.LENGTH_SHORT).show()
         }
     }

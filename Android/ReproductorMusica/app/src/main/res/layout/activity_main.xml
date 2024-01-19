@@ -26,15 +26,16 @@
                 android:background="@drawable/addplaylist"
                 android:textColor="@color/white"
                 android:elevation="5dp"
-                android:layout_alignParentLeft="true"
-                />
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/likesongsvg"
-                android:id="@+id/AddFav"
                 android:layout_alignParentRight="true"
                 />
+
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+
+                android:background="@drawable/returnbtn" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="300dp"
@@ -50,6 +51,7 @@
                 />
 
             <TextView
+                android:id="@+id/songname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Song name"
@@ -69,7 +71,7 @@
 
         </RelativeLayout>
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="80dp"
@@ -80,6 +82,13 @@
                 android:layout_height="30dp"
                 android:background="@drawable/addsongplaylist"
 
+                />
+            <TextView
+                android:id="@+id/DownloadSong"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/likesongsvg"
+                android:layout_alignParentRight="true"
                 />
         </RelativeLayout>
         <FrameLayout
@@ -95,7 +104,6 @@
                 android:layout_height="match_parent"
                 android:thumbTint="@color/white"
                 android:progressTint="@color/black"
-                android:progress="10"
                 android:progressBackgroundTint="@color/white"
                 android:scaleY="1"
                 android:scaleX="1"
