@@ -12,12 +12,13 @@ public class CancoService
 
     /// <summary>
     /// Constructor de la classe CancoService
+    /// Tambe crearem un objecte de la classe ExtensioService passant-li el contexte de dades
     /// </summary>
     /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
-    public CancoService(DataContext context, ExtensioService extensioService)
+    public CancoService(DataContext context)
     {
         _context = context;
-        _extensioService = extensioService;
+        _extensioService = new ExtensioService(context);
     }
 
     /// <summary>

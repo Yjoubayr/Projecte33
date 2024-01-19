@@ -41,7 +41,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
 
         /// <summary>
-        /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any} per obtenir un Album
+        /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any}/{IDCanco} per obtenir un Album
         /// </summary>
         /// <param name="Titol">Titol de l'Album a consultar</param>
         /// <param name="Any">Any de l'Album a consultar</param>
@@ -61,7 +61,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any} per modificar un album
+        /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any}/{IDCanco} per modificar un album
         /// </summary>
         /// <param name="Titol">Titol de l'Album a modificar</param>
         /// <param name="Any">Any de l'Album a modificar</param>
@@ -71,7 +71,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("putAlbum/{Titol}/{Any}/{IDCanco}")]
         public async Task<IActionResult> PutAlbum(string Titol, int Any, string IDCanco, Album updatedAlbum)
         {
-            var album = await _albumService.GetAsync(Titol, Any);
+            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
 
             if (album is null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any || IDCanco != updatedAlbum.IDCanco) {
                 return NotFound();
@@ -118,7 +118,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Album/deleteAlbum/{Titol}/{Any} per eliminar un album
+        /// Accedeix a la ruta /api/Album/deleteAlbum/{Titol}/{Any}/{IDCanco} per eliminar un album
         /// </summary>
         /// <param name="Titol">Titol de l'album a eliminar</param>
         /// <param name="Any">Any de l'album a eliminar</param>

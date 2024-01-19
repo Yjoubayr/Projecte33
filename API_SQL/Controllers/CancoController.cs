@@ -17,18 +17,15 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly CancoService _cancoService;
-        private readonly ExtensioService _extensioService;
 
         /// <summary>
         /// Constructor de la classe CancoController
-        /// Tambe crearem un objecte de la classe CancoService passant-li el contexte de dades
         /// </summary>
         /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
         public CancoController(DataContext context)
         {
             _context = context;
-            _extensioService = new ExtensioService(context);
-            _cancoService = new CancoService(context, _extensioService);
+            _cancoService = new CancoService(context);
         }
 
         /// <summary>
