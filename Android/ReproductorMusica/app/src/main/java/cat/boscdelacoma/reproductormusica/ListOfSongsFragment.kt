@@ -81,6 +81,8 @@ class ListOfSongsFragment : Fragment() {
             val fragmentManager = requireActivity().supportFragmentManager
             fragmentManager.popBackStack()
         }
+
+
         val list = Audio().getAllFilesList()
         val trackList: MutableList<track_song_list_adapter.trackSongListItem> = mutableListOf()
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)

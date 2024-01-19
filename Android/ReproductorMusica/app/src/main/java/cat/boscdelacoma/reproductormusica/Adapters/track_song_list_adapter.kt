@@ -29,7 +29,8 @@ class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongL
         holder.trackName.text = currentItem.trackName
 
         holder.addtoPlayList.setOnClickListener {
-            // TODO: Add song to playlist
+            // TODO Aqui tiene que llegar el nombre de la cancion
+
         }
 
     }
