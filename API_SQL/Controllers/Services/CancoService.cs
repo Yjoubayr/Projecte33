@@ -21,7 +21,7 @@ public class CancoService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/getCancons per obtenir totes les cancons
+    /// Accedeix a la ruta /api/Canco/getCancons dins de CancoController per obtenir totes les cancons
     /// </summary>
     /// <returns>El llistat de Cancons</returns>
     public async Task<List<Canco>> GetAsync() {
@@ -29,7 +29,7 @@ public class CancoService
     }
     
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} per obtenir una Canco
+    /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} dins de CancoController per obtenir una Canco
     /// </summary>
     /// <param name="IDCanco">Identificador de la Canco a obtenir</param>
     /// <returns>L'objecte de la Canco</returns>
@@ -40,7 +40,7 @@ public class CancoService
                             .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/postCanco per crear una Canco
+    /// Accedeix a la ruta /api/Canco/postCanco dins de CancoController per crear una Canco
     /// </summary>
     /// <param name="newCanco">L'objecte de la Canco a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
@@ -65,7 +65,7 @@ public class CancoService
    
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} per modificar una Canco
+    /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} dins de CancoController per modificar una Canco
     /// </summary>
     /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
@@ -89,7 +89,7 @@ public class CancoService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/deleteCanco/{IDCanco} per eliminar una Canco
+    /// Accedeix a la ruta /api/Canco/deleteCanco/{IDCanco} dins de CancoController per eliminar una Canco
     /// </summary>
     /// <param name="canco">L'objecte de la Canco a eliminar</param>
     /// <returns>Verificacio de que la Canco s'ha eliminat correctament</returns>

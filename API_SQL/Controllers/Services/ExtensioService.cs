@@ -19,30 +19,30 @@ public class ExtensioService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Extensio/getExtensios per obtenir totes les extensios
+    /// Per obtenir totes les extensios
     /// </summary>
-    /// <returns>El llistat de Extensios</returns>
+    /// <returns>El llistat de Extensions</returns>
     public async Task<List<Extensio>> GetAsync() {
-        return await _context.Extensios.ToListAsync();
+        return await _context.Extensions.ToListAsync();
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Extensio/getExtensio/{Nom} per obtenir una Extensio
+    /// Per obtenir una Extensio
     /// </summary>
     /// <param name="Nom">Nom de la Extensio a obtenir</param>
     /// <returns>L'objecte de la Extensio</returns>
     public async Task<Extensio?> GetAsync(string Nom) =>
-        await _context.Extensios
+        await _context.Extensions
                             .Include(x => x.LCancons)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
     /// <summary>
-    /// Accedeix a la ruta /api/Extensio/postExtensio per crear una Extensio
+    /// Per crear una Extensio
     /// </summary>
     /// <param name="newExtensio">L'objecte de la Extensio a crear</param>
     /// <returns>Verificacio de que la Extensio s'ha creat correctament</returns>
     public async Task CreateAsync(Extensio newExtensio) {
-        await _context.Extensios.AddAsync(newExtensio);
+        await _context.Extensions.AddAsync(newExtensio);
         await _context.SaveChangesAsync();
     }
 }

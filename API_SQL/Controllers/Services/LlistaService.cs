@@ -19,7 +19,7 @@ public class LlistaService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Llista/getLlistes per obtenir totes les llistes
+    /// Accedeix a la ruta /api/Llista/getLlistes dins de LlistaController per obtenir totes les llistes
     /// </summary>
     /// <returns>El llistat de Llistes de reproduccio</returns>
     public async Task<List<Llista>> GetAsync() {
@@ -27,7 +27,7 @@ public class LlistaService
     }
 
     /// <summary>   
-    /// Accedeix a la ruta /api/Llista/getLlista/{MACAddress}/{NomLlista} per obtenir una Llista de reproduccio
+    /// Accedeix a la ruta /api/Llista/getLlista/{MACAddress}/{NomLlista} dins de LlistaController per obtenir una Llista de reproduccio
     /// </summary>
     /// <param name="MACAddress">MACAddress de la Llista de reproduccio a obtenir</param>
     /// <param name="NomLlista">Nom de la Llista de reproduccio a obtenir</param>
@@ -38,7 +38,7 @@ public class LlistaService
                             .FirstOrDefaultAsync(x => x.MACAddress == MACAddress && x.NomLlista == NomLlista);
 
     /// <summary>
-    /// Accedeix a la ruta /api/Llista/postLlista per crear una Llista de reproduccio
+    /// Accedeix a la ruta /api/Llista/postLlista dins de LlistaController per crear una Llista de reproduccio
     /// </summary>
     /// <param name="newLlista">L'objecte de la Llista de reproduccio a crear</param>
     /// <returns>Verificacio de que la Llista de reproduccio s'ha creat correctament</returns>
@@ -48,7 +48,7 @@ public class LlistaService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista} per modificar una Llista de reproduccio
+    /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista} dins de LlistaController per modificar una Llista de reproduccio
     /// </summary>
     /// <param name="updatedLlista">L'objecte de la Llista de reproduccio a modificar</param>
     /// <returns>Verificacio de que la Llista de reproduccio s'ha modificat correctament</returns>
@@ -59,7 +59,7 @@ public class LlistaService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Llista/deleteLlista/{MACAddress}/{NomLlista} per eliminar una Llista de reproduccio
+    /// Accedeix a la ruta /api/Llista/deleteLlista/{MACAddress}/{NomLlista} dins de LlistaController per eliminar una Llista de reproduccio
     /// </summary>
     /// <param name="llista">L'objecte de la Llista de reproduccio a eliminar</param>
     /// <returns>Verificacio de que la Llista de reproduccio s'ha eliminat correctament</returns>

@@ -14,7 +14,7 @@ public class MusicService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Music/getArtistes per obtenir totes les cancons
+    /// Accedeix a la ruta /api/Music/getArtistes dins de MusicController per obtenir totes les cancons
     /// </summary>
     /// <returns>El llistat d'artistes</returns>
     public async Task<List<Music>> GetAsync() {
@@ -22,7 +22,7 @@ public class MusicService
     }
     
     /// <summary>
-    /// Accedeix a la ruta /api/Music/getMusic/{Nom} per obtenir una Canco
+    /// Accedeix a la ruta /api/Music/getMusic/{Nom} dins de MusicController per obtenir una Canco
     /// </summary>
     /// <param name="Nom">Nom del Music a obtenir</param>
     /// <returns>L'objecte del Music</returns>
@@ -33,7 +33,7 @@ public class MusicService
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
     /// <summary>
-    /// Accedeix a la ruta /api/Music/postMusic per crear un Music
+    /// Accedeix a la ruta /api/Music/postMusic dins de MusicController per crear un Music
     /// </summary>
     /// <param name="newMusic">L'objecte del Music a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
@@ -44,7 +44,7 @@ public class MusicService
         
 
     /// <summary>
-    /// Accedeix a la ruta /api/Music/putMusic/{Nom} per modificar una Canco
+    /// Accedeix a la ruta /api/Music/putMusic/{Nom} dins de MusicController per modificar una Canco
     /// </summary>
     /// <param name="Nom">Nom del Music a modificar</param>
     /// <param name="updatedMusic">L'objecte del Music a modificar</param>
@@ -56,7 +56,7 @@ public class MusicService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} per eliminar un Music
+    /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} dins de MusicController per eliminar un Music
     /// </summary>
     /// <param name="Music">L'objecte del Music a eliminar</param>
     /// <returns>Verificacio de que el Music s'ha eliminat correctament</returns>
