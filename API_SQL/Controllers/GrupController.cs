@@ -68,7 +68,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var grup = await _grupService.GetAsync(Nom);
 
-            if (grup is null)
+            if (grup is null || grup.Nom != updatedGrup.Nom)
             {
                 return NotFound();
             }

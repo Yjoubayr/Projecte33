@@ -45,6 +45,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// </summary>
         /// <param name="Titol">Titol de l'Album a consultar</param>
         /// <param name="Any">Any de l'Album a consultar</param>
+        /// <param name="IDCanco">Identificador de la Canco de l'Album a consultar</param>
         /// <returns>L'objecte de l'Album consultat</returns>
         [HttpGet("getAlbum/{Titol}/{Any}/{IDCanco}")]
         public async Task<ActionResult<Album>> GetAlbum(string Titol, int Any, string IDCanco)
@@ -58,31 +59,33 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             return album;
         }
-/*
+
         /// <summary>
         /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any} per modificar un album
         /// </summary>
         /// <param name="Titol">Titol de l'Album a modificar</param>
         /// <param name="Any">Any de l'Album a modificar</param>
+        /// <param name="IDCanco">Identificador de la Canco de l'Album a modificar</param>
         /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
         /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
-        [HttpPut("putAlbum/{Titol}/{Any}")]
-        public async Task<IActionResult> PutAlbum(string Titol, int Any, Album updatedAlbum)
+        [HttpPut("putAlbum/{Titol}/{Any}/{IDCanco}")]
+        public async Task<IActionResult> PutAlbum(string Titol, int Any, string IDCanco, Album updatedAlbum)
         {
             var album = await _albumService.GetAsync(Titol, Any);
 
-            if (album is null) {
+            if (album is null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any || IDCanco != updatedAlbum.IDCanco) {
                 return NotFound();
             }
 
             updatedAlbum.Titol = album.Titol;
             updatedAlbum.Any = album.Any;
+            updatedAlbum.IDCanco = album.IDCanco;
 
             await _albumService.UpdateAsync(updatedAlbum);
 
             return NoContent();
         }
-*/
+
         /// <summary>
         /// Accedeix a la ruta /api/Album/postAlbum per crear un album
         /// </summary>
@@ -101,7 +104,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
-                if (_albumService.GetAsync(album.Titol, album.Any, album.IDCanco) != null)
+                if (_albumService.GetAsync(album.Titol, album.Any, album.IDCanco) == null)
                 {
                     return Conflict();
                 }
@@ -113,17 +116,18 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             return result;
         }
-/*
+
         /// <summary>
         /// Accedeix a la ruta /api/Album/deleteAlbum/{Titol}/{Any} per eliminar un album
         /// </summary>
         /// <param name="Titol">Titol de l'album a eliminar</param>
         /// <param name="Any">Any de l'album a eliminar</param>
+        /// <param name="IDCanco">Identificador de la Canco de l'Album a eliminar</param>
         /// <returns>Verificacio de que l'Album s'ha eliminat correctament</returns>
-        [HttpDelete("deleteAlbum/{Titol}/{Any}")]
-        public async Task<IActionResult> DeleteAlbum(string Titol, int Any)
+        [HttpDelete("deleteAlbum/{Titol}/{Any}/{IDCanco}")]
+        public async Task<IActionResult> DeleteAlbum(string Titol, int Any, string IDCanco)
         {
-            var album = await _albumService.GetAsync(Titol, Any);
+            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
             
             if (album is null)
             {
@@ -133,6 +137,6 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _albumService.RemoveAsync(album);
 
             return NoContent();
-        }*/
+        }
     }
 }

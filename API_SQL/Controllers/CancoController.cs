@@ -17,6 +17,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly CancoService _cancoService;
+        private readonly ExtensioService _extensioService;
 
         /// <summary>
         /// Constructor de la classe CancoController
@@ -26,7 +27,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         public CancoController(DataContext context)
         {
             _context = context;
-            _cancoService = new CancoService(context);
+            _extensioService = new ExtensioService(context);
+            _cancoService = new CancoService(context, _extensioService);
         }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
-                if (_cancoService.GetAsync(canco.IDCanco) != null)
+                if (_cancoService.GetAsync(canco.IDCanco) == null)
                 {
                     return Conflict();
                 }

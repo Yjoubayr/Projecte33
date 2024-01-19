@@ -8,14 +8,16 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class CancoService
 {
     private readonly DataContext _context;
+    private readonly ExtensioService _extensioService;
 
     /// <summary>
     /// Constructor de la classe CancoService
     /// </summary>
     /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
-    public CancoService(DataContext context)
+    public CancoService(DataContext context, ExtensioService extensioService)
     {
         _context = context;
+        _extensioService = extensioService;
     }
 
     /// <summary>
@@ -45,6 +47,19 @@ public class CancoService
     public async Task CreateAsync(Canco newCanco) {
         newCanco.IDCanco = Guid.NewGuid().ToString();
         await _context.Cancons.AddAsync(newCanco);
+
+        // Afegim una nova extensio si no existeix, 
+        // obtenint-la del nom de la canco
+        string[] cancoSeparada = newCanco.Nom.Split('.');
+        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
+        Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
+
+        if (extensio == null) {
+            extensio = new Extensio();
+            extensio.Nom = nomExtensio;
+            await _extensioService.CreateAsync(extensio);
+        }
+        
         await _context.SaveChangesAsync();
     }
    
@@ -57,7 +72,19 @@ public class CancoService
     public async Task UpdateAsync(Canco updatedCanco) {
         var cancoOriginal = await GetAsync(updatedCanco.IDCanco);
         _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
-        //_context.Entry(updatedCanco).State = EntityState.Modified;
+
+        // Afegim una nova extensio si no existeix, 
+        // obtenint-la del nom de la canco modificada
+        string[] cancoSeparada = updatedCanco.Nom.Split('.');
+        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
+        Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
+
+        if (extensio == null) {
+            extensio = new Extensio();
+            extensio.Nom = nomExtensio;
+            await _extensioService.CreateAsync(extensio);
+        }
+
         await _context.SaveChangesAsync();
     }
 
