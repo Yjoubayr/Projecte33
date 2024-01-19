@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
         initMainActivity()
+        showFragments()
     }
 
     fun tornarDesDeFragment() {
@@ -41,13 +42,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initMainActivity() {
-        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
         botoPlayPause = findViewById(R.id.startSong)
         seekBarAudio = findViewById(R.id.progressBar)
+        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
         mediaPlayer.setDataSource(absolutepathsong)
         mediaPlayer.prepare()
+
+
         botoPlayPause.setOnClickListener {
             if (mediaPlayer.isPlaying) {
                 botoPlayPause.setBackgroundResource(R.drawable.playbtn)
@@ -57,24 +60,6 @@ class MainActivity : AppCompatActivity() {
                 mediaPlayer.start()
             }
         }
-
-    }
-    private fun updateSeekBar() {
-        handler.postDelayed(object : Runnable {
-
-            override fun run() {
-                if (mediaPlayer.isPlaying) {
-                    val currentPosition = mediaPlayer.currentPosition
-                    seekBarAudio.progress = currentPosition
-                    handler.postDelayed(this, 500) // Actualizar cada segundo
-                }
-            }
-        }, 0)
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        mediaPlayer.release()
-        handler.removeCallbacksAndMessages(null) // Detener la actualización de la SeekBar
 
     }
 

@@ -48,7 +48,7 @@ class TrackName : Fragment() {
         val view = inflater.inflate(R.layout.fragment_track_name, container, false)
 
         val confirmbtn: TextView = view.findViewById(R.id.Confirm)
-        val exitbtn: TextView = view.findViewById(R.id.Exit)
+        val exitbtn: TextView = view.findViewById(R.id.back)
         val playlistname = view.findViewById<TextInputEditText>(R.id.PlayListName)
 
         confirmbtn.setOnClickListener {
