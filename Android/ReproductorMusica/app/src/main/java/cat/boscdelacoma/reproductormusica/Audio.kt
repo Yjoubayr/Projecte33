@@ -8,6 +8,8 @@ import android.os.Environment
 import android.util.Log
 import android.widget.Toast
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Path
 
 class Audio {
 
@@ -194,6 +196,19 @@ class Audio {
         return ""
     }
 
+    /**
+     * Ens permet crear un link d'una canço dins d'un directori
+     * @param OriginalFilePath Nom del fitxer
+     * @param FolderName Nom de la carpeta
+     * @return {Unit} No retorna res
+     * */
+    fun PutSonIntoPlayList(OriginalFilePath: Path, FolderName: Path) {
+        try {
+            Files.createSymbolicLink(FolderName, OriginalFilePath)
 
+        } catch (e: Exception) {
+            println("Error en crear l'enllaç: ${e.message}")
+        }
+    }
 }
 

@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var botoPlayPause: TextView
     private var mediaPlayer: MediaPlayer = MediaPlayer()
     private lateinit var seekBarAudio: SeekBar
-    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         botoPlayPause = findViewById(R.id.startSong)
         seekBarAudio = findViewById(R.id.progressBar)
-        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+        //val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
-        mediaPlayer.setDataSource(absolutepathsong)
-        mediaPlayer.prepare()
+        //mediaPlayer.setDataSource(absolutepathsong)
+       // mediaPlayer.prepare()
 
 
         botoPlayPause.setOnClickListener {
