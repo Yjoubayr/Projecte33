@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace dymj.ReproductorMusica.API_SQL.Model {
-    public partial class Instrument {
+    public partial class Music {
         [Key]
         public string Nom {get; set;}
-        public string? Tipus {get; set;}
+        public ICollection<Grup>? LGrups{get; set;}
         public ICollection<Tocar>? LTocar { get; set; }
     }
 }
