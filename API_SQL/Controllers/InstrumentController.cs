@@ -7,14 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Data;
 using dymj.ReproductorMusica.API_SQL.Model;
+using dymj.ReproductorMusica.API_SQL.Services;
 
-namespace API_SQL.Controllers
+namespace dymj.ReproductorMusica.API_SQL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class InstrumentController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly InstrumentService _instrumentService;
 
         public InstrumentController(DataContext context)
         {
@@ -59,12 +61,12 @@ namespace API_SQL.Controllers
         [HttpPut("putInstrument/{Nom}")]
         public async Task<IActionResult> PutInstrument(string Nom, Instrument updatedInstrument)
         {
-            if (id != instrument.Nom)
+            if (Nom != updatedInstrument.Nom)
             {
                 return BadRequest();
             }
 
-            _context.Entry(instrument).State = EntityState.Modified;
+            _context.Entry(updatedInstrument).State = EntityState.Modified;
 
             try
             {
@@ -72,7 +74,7 @@ namespace API_SQL.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InstrumentExists(id))
+                if (!InstrumentExists(Nom))
                 {
                     return NotFound();
                 }
@@ -91,7 +93,7 @@ namespace API_SQL.Controllers
         /// <param name="instrument">L'objecte del instrument a crear</param>
         /// <returns>Verificacio de que el instrument s'ha creat correctament</returns>
         [HttpPost("postInstrument")]
-        public async Task<ActionResult<Instrument>> PostInstrument(Instrument instrument)
+        public async Task<IActionResult> PostInstrument(Instrument instrument)
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
@@ -102,7 +104,7 @@ namespace API_SQL.Controllers
             }
             catch (DbUpdateException)
             {
-                if (_musicService.GetAsync(instrument.Nom) != null)
+                if (_instrumentService.GetAsync(instrument.Nom) != null)
                 {
                     return Conflict();
                 }
@@ -136,7 +138,7 @@ namespace API_SQL.Controllers
 
         private bool InstrumentExists(string id)
         {
-            return _context.Instrument.Any(e => e.Nom == id);
+            return _context.Instruments.Any(e => e.Nom == id);
         }
     }
 }

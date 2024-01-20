@@ -51,7 +51,6 @@ public class MusicService
     /// <summary>
     /// Accedeix a la ruta /api/Music/putMusic/{Nom} dins de MusicController per modificar una Canco
     /// </summary>
-    /// <param name="Nom">Nom del Music a modificar</param>
     /// <param name="updatedMusic">L'objecte del Music a modificar</param>
     /// <returns>Verificacio que el Music s'ha modificat correctament</returns>
     public async Task UpdateAsync(Music updatedMusic) {

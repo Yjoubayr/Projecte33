@@ -27,7 +27,7 @@ public class InstrumentService
     /// <returns>El llistat d'Instruments</returns>
     public async Task<List<Instrument>> GetAsync()
     {
-        return await _context.Instrument.ToListAsync();
+        return await _context.Instruments.ToListAsync();
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class InstrumentService
     /// <param name="Nom">Nom de l'Instrument a obtenir</param>
     /// <returns>L'objecte de l'Instrument</returns>
     public async Task<Instrument?> GetAsync(string Nom) =>
-        await _context.Instrument
+        await _context.Instruments
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
@@ -46,34 +46,30 @@ public class InstrumentService
     /// <param name="newInstrument">L'objecte de l'Instrument a crear</param>
     /// <returns>Verificacio de que l'Instrument s'ha creat correctament</returns>
     public async Task CreateAsync(Instrument newInstrument) {
-        await _context.Instrument.AddAsync(instrument);
+        await _context.Instruments.AddAsync(newInstrument);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
     /// Accedeix a la ruta /api/Instrument/putInstrument/{Nom} dins de InstrumentController per modificar un Instrument
     /// </summary>
-    /// <param name="Nom">Nom de l'Instrument a modificar</param>
     /// <param name="updatedInstrument">L'objecte de l'Instrument a modificar</param>
     /// <returns>Verificacio que l'Instrument s'ha modificat correctament</returns>
-    public async Task<Instrument> Update(string Nom, Instrument instrument)
+    public async Task UpdateAsync(Instrument updatedInstrument)
     {
-        if (Nom != instrument.Nom)
-            throw new AppException("Instrument not found");
-
-        _context.Instrument.Update(instrument);
+        var instrumentOriginal = await GetAsync(updatedInstrument.Nom);
+        _context.Entry(instrumentOriginal).CurrentValues.SetValues(updatedInstrument);
         await _context.SaveChangesAsync();
-
-        return instrument;
     }
 
-    public async Task RemoveAsync(string Nom)
+    /// <summary>
+    /// Accedeix a la ruta /api/Instrument/deleteInstrument/{Nom} dins de InstrumentController per eliminar un Instrument
+    /// </summary>
+    /// <param name="Instrument">L'objecte de l'Instrument a eliminar</param>
+    /// <returns>Verificacio de que l'Instrument s'ha eliminat correctament</returns>
+    public async Task RemoveAsync(Instrument instrument)
     {
-        var instrument = await GetAsync(Nom);
-        if (instrument != null)
-        {
-            _context.Instrument.Remove(instrument);
-            await _context.SaveChangesAsync();
-        }
+        _context.Instruments.Remove(instrument);
+        await _context.SaveChangesAsync();
     }
 }
