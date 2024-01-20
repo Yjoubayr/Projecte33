@@ -74,11 +74,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return NoContent();
         }
 
-       /// <summary>
-       /// Accedeix a la ruta /api/Music/postMusic per crear un music
-       /// </summary>
-       /// <param name="music">L'objecte del music a modificar</param>
-       /// <returns>Verificacio que el music s'ha creat correctament</returns>
+        /// <summary>
+        /// Accedeix a la ruta /api/Music/postMusic per crear un music
+        /// </summary>
+        /// <param name="music">L'objecte del music a modificar</param>
+        /// <returns>Verificacio que el music s'ha creat correctament</returns>
         [HttpPost("postMusic")]
         public async Task<IActionResult> PostMusic(Music music)
         {

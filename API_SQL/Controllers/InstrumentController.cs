@@ -19,20 +19,28 @@ namespace API_SQL.Controllers
         public InstrumentController(DataContext context)
         {
             _context = context;
+            _instrumentService = new InstrumentService(context);
         }
 
-        // GET: api/Instrument
+        /// <summary>
+        /// Accedeix a la ruta /api/Instrument/getInstruments per obtenir tots els instruments
+        /// </summary>
+        /// <returns>Una llista de tots els instruments</returns>
         [HttpGet("getInstruments")]
         public async Task<ActionResult<IEnumerable<Instrument>>> GetInstrument()
         {
-            return await _context.Instrument.ToListAsync();
+            return await _instrumentService.GetAsync();
         }
 
-        // GET: api/Instrument/5
+        /// <summary>
+        /// Accedeix a la ruta /api/Instrument/getInstrument/{Nom} per obtenir un instrument
+        /// </summary>
+        /// <param name="Nom">Nom de l'instrument a consultar</param>
+        /// <returns>L'objecte de l'instrument consultat</returns>
         [HttpGet("getInstrument/{Nom}")]
-        public async Task<ActionResult<Instrument>> GetInstrument(string id)
+        public async Task<ActionResult<Instrument>> GetInstrument(string Nom)
         {
-            var instrument = await _context.Instrument.FindAsync(id);
+            var instrument = await _instrumentService.GetAsync(Nom);
 
             if (instrument == null)
             {
@@ -47,7 +55,7 @@ namespace API_SQL.Controllers
         /// </summary>
         /// <param name="Nom">Nom del instrument a modificar</param>
         /// <param name="updatedInstrument">L'objecte del instrument a modificar</param>
-        /// <returns></returns>
+        /// <returns>Verificacio que el instrument s'ha modificat correctament</returns>
         [HttpPut("putInstrument/{Nom}")]
         public async Task<IActionResult> PutInstrument(string Nom, Instrument updatedInstrument)
         {
@@ -81,18 +89,20 @@ namespace API_SQL.Controllers
         /// Accedeix a la ruta /api/Instrument/postInstrument per crear un instrument
         /// </summary>
         /// <param name="instrument">L'objecte del instrument a crear</param>
-        /// <returns>Verificació que el instrument s'ha creat correctament</returns>
+        /// <returns>Verificacio de que el instrument s'ha creat correctament</returns>
         [HttpPost("postInstrument")]
         public async Task<ActionResult<Instrument>> PostInstrument(Instrument instrument)
         {
-            _context.Instrument.Add(instrument);
+            // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
+            IActionResult result;
             try
             {
-                await _context.SaveChangesAsync();
+                await _instrumentService.CreateAsync(instrument);
+                result = CreatedAtAction("GetInstrument", new { Nom = instrument.Nom }, instrument);
             }
             catch (DbUpdateException)
             {
-                if (InstrumentExists(instrument.Nom))
+                if (_musicService.GetAsync(instrument.Nom) != null)
                 {
                     return Conflict();
                 }
@@ -102,25 +112,24 @@ namespace API_SQL.Controllers
                 }
             }
 
-            return CreatedAtAction("GetInstrument", new { id = instrument.Nom }, instrument);
+            return result;
         }
 
         /// <summary>
         /// Accedeix a la ruta /api/Instrument/deleteInstrument/{Nom} per eliminar un instrument
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="Nom">Nom del instrument a eliminar</param>
+        /// <returns>Verificacio de que el instrument s'ha eliminat correctament</returns>
         [HttpDelete("deleteInstrument/{Nom}")]
         public async Task<IActionResult> DeleteInstrument(string Nom)
         {
-            var instrument = await _context.Instrument.FindAsync(id);
-            if (instrument == null)
+            var instrument = await _instrumentService.GetAsync(Nom);
+            if (instrument is null)
             {
                 return NotFound();
             }
 
-            _context.Instrument.Remove(instrument);
-            await _context.SaveChangesAsync();
+            await _instrumentService.RemoveAsync(instrument);
 
             return NoContent();
         }
