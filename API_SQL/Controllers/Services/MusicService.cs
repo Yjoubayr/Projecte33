@@ -8,6 +8,11 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class MusicService
 {
     private readonly DataContext _context;
+    
+    /// <summary>
+    /// Constructor de la classe MusicService
+    /// </summary>
+    /// <param name="context">Contexte de dades utilitzat per a accedir a la base de dades.</param>
     public MusicService(DataContext context)
     {
         _context = context;

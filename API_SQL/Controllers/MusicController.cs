@@ -25,7 +25,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Music/getMusics per obtenir tots els músics
+        /// Accedeix a la ruta /api/Music/getMusics per obtenir tots els musics
         /// </summary>
         /// <returns>Una llista de tots els musics</returns>
         [HttpGet("getMusics")]
@@ -35,10 +35,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Music/getMusic/{Nom} per obtenir un músic
+        /// Accedeix a la ruta /api/Music/getMusic/{Nom} per obtenir un music
         /// </summary>
-        /// <param name="Nom">Nom del músic a consultar</param>
-        /// <returns>L'objecte del músic consultat</returns>
+        /// <param name="Nom">Nom del music a consultar</param>
+        /// <returns>L'objecte del music consultat</returns>
         [HttpGet("getMusic/{Nom}")]
         public async Task<ActionResult<Music>> GetMusic(string Nom)
         {
@@ -53,11 +53,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Music/putMusic/{Nom} per modificar un músic
+        /// Accedeix a la ruta /api/Music/putMusic/{Nom} per modificar un music
         /// </summary>
-        /// <param name="Nom">Nom del músic a modificar</param>
-        /// <param name="updatedMusic">L'objecte del músic a modificar</param>
-        /// <returns>Verificació que el músic s'ha modificat correctament</returns>
+        /// <param name="Nom">Nom del music a modificar</param>
+        /// <param name="updatedMusic">L'objecte del music a modificar</param>
+        /// <returns>Verificacio que el music s'ha modificat correctament</returns>
         [HttpPut("putMusic/{Nom}")]
         public async Task<IActionResult> PutMusic(string Nom, Music updatedMusic)
         {
@@ -75,14 +75,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
        /// <summary>
-       /// Accedeix a la ruta /api/Music/postMusic per crear un músic
+       /// Accedeix a la ruta /api/Music/postMusic per crear un music
        /// </summary>
-       /// <param name="music">L'objecte del músic a modificar</param>
-       /// <returns>Verificació que el músic s'ha creat correctament</returns>
+       /// <param name="music">L'objecte del music a modificar</param>
+       /// <returns>Verificacio que el music s'ha creat correctament</returns>
         [HttpPost("postMusic")]
         public async Task<IActionResult> PostMusic(Music music)
         {
-            // Considerar la possibilitat de comprovar prèviament si existeix el nom del music i retornar un error 409
+            // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
             try
             {
@@ -105,10 +105,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} per eliminar un músic
+        /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} per eliminar un music
         /// </summary>
-        /// <param name="Nom">Nom del músic a eliminar</param>
-        /// <returns>Verificació que el músic s'ha eliminat correctament</returns>
+        /// <param name="Nom">Nom del music a eliminar</param>
+        /// <returns>Verificacio que el music s'ha eliminat correctament</returns>
         [HttpDelete("deleteMusic/{Nom}")]
         public async Task<IActionResult> DeleteMusic(string Nom)
         {

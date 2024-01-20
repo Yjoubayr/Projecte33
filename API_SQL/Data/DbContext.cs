@@ -13,6 +13,7 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
         public DbSet<Music> Musics { get; set; }
         public DbSet<Llista> Llista { get; set; }
         public DbSet<Tocar> Tocar { get; set; }
+        public DbSet<Instrument> Instruments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
