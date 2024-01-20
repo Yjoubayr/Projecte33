@@ -5,8 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import cat.boscdelacoma.reproductormusica.Audio
 import cat.boscdelacoma.reproductormusica.R
 import org.w3c.dom.Text
+import java.nio.file.Path
+import java.nio.file.Paths
 
 class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongListItem>) : RecyclerView.Adapter<track_song_list_adapter.ViewHolder>() {
     data class trackSongListItem(val trackName: String)
@@ -31,8 +34,14 @@ class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongL
         holder.addtoPlayList.setOnClickListener {
             // TODO Aqui tiene que llegar el nombre de la cancion
 
-        }
+            val FolderName = Audio().getFolderPath(currentItem.trackName)
+            val songName = Audio().getMp3Path("cancion_descargada.mp3")
 
+            val folderPath: Path = Paths.get(FolderName)
+            val songPath: Path = Paths.get(songName)
+
+            Audio().PutSonIntoPlayList(songPath,folderPath)
+        }
     }
 
 }

@@ -197,17 +197,51 @@ class Audio {
     }
 
     /**
+     * Ens permet obtenir tota la ruta d'un directori en concret
+     * @param FolderName Nom de la carpeta a obtenir
+     * @return {String} Ens retorna una string que fa referencia al path de la carpeta
+     * */
+    fun getFolderPath(folderName: String): String {
+        val musicDirectory = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC),
+            folderName
+        )
+        return  musicDirectory.toString()
+    }
+
+    /**
+     * Ens permet obtenir la ruta total de les cançons
+     * @param FileName Es el nom del arxiu
+     * */
+    fun getMp3Path(fileName: String): String {
+        val musicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+
+        if (musicDirectory.exists() && musicDirectory.isDirectory) {
+            val musicFolder = File(musicDirectory, fileName)
+
+            if (musicFolder.exists() && musicFolder.isFile) {
+                return musicFolder.absolutePath
+            } else {
+                return "El archivo MP3 '$fileName' no se encontró en el directorio de música."
+            }
+        } else {
+            return "El directorio de música no existe o no es un directorio válido."
+        }
+    }
+    /**
      * Ens permet crear un link d'una canço dins d'un directori
-     * @param OriginalFilePath Nom del fitxer
+     * @param songPath Nom del fitxer
      * @param FolderName Nom de la carpeta
      * @return {Unit} No retorna res
      * */
-    fun PutSonIntoPlayList(OriginalFilePath: Path, FolderName: Path) {
+    fun PutSonIntoPlayList(songPath: Path, folderPath: Path) {
         try {
-            Files.createSymbolicLink(FolderName, OriginalFilePath)
+            val symbolicLinkPath = folderPath.resolve(songPath.fileName.toString())
+            Files.createSymbolicLink(symbolicLinkPath, songPath)
 
+            println("Enlace simbólico creado con éxito: $symbolicLinkPath -> $songPath")
         } catch (e: Exception) {
-            println("Error en crear l'enllaç: ${e.message}")
+            println("Error al crear el enlace simbólico: ${e.message}")
         }
     }
 
