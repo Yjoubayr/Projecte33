@@ -31,15 +31,22 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-
         initMainActivity()
         showFragments()
     }
 
+    /**
+     * Metode que ens ajuda a tornar al fragment anterior.
+     * @return {Unit} No retorna res.
+     * */
     fun tornarDesDeFragment() {
         supportFragmentManager.popBackStack()
     }
 
+    /**
+     * Metode que ens ajuda a inicialitzar la MainActivity.
+     * @return {Unit} No retorna res.
+     * */
     private fun initMainActivity() {
 
         botoPlayPause = findViewById(R.id.startSong)
@@ -62,6 +69,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Metode que ens ajuda a mostrar els fragments.
+     * @return {Unit} No retorna res.
+     * */
     private fun showFragments(){
         val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
         val addplaylist: TextView = findViewById(R.id.AddList)

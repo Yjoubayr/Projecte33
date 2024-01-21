@@ -10,10 +10,6 @@ import cat.boscdelacoma.reproductormusica.Adapters.TrackAdapter
 
 class Llist : AppCompatActivity() {
 
-    //public val lv = ListView()
-
-    private var listName: String? = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_llist)
@@ -32,8 +28,6 @@ class Llist : AppCompatActivity() {
         val adapter = TrackAdapter(trackList)
         recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.adapter = adapter
-
-
 
 
         returnBtn.setOnClickListener(){
