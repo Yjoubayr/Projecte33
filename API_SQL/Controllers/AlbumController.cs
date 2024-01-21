@@ -61,6 +61,25 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
+        /// Accedeix a la ruta /api/Album/getAlbumsByTitolAndAny/{Titol}/{Any} per obtenir un Album
+        /// </summary>
+        /// <param name="Titol">Titol de l'Album a consultar</param>
+        /// <param name="Any">Any de l'Album a consultar</param>
+        /// <returns>L'objecte de l'Album consultat</returns>
+        [HttpGet("getAlbumsByTitolAndAny/{Titol}/{Any}")]
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbumsByTitolAndAny(string Titol, int Any)
+        {
+            var album = await _albumService.GetAsync(Titol, Any);
+
+            if (album == null)
+            {
+                return NotFound();
+            }
+
+            return album;
+        }
+
+        /// <summary>
         /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any}/{IDCanco} per modificar un album
         /// </summary>
         /// <param name="Titol">Titol de l'Album a modificar</param>

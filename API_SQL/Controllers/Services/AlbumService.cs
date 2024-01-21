@@ -31,9 +31,19 @@ public class AlbumService
     /// </summary>
     /// <param name="Titol">El titol de l'album a obtenir</param>
     /// <param name="Any">L'any de publicacio de l'album a obtenir</param>
+    /// <param name="IDCanco">L'identificador de la canco de l'album a obtenir</param>
     /// <returns>L'objecte de l'Album trobat</returns>
     public async Task<Album?> GetAsync(string Titol, int Any, string IDCanco) =>
         await _context.Albums.FirstOrDefaultAsync(x => x.Titol == Titol && x.Any == Any && x.IDCanco == IDCanco);
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any} dins de AlbumController per obtenir un album
+    /// </summary>
+    /// <param name="Titol">El titol de l'album a obtenir</param>
+    /// <param name="Any">L'any de publicacio de l'album a obtenir</param>
+    /// <returns>L'objecte de l'Album trobat</returns>
+    public async Task<List<Album>> GetAsync(string Titol, int Any) =>
+        await _context.Albums.Where(x => x.Titol == Titol && x.Any == Any).ToListAsync();
 
     /// <summary>
     /// Accedeix a la ruta /api/Album/postAlbum dins de AlbumController per crear un album
