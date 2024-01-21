@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var botoPlayPause: TextView
     private var mediaPlayer: MediaPlayer = MediaPlayer()
     private lateinit var seekBarAudio: SeekBar
+    private var isPlaying = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +52,29 @@ class MainActivity : AppCompatActivity() {
 
         botoPlayPause = findViewById(R.id.startSong)
         seekBarAudio = findViewById(R.id.progressBar)
-        //val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
-        //mediaPlayer.setDataSource(absolutepathsong)
-       // mediaPlayer.prepare()
+        // TODO: Pendent de revisar
 
+        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+
+
+        if (!(absolutepathsong.isNullOrEmpty())) {
+            mediaPlayer.setDataSource(absolutepathsong)
+            mediaPlayer.prepare()
+        }
+        seekBarAudio.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                seekBar?.let {
+                    mediaPlayer.seekTo(it.progress)
+                }
+            }
+        })
 
         botoPlayPause.setOnClickListener {
             if (mediaPlayer.isPlaying) {
@@ -64,8 +83,13 @@ class MainActivity : AppCompatActivity() {
             } else {
                 botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
                 mediaPlayer.start()
+                seekBarAudio.max = mediaPlayer.duration
+                updateSeekBar()
+
             }
         }
+
+
 
     }
 
@@ -104,8 +128,6 @@ class MainActivity : AppCompatActivity() {
             // Confirmar la transacción
             transaction.commit()
         }
-
-
         addplaylist.setOnClickListener(){
             val trackName = TrackName()
 
@@ -125,4 +147,25 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
     }
+
+    private fun updateSeekBar() {
+        Thread {
+            while (isPlaying) {
+                runOnUiThread {
+                    seekBarAudio.progress = mediaPlayer.currentPosition
+                }
+                try {
+                    Thread.sleep(100)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+        }.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.release()
+    }
+
 }

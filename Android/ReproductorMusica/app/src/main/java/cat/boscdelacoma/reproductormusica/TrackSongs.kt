@@ -12,11 +12,23 @@ class TrackSongs : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_track_songs)
+        val returnBtn : TextView = findViewById(R.id.back)
+        fillRecicleview()
 
+        returnBtn.setOnClickListener(){
+            finish()
+        }
+
+    }
+
+    /**
+     * Metode per emplenar el recycleView amb les cançons de la carpeta seleccionada.
+     * @return {Unit} No retorna res.
+     * */
+    fun fillRecicleview(){
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val trackSongList : MutableList<SongInTrackAdapter.SongItem> = mutableListOf()
         val playlistName = intent.getStringExtra("playlistName")
-        val returnBtn : TextView = findViewById(R.id.back)
         val tittle : TextView = findViewById(R.id.track_name)
 
         tittle.text = playlistName.toString()
@@ -27,13 +39,9 @@ class TrackSongs : AppCompatActivity() {
             val songItem = SongInTrackAdapter.SongItem(songName = songName)
             trackSongList.add(songItem)
         }
+
         val adapter = SongInTrackAdapter(trackSongList)
         recyclerView.layoutManager= LinearLayoutManager(this)
         recyclerView.adapter = adapter
-
-        returnBtn.setOnClickListener(){
-            finish()
-        }
-
     }
 }

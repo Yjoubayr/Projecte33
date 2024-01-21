@@ -26,17 +26,15 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val currentItem = songList[position]
             val audio = Audio()
-            // Set data to views in the ViewHolder
             holder.textBox.text = currentItem.songName
-            // Set other data as needed
 
             holder.downloadLogo.setOnClickListener {
-                // Aqui va la logica per poder descarregar les cançons
-                Toast.makeText(holder.itemView.context, "Downloading song...", Toast.LENGTH_SHORT).show()
                 val intent = Intent(holder.itemView.context, MainActivity::class.java)
-
+                val path = audio.getMp3Path("cancion_descargada.mp3")
+                intent.putExtra("absolutepathsong", path)
                 holder.itemView.context.startActivity(intent)
                 audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+
             }
         }
         override fun getItemCount(): Int {

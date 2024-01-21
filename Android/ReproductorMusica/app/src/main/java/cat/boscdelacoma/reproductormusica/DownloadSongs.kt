@@ -13,12 +13,15 @@ class DownloadSongs : AppCompatActivity() {
         setContentView(R.layout.activity_downloadsongs)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val songList = mutableListOf<SongAdapter.SongItem>()
+
         val returnBtn : TextView = findViewById(R.id.back)
+
         for (i in 1..60) {
             val songName = "Song $i"
             val songItem = SongAdapter.SongItem(songName = songName)
             songList.add(songItem)
         }
+
         val adapter = SongAdapter(songList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter

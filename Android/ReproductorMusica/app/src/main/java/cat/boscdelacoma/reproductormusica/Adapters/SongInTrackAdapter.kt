@@ -42,6 +42,7 @@ class SongInTrackAdapter(private val songList: List<SongItem>): RecyclerView.Ada
         holder.playsong.setOnClickListener {
             val absolutepath = Audio().getAbsolutePathMp3File(currentItem.songName, folderName)
             val intent = Intent(holder.itemView.context, MainActivity::class.java)
+
             intent.putExtra("absolutepathsong", absolutepath)
             holder.itemView.context.startActivity(intent)
         }
