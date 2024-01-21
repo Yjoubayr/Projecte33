@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
-            android:text="Liked songs"/>
+            android:text="Liked songs"
+            android:fontFamily="@font/bold"
+            />
 
         <TextView
             android:id="@+id/addToPlayList"

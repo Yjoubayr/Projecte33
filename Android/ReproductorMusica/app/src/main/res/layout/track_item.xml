@@ -15,7 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/app_name" />
+            android:text="@string/app_name"
+            android:fontFamily="@font/bold"
+            />
         <TextView
             android:id="@+id/play_track"
             android:layout_width="30dp"

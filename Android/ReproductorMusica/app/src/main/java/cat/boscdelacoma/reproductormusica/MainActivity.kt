@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer = MediaPlayer()
     private lateinit var seekBarAudio: SeekBar
     private var isPlaying = false
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,7 +86,6 @@ class MainActivity : AppCompatActivity() {
                 mediaPlayer.start()
                 seekBarAudio.max = mediaPlayer.duration
                 updateSeekBar()
-
             }
         }
 
@@ -103,66 +103,42 @@ class MainActivity : AppCompatActivity() {
 
 
         AddSongToTrack.setOnClickListener {
-            // Crear una instancia del fragmento
             val listOfSongsFragment = ListOfSongsFragment()
-
-            // Obtener el FragmentManager
             val fragmentManager = supportFragmentManager
-
-            // Iniciar una transacción de fragmento
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-
-            // Configurar la animación de fadeIn
             val fadeIn: Animation = AlphaAnimation(0f, 1f)
+
             fadeIn.duration = 500 // Duración de la animación en milisegundos
-
-            // Asignar la animación al fragmento
             transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-
-            // Reemplazar el contenido actual con el fragmento ListOfSongsFragment
             transaction.replace(R.id.fragment_container, listOfSongsFragment)
-
-            // Agregar la transacción al back stack
             transaction.addToBackStack(null)
-
-            // Confirmar la transacción
             transaction.commit()
         }
         addplaylist.setOnClickListener(){
             val trackName = TrackName()
-
             val fragmentManager = supportFragmentManager
-
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-
             val fadeIn: Animation = AlphaAnimation(0f, 1f)
+
             fadeIn.duration = 500
-
             transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-
             transaction.replace(R.id.fragment_container, trackName)
-
             transaction.addToBackStack(null)
-
             transaction.commit()
         }
     }
 
     private fun updateSeekBar() {
-        Thread {
-            while (isPlaying) {
-                runOnUiThread {
+        isPlaying = true
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                if (isPlaying) {
                     seekBarAudio.progress = mediaPlayer.currentPosition
-                }
-                try {
-                    Thread.sleep(100)
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
+                    handler.postDelayed(this, 100) // Actualizar cada 100 milisegundos
                 }
             }
-        }.start()
+        }, 100)
     }
-
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer.release()
