@@ -12,8 +12,8 @@
     <ImageView
         android:id="@+id/Square_Image"
         android:padding="15dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/music_img"
         android:scaleType="centerCrop"
         android:layout_gravity="center_vertical"
@@ -28,12 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_weight="1"
-        android:paddingVertical="20dp"
         android:textSize="20sp"
-        android:hint="Enter text"
-        android:text="SONG NAME"
-        android:focusable="false"
-        android:clickable="false"
+        android:text="Song Name"
         android:layout_gravity="center_vertical"/>
 
 

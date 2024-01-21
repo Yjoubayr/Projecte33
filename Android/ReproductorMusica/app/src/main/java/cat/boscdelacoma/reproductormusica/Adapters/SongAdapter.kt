@@ -31,9 +31,11 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
             holder.downloadLogo.setOnClickListener {
                 val intent = Intent(holder.itemView.context, MainActivity::class.java)
                 val path = audio.getMp3Path("cancion_descargada.mp3")
+
                 intent.putExtra("absolutepathsong", path)
-                holder.itemView.context.startActivity(intent)
                 audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+
+                holder.itemView.context.startActivity(intent)
 
             }
         }
