@@ -92,7 +92,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var album = await _albumService.GetAsync(Titol, Any, IDCanco);
 
-            if (album is null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any || IDCanco != updatedAlbum.IDCanco) {
+            if (album == null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any || IDCanco != updatedAlbum.IDCanco) {
                 return NotFound();
             }
 
@@ -148,7 +148,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var album = await _albumService.GetAsync(Titol, Any, IDCanco);
             
-            if (album is null)
+            if (album == null)
             {
                 return NotFound();
             }

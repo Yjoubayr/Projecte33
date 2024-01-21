@@ -63,7 +63,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var music = await _musicService.GetAsync(Nom);
 
-            if (music is null)
+            if (music == null)
             {
                 return NotFound();
             }
@@ -86,12 +86,16 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             IActionResult result;
             try
             {
+                if (_musicService.GetAsync(music.Nom) == null)
+                {
+                    return Conflict();
+                }
                 await _musicService.CreateAsync(music);
                 result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
             }
             catch (DbUpdateException)
             {
-                if (_musicService.GetAsync(music.Nom) != null)
+                if (_musicService.GetAsync(music.Nom) == null)
                 {
                     return Conflict();
                 }
@@ -113,7 +117,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         public async Task<IActionResult> DeleteMusic(string Nom)
         {
             var music = await _musicService.GetAsync(Nom);
-            if (music is null)
+            if (music == null)
             {
                 return NotFound();
             }

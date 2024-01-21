@@ -69,7 +69,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var canco = await _cancoService.GetAsync(IDCanco);
 
-            if (canco is null || IDCanco != updatedCanco.IDCanco)
+            if (canco == null || IDCanco != updatedCanco.IDCanco)
             {
                 return NotFound();
             }
@@ -124,7 +124,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var canco = await _cancoService.GetAsync(IDCanco);
             
-            if (canco is null)
+            if (canco == null)
             {
                 return NotFound();
             }

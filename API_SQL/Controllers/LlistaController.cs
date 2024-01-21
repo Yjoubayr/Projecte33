@@ -64,12 +64,13 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="MACAddress">MACAddress de la Llista de reproduccio a modificar</param>
         /// <param name="NomLlista">Nom de la Llista de reproduccio a modificar</param>
         /// <param name="updatedLlista">L'objecte de la Llista de reproduccio a modificar</param>
+        /// <returns>Verificacio de que la Llista de reproduccio s'ha modificat correctament</returns>
         [HttpPut("putLlista/{MACAddress}/{NomLlista}")]
         public async Task<IActionResult> PutLlista(string MACAddress, string NomLlista, Llista updatedLlista)
         {
             var llista = await _llistaService.GetAsync(MACAddress, NomLlista);
             
-            if (llista is null)
+            if (llista == null || MACAddress != updatedLlista.MACAddress || NomLlista != updatedLlista.NomLlista)
             {
                 return NotFound();
             }
@@ -88,7 +89,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="llista">L'objecte de la Llista de reproduccio a crear</param>
         /// <returns>Verificacio de que la Llista de reproduccio s'ha creat correctament</returns>
         [HttpPost("postLlista")]
-        public async Task<ActionResult<Llista>> PostLlista(Llista llista)
+        public async Task<IActionResult> PostLlista(Llista llista)
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom de la llista i retornar un error 409
             IActionResult result;
@@ -97,11 +98,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             {
                 await _llistaService.CreateAsync(llista);
                 result = CreatedAtAction("GetLlista", new { MACAddress = llista.MACAddress, NomLlista = llista.NomLlista }, llista);
-                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (_context.Llista.Find(llista.MACAddress, llista.NomLlista) == null)
+                if (_llistaService.GetAsync(llista.MACAddress, llista.NomLlista) == null)
                 {
                     return Conflict();
                 }
@@ -111,26 +111,28 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 }
             }
 
-            return CreatedAtAction("GetLlista", new { MACAddress = llista.MACAddress, NomLlista = llista.NomLlista }, llista);
+            return result;
         }
 
-        // DELETE: api/Llista/5
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/deleteLlista/{MACAddress}/{NomLlista} per eliminar una Llista de reproduccio
+        /// </summary>
+        /// <param name="MACAddress">MACAddress de la Llista de reproduccio a eliminar</param>
+        /// <param name="NomLlista">Nom de la Llista de reproduccio a eliminar</param>
+        /// <returns></returns>
         [HttpDelete("deleteLlista/{MACAddress}/{NomLlista}")]
         public async Task<IActionResult> DeleteLlista(string MACAddress, string NomLlista)
         {
-            var llista = await _context.Llista.FindAsync(MACAddress, NomLlista);
+            var llista = await _llistaService.GetAsync(MACAddress, NomLlista);
 
             if (llista == null)
             {
                 return NotFound();
-
-            } else {
-                _context.Llista.Remove(llista);
-                await _context.SaveChangesAsync();
-
-                return NoContent();
             }
-            
+
+            await _llistaService.RemoveAsync(llista);
+
+            return NoContent();
         }
 
     }

@@ -8,6 +8,7 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class AlbumService
 {
     private readonly DataContext _context;
+    private readonly CancoService _cancoService;
 
     /// <summary>
     /// Constructor de la classe AlbumService
@@ -16,6 +17,7 @@ public class AlbumService
     public AlbumService(DataContext context)
     {
         _context = context;
+        _cancoService = new CancoService(context);
     }
 
     /// <summary>
@@ -51,6 +53,7 @@ public class AlbumService
     /// <param name="newAlbum">L'objecte de l'Album a crear</param>
     /// <returns>Verificacio de que l'Album s'ha creat correctament</returns>
     public async Task CreateAsync(Album newAlbum) {
+        newAlbum.CancoObj = await _cancoService.GetAsync(newAlbum.IDCanco);
         await _context.Albums.AddAsync(newAlbum);
         await _context.SaveChangesAsync();
     }
@@ -61,6 +64,7 @@ public class AlbumService
     /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
     /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
     public async Task UpdateAsync(Album updatedAlbum) {
+        updatedAlbum.CancoObj = await _cancoService.GetAsync(updatedAlbum.IDCanco);
         var albumOriginal = await GetAsync(updatedAlbum.Titol, updatedAlbum.Any, updatedAlbum.IDCanco);
         _context.Entry(albumOriginal).CurrentValues.SetValues(updatedAlbum);
         await _context.SaveChangesAsync();

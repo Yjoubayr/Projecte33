@@ -104,7 +104,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controllers
             }
             catch (DbUpdateException)
             {
-                if (_instrumentService.GetAsync(instrument.Nom) != null)
+                if (_instrumentService.GetAsync(instrument.Nom) == null)
                 {
                     return Conflict();
                 }
@@ -126,7 +126,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controllers
         public async Task<IActionResult> DeleteInstrument(string Nom)
         {
             var instrument = await _instrumentService.GetAsync(Nom);
-            if (instrument is null)
+            if (instrument == null)
             {
                 return NotFound();
             }
