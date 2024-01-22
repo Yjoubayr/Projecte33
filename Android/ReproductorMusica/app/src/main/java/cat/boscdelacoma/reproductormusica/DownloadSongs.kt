@@ -11,10 +11,21 @@ class DownloadSongs : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_downloadsongs)
+        val returnBtn : TextView = findViewById(R.id.back)
+        returnBtn.setOnClickListener {
+            finish()
+        }
+
+        emplenarRecycleView()
+    }
+
+    /**
+     * Metode per emplenar el recycleView amb les cançons que es poden descarregar.
+     * */
+    fun emplenarRecycleView(){
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val songList = mutableListOf<SongAdapter.SongItem>()
 
-        val returnBtn : TextView = findViewById(R.id.back)
 
         for (i in 1..60) {
             val songName = "Song $i"
@@ -26,8 +37,5 @@ class DownloadSongs : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        returnBtn.setOnClickListener {
-            finish()
-        }
     }
 }

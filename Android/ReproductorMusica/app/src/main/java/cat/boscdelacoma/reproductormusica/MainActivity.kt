@@ -59,10 +59,11 @@ class MainActivity : AppCompatActivity() {
         val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
 
-        if (!(absolutepathsong.isNullOrEmpty())) {
+        if ((absolutepathsong != "null")) {
             mediaPlayer.setDataSource(absolutepathsong)
             mediaPlayer.prepare()
         }
+
         seekBarAudio.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             }

@@ -37,6 +37,7 @@ class SongInTrackAdapter(private val songList: List<SongItem>): RecyclerView.Ada
         holder.deleteSong.setOnClickListener {
             val currentItemSong = currentItem.songName
             Audio().deleteMusicInTrack(currentItemSong, folderName)
+            holder.itemView.refreshDrawableState()
         }
 
         holder.playsong.setOnClickListener {

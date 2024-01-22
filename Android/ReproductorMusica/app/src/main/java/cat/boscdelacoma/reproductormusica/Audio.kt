@@ -236,8 +236,10 @@ class Audio {
      * */
     fun PutSonIntoPlayList(songPath: Path, folderPath: Path) {
         try {
+
             val symbolicLinkPath = folderPath.resolve(songPath.fileName.toString())
-            Files.createSymbolicLink(symbolicLinkPath, songPath)
+
+            Files.createSymbolicLink(songPath, songPath)
 
             println("Enlace simbólico creado con éxito: $symbolicLinkPath -> $songPath")
         } catch (e: Exception) {
