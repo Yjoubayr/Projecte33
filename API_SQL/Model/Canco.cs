@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace dymj.ReproductorMusica.API_SQL.Model {
     public partial class Canco {
         [Key]
-        public string IDCanco { get; set; }
+        public string? IDCanco { get; set; }
         [MaxLength(20)]
         public string? Nom { get; set; }
         public int? Any { get; set; }
