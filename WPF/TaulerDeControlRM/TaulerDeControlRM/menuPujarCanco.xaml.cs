@@ -25,7 +25,10 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
             List<string> musicGroupsList = GetMusicGroups(); // You should replace this with your logic to get the actual list
-            cvArtistes.BtText="Afegir artista";
+            cvArtistes.LblValue = "Artista";
+            cvArtistes.lblValue.Background = Brushes.LightBlue;
+            cvArtistes.Valors = new List<string> { "Joan", "Pep", "Francesc" };
+
             // Set the ComboBox items source
             cmbGrup.ItemsSource = musicGroupsList;
 

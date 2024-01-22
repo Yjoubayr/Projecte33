@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TaulerDeControlRM.ConjuntCamps"
+﻿<UserControl x:Class="TaulerDeControlRM.ConjuntValors"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,15 +7,21 @@
              mc:Ignorable="d">
     <Grid x:Name="gridConjunt" Height="Auto" Width="Auto" >
         <Grid.RowDefinitions>
+            <!--Labels/-->
             <RowDefinition Height="*"/>
+            <!--Valors/-->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="gridValues" Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--Labels/-->
+        <Label x:Name="lblValue" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding LblValue, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        <!--Valors/-->
+        <Grid x:Name="gridValues" Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
         </Grid>
-        <Button x:Name="btText" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btAfegirCampClick" Content="{Binding BtText, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
     </Grid>
 </UserControl>

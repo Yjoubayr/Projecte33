@@ -7,33 +7,75 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Camp.xaml.cs">
+    <Compile Update="GridConjuntValors.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CreaPages\PageCreaCanco.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageCrea.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageEdita.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageHistorial.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageLlistes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Valor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Cercador.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ConjuntCamps.xaml.cs">
+    <Compile Update="ConjuntValors.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="menuPujarCanco.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WindowBasica.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Camp.xaml">
+    <Page Update="GridConjuntValors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CreaPages\PageCreaCanco.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageCrea.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageEdita.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageHistorial.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageLlistes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Valor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Cercador.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ConjuntCamps.xaml">
+    <Page Update="ConjuntValors.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="menuPujarCanco.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowBasica.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

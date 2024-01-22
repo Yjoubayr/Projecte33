@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:TaulerDeControlRM"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <local:Cercador HorizontalAlignment="Left" Margin="268,62,0,0" VerticalAlignment="Top"/>
-    </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar -->
+            <ListBox x:Name="sidebarList" Grid.Column="0" SelectionChanged="OnSidebarItemSelected">
+                <ListBoxItem Content="Nou"/>
+                <ListBoxItem Content="Edita"/>
+                <ListBoxItem Content="Historial"/>
+                <ListBoxItem Content="Llistats"/>
+            </ListBox>
+
+            <!-- Main Content -->
+            <Frame x:Name="mainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        </Grid>
 </Window>

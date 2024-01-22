@@ -23,10 +23,18 @@ namespace TaulerDeControlRM
         public Cercador()
         {
             InitializeComponent();
+            ConjuntValors cvCampsCerca = new ConjuntValors();
+            cvCampsCerca.Valors = new List<string> { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
+            cvCampsCerca.esPotRepetir = false;
 
-            cvCampsCerca.BtText = "Afegir camp";
 
-            ConjuntCamps.Valors= new List<string> { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
+            GridConjuntValors gcvCampsCerca = new GridConjuntValors();
+            gcvCampsCerca.BtText = "Afegir camp";
+            gcvCampsCerca.valors = new List<ConjuntValors> { cvCampsCerca };
+            
+            
+
+            
 
             List<string> cmbOrdreValues = new List<string>
             { "Reproduccions", "Data Creació" , "Data Reproducció" };
@@ -41,6 +49,7 @@ namespace TaulerDeControlRM
             List<string> cmbTipusResultatValues = new List<string>
             { "Cançons", "Artistes", "Albums", "Llistes de reproducció" };
             cmbTipusResultat.ItemsSource = cmbTipusResultatValues;
+            cmbTipusResultat.IsTextSearchEnabled = false;
 
         }
     }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\App.xaml
-51986486048
+12-609119323
 
-10491387206
+171092619284
 1941343368789
-Camp.xaml;Cercador.xaml;ConjuntCamps.xaml;MainWindow.xaml;menuPujarCanco.xaml;
+Cercador.xaml;ConjuntValors.xaml;CreaPages\PageCreaCanco.xaml;GridConjuntValors.xaml;MainWindow.xaml;MenuPages\PageCrea.xaml;MenuPages\PageEdita.xaml;MenuPages\PageHistorial.xaml;MenuPages\PageLlistes.xaml;menuPujarCanco.xaml;Valor.xaml;WindowBasica.xaml;
 
 False
 
