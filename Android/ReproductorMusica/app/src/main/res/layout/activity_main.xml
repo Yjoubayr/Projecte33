@@ -1,18 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/background"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/AddList"
+                android:textAlignment="center"
+                android:background="@drawable/addplaylist"
+                android:textColor="@color/white"
+                android:elevation="5dp"
+                android:layout_alignParentRight="true"
+                />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:background="@drawable/returnbtn" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:orientation = "vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            >
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="@mipmap/cover"
+                />
+
+            <TextView
+                android:id="@+id/songname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Song name"
+                android:textColor="@color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
+                android:textSize="35dp"
+                android:fontFamily="@font/bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artist name"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="25dp"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="80dp"
+            >
+            <TextView
+                android:id="@+id/AddSongToTrack"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@drawable/addsongplaylist"
+
+                />
+            <TextView
+                android:id="@+id/DownloadSong"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/likesongsvg"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_alignParentBottom="true"
+            >
+
+            <SeekBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:thumbTint="@color/white"
+                android:progressTint="@color/black"
+                android:progressBackgroundTint="@color/white"
+                android:scaleY="1"
+                android:scaleX="1"
+                />
+
+            <TextView
+                android:id="@+id/BackSong"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left|bottom"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/prevbtnsvg"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:id="@+id/startSong"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center|bottom"
+                android:background="@drawable/playbtn"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:id="@+id/PassSong"
+                android:background="@drawable/nextbtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textColor="@color/white"
+                android:layout_gravity="right|bottom"
+
+                />
+        </FrameLayout>
+    </RelativeLayout>
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container"
+        />
+</RelativeLayout>

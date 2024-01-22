@@ -1,0 +1,9 @@
+<!-- res/drawable/custom_background.xml -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#262626"/> <!-- Color de fondo -->
+
+    <!-- Esquinas redondeadas en la parte superior izquierda y derecha -->
+    <corners android:topLeftRadius="40dp"
+        android:topRightRadius="40dp"/>
+</shape>
