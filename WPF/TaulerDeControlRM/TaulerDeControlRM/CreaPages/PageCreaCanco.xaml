@@ -10,10 +10,9 @@
     <Grid>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="21,36,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2"/>
         <Label Content="Year" HorizontalAlignment="Left" Margin="23,72,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtCancoName" HorizontalAlignment="Left" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" InputScope="Number" Grid.ColumnSpan="2" Grid.Column="4" PreviewTextInput="txtCapacity_PreviewTextInput" TabIndex="0"/>
-        <TextBox x:Name="txtCancoYear" HorizontalAlignment="Left" Margin="80,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" InputScope="Number" PreviewTextInput="txtCapacity_PreviewTextInput" TabIndex="0"/>
+        <TextBox x:Name="txtCancoName" HorizontalAlignment="Left" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" InputScope="Number" Grid.ColumnSpan="2" Grid.Column="4" TabIndex="0"/>
+        <TextBox x:Name="txtCancoYear" HorizontalAlignment="Left" Margin="80,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" InputScope="Number" TabIndex="0"/>
         <Button x:Name="btOk" Content="Ok" HorizontalAlignment="Left" Margin="26,143,0,0" VerticalAlignment="Top" Width="60" Click="btOk_Click" TabIndex="20"/>
-        <Button x:Name="btCancel" Content="Cancel" HorizontalAlignment="Left" Margin="145,143,0,0" VerticalAlignment="Top" Width="60" Click="btCancel_Click" TabIndex="30"/>
 
     </Grid>
 </Page>

@@ -1,139 +1,10 @@
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.exe
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.deps.json
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.runtimeconfig.json
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Camp.g.cs
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.g.cs
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.cache
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.lref
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Camp.baml
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.baml
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.g.resources
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfoInputs.cache
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfo.cs
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.sourcelink.json
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\refint\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.genruntimeconfig.cache
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ref\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntCamps.g.cs
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntCamps.baml
-C:\Users\ASUS\Desktop\Projecte2\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.exe
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.deps.json
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.runtimeconfig.json
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Camp.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntCamps.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.cache
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.lref
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Camp.baml
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.baml
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntCamps.baml
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.g.resources
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfoInputs.cache
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfo.cs
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.sourcelink.json
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\refint\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.genruntimeconfig.cache
-C:\Users\ASUS\Desktop\Projecte2 UPDATED\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ref\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.exe
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.deps.json
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.runtimeconfig.json
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Camp.g.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.g.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntCamps.g.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.cache
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.lref
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Camp.baml
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.baml
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntCamps.baml
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.g.resources
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfoInputs.cache
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfo.cs
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.sourcelink.json
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\refint\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.genruntimeconfig.cache
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ref\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte2 WPF\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\menuPujarCanco.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntValors.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\menuPujarCanco.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.cache
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.lref
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.exe
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.deps.json
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.runtimeconfig.json
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntValors.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\menuPujarCanco.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.g.resources
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfoInputs.cache
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfo.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.sourcelink.json
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\refint\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.pdb
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.genruntimeconfig.cache
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ref\TaulerDeControlRM.dll
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Valor.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Valor.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GridConjuntValors.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GridConjuntValors.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\WindowBasica.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\WindowBasica.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageCrea.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageCrea.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageEdita.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageEdita.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageHistorial.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageHistorial.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageLlistes.g.cs
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageLlistes.baml
-C:\Users\ASUS\Desktop\Projecte 2 wpf updated\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\PageCreaCanco.g.cs
-C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.exe
-C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.deps.json
-C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.runtimeconfig.json
-C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.dll
-C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.pdb
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.AssemblyReference.cache
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.g.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntValors.g.cs
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaAlbum.g.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaCanco.g.cs
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaGrup.g.cs
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaMusic.g.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GridConjuntValors.g.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MenuPages\PageCrea.g.cs
@@ -147,9 +18,20 @@ C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlR
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.cache
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM_MarkupCompile.lref
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.exe
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.deps.json
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.runtimeconfig.json
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.dll
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\TaulerDeControlRM.pdb
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.dll
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\bin\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.pdb
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\Cercador.baml
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\ConjuntValors.baml
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaAlbum.baml
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaCanco.baml
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaGrup.baml
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\CreaPages\PageCreaMusic.baml
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\GridConjuntValors.baml
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MainWindow.baml
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\MenuPages\PageCrea.baml
@@ -165,6 +47,7 @@ C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlR
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.AssemblyInfo.cs
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.CoreCompileInputs.cache
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.sourcelink.json
+C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.csproj.CopyComplete
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.dll
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\refint\TaulerDeControlRM.dll
 C:\JAN\2nDAM\Projectes\Reproductor_Musica\WPF\TaulerDeControlRM\TaulerDeControlRM\obj\Debug\net6.0-windows\TaulerDeControlRM.pdb
