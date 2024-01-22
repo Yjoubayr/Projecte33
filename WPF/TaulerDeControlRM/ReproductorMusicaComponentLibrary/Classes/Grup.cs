@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.Classes
 {
-    internal class Grup
+    public class Grup
     {
         public string Nom { get; set; }
         public int Any { get; set; }

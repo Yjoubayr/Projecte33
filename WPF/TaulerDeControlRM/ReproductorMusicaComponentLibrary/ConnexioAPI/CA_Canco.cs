@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
-    internal class CA_Canco
+    public class CA_Canco
     {
         public static string controller = "Canco/";
         //GETS

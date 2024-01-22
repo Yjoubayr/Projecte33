@@ -125,7 +125,7 @@ namespace TaulerDeControlRM {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TaulerDeControlRM;component/cercador.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TaulerDeControlRM;V1.0.0.0;component/cercador.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Cercador.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

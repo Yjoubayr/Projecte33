@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
-    internal class CA_Music
+    public class CA_Music
     {
         public static string controller = "Music/";
         //GETS

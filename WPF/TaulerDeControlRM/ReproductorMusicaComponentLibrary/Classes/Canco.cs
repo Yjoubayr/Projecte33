@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.Classes
 {
-    internal class Canco
+    public class Canco
     {
+        public string IDCanco { get; set; }
         public string Nom { get; set; }
         public int Any { get; set; }
     }

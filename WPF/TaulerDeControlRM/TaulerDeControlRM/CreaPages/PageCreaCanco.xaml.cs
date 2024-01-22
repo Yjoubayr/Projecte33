@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReproductorMusicaComponentLibrary.Classes;
 
 namespace TaulerDeControlRM
 {
@@ -30,9 +31,9 @@ namespace TaulerDeControlRM
         {
             string cancoName = this.txtCancoName.Text.ToString();
             string cancoYear = this.txtCancoYear.Text.ToString();
-
-
-
+            
+            Canco canco = new Canco();
+            await CA_Canco.PostCancoAsync(canco);
         }
     }
 }

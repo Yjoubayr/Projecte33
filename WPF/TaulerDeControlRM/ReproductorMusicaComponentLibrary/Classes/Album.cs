@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.Classes
 {
-    public class Music
+    public class Album
     {
-        public string Nom { get; set; }
+        public string Titol { get; set; }
+        public int Any { get; set; }
+        public string IDCanco { get; set; }
     }
 }
