@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ReproductorMusicaComponentLibrary.Classes;
+using ReproductorMusicaComponentLibrary.ConnexioAPI;
 
 namespace TaulerDeControlRM
 {
@@ -27,12 +28,14 @@ namespace TaulerDeControlRM
         }
 
 
-        private void btOk_Click(object sender, RoutedEventArgs e)
+        private async void btOk_Click(object sender, RoutedEventArgs e)
         {
             string cancoName = this.txtCancoName.Text.ToString();
             string cancoYear = this.txtCancoYear.Text.ToString();
             
             Canco canco = new Canco();
+            canco.Nom = cancoName;
+            canco.Any = int.Parse(cancoYear);
             await CA_Canco.PostCancoAsync(canco);
         }
     }
