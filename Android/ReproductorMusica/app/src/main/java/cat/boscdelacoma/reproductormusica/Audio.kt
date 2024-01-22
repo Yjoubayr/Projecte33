@@ -10,6 +10,7 @@ import android.widget.Toast
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.StandardCopyOption
 
 class Audio {
 
@@ -234,19 +235,23 @@ class Audio {
      * @param FolderName Nom de la carpeta
      * @return {Unit} No retorna res
      * */
-    fun PutSonIntoPlayList(songPath: Path, folderPath: Path) {
+    fun putSongIntoPlaylist(songPath: Path, folderPath: Path): Boolean {
         try {
-
-            val symbolicLinkPath = folderPath.resolve(songPath.fileName.toString())
-
-            Files.createSymbolicLink(songPath, songPath)
-
-            println("Enlace simbólico creado con éxito: $symbolicLinkPath -> $songPath")
+            if (!Files.exists(songPath)) {
+                println("Error: La cançó no existeix en la ruta especificada.")
+                return false
+            }
+            if (!Files.exists(folderPath)) {
+                Files.createDirectories(folderPath)
+            }
+            val destinationPath = folderPath.resolve(songPath.fileName)
+            Files.copy(songPath, destinationPath, StandardCopyOption.REPLACE_EXISTING)
+            println("La cançó s'ha afegit a la carpeta amb èxit.")
+            return true
         } catch (e: Exception) {
-            println("Error al crear el enlace simbólico: ${e.message}")
+            println("S'ha produït un error en afegir la cançó a la carpeta: ${e.message}")
+            return false
         }
-
     }
-
 }
 

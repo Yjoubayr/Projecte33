@@ -1,8 +1,12 @@
 package cat.boscdelacoma.reproductormusica
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.Adapters.SongAdapter
@@ -18,7 +22,6 @@ class DownloadSongs : AppCompatActivity() {
 
         emplenarRecycleView()
     }
-
     /**
      * Metode per emplenar el recycleView amb les cançons que es poden descarregar.
      * */
