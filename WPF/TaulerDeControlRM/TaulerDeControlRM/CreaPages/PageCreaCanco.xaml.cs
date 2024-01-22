@@ -24,5 +24,15 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
         }
+
+
+        private void btOk_Click(object sender, RoutedEventArgs e)
+        {
+            string cancoName = this.txtCancoName.Text.ToString();
+            string cancoYear = this.txtCancoYear.Text.ToString();
+
+
+
+        }
     }
 }

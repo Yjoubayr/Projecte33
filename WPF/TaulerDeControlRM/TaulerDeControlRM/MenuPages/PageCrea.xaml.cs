@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaulerDeControlRM.CreaPages;
 
 namespace TaulerDeControlRM
 {
@@ -23,7 +24,7 @@ namespace TaulerDeControlRM
         public PageCrea()
         {
             InitializeComponent();
-            elementComboBox.ItemsSource = new List<string> { "Cançó", "Artista", "Grup", "Àlbum", "Llista de reproducció" };
+            elementComboBox.ItemsSource = new List<string> { "Àlbum", "Cançó", "Grup", "Músic" };
             
             // Get the selected item from the ListBox
             ListBoxItem selectedListBoxItem = (ListBoxItem)elementComboBox.SelectedItem;
@@ -33,17 +34,17 @@ namespace TaulerDeControlRM
             {
                 switch (selectedListBoxItem.Content.ToString())
                 {
+                    case "Àlbum":
+                        frameCrear.Navigate(new PageCreaAlbum());
+                        break;
                     case "Canco":
                         frameCrear.Navigate(new PageCreaCanco());
                         break;
-                    case "Artista":
-                        frameCrear.Navigate(new PageEdita()); // Replace Page2 with your actual user control
+                    case "Grup":
+                        frameCrear.Navigate(new PageCreaGrup());
                         break;
-                    case "Historial":
-                        frameCrear.Navigate(new PageHistorial()); // Replace Page3 with your actual user control
-                        break;
-                    case "Llistats":
-                        frameCrear.Navigate(new PageLlistes()); // Replace Page4 with your actual user control
+                    case "Músic":
+                        frameCrear.Navigate(new PageCreaMusic());
                         break;
                         // Add more cases as needed
                 }

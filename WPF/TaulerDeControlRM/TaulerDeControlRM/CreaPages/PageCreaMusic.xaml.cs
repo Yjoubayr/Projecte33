@@ -24,5 +24,7 @@ namespace TaulerDeControlRM.CreaPages
         {
             InitializeComponent();
         }
+
+
     }
 }
