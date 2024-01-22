@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CreatePDFSigned\CreatePDFSigned.csproj" />
     <ProjectReference Include="..\DAMSecurityLib\DAMSecurityLib.csproj" />
-    <ProjectReference Include="..\SocketLibrary\SocketLibrary.csproj" />
   </ItemGroup>
 
 </Project>

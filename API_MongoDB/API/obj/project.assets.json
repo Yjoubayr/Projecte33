@@ -1247,11 +1247,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
+      "projectUniqueName": "/run/media/marc/HDD/Informatica/GrauSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
       "projectName": "ReproductorMusica",
-      "projectPath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
+      "projectPath": "/run/media/marc/HDD/Informatica/GrauSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
       "packagesPath": "/home/marc/.nuget/packages/",
-      "outputPath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/obj/",
+      "outputPath": "/run/media/marc/HDD/Informatica/GrauSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/marc/.nuget/NuGet/NuGet.Config"
@@ -1305,15 +1305,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.15, 7.0.15]"
+            "version": "[7.0.14, 7.0.14]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[7.0.15, 7.0.15]"
+            "version": "[7.0.14, 7.0.14]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.15, 7.0.15]"
+            "version": "[7.0.14, 7.0.14]"
           }
         ],
         "frameworkReferences": {
@@ -1324,7 +1324,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/marc/.dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

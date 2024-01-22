@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {}
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {}
   },
   "projects": {
-    "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
         "projectName": "CreatePDFSigned",
-        "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
+        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+        "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-                "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
+              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
               }
             }
           }
@@ -68,20 +67,20 @@
         }
       }
     },
-    "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
         "projectName": "DAMSecurityLib",
-        "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\obj\\",
+        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -90,7 +89,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -146,20 +144,20 @@
         }
       }
     },
-    "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
+        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
         "projectName": "ProvaDeLlibreries",
-        "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\obj\\",
+        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
+        "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -168,83 +166,19 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
-                "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj"
+              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
+                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj"
               },
-              "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-                "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
-              },
-              "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketLibrary\\SocketLibrary.csproj": {
-                "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketLibrary\\SocketLibrary.csproj"
+              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
               }
             }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketLibrary\\SocketLibrary.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketLibrary\\SocketLibrary.csproj",
-        "projectName": "SocketLibrary",
-        "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketLibrary\\SocketLibrary.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketLibrary\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
           }
         },
         "warningProperties": {

@@ -11,6 +11,13 @@ namespace CrearPDFSignat
 {
     public class ClassPDF
     {
+        /// <summary>
+        /// Classe que signa un pdf
+        /// </summary>
+        /// <param name="rutaOutputPDFSignado"></param>
+        /// <param name="jsonList"></param>
+        /// <param name="Certpass"></param>
+        /// <param name="CertificateRoute"></param>
         public static void CrearPDFSignat(string rutaOutputPDFSignado, string jsonList, string Certpass,string CertificateRoute)
         {
             try

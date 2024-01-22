@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EQ4FIEbKxmw9d5PYDMiPivCHFpqmLPTlCQTnITjEhqthwk5Ud4+Ho+lN3sm5O19hZeQUXXseiSn8JGl/w7NQZA==",
+  "dgSpecHash": "N71DW6GfNw5CE87zgL2O1dQ2a8gQ3RU976439qttJe2HJkbOkPZzDcACOSuchaCf+QfmWST9sW3xJCaD8yfbwA==",
   "success": true,
-  "projectFilePath": "/run/media/marc/HDD/Informatica/GradoSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
+  "projectFilePath": "/run/media/marc/HDD/Informatica/GrauSuperiorDAM/C.G.S_DAM2/projecte2_reproductor/Reproductor_Musica/API_MongoDB/API/ReproductorMusica.csproj",
   "expectedPackageFiles": [
     "/home/marc/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/home/marc/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",
@@ -29,9 +29,9 @@
     "/home/marc/.nuget/packages/system.security.accesscontrol/5.0.0/system.security.accesscontrol.5.0.0.nupkg.sha512",
     "/home/marc/.nuget/packages/system.security.principal.windows/5.0.0/system.security.principal.windows.5.0.0.nupkg.sha512",
     "/home/marc/.nuget/packages/zstdsharp.port/0.6.2/zstdsharp.port.0.6.2.nupkg.sha512",
-    "/home/marc/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
-    "/home/marc/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
-    "/home/marc/.nuget/packages/microsoft.netcore.app.host.linux-x64/7.0.15/microsoft.netcore.app.host.linux-x64.7.0.15.nupkg.sha512"
+    "/home/marc/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/home/marc/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "/home/marc/.nuget/packages/microsoft.netcore.app.host.linux-x64/7.0.14/microsoft.netcore.app.host.linux-x64.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

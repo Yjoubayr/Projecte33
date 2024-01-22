@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Org.BouncyCastle.OpenSsl;
 
 namespace DAMSecurityLib.Crypto
 {
@@ -21,12 +26,14 @@ namespace DAMSecurityLib.Crypto
             X509Certificate2 certificate = new X509Certificate2(pfxFilename, pfxPassword);
             
             RSA? publicKey = certificate.GetRSAPublicKey();
+            Console.WriteLine(publicKey);
             if (publicKey!=null)
             {
                 SavePublicKey(publicKey, publicKeyFile);
             }
+            
+            
         }
-
         /// <summary>
         /// Load Certificate public key stored in disk
         /// </summary>
@@ -68,13 +75,6 @@ namespace DAMSecurityLib.Crypto
                     writer.WriteLine(Convert.ToBase64String(exponent));
             }
         }
-   
-        /// <summary>
-        /// Encrypt AESKey with RSA public key
-        /// </summary>
-        /// <param name="aesKey">AES Key to encrypt</param>
-        /// <param name="publicKey">RSA public key to encrypt with</param>
-        /// <returns>Encrypted AES key</returns>
         public static byte[] EncryptAESKey(byte[] aesKey, RSAParameters publicKey)
         {
             using (RSA rsa = RSA.Create())
@@ -83,9 +83,8 @@ namespace DAMSecurityLib.Crypto
                 byte[] encryptedAesKey = rsa.Encrypt(aesKey, RSAEncryptionPadding.OaepSHA256);
                 return encryptedAesKey;
             }
-                
-        }
 
+        }
         public static byte[] DecryptAESKeyWithPrivateKey(byte[] encrypteKey, X509Certificate2 certificate)
         {
             using (RSA? rsa = certificate.GetRSAPrivateKey())
@@ -100,5 +99,8 @@ namespace DAMSecurityLib.Crypto
             }
             
         }
+        
+
+
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CreatePDFSigned")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5749d05c9d94197c29fc6c0334469f0237c9dea3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5a53d93c3b9f6099cb400c557e8dc4a3ab78d21")]
 [assembly: System.Reflection.AssemblyProductAttribute("CreatePDFSigned")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CreatePDFSigned")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5159,23 +5159,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Users\\marc\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+      "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
       "projectName": "CreatePDFSigned",
-      "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
+      "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+      "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+      "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5184,15 +5184,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-              "projectPath": "E:\\Informatica\\GradoSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
             }
           }
         }
