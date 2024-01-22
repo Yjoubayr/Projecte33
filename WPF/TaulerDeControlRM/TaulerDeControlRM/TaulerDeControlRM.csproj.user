@@ -7,6 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CreaPages\PageCreaAlbum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CreaPages\PageCreaGrup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CreaPages\PageCreaMusic.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GridConjuntValors.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +51,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="CreaPages\PageCreaAlbum.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CreaPages\PageCreaGrup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CreaPages\PageCreaMusic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="GridConjuntValors.xaml">
       <SubType>Designer</SubType>
     </Page>

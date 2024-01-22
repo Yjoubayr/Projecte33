@@ -24,6 +24,30 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
             elementComboBox.ItemsSource = new List<string> { "Cançó", "Artista", "Grup", "Àlbum", "Llista de reproducció" };
+            
+            // Get the selected item from the ListBox
+            ListBoxItem selectedListBoxItem = (ListBoxItem)elementComboBox.SelectedItem;
+
+            // Determine which item was selected and update the main content accordingly
+            if (selectedListBoxItem != null)
+            {
+                switch (selectedListBoxItem.Content.ToString())
+                {
+                    case "Canco":
+                        frameCrear.Navigate(new PageCreaCanco());
+                        break;
+                    case "Artista":
+                        frameCrear.Navigate(new PageEdita()); // Replace Page2 with your actual user control
+                        break;
+                    case "Historial":
+                        frameCrear.Navigate(new PageHistorial()); // Replace Page3 with your actual user control
+                        break;
+                    case "Llistats":
+                        frameCrear.Navigate(new PageLlistes()); // Replace Page4 with your actual user control
+                        break;
+                        // Add more cases as needed
+                }
+            }
         }
     }
 }
