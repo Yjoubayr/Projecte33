@@ -43,24 +43,31 @@ public class CancoService
     /// <summary>
     /// Accedeix a la ruta /api/Canco/postCanco dins de CancoController per crear una Canco
     /// </summary>
-    /// <param name="nomExtensio">El nom de l'Extensio de la Canco a crear</param>
     /// <param name="newCanco">L'objecte de la Canco a crear</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
-    public async Task CreateAsync(string nomExtensio, Canco newCanco) {
+    public async Task CreateAsync(Canco newCanco) {
         newCanco.IDCanco = Guid.NewGuid().ToString();
         await _context.Cancons.AddAsync(newCanco);
+
+        foreach (var extensio in newCanco.LExtensions) {
+            Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
+
+            if (extensioObj != null) {
+                extensio.LCancons.Add(newCanco);
+            }
+        }
 
         // Afegim una nova extensio si no existeix, 
         // obtenint-la del nom de la canco
         /*string[] cancoSeparada = newCanco.Nom.Split('.');
-        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];*/
+        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
         Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
 
         if (extensio == null) {
             extensio = new Extensio();
             extensio.Nom = nomExtensio;
             await _extensioService.CreateAsync(extensio);
-        }
+        }*/
         
         await _context.SaveChangesAsync();
     }
@@ -69,24 +76,38 @@ public class CancoService
     /// <summary>
     /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} dins de CancoController per modificar una Canco
     /// </summary>
-    /// <param name="nomExtensio">El nom de l'extensio de la Canco original que volem modificar</param>
     /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-    public async Task UpdateAsync(string nomExtensio, Canco cancoOriginal, Canco updatedCanco) {
+    public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
         _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
+
+        foreach (var extensio in updatedCanco.LExtensions) {
+            Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
+
+            if (extensioObj != null) {
+                extensio.LCancons.Add(updatedCanco);
+            }
+            
+            /*
+            if (extensioObj == null) {
+                extensio.LCancons.Add(updatedCanco);
+            }
+            */
+        }
+
 
         // Afegim una nova extensio si no existeix, 
         // obtenint-la del nom de la canco modificada
         /*string[] cancoSeparada = updatedCanco.Nom.Split('.');
-        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];*/
+        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
         Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
 
         if (extensio == null) {
             extensio = new Extensio();
             extensio.Nom = nomExtensio;
             await _extensioService.CreateAsync(extensio);
-        }
+        }*/
 
         await _context.SaveChangesAsync();
     }
