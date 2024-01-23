@@ -74,9 +74,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            updatedCanco.IDCanco = canco.IDCanco;
-
-            await _cancoService.UpdateAsync(updatedCanco);
+            await _cancoService.UpdateAsync(canco, updatedCanco);
 
             return NoContent();
         }
