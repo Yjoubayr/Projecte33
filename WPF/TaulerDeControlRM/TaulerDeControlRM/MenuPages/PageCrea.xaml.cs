@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,18 +27,25 @@ namespace TaulerDeControlRM
             InitializeComponent();
             elementComboBox.ItemsSource = new List<string> { "Àlbum", "Cançó", "Grup", "Músic" };
             
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
             // Get the selected item from the ListBox
-            ListBoxItem selectedListBoxItem = (ListBoxItem)elementComboBox.SelectedItem;
+            //ListBoxItem selectedListBoxItem = (ListBoxItem)elementComboBox.SelectedItem;
+
+
 
             // Determine which item was selected and update the main content accordingly
-            if (selectedListBoxItem != null)
+            if (elementComboBox.SelectedItem != null)
             {
-                switch (selectedListBoxItem.Content.ToString())
+                switch (elementComboBox.SelectedItem.ToString())
                 {
                     case "Àlbum":
                         frameCrear.Navigate(new PageCreaAlbum());
                         break;
-                    case "Canco":
+                    case "Cançó":
                         frameCrear.Navigate(new PageCreaCanco());
                         break;
                     case "Grup":
@@ -50,5 +58,6 @@ namespace TaulerDeControlRM
                 }
             }
         }
+
     }
 }

@@ -12,7 +12,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
     {
         public static string controller = "Grup/";
         //GETS
-        public static async Task<List<Grup>> GetCanconsAsync()
+        public static async Task<List<Grup>> GetGrupsAsync()
         {
             string apiUrl = CA.baseApi + controller + "getGrups";
 
@@ -20,7 +20,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             var data = JsonConvert.DeserializeObject<List<Grup>>(result);
             return data;
         }
-        public static async Task<Grup> GetCancoAsync(string Nom)
+        public static async Task<Grup> GetGrupAsync(string Nom)
         {
             string apiUrl = CA.baseApi + controller + "getGrup/" + Nom;
 
@@ -30,7 +30,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         }
 
         //POST
-        public static async Task PostCancoAsync(Grup g)
+        public static async Task PostGrupAsync(Grup g)
         {
             string jsonData = JsonConvert.SerializeObject(g);
             string apiUrl = CA.baseApi + controller + "postGrup";

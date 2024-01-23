@@ -21,7 +21,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             return data;
         }
 
-        public static async Task<Album> GetCancoAsync(string Titol, string Any)
+        public static async Task<Album> GetAlbumAsync(string Titol, string Any)
         {
             string apiUrl = CA.baseApi + controller + "getAlbum/" + Titol + "/" + Any;
 
@@ -31,7 +31,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         }
 
         //POST
-        public static async Task PostCancoAsync(Album a)
+        public static async Task PostAlbumAsync(Album a)
         {
             string jsonData = JsonConvert.SerializeObject(a);
             string apiUrl = CA.baseApi + controller + "postAlbum";

@@ -13,6 +13,5 @@
         <TextBox x:Name="txtCancoName" HorizontalAlignment="Left" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" InputScope="Number" Grid.ColumnSpan="2" Grid.Column="4" TabIndex="0"/>
         <TextBox x:Name="txtCancoYear" HorizontalAlignment="Left" Margin="80,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" InputScope="Number" TabIndex="0"/>
         <Button x:Name="btOk" Content="Ok" HorizontalAlignment="Left" Margin="26,143,0,0" VerticalAlignment="Top" Width="60" Click="btOk_Click" TabIndex="20"/>
-
     </Grid>
 </Page>
