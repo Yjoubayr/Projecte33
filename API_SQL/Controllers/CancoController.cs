@@ -62,10 +62,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} per modificar una canco
         /// </summary>
         /// <param name="IDCanco">Identifiador de la Canco a modificar</param>
+        /// <param name="extensio">Extensio de la Canco a modificar</param>
         /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
         /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-        [HttpPut("putCanco/{IDCanco}")]
-        public async Task<IActionResult> PutCanco(string IDCanco, Canco updatedCanco)
+        [HttpPut("putCanco/{IDCanco}/{extensio}")]
+        public async Task<IActionResult> PutCanco(string IDCanco, string extensio, Canco updatedCanco)
         {
             var canco = await _cancoService.GetAsync(IDCanco);
 
@@ -74,7 +75,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _cancoService.UpdateAsync(canco, updatedCanco);
+            await _cancoService.UpdateAsync(extensio, canco, updatedCanco);
 
             return NoContent();
         }
@@ -83,17 +84,18 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <summary>
         /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
         /// </summary>
+        /// <param name="extensio">El nom de l'extensio de la Canco a modificar</param>
         /// <param name="canco">L'objecte de la Canco a modificar</param>
         /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
-        [HttpPost("postCanco")]
-        public async Task<IActionResult> PostCanco(Canco canco)
+        [HttpPost("postCanco/{extensio}")]
+        public async Task<IActionResult> PostCanco(string extensio, Canco canco)
         {
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
             IActionResult result;
 
             try
             {
-                await _cancoService.CreateAsync(canco);
+                await _cancoService.CreateAsync(extensio, canco);
                 result = CreatedAtAction("GetCanco", new { IDCanco = canco.IDCanco }, canco);
             }
             catch (DbUpdateException)
