@@ -1,8 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace gridfsapi.Model
-{
+namespace gridfsapi{
     
     public class Audio
     {

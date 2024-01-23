@@ -1,24 +1,28 @@
-using Newtonsoft.Json.Serialization;
-using gridfsapi.DataContext;
-using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Options;
+using gridfsapi;
+using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.Configure<DataContext>(
+    builder.Configuration.GetSection("DataContext"));
+
+builder.Services.AddSingleton<IMongoClient>(provider =>
+{
+    var settings = provider.GetRequiredService<IOptions<DataContext>>().Value;
+    return new MongoClient(settings.ConnectionString);
+});
+
+builder.Services.AddSingleton<IMongoDatabase>(provider =>
+{
+    var mongoClient = provider.GetRequiredService<IMongoClient>();
+    var settings = provider.GetRequiredService<IOptions<DataContext>>().Value;
+    return mongoClient.GetDatabase(settings.DatabaseName);
+});
+
+builder.Services.AddSingleton<AudioService>();
 
 builder.Services.AddControllers();
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-});
-
-builder.Services.AddDbContext<DataContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
