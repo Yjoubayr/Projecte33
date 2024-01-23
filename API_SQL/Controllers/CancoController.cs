@@ -100,6 +100,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
+                if (extensio.Length > 5) {
+                    return Conflict();
+                }
                 if (_cancoService.GetAsync(canco.IDCanco) == null)
                 {
                     return Conflict();
