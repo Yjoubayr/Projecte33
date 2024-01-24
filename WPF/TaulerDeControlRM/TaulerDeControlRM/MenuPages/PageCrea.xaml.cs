@@ -23,7 +23,27 @@ namespace TaulerDeControlRM
         public PageCrea()
         {
             InitializeComponent();
-            elementComboBox.ItemsSource = new List<string> { "Cançó", "Artista", "Grup", "Àlbum", "Llista de reproducció" };
+            elementComboBox.ItemsSource = new List<string> { "Cançó", "Músic", "Grup", "Àlbum", "Llista de reproducció" };
         }
+        public void ChangeMenu(object sender, SelectionChangedEventArgs e)
+        { 
+            string selectedcmbItem = elementComboBox.SelectedItem.ToString();
+
+            // Determine which item was selected and update the main content accordingly
+            if (selectedcmbItem != null)
+            {
+                switch (selectedcmbItem.ToString())
+                {
+                    case "Cançó":
+                        frameCrear.Navigate(new PageCreaCanco());
+                        break;
+                    //case "Músic":
+                    //    frameCrear.Navigate(new PageCreaMusic());
+        
+                        // Add more cases as needed
+                }
+                //mainFrame.NavigationService.Navigate(selectedPage);
+            }
+    }
     }
 }
