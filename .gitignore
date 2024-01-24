@@ -9,8 +9,13 @@ API_SQL/obj
 API_SQL/Migrations
 WPF/TaulerDeControlRM/bin
 WPF/TaulerDeControlRM/obj
-WPF/.vs/
+WPF/TaulerDeControlRM/obj/Debug
+WPF/TaulerDeControlRM/TaulerDeControlRM/bin/
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/
+WPF/TaulerDeControlRM/TaulerDeControlRM/obj/Debug
 WPF/TaulerDeControlRM/.vs/
-WPF/TaulerDeControlRM/obj/Debug/
-WPF/TaulerDeControlRM/TaulerDeControlRM/obj
- 
+WPF/.vs/
+WPF/TaulerDeControlRM/ReproductorMusicaComponentLibrary/bin
+WPF/TaulerDeControlRM/.vs/
+WPF/TaulerDeControlRM/ReproductorMusicaComponentLibrary/obj/
+WPF/TaulerDeControlRM/ReproductorMusicaComponentLibrary/obj/Debug/
