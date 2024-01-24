@@ -24,7 +24,8 @@ public class LlistaService
     /// </summary>
     /// <returns>El llistat de Llistes de reproduccio</returns>
     public async Task<List<Llista>> GetAsync() {
-        return await _context.Llista.ToListAsync();
+        return await _context.Llista
+                            .Include(x => x.LCancons).ToListAsync();
     }
 
     /// <summary>   

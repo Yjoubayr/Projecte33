@@ -26,7 +26,9 @@ public class CancoService
     /// </summary>
     /// <returns>El llistat de Cancons</returns>
     public async Task<List<Canco>> GetAsync() {
-        return await _context.Cancons.ToListAsync();
+        return await _context.Cancons
+                            .Include(x => x.LListes)
+                            .Include(x => x.LTocar).ToListAsync();
     }
     
     /// <summary>
@@ -36,6 +38,7 @@ public class CancoService
     /// <returns>L'objecte de la Canco</returns>
     public async Task<Canco?> GetAsync(string IDCanco) =>
         await _context.Cancons
+                            .Include(x => x.LExtensions)
                             .Include(x => x.LListes)
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);
@@ -53,7 +56,7 @@ public class CancoService
             Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
 
             if (extensioObj != null) {
-                extensio.LCancons.Add(newCanco);
+                extensioObj.LCancons.Add(newCanco);
             }
         }
 
@@ -80,21 +83,52 @@ public class CancoService
     /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
     public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
-        _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
+        
+        List<Extensio> lExtensions = cancoOriginal.LExtensions.ToList<Extensio>();
+        foreach (var extensio in lExtensions) {
+            if (!updatedCanco.LExtensions.Contains(extensio)) {
+                //updatedCanco.LExtensions.Remove(extensio);
+                Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
+                extensioObj.LCancons.Add(cancoOriginal);
+                _context.Entry(extensioObj).State = EntityState.Modified;
+                 await _context.SaveChangesAsync();
+            }
+        }
+        /*foreach (var extensio in lExtensions) {
+            if (!updatedCanco.LExtensions.Contains(extensio)) {
+                //updatedCanco.LExtensions.Remove(extensio);
+                Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
+                extensioObj.LCancons.Add(cancoOriginal);
+                _context.Entry(extensioObj).State = EntityState.Modified;
+                 await _context.SaveChangesAsync();
+            }
+        }*/
 
-        foreach (var extensio in updatedCanco.LExtensions) {
+        _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
+        //cancoOriginal.LExtensions.ToList<Extensio>().Remove(x => updatedCanco.LExtensions.name.Contains("mp14"));
+        _context.Entry(cancoOriginal).State = EntityState.Modified;
+
+        await _context.SaveChangesAsync();
+
+
+
+
+
+
+        /*foreach (var extensio in updatedCanco.LExtensions) {
             Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
 
+
             if (extensioObj != null) {
-                extensio.LCancons.Add(updatedCanco);
+                extensioObj.LCancons.Add(updatedCanco);
             }
             
-            /*
+            
             if (extensioObj == null) {
                 extensio.LCancons.Add(updatedCanco);
             }
-            */
-        }
+            
+        }*/
 
 
         // Afegim una nova extensio si no existeix, 
@@ -109,7 +143,7 @@ public class CancoService
             await _extensioService.CreateAsync(extensio);
         }*/
 
-        await _context.SaveChangesAsync();
+        
     }
 
     /// <summary>

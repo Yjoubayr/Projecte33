@@ -8,6 +8,7 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class ExtensioService
 {
     private readonly DataContext _context;
+    private readonly CancoService _cancoService;
 
     /// <summary>
     /// Constructor de la classe ExtensioService
@@ -16,6 +17,7 @@ public class ExtensioService
     public ExtensioService(DataContext context)
     {
         _context = context;
+        _cancoService = new CancoService(context);
     }
 
     /// <summary>
@@ -45,4 +47,12 @@ public class ExtensioService
         await _context.Extensions.AddAsync(newExtensio);
         await _context.SaveChangesAsync();
     }
+
+    public async Task AddSongAsync(string nomExtensio, string IDCanco) {
+        Extensio? extensioObj = await GetAsync(nomExtensio);
+        Canco? cancoObj = await _cancoService.GetAsync(IDCanco);
+        extensioObj.LCancons.Add(cancoObj);
+        await _context.SaveChangesAsync();
+    }
+
 }

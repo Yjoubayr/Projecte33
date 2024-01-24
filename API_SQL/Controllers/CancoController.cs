@@ -67,6 +67,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("putCanco/{IDCanco}")]
         public async Task<IActionResult> PutCanco(string IDCanco, Canco updatedCanco)
         {
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
+            IActionResult result;
+
             var canco = await _cancoService.GetAsync(IDCanco);
 
             if (canco == null || IDCanco != updatedCanco.IDCanco)
@@ -75,8 +78,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
 
             await _cancoService.UpdateAsync(canco, updatedCanco);
+            result = CreatedAtAction("GetCanco", new { IDCanco = updatedCanco.IDCanco }, updatedCanco);
 
-            return NoContent();
+            return result;
         }
 
         
