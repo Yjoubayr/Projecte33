@@ -84,14 +84,13 @@ public class CancoService
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
     public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
         
-        List<Extensio> lExtensions = cancoOriginal.LExtensions.ToList<Extensio>();
-        foreach (var extensio in lExtensions) {
+        //List<Extensio> lExtensions = cancoOriginal.LExtensions.ToList<Extensio>();
+cancoOriginal?.LExtensions.Clear();
+
+        foreach (var extensio in cancoOriginal.LExtensions) {
             if (!updatedCanco.LExtensions.Contains(extensio)) {
-                //updatedCanco.LExtensions.Remove(extensio);
                 Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
-                extensioObj.LCancons.Add(cancoOriginal);
-                _context.Entry(extensioObj).State = EntityState.Modified;
-                 await _context.SaveChangesAsync();
+                _extensioService.AddSongAsync(extensio, cancoOriginal);
             }
         }
         /*foreach (var extensio in lExtensions) {
