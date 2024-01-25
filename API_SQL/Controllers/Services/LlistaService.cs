@@ -16,6 +16,7 @@ public class LlistaService
     public LlistaService(DataContext context)
     {
         _context = context;
+
     }
 
     /// <summary>
@@ -23,7 +24,8 @@ public class LlistaService
     /// </summary>
     /// <returns>El llistat de Llistes de reproduccio</returns>
     public async Task<List<Llista>> GetAsync() {
-        return await _context.Llista.ToListAsync();
+        return await _context.Llista
+                            .Include(x => x.LCancons).ToListAsync();
     }
 
     /// <summary>   
@@ -56,6 +58,23 @@ public class LlistaService
         var llistaOriginal = await GetAsync(updatedLlista.MACAddress, updatedLlista.NomLlista);
         _context.Entry(llistaOriginal).CurrentValues.SetValues(updatedLlista);
         await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista}/{IDCanco} dins de LlistaController per afegir una Canco a una Llista de reproduccio
+    /// </summary>
+    /// <param name="updatedLlista">L'objecte de la Llista de reproduccio a modificar</param>
+    /// <param name="canco">L'objecte de la Canco a afegir</param>
+    /// <returns>Verificacio de que la Canco s'ha afegit correctament a la Llista de reproduccio</returns>
+    public async Task AddCancoAsync(Llista updatedLlista, Canco canco) {
+        var llistaOriginal = await GetAsync(updatedLlista.MACAddress, updatedLlista.NomLlista);
+        
+        if (!updatedLlista.LCancons.Contains(canco)) {
+            updatedLlista.LCancons.Add(canco);
+            _context.Entry(llistaOriginal).CurrentValues.SetValues(updatedLlista);
+            await _context.SaveChangesAsync();
+        }
+        
     }
 
     /// <summary>

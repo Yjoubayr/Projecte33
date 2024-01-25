@@ -26,7 +26,9 @@ public class CancoService
     /// </summary>
     /// <returns>El llistat de Cancons</returns>
     public async Task<List<Canco>> GetAsync() {
-        return await _context.Cancons.ToListAsync();
+        return await _context.Cancons
+                            .Include(x => x.LListes)
+                            .Include(x => x.LTocar).ToListAsync();
     }
     
     /// <summary>
@@ -36,6 +38,7 @@ public class CancoService
     /// <returns>L'objecte de la Canco</returns>
     public async Task<Canco?> GetAsync(string IDCanco) =>
         await _context.Cancons
+                            .Include(x => x.LExtensions)
                             .Include(x => x.LListes)
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);
@@ -49,9 +52,17 @@ public class CancoService
         newCanco.IDCanco = Guid.NewGuid().ToString();
         await _context.Cancons.AddAsync(newCanco);
 
+        foreach (var extensio in newCanco.LExtensions) {
+            Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
+
+            if (extensioObj != null) {
+                extensioObj.LCancons.Add(newCanco);
+            }
+        }
+
         // Afegim una nova extensio si no existeix, 
         // obtenint-la del nom de la canco
-        string[] cancoSeparada = newCanco.Nom.Split('.');
+        /*string[] cancoSeparada = newCanco.Nom.Split('.');
         string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
         Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
 
@@ -59,7 +70,7 @@ public class CancoService
             extensio = new Extensio();
             extensio.Nom = nomExtensio;
             await _extensioService.CreateAsync(extensio);
-        }
+        }*/
         
         await _context.SaveChangesAsync();
     }
@@ -68,15 +79,24 @@ public class CancoService
     /// <summary>
     /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} dins de CancoController per modificar una Canco
     /// </summary>
-    /// <param name="updatedCanco">L'objecte de la Canco a modificar</param>
+    /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
+    /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-    public async Task UpdateAsync(Canco updatedCanco) {
-        var cancoOriginal = await GetAsync(updatedCanco.IDCanco);
-        _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
+    /// 
+    // TODO: Moure i adaptar aquest codi al controlador d'Extensio?????
+    public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
+        
+        List<Extensio> lExtensions = updatedCanco.LExtensions.ToList<Extensio>();
+
+        foreach (var extensio in lExtensions) {
+            if (!cancoOriginal.LExtensions.Contains(extensio)) {
+                await _extensioService.AddSongAsync(extensio.Nom, cancoOriginal);
+            }
+        }
 
         // Afegim una nova extensio si no existeix, 
         // obtenint-la del nom de la canco modificada
-        string[] cancoSeparada = updatedCanco.Nom.Split('.');
+        /*string[] cancoSeparada = updatedCanco.Nom.Split('.');
         string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
         Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
 
@@ -84,9 +104,9 @@ public class CancoService
             extensio = new Extensio();
             extensio.Nom = nomExtensio;
             await _extensioService.CreateAsync(extensio);
-        }
+        }*/
 
-        await _context.SaveChangesAsync();
+        
     }
 
     /// <summary>

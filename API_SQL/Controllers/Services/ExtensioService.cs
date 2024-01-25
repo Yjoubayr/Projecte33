@@ -45,4 +45,30 @@ public class ExtensioService
         await _context.Extensions.AddAsync(newExtensio);
         await _context.SaveChangesAsync();
     }
+
+
+    /// <summary>
+    /// Per afegir una canco a la llista de cancons d'una Extensio
+    /// </summary>
+    /// <param name="nomExtensio">Nom de la Extensio de la qual volem afegir la canco</param>
+    /// <param name="canco">L'objecte de la Canco a afegir</param>
+    /// <returns>Verificacio de que la Canco s'ha afegit correctament al llistat de Cancons de l'Extensio</returns>
+    public async Task AddSongAsync(string nomExtensio, Canco canco) {
+        Extensio? extensio = await GetAsync(nomExtensio);
+        
+        if (extensio == null) {
+            extensio = new Extensio() {
+                Nom = nomExtensio
+            };
+            await CreateAsync(extensio);
+        }
+
+        if (extensio.LCancons == null) extensio.LCancons = new List<Canco>();
+
+        extensio.LCancons.Add(canco);
+        _context.Entry(extensio).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();
+    }
+
 }
