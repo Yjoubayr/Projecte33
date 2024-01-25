@@ -7,12 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="CreaPages\PageCreaAlbum.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="CreaPages\PageCreaGrup.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="CreaPages\PageCreaMusic.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,16 +28,7 @@
     <Compile Update="MenuPages\PageLlistes.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Valor.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Cercador.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ConjuntValors.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="menuPujarCanco.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="WindowBasica.xaml.cs">
@@ -51,12 +36,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="CreaPages\PageCreaAlbum.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="CreaPages\PageCreaGrup.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="CreaPages\PageCreaMusic.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -78,19 +57,10 @@
     <Page Update="MenuPages\PageLlistes.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Valor.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Cercador.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ConjuntValors.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="menuPujarCanco.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowBasica.xaml">

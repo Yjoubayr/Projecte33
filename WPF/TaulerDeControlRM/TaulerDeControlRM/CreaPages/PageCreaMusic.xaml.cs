@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace TaulerDeControlRM.CreaPages
 {
     /// <summary>
-    /// Lógica de interacción para PageCreaMusic.xaml
+    /// Interaction logic for PageCreaMusic.xaml
     /// </summary>
     public partial class PageCreaMusic : Page
     {
@@ -24,7 +24,5 @@ namespace TaulerDeControlRM.CreaPages
         {
             InitializeComponent();
         }
-
-
     }
 }

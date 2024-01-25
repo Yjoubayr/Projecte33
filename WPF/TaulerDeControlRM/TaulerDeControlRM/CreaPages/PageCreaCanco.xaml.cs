@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +24,34 @@ namespace TaulerDeControlRM
     /// </summary>
     public partial class PageCreaCanco : Page
     {
+        public ObservableCollection<string> YourStringList { get; set; }
         public PageCreaCanco()
         {
             InitializeComponent();
+
+
+            ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},false,true);
+
+            ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
+
+            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument};
+
+            GridConjuntValors gcv=new GridConjuntValors(true, llistaConjutValors);
+            spMusics.Children.Add(gcv);
+        }
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                // Set the selected file path to the TextBox
+                FilePathTextBox.Text = openFileDialog.FileName;
+            }
+        }
+        private void Upload_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 

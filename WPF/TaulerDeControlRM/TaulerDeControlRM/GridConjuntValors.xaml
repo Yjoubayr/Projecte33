@@ -6,15 +6,8 @@
              xmlns:local="clr-namespace:TaulerDeControlRM"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="gridTotal">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid x:Name="gridValors" Grid.Row="0" Grid.Column="0"></Grid>
-        <Button x:Name="btAfegir" Grid.Row="1" Grid.Column="0" Content="" Click="btAfegir_Click"></Button>
-    </Grid>
+    <StackPanel x:Name="spTotal" Orientation="Vertical">
+        <Grid x:Name="gridConjuntValors"></Grid>
+        <Button x:Name="btAfegir" Click="btAfegir_Click" Width="Auto"></Button>
+    </StackPanel>
 </UserControl>

@@ -23,14 +23,10 @@ namespace TaulerDeControlRM
         public Cercador()
         {
             InitializeComponent();
-            ConjuntValors cvCampsCerca = new ConjuntValors();
-            cvCampsCerca.Valors = new List<string> { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" };
-            cvCampsCerca.esPotRepetir = false;
+            ConjuntValors cvCampsCerca = new ConjuntValors("Camp", new List<string> { "Nom Cançó", "Artista", "Album", "Llista de reproducció", "Versió" }, false, true);
 
-
-            GridConjuntValors gcvCampsCerca = new GridConjuntValors();
-            gcvCampsCerca.BtText = "Afegir camp";
-            gcvCampsCerca.valors = new List<ConjuntValors> { cvCampsCerca };
+            GridConjuntValors gcvCampsCerca = new GridConjuntValors(false, new List<ConjuntValors> { cvCampsCerca});
+            gcvCampsCerca.Valors = new List<ConjuntValors> { cvCampsCerca };
             
             
 
