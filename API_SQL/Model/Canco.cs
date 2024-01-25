@@ -8,10 +8,10 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         public string? Nom { get; set; }
         public int? Any { get; set; }
 
-        public ICollection<Llista>? LListes { get; set; }
+        public ICollection<Llista>? LListes { get; set; } = new List<Llista>();
         public ICollection<Canco>? LVersions { get; set; } = new List<Canco>();
-        public ICollection<Album>? LAlbums { get; set; }
-        public ICollection<Tocar>? LTocar { get; set; }
-        public ICollection<Extensio>? LExtensions { get; set; }
+        public ICollection<Album>? LAlbums { get; set; } = new List<Album>();
+        public ICollection<Tocar>? LTocar { get; set; } = new List<Tocar>();
+        public ICollection<Extensio>? LExtensions { get; set; } = new List<Extensio>();
     }
 }
