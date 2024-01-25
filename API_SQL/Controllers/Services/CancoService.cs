@@ -90,7 +90,7 @@ public class CancoService
 
         foreach (var extensio in lExtensions) {
             if (!cancoOriginal.LExtensions.Contains(extensio)) {
-                await _extensioService.AddSongAsync(extensio.Nom, cancoOriginal);
+                await _extensioService.AddCancoAsync(extensio.Nom, cancoOriginal);
             }
         }
 
