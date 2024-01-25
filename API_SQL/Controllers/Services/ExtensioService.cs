@@ -46,6 +46,39 @@ public class ExtensioService
         await _context.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} dins de CancoController per modificar una Canco
+    /// </summary>
+    /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
+    /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
+    /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
+    public async Task UpdateCancoRemoveAsync(Canco cancoOriginal, Canco updatedCanco) {
+        
+        List<Extensio> lExtensions = cancoOriginal.LExtensions.ToList<Extensio>();
+
+        foreach (var extensio in lExtensions) {
+            if (!updatedCanco.LExtensions.Contains(extensio)) {
+                await RemoveCancoAsync(extensio.Nom, cancoOriginal);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Canco/addCanco/{IDCanco} dins de CancoController per modificar 
+    /// </summary>
+    /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
+    /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
+    /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
+    public async Task UpdateCancoAddAsync(Canco cancoOriginal, Canco updatedCanco) {
+        
+        List<Extensio> lExtensions = updatedCanco.LExtensions.ToList<Extensio>();
+        
+        foreach (var extensio in lExtensions) {
+            if (!cancoOriginal.LExtensions.Contains(extensio)) {
+                await AddCancoAsync(extensio.Nom, cancoOriginal);
+            }
+        }
+    }
 
     /// <summary>
     /// Per afegir una canco a la llista de cancons d'una Extensio
@@ -53,7 +86,7 @@ public class ExtensioService
     /// <param name="nomExtensio">Nom de la Extensio de la qual volem afegir la canco</param>
     /// <param name="canco">L'objecte de la Canco a afegir</param>
     /// <returns>Verificacio de que la Canco s'ha afegit correctament al llistat de Cancons de l'Extensio</returns>
-    public async Task AddSongAsync(string nomExtensio, Canco canco) {
+    public async Task AddCancoAsync(string nomExtensio, Canco canco) {
         Extensio? extensio = await GetAsync(nomExtensio);
         
         if (extensio == null) {
@@ -71,4 +104,18 @@ public class ExtensioService
         await _context.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Per eliminar una canco de la llista de cancons d'una Extensio
+    /// </summary>
+    /// <param name="nomExtensio">Nom de la Extensio de la qual volem eliminar la canco</param>
+    /// <param name="canco">L'objecte de la Canco a eliminar de la llista</param>
+    /// <returns>Verificacio de que la Canco s'ha eliminat correctament del llistat de Cancons de l'Extensio</returns>
+    public async Task RemoveCancoAsync(string nomExtensio, Canco canco) {
+        Extensio? extensio = await GetAsync(nomExtensio);
+
+        extensio.LCancons.Remove(canco);
+        _context.Entry(extensio).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();
+    }
 }
