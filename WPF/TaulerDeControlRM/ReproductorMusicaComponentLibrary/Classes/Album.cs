@@ -11,5 +11,6 @@ namespace ReproductorMusicaComponentLibrary.Classes
         public string Titol { get; set; }
         public int Any { get; set; }
         public string IDCanco { get; set; }
+        public Canco CancoObj { get; set; }
     }
 }
