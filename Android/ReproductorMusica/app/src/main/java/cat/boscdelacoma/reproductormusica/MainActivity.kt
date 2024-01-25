@@ -1,5 +1,6 @@
 package cat.boscdelacoma.reproductormusica
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.media.MediaPlayer
@@ -56,13 +57,13 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: Pendent de revisar
 
-        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+        //val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
 
-        if ((absolutepathsong != "null")) {
-            mediaPlayer.setDataSource(absolutepathsong)
-            mediaPlayer.prepare()
-        }
+        //if (!absolutepathsong.isNullOrEmpty()) {
+        //    mediaPlayer.setDataSource(absolutepathsong)
+        //    mediaPlayer.prepare()
+        //}
 
         seekBarAudio.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -129,6 +130,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Metode que ens ajuda a actualitzar la barra de la musca
+     * @return {Unit} No retorna res.
+     * */
     private fun updateSeekBar() {
         isPlaying = true
         handler.postDelayed(object : Runnable {

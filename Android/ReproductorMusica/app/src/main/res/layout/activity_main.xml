@@ -86,10 +86,11 @@
 
                 />
             <TextView
-                android:id="@+id/DownloadSong"
+                android:id="@+id/SongLike"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/likesongsvg"
+                android:background="@drawable/addsongplaylist_track_songs_list_item"
+                android:backgroundTint="@color/white"
                 android:layout_alignParentRight="true"
                 />
         </RelativeLayout>

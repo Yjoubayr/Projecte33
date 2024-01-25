@@ -1,16 +1,23 @@
 package cat.boscdelacoma.reproductormusica
 
 import android.app.DownloadManager
+import android.content.ContentValues
 import android.content.Context
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import java.io.File
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.StandardCopyOption
+
+
 
 class Audio {
 
@@ -253,5 +260,8 @@ class Audio {
             return false
         }
     }
+
+
+
 }
 
