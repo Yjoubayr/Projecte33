@@ -5,6 +5,6 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         public string MACAddress {get; set;}
         public string NomLlista {get; set;}
         public string? NomDispositiu {get; set;}
-        public ICollection<Canco>? LCancons { get; set; }
+        public ICollection<Canco>? LCancons { get; set; } = new List<Canco>();
     }
 }
