@@ -19,7 +19,7 @@ namespace TaulerDeControlRM.CreaPages
     /// <summary>
     /// Lógica de interacción para PageCreaAlbum.xaml
     /// </summary>
-    public partial class PageCreaAlbum : Window
+    public partial class PageCreaAlbum : Page
     {
         public PageCreaAlbum()
         {
@@ -31,10 +31,10 @@ namespace TaulerDeControlRM.CreaPages
         {
             List<Canco> cancons = await CA_Canco.GetCanconsAsync();
             List<string> idsCancons = new List<string>();
-            
+
             for (int i = 0; i < cancons.Count; i++)
             {
-               idsCancons.Add(cancons[i].IDCanco);
+                idsCancons.Add(cancons[i].IDCanco);
             }
 
             elementComboBox.ItemsSource = idsCancons;

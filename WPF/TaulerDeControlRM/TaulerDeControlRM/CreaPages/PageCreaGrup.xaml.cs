@@ -23,6 +23,10 @@ namespace TaulerDeControlRM.CreaPages
         public PageCreaGrup()
         {
             InitializeComponent();
+            ConjuntValors cvMusics = new ConjuntValors("Músic", new List<string> { "Joan", "Josep", "Ferran", "Maria", "Miquel" }, false, true);
+            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics };
+            GridConjuntValors gcv = new GridConjuntValors(false, llistaConjutValors);
+            spMusics.Children.Add(gcv);
         }
     }
 }

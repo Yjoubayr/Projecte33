@@ -99,44 +99,59 @@ namespace TaulerDeControlRM
         /// <param name="e"></param>
         private void btAfegir_Click(object sender, RoutedEventArgs e)
         {
-            gridConjuntValors.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            int col = 0;
-            foreach (ConjuntValors cv in Valors)
+            if (lastValuesNotNull())
             {
-                ComboBox comboBox = new ComboBox();
-                if(cv.Cerca)
+                gridConjuntValors.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                int col = 0;
+                foreach (ConjuntValors cv in Valors)
                 {
-                    comboBox.IsEditable = true;
-                    comboBox.IsTextSearchEnabled = true;
-                    comboBox.IsTextSearchCaseSensitive = false;
+                    ComboBox comboBox = new ComboBox();
+                    if (cv.Cerca)
+                    {
+                        comboBox.IsEditable = true;
+                        comboBox.IsTextSearchEnabled = true;
+                        comboBox.IsTextSearchCaseSensitive = false;
+                    }
+                    if (cv.EsPotRepetir)
+                    {
+                        comboBox.ItemsSource = cv.Valors;
+                    }
+                    else
+                    {
+                        comboBox.ItemsSource = cv.ValorsRestants;
+                        comboBoxValues.Add(comboBox, null);
+                        comboBox.SelectionChanged += comboBox_SelectionChanged;
+                    }
+
+                    //Afegir LostFocus event handler al TextBox del ComboBox
+                    ControlTemplate template = comboBox.Template;
+                    if (template != null)
+                    {
+                        // Find the inner TextBox by its name
+                        TextBox textBox = template.FindName("PART_EditableTextBox", comboBox) as TextBox;
+                        // Add LostFocus event handler to the TextBox
+                        textBox.LostFocus += TextBox_LostFocus;
+                    }
+
+                    gridConjuntValors.Children.Add(comboBox);
+                    Grid.SetRow(comboBox, gridConjuntValors.RowDefinitions.Count - 1);
+                    Grid.SetColumn(comboBox, col);
+                    col++;
                 }
-                if (cv.EsPotRepetir)
-                {
-                    comboBox.ItemsSource = cv.Valors;
-                }
-                else
-                {
-                    comboBox.ItemsSource = cv.ValorsRestants;
-                    comboBoxValues.Add(comboBox, null);
-                    comboBox.SelectionChanged += comboBox_SelectionChanged;
-                }
-                gridConjuntValors.Children.Add(comboBox);
-                Grid.SetRow(comboBox, gridConjuntValors.RowDefinitions.Count - 1);
-                Grid.SetColumn(comboBox, col);
-                col++;
+                //Crear botó eliminar a la nova fila i última columna
+                Button btEliminar = new Button();
+                btEliminar.Content = "x";
+                btEliminar.Height = 20;
+                btEliminar.Width = 20;
+                btEliminar.Margin = new Thickness(15, 15, 0, 15);
+                btEliminar.Click += btEliminarClick;
+
+                gridConjuntValors.Children.Add(btEliminar);
+
+                Grid.SetRow(btEliminar, gridConjuntValors.RowDefinitions.Count - 1);
+                Grid.SetColumn(btEliminar, gridConjuntValors.ColumnDefinitions.Count - 1);
+
             }
-            //Crear botó eliminar a la nova fila i última columna
-            Button btEliminar = new Button();
-            btEliminar.Content = "x";
-            btEliminar.Height = 20;
-            btEliminar.Width = 20;
-            btEliminar.Margin = new Thickness(15, 15, 0, 15);
-            btEliminar.Click += btEliminarClick;
-
-            gridConjuntValors.Children.Add(btEliminar);
-
-            Grid.SetRow(btEliminar, gridConjuntValors.RowDefinitions.Count-1);
-            Grid.SetColumn(btEliminar, gridConjuntValors.ColumnDefinitions.Count -1);
         }
         private void btEliminarClick(object sender, RoutedEventArgs e)
         {
@@ -192,14 +207,14 @@ namespace TaulerDeControlRM
         {
             // Get the column index of the ComboBox
             int columnIndex = Grid.GetColumn((ComboBox)sender);
+            ConjuntValors cv = Valors.ElementAtOrDefault(columnIndex);
             if (sender is ComboBox myComboBox)
             {
                 // Get the selected value
                 if (myComboBox.SelectedItem != null)
                 {
                     string selectedValue = myComboBox.SelectedItem.ToString();
-
-                    ConjuntValors cv = Valors.ElementAtOrDefault(columnIndex);
+                    MessageBox.Show(selectedValue);
 
                     if (!cv.EsPotRepetir)
                     {
@@ -211,9 +226,38 @@ namespace TaulerDeControlRM
                         cv.ValorsRestants.Remove(selectedValue);
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Nou");
+                    cv.ValorsNous.Add(myComboBox.Text);
+                    //afegir label Nou
+                    newValueLabel(myComboBox);
+                }
             }
             updateComboBoxElements(columnIndex);
+            
         }
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("LostFocus");
+            // Get the column index of the ComboBox
+            int columnIndex = Grid.GetColumn((TextBox)sender);
+            MessageBox.Show(columnIndex.ToString());
+
+            //ConjuntValors cv = Valors.ElementAtOrDefault(columnIndex);
+            //if (sender is ComboBox myComboBox)
+            //{
+            //    // Get the selected value
+            //    if (myComboBox.SelectedItem == null && myComboBox.Text!=String.Empty)
+            //    {
+            //        MessageBox.Show(myComboBox.Text);
+            //        cv.ValorsNous.Add(myComboBox.Text);
+            //        //afegir label Nou
+            //        newValueLabel(myComboBox);
+            //    }
+            //}
+        }
+        
         private void updateComboBoxElements(int param)
         {
             List<ConjuntValors> ValorsChange;
@@ -256,6 +300,57 @@ namespace TaulerDeControlRM
                 }
                 cvCol++;
             }
+        }
+        public bool lastValuesNotNull()
+        {
+            int lastRowIndex = gridConjuntValors.RowDefinitions.Count - 1;
+            if (lastRowIndex >= 1) {
+                var comboBoxesInLastRow = gridConjuntValors.Children
+               .OfType<ComboBox>()
+               .Where(comboBox => Grid.GetRow(comboBox) == lastRowIndex)
+               .ToList();
+
+                foreach (var comboBox in comboBoxesInLastRow)
+                {
+                    try
+                    {
+                        string selectedValue = comboBox.SelectedItem?.ToString();
+                        if (selectedValue == null)
+                        {
+                            selectedValue=comboBox.Text;
+                            if(selectedValue == string.Empty)
+                            {
+                                MessageBox.Show("Error");
+                                return false;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Error");
+                        return false;
+                    }
+                }
+            }
+            return true;
+           
+        }
+        public void newValueLabel(ComboBox comboBox)
+        {
+            // Get the current position of the ComboBox
+            int columnIndex = Grid.GetColumn(comboBox);
+            int rowIndex = Grid.GetRow(comboBox);
+
+            //// Create a Label and add it to the StackPanel
+            Label label = new Label();
+            label.Content = "* Nou";
+            label.Foreground = Brushes.Red;
+            label.HorizontalAlignment = HorizontalAlignment.Right;
+            gridConjuntValors.Children.Add(label);
+
+            // Set the position of the StackPanel in the Grid
+            Grid.SetColumn(label, columnIndex);
+            Grid.SetRow(label, rowIndex);
         }
     }
 }

@@ -29,8 +29,12 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
 
+            //2 coses:
+            //contemplar músic 2 o més instruments
+            //contemplar 2 o més registres nous iguals
 
-            ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},false,true);
+
+            ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},true,true);
 
             ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
 
@@ -57,8 +61,8 @@ namespace TaulerDeControlRM
 
         private async void btOk_Click(object sender, RoutedEventArgs e)
         {
-            string cancoName = this.txtCancoName.Text.ToString();
-            string cancoYear = this.txtCancoYear.Text.ToString();
+            string cancoName = this.txtNom.Text.ToString();
+            string cancoYear = this.txtAny.Text.ToString();
             
             Canco canco = new Canco();
             canco.Nom = cancoName;

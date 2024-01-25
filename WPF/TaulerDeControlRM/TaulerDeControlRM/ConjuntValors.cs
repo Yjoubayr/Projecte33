@@ -13,6 +13,7 @@ namespace TaulerDeControlRM
         public bool Cerca { get; set; }
         public List<string> Valors { get; set; }
         public List<string> ValorsRestants { get; set; }
+        public List<string> ValorsNous { get; set; }
         public bool EsPotRepetir { get; set; }
 
         public ConjuntValors(string nom, List<string> valors, bool esPotRepetir, bool cerca)
@@ -20,6 +21,7 @@ namespace TaulerDeControlRM
             Nom = nom;
             Valors = valors;
             ValorsRestants = new List<string>(valors);
+            ValorsNous = new List<string>();
             EsPotRepetir = esPotRepetir;
             Cerca = cerca;
         }
