@@ -10,7 +10,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA
     {
-        public static string baseApi = "http://localhost:5087/api/";
+        public static string baseApi = "http://localhost:5025/api/";
 
         private static readonly HttpClient _httpClient = new HttpClient();
 

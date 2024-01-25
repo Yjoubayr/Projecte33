@@ -9,7 +9,7 @@ namespace ReproductorMusicaComponentLibrary.Classes
     public class Grup
     {
         public string Nom { get; set; }
-        public int Any { get; set; }
+        public int? Any { get; set; }
         public List<Music> LMusics { get; set; }
         public List<Tocar> LTocar { get; set; }
     }

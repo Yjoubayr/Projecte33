@@ -10,7 +10,7 @@ namespace ReproductorMusicaComponentLibrary.Classes
     {
         public string MACAddress { get; set; }
         public string NomLlista { get; set; }
-        public string NomDispositiu { get; set; }
+        public string? NomDispositiu { get; set; }
         public List<Canco> LCancons { get; set; }
     }
 }
