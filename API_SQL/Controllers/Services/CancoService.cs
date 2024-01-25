@@ -82,53 +82,17 @@ public class CancoService
     /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
+    /// 
+    // TODO: Moure i adaptar aquest codi al controlador d'Extensio?????
     public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
         
-        //List<Extensio> lExtensions = cancoOriginal.LExtensions.ToList<Extensio>();
-cancoOriginal?.LExtensions.Clear();
+        List<Extensio> lExtensions = updatedCanco.LExtensions.ToList<Extensio>();
 
-        foreach (var extensio in cancoOriginal.LExtensions) {
-            if (!updatedCanco.LExtensions.Contains(extensio)) {
-                Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
-                _extensioService.AddSongAsync(extensio, cancoOriginal);
+        foreach (var extensio in lExtensions) {
+            if (!cancoOriginal.LExtensions.Contains(extensio)) {
+                await _extensioService.AddSongAsync(extensio.Nom, cancoOriginal);
             }
         }
-        /*foreach (var extensio in lExtensions) {
-            if (!updatedCanco.LExtensions.Contains(extensio)) {
-                //updatedCanco.LExtensions.Remove(extensio);
-                Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
-                extensioObj.LCancons.Add(cancoOriginal);
-                _context.Entry(extensioObj).State = EntityState.Modified;
-                 await _context.SaveChangesAsync();
-            }
-        }*/
-
-        _context.Entry(cancoOriginal).CurrentValues.SetValues(updatedCanco);
-        //cancoOriginal.LExtensions.ToList<Extensio>().Remove(x => updatedCanco.LExtensions.name.Contains("mp14"));
-        _context.Entry(cancoOriginal).State = EntityState.Modified;
-
-        await _context.SaveChangesAsync();
-
-
-
-
-
-
-        /*foreach (var extensio in updatedCanco.LExtensions) {
-            Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
-
-
-            if (extensioObj != null) {
-                extensioObj.LCancons.Add(updatedCanco);
-            }
-            
-            
-            if (extensioObj == null) {
-                extensio.LCancons.Add(updatedCanco);
-            }
-            
-        }*/
-
 
         // Afegim una nova extensio si no existeix, 
         // obtenint-la del nom de la canco modificada
