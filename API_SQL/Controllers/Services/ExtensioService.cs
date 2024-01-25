@@ -81,7 +81,7 @@ public class ExtensioService
     }
 
     /// <summary>
-    /// Per afegir una canco a la llista de cancons d'una Extensio
+    /// Per afegir una Canco a la llista de Cancons d'una Extensio
     /// </summary>
     /// <param name="nomExtensio">Nom de la Extensio de la qual volem afegir la canco</param>
     /// <param name="canco">L'objecte de la Canco a afegir</param>
@@ -105,7 +105,7 @@ public class ExtensioService
     }
 
     /// <summary>
-    /// Per eliminar una canco de la llista de cancons d'una Extensio
+    /// Per eliminar una Canco de la llista de Cancons d'una Extensio
     /// </summary>
     /// <param name="nomExtensio">Nom de la Extensio de la qual volem eliminar la canco</param>
     /// <param name="canco">L'objecte de la Canco a eliminar de la llista</param>

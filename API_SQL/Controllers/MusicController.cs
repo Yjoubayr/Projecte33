@@ -76,7 +76,12 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Accedeix a la ruta /api/Music/updateGrup/{Nom} per modificar un grup
+        /// </summary>
+        /// <param name="Nom">Nom del grup a modificar</param>
+        /// <param name="updatedGrup">Objecte del grup amb els elements modificats</param>
+        /// <returns>Verificacio de que el grup s'ha modificat correctament</returns>
         [HttpPut("updateGrup/{Nom}")]
         public async Task<IActionResult> updateGrup(string Nom, Grup updatedGrup)
         {

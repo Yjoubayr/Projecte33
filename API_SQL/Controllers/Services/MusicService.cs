@@ -58,7 +58,7 @@ public class MusicService
         }
         await _context.SaveChangesAsync();
     }
-        
+
 
     /// <summary>
     /// Accedeix a la ruta /api/Music/putMusic/{Nom} dins de MusicController per modificar una Canco
@@ -90,9 +90,10 @@ public class MusicService
         }
     }
 
+
     /// <summary>
-    /// Accedeix a la ruta /api/Music/addGrup/{Nom} dins de MusicController per afegir un Grup
-    /// a la llista de grups d'un Music
+    /// Accedeix a la ruta /api/Music/updateGrup/{Nom} dins de MusicController per afegir un Grup
+    /// a la llista de Grups d'un Music
     /// </summary>
     /// <param name="grupService">Objecte de la classe GrupService per afegir el grup </param>
     /// <param name="grupOriginal">L'objecte del Grup original que volem modificar</param>
@@ -109,8 +110,9 @@ public class MusicService
         }
     }
 
+
     /// <summary>
-    /// Accedeix a la ruta /api/Music/addGrup/{Nom} dins de MusicController per modificar una Canco
+    /// Per Afegir un Grup de la llista de Grups d'un Music
     /// </summary>
     /// <param name="grupService">Objecte de la classe GrupService per afegir el grup </param>
     /// <param name="nomMusic">Nom del Music a modificar</param>
@@ -132,13 +134,13 @@ public class MusicService
         await _context.SaveChangesAsync();
     }
 
+
     /// <summary>
-    /// Accedeix a la ruta /api/Music/removeGrup/{Nom} dins de MusicController per modificar una Canco
+    /// Per eliminar un Grup de la llista de Grups d'un Music
     /// </summary>
     /// <param name="nomMusic">Nom del Music a modificar</param>
     /// <param name="grup">L'objecte del Grup a eliminar</param>
-    /// <returns>VVerificacio que el Grup s'ha eliminat correctament al llistat de Grups</returns>
-    /// 
+    /// <returns>Verificacio que el Grup s'ha eliminat correctament al llistat de Grups</returns>
     public async Task RemoveGrupAsync(string nomMusic, Grup grup) {
         Music? music = await GetAsync(nomMusic);
 
@@ -147,6 +149,7 @@ public class MusicService
         
         await _context.SaveChangesAsync();
     }
+
 
     /// <summary>
     /// Accedeix a la ruta /api/Music/deleteMusic/{Nom} dins de MusicController per eliminar un Music
