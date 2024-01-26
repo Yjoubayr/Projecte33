@@ -28,5 +28,10 @@ namespace TaulerDeControlRM.CreaPages
             GridConjuntValors gcv = new GridConjuntValors(false, llistaConjutValors);
             spMusics.Children.Add(gcv);
         }
+
+        private void Upload_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
