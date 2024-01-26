@@ -95,6 +95,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
             IActionResult result;
 
+            if (canco.LExtensions == null || canco.LExtensions.Count < 1) {
+                return BadRequest();
+            }
+
             try
             {
                 await _cancoService.CreateAsync(canco);
@@ -103,7 +107,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             catch (DbUpdateException)
             {
                 if (canco.LExtensions == null || canco.LExtensions.Count < 1) {
-                    return Conflict();
+                    return BadRequest();
                 }
                 if (_cancoService.GetAsync(canco.IDCanco) == null)
                 {

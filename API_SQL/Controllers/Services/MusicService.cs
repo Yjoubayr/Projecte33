@@ -54,6 +54,12 @@ public class MusicService
 
             if (grupObj != null) {
                 grupObj.LMusics.Add(newMusic);
+            } else {
+                grupObj = new Grup() {
+                    Nom = grup.Nom
+                };
+                await grupService.CreateAsync(grupObj, this);
+                grupObj.LMusics.Add(newMusic);
             }
         }
         await _context.SaveChangesAsync();

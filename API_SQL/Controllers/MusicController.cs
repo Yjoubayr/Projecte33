@@ -110,6 +110,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
+
+            if (music.LGrups == null || music.LGrups.Count < 1) {
+                return BadRequest();
+            }
+            
             try
             {
                 if (_musicService.GetAsync(music.Nom) == null)
@@ -121,6 +126,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
+                if (music.LGrups == null || music.LGrups.Count < 1) {
+                    return BadRequest();
+                }
                 if (_musicService.GetAsync(music.Nom) == null)
                 {
                     return Conflict();

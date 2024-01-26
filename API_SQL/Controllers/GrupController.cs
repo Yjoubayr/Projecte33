@@ -117,6 +117,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar previament si existeix el nom del grup i retornar un error 409
             IActionResult result;
 
+            if (grup.LMusics == null || grup.LMusics.Count < 1) {
+                return BadRequest();
+            }
+
             try
             {
                 await _grupService.CreateAsync(grup, _musicService);
@@ -124,6 +128,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
             catch (DbUpdateException)
             {
+                if (grup.LMusics == null || grup.LMusics.Count < 1) {
+                    return BadRequest();
+                }
                 if (_grupService.GetAsync(grup.Nom) == null)
                 {
                     return Conflict();
