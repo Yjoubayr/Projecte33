@@ -11,7 +11,8 @@ namespace dymj.ReproductorMusica.API_SQL.Services;
 public class GrupService
 {
     private readonly DataContext _context;
-
+    private readonly MusicService _musicService;
+    
     /// <summary>
     /// Constructor de la classe GrupServei.
     /// </summary>
@@ -19,6 +20,7 @@ public class GrupService
     public GrupService(DataContext context)
     {
         _context = context;
+        _musicService = new MusicService(context);
     }
 
     /// <summary>
@@ -46,23 +48,22 @@ public class GrupService
     /// Crea un nou grup de musica a la base de dades.
     /// </summary>
     /// <param name="newGrup">L'objecte del nou grup de musica.</param>
-    /// <param name="musicService">Objecte de la classe MusicService.</param>
     /// <returns>Verificacio de que el grup de musica s'ha creat correctament.</returns>
-    public async Task CreateAsync(Grup newGrup, MusicService musicService) {
+    public async Task CreateAsync(Grup newGrup) {
         await _context.Grups.AddAsync(newGrup);
 
         foreach (var music in newGrup.LMusics) {
-            Music? musicObj = await musicService.GetAsync(music.Nom);
+            Music? musicObj = await _musicService.GetAsync(music.Nom);
 
             if (musicObj != null) {
                 musicObj.LGrups.Add(newGrup);
-            } else {
+            } /*else {
                 musicObj = new Music() {
                     Nom = music.Nom
                 };
                 await musicService.CreateAsync(musicObj);
                 musicObj.LGrups.Add(newGrup);
-            }
+            }*/
         }
         await _context.SaveChangesAsync();
     }
@@ -102,17 +103,16 @@ public class GrupService
     /// Accedeix a la ruta /api/Grup/updateMusic/{Nom} dins de GrupController per afegir un Music
     /// de la llista de Musics d'un Grup
     /// </summary>
-    /// <param name="musicService">Objecte de la classe MusicService</param> 
     /// <param name="musicOriginal">L'objecte del Music original que volem modificar</param>
     /// <param name="updatedMusic">L'objecte del Music amb els elements modificats</param>
     /// <returns>Verificacio que el Music s'ha afegit correctament al llistat de Musics</returns>
-    public async Task UpdateMusicAddAsync(MusicService musicService, Music musicOriginal, Music updatedMusic) {
+    public async Task UpdateMusicAddAsync(Music musicOriginal, Music updatedMusic) {
         
         List<Grup> lGrups = updatedMusic.LGrups.ToList<Grup>();
         
         foreach (var grup in lGrups) {
             if (!musicOriginal.LGrups.Contains(grup)) {
-                await AddMusicAsync(musicService, grup.Nom, musicOriginal);
+                await AddMusicAsync(grup.Nom, musicOriginal);
             }
         }
     }
@@ -120,18 +120,17 @@ public class GrupService
     /// <summary>
     /// Per afegir un Music de la llista de Musics d'un Grup
     /// </summary>
-    /// <param name="musicService">Objecte de la classe MusicService per afegir el Music </param>
     /// <param name="nomGrup">Nom del Grup al qual volem afegir el Music</param>
     /// <param name="music">L'objecte del Music a afegir</param>
     /// <returns>Verificacio de que el Music s'ha afegit correctament al llistat de Musics del Grup</returns>
-    public async Task AddMusicAsync(MusicService musicService, string nomGrup, Music music) {
+    public async Task AddMusicAsync(string nomGrup, Music music) {
         Grup? grup = await GetAsync(nomGrup);
         
         if (grup == null) {
             grup = new Grup() {
                 Nom = nomGrup
             };
-            await CreateAsync(grup, musicService);
+            await CreateAsync(grup);
         }
 
         grup.LMusics.Add(music);

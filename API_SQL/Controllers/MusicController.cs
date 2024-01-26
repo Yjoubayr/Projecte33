@@ -123,44 +123,6 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _musicService.CreateAsync(music);
             result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
 
-            
-            /*var bool comprovar;
-            existeixMusic(music.Nom, comprovar);
-            if (comprovar == true) {
-                return Conflict();
-            }*/
-        
-
-
-
-
-            
-            
-            /*try
-            {
-                if (_musicService.GetAsync(music.Nom) != null)
-                {
-                    return Conflict();
-                }
-                await _musicService.CreateAsync(music);
-                result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
-            }
-            catch (DbUpdateException)
-            {
-                if (music.LGrups == null || music.LGrups.Count < 1) {
-                    return BadRequest();
-                }
-                
-                if (_musicService.GetAsync(music.Nom) == null)
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }*/
-
             return result;
         }
 

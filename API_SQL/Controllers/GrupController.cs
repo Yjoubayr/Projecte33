@@ -107,7 +107,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
 
             await _grupService.UpdateMusicRemoveAsync(music, updatedMusic);
-            await _grupService.UpdateMusicAddAsync(_musicService, music, updatedMusic);
+            await _grupService.UpdateMusicAddAsync(music, updatedMusic);
             return Ok();
         }
 
@@ -128,7 +128,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             try
             {
-                await _grupService.CreateAsync(grup, _musicService);
+                await _grupService.CreateAsync(grup);
                 result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
             }
             catch (DbUpdateException)
