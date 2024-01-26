@@ -33,6 +33,8 @@ namespace TaulerDeControlRM
         private Canco canco = new Canco();
         private Extensio e = new Extensio();
         private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+        private List<Music> llistaMusics = new List<Music>();
+        private List<string> nomsMusics = new List<string>();
 
         public  PageCreaCanco()
         {
@@ -42,19 +44,35 @@ namespace TaulerDeControlRM
             //contemplar músic 2 o més instruments
             //contemplar 2 o més registres nous iguals
 
-            List<Music> Musics = CA_Music.GetMusicsAsync().Result;
+            this.ObtenirMusics();
+        }
 
-            ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},true,true);
+        private async void ObtenirMusics()
+        {
+            this.llistaMusics = await CA_Music.GetMusicsAsync();
+
+            this.nomsMusics = new List<string>();
+
+            for (int i = 0; i < this.llistaMusics.Count; i++)
+            {
+                this.nomsMusics.Add(llistaMusics[i].Nom);
+            }
+            CrearLlistaConjuntValors();
+        }
+
+        private async void CrearLlistaConjuntValors()
+        {
+            //ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},true,true);
 
             ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
+            ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
+            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
 
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument};
-
-            GridConjuntValors gcv=new GridConjuntValors(true, llistaConjutValors);
+            GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
             spMusics.Children.Add(gcv);
 
-
         }
+
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
