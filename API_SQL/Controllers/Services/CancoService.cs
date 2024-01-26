@@ -82,32 +82,15 @@ public class CancoService
     /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
     /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
-    /// 
-    // TODO: Moure i adaptar aquest codi al controlador d'Extensio?????
     public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
-        
-        List<Extensio> lExtensions = updatedCanco.LExtensions.ToList<Extensio>();
+        cancoOriginal.Nom = updatedCanco.Nom;
+        cancoOriginal.Any = updatedCanco.Any;
+        cancoOriginal.Duracio = updatedCanco.Duracio;
+        cancoOriginal.Estat = updatedCanco.Estat;
 
-        foreach (var extensio in lExtensions) {
-            if (!cancoOriginal.LExtensions.Contains(extensio)) {
-                await _extensioService.AddCancoAsync(extensio.Nom, cancoOriginal);
-            }
-        }
-
-        // Afegim una nova extensio si no existeix, 
-        // obtenint-la del nom de la canco modificada
-        /*string[] cancoSeparada = updatedCanco.Nom.Split('.');
-        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
-        Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
-
-        if (extensio == null) {
-            extensio = new Extensio();
-            extensio.Nom = nomExtensio;
-            await _extensioService.CreateAsync(extensio);
-        }*/
-
-        
+        await _context.SaveChangesAsync();
     }
+
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/deleteCanco/{IDCanco} dins de CancoController per eliminar una Canco
