@@ -85,6 +85,32 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return NoContent();
         }
 
+
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/updateCanco/{IDCanco} per modificar una extensio
+        /// </summary>
+        /// <param name="IDCanco">Identifiador de la Canco a modificar</param>
+        /// <param name="updatedCanco">Objecte de la canco amb els elements modificats</param>
+        /// <returns>L'objecte de la extensio consultada</returns>
+        [HttpPut("updateCanco/{IDCanco}")]
+        public async Task<IActionResult> updateCanco(string IDCanco, Canco updatedCanco)
+        {
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
+            IActionResult result;
+
+            var canco = await _cancoService.GetAsync(IDCanco);
+
+            if (canco == null || IDCanco != updatedCanco.IDCanco)
+            {
+                return NotFound();
+            }
+
+            await _llistaService.UpdateCancoRemoveAsync(canco, updatedCanco);
+            await _llistaService.UpdateCancoAddAsync(canco, updatedCanco);
+            return Ok();
+        }
+
+
         /// <summary>
         /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista}/{IDCanco} per afegir una canco a una Llista de reproduccio
         /// </summary>
@@ -104,7 +130,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _llistaService.AddCancoAsync(llista, canco);
+            await _llistaService.AddCancoAsync(llista.MACAddress, llista.NomLlista, canco);
 
             return NoContent();
         }

@@ -47,7 +47,7 @@ public class ExtensioService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/putCanco/{IDCanco} dins de CancoController per modificar una Canco
+    /// Accedeix a la ruta /api/Extensio/updateCanco/{IDCanco} dins de ExtensioController per modificar una Canco
     /// </summary>
     /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
@@ -64,7 +64,7 @@ public class ExtensioService
     }
 
     /// <summary>
-    /// Accedeix a la ruta /api/Canco/addCanco/{IDCanco} dins de CancoController per modificar 
+    /// Accedeix a la ruta /api/Extensio/updateCanco/{IDCanco} dins de ExtensioController per modificar 
     /// </summary>
     /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
     /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
