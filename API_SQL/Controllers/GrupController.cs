@@ -91,6 +91,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("updateMusic/{Nom}")]
         public async Task<IActionResult> updateMusic(string Nom, Music updatedMusic)
         {
+            
+            if (updatedMusic.LGrups == null) {
+                return BadRequest();
+            }
+
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
 

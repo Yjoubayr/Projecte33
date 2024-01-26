@@ -60,7 +60,7 @@ public class GrupService
                 musicObj = new Music() {
                     Nom = music.Nom
                 };
-                await musicService.CreateAsync(musicObj, this);
+                await musicService.CreateAsync(musicObj);
                 musicObj.LGrups.Add(newGrup);
             }
         }
