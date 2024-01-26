@@ -23,7 +23,8 @@ public class LlistaService
     /// </summary>
     /// <returns>El llistat de Llistes de reproduccio</returns>
     public async Task<List<Llista>> GetAsync() {
-        return await _context.Llista.ToListAsync();
+        return await _context.Llista
+                            .Include(x => x.LCancons).ToListAsync();
     }
 
     /// <summary>   
@@ -57,6 +58,84 @@ public class LlistaService
         _context.Entry(llistaOriginal).CurrentValues.SetValues(updatedLlista);
         await _context.SaveChangesAsync();
     }
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Llista/updateCanco/{IDCanco} dins de LlistaController per modificar una Canco
+    /// </summary>
+    /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
+    /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
+    /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
+    public async Task UpdateCancoRemoveAsync(Canco cancoOriginal, Canco updatedCanco) {
+        
+        List<Llista> lListes = cancoOriginal.LListes.ToList<Llista>();
+
+        foreach (var llista in lListes) {
+            if (!updatedCanco.LListes.Contains(llista)) {
+                await RemoveCancoAsync(llista.MACAddress, llista.NomLlista, cancoOriginal);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Llista/updateCanco/{IDCanco} dins de LlistaController per modificar una Canco
+    /// </summary>
+    /// <param name="cancoOriginal">L'objecte de la Canco original que volem modificar</param>
+    /// <param name="updatedCanco">L'objecte de la Canco amb els elements modificats</param>
+    /// <returns>Verificacio de que la Canco s'ha modificat correctament</returns>
+    public async Task UpdateCancoAddAsync(Canco cancoOriginal, Canco updatedCanco) {
+        
+        List<Llista> lListes = updatedCanco.LListes.ToList<Llista>();
+        
+        foreach (var llista in lListes) {
+            if (!cancoOriginal.LListes.Contains(llista)) {
+                await AddCancoAsync(llista.MACAddress, llista.NomLlista, cancoOriginal);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista}/{IDCanco} dins de LlistaController per afegir una Canco a una Llista de reproduccio
+    /// </summary>
+    /// <param name="MACAddress">Adreça MAC de la Llista de reproduccio a la qual volem afegir la Canco</param>
+    /// <param name="NomLlista">Nom de la Llista de reproduccio a la qual volem afegir la Canco</param>
+    /// <param name="canco">L'objecte de la Canco a afegir</param>
+    /// <returns>Verificacio de que la Canco s'ha afegit correctament a la Llista de reproduccio</returns>
+    public async Task AddCancoAsync(string MACAddress, string NomLlista, Canco canco) {
+        Llista? llista = await GetAsync(MACAddress, NomLlista);
+
+        if (llista == null) {
+            llista = new Llista() {
+                MACAddress = MACAddress,
+                NomLlista = NomLlista
+            };
+            await CreateAsync(llista);
+        }
+
+        llista.LCancons.Add(canco);
+        _context.Entry(llista).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();        
+    }
+
+
+    /// <summary>
+    /// Per eliminar una Canco de la llista de Cancons d'una Llista de reproduccio
+    /// </summary>
+    /// <param name="MACAddress">Adreça MAC de la Llista de reproduccio a la qual volem eliminar la Canco</param>
+    /// <param name="NomLlista">Nom de la Llista de reproduccio a la qual volem eliminar la Canco</param>
+    /// <param name="canco">L'objecte de la Canco a eliminar</param>
+    /// <returns>Verificacio de que la Canco s'ha eliminat correctament a la Llista de reproduccio</returns>
+    public async Task RemoveCancoAsync(string MACAddress, string NomLlista, Canco canco) {
+        Llista? llista = await GetAsync(MACAddress, NomLlista);
+
+        llista.LCancons.Remove(canco);
+        _context.Entry(llista).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();        
+    }
+
 
     /// <summary>
     /// Accedeix a la ruta /api/Llista/deleteLlista/{MACAddress}/{NomLlista} dins de LlistaController per eliminar una Llista de reproduccio

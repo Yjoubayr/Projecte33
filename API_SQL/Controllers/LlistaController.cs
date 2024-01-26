@@ -17,6 +17,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly LlistaService _llistaService;
+        private readonly CancoService _cancoService;
 
         /// <summary>
         /// Constructor de la classe LlistaController
@@ -27,6 +28,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             _context = context;
             _llistaService = new LlistaService(context);
+            _cancoService = new CancoService(context);
         }
 
         /// <summary>
@@ -79,6 +81,56 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             updatedLlista.NomLlista = llista.NomLlista;
 
             await _llistaService.UpdateAsync(updatedLlista);
+
+            return NoContent();
+        }
+
+
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/updateCanco/{IDCanco} per modificar una extensio
+        /// </summary>
+        /// <param name="IDCanco">Identifiador de la Canco a modificar</param>
+        /// <param name="updatedCanco">Objecte de la canco amb els elements modificats</param>
+        /// <returns>L'objecte de la extensio consultada</returns>
+        [HttpPut("updateCanco/{IDCanco}")]
+        public async Task<IActionResult> updateCanco(string IDCanco, Canco updatedCanco)
+        {
+            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
+            IActionResult result;
+
+            var canco = await _cancoService.GetAsync(IDCanco);
+
+            if (canco == null || IDCanco != updatedCanco.IDCanco)
+            {
+                return NotFound();
+            }
+
+            await _llistaService.UpdateCancoRemoveAsync(canco, updatedCanco);
+            await _llistaService.UpdateCancoAddAsync(canco, updatedCanco);
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// Accedeix a la ruta /api/Llista/putLlista/{MACAddress}/{NomLlista}/{IDCanco} per afegir una canco a una Llista de reproduccio
+        /// </summary>
+        /// <param name="MACAddress">MACAddress de la Llista de reproduccio a modificar</param>
+        /// <param name="NomLlista">Nom de la Llista de reproduccio a modificar</param>
+        /// <param name="IDCanco">ID de la Canco a afegir a la Llista de reproduccio</param>
+        /// <returns>Verificacio de que la Canco s'ha afegit a la Llista de reproduccio correctament</returns>
+        [HttpPut("putLlistaCanco/{MACAddress}/{NomLlista}/{IDCanco}")]
+        public async Task<IActionResult> PutLlistaCanco(string MACAddress, string NomLlista, string IDCanco)
+        {
+            var llista = await _llistaService.GetAsync(MACAddress, NomLlista);
+
+            var canco = await _cancoService.GetAsync(IDCanco);
+
+            if (llista == null || canco == null)
+            {
+                return NotFound();
+            }
+
+            await _llistaService.AddCancoAsync(llista.MACAddress, llista.NomLlista, canco);
 
             return NoContent();
         }

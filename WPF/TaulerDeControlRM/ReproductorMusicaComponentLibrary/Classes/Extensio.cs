@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.Classes
 {
-    public class Grup
+    public class Extensio
     {
         public string Nom { get; set; }
-        public int? Any { get; set; }
-        public List<Music> LMusics { get; set; }
-        public List<Tocar> LTocar { get; set; }
+        public List<Canco> LCancons = new List<Canco>();
     }
 }
