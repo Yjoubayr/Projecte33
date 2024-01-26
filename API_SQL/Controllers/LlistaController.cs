@@ -95,8 +95,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("updateCanco/{IDCanco}")]
         public async Task<IActionResult> updateCanco(string IDCanco, Canco updatedCanco)
         {
-            // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
-            IActionResult result;
+            if (updatedCanco.LListes == null) {
+                return BadRequest();
+            }
 
             var canco = await _cancoService.GetAsync(IDCanco);
 

@@ -7,6 +7,8 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         [MaxLength(20)]
         public string? Nom { get; set; }
         public int? Any { get; set; }
+        public float? Duracio { get; set; } = 0.0f;
+        public string? Estat { get; set; } = "Incompleta";
 
         public ICollection<Llista>? LListes { get; set; } = new List<Llista>();
         public ICollection<Canco>? LVersions { get; set; } = new List<Canco>();
