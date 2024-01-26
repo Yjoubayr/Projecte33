@@ -29,6 +29,7 @@ public class GrupService
         return await _context.Grups.ToListAsync();
     }
 
+
     /// <summary>
     /// Obte un grup de musica especific a partir del seu nom.
     /// </summary>
@@ -40,15 +41,26 @@ public class GrupService
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
+
     /// <summary>
     /// Crea un nou grup de musica a la base de dades.
     /// </summary>
     /// <param name="newGrup">L'objecte del nou grup de musica.</param>
+    /// <param name="musicService">Objecte de la classe MusicService.</param>
     /// <returns>Verificacio de que el grup de musica s'ha creat correctament.</returns>
-    public async Task CreateAsync(Grup newGrup) {
+    public async Task CreateAsync(Grup newGrup, MusicService musicService) {
         await _context.Grups.AddAsync(newGrup);
+
+        foreach (var music in newGrup.LMusics) {
+            Music? musicObj = await musicService.GetAsync(music.Nom);
+
+            if (musicObj != null) {
+                musicObj.LGrups.Add(newGrup);
+            }
+        }
         await _context.SaveChangesAsync();
     }
+
 
     /// <summary>
     /// Actualitza les dades d'un grup de musica existent a la base de dades.
@@ -60,6 +72,84 @@ public class GrupService
         _context.Entry(grupOriginal).CurrentValues.SetValues(updatedGrup);
         await _context.SaveChangesAsync();
     }
+
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Grup/updateMusic/{Nom} dins de GrupController per eliminar un Music
+    /// de la llista de Musics d'un Grup
+    /// </summary>
+    /// <param name="musicOriginal">L'objecte del Mus original que volem modificar</param>
+    /// <param name="updatedMusic">L'objecte del Music amb els elements modificats</param>
+    /// <returns>Verificacio que el Music s'ha eliminat correctament al llistat de Musics</returns>
+    public async Task UpdateMusicRemoveAsync(Music musicOriginal, Music updatedMusic) {
+        
+        List<Grup> lGrups = musicOriginal.LGrups.ToList<Grup>();
+
+        foreach (var grup in lGrups) {
+            if (!updatedMusic.LGrups.Contains(grup)) {
+                await RemoveMusicAsync(grup.Nom, musicOriginal);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Grup/updateMusic/{Nom} dins de GrupController per afegir un Music
+    /// de la llista de Musics d'un Grup
+    /// </summary>
+    /// <param name="musicService">Objecte de la classe MusicService</param> 
+    /// <param name="musicOriginal">L'objecte del Music original que volem modificar</param>
+    /// <param name="updatedMusic">L'objecte del Music amb els elements modificats</param>
+    /// <returns>Verificacio que el Music s'ha afegit correctament al llistat de Musics</returns>
+    public async Task UpdateMusicAddAsync(MusicService musicService, Music musicOriginal, Music updatedMusic) {
+        
+        List<Grup> lGrups = updatedMusic.LGrups.ToList<Grup>();
+        
+        foreach (var grup in lGrups) {
+            if (!musicOriginal.LGrups.Contains(grup)) {
+                await AddMusicAsync(musicService, grup.Nom, musicOriginal);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Per afegir un Music de la llista de Musics d'un Grup
+    /// </summary>
+    /// <param name="musicService">Objecte de la classe MusicService per afegir el Music </param>
+    /// <param name="nomGrup">Nom del Grup al qual volem afegir el Music</param>
+    /// <param name="music">L'objecte del Music a afegir</param>
+    /// <returns>Verificacio de que el Music s'ha afegit correctament al llistat de Musics del Grup</returns>
+    public async Task AddMusicAsync(MusicService musicService, string nomGrup, Music music) {
+        Grup? grup = await GetAsync(nomGrup);
+        
+        if (grup == null) {
+            grup = new Grup() {
+                Nom = nomGrup
+            };
+            await CreateAsync(grup, musicService);
+        }
+
+        grup.LMusics.Add(music);
+        _context.Entry(grup).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();
+    }
+
+    
+    /// <summary>
+    /// Per eliminar un Music de la llista de Musics d'un Grup
+    /// </summary>
+    /// <param name="nomGrup">Nom del Grup al qual volem eliminar el Music</param>
+    /// <param name="music">L'objecte del Music a eliminar</param>
+    /// <returns>Verificacio de que el Music s'ha eliminat correctament al llistat de Musics del Grup</returns>
+    public async Task RemoveMusicAsync(string nomGrup, Music music) {
+        Grup? grup = await GetAsync(nomGrup);
+
+        grup.LMusics.Remove(music);
+        _context.Entry(grup).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();
+    }
+
 
     /// <summary>
     /// Elimina un grup de musica de la base de dades a partir del seu nom.

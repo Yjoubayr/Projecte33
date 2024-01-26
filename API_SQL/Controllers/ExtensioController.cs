@@ -58,7 +58,7 @@ namespace API_SQL.Controllers
         /// Accedeix a la ruta /api/Extensio/updateCanco/{IDCanco} per modificar una extensio
         /// </summary>
         /// <param name="IDCanco">Identifiador de la Canco a modificar</param>
-        /// <param name="updatedCanco">Objecte de la canco a afegir</param>
+        /// <param name="updatedCanco">Objecte de la canco amb els elements modificats</param>
         /// <returns>L'objecte de la extensio consultada</returns>
         [HttpPut("updateCanco/{IDCanco}")]
         public async Task<IActionResult> updateCanco(string IDCanco, Canco updatedCanco)
