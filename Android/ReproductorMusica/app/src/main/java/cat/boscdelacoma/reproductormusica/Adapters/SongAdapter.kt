@@ -31,12 +31,10 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
 
             holder.downloadLogo.setOnClickListener {
                 val intent = Intent(holder.itemView.context, MainActivity::class.java)
-                val path = audio.getMp3Path("test.mp3")
-
+                HTTP_Mongo(context = holder.itemView.context).downloadAudio("123")
+                   Toast.makeText(holder.itemView.context, "Descargando cancion", Toast.LENGTH_SHORT).show()
+                val path = audio.getMp3Path("cancion_descargada.mp3")
                 intent.putExtra("absolutepathsong", path)
-                //audio.downloadSongAPI(context = holder.itemView.context, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-
-                HTTP_Mongo(context = holder.itemView.context).DownloadSongFromMongoDb("e138ac81-ba13-4e6e-8d44-e39ad83d4600")
                 holder.itemView.context.startActivity(intent)
             }
         }

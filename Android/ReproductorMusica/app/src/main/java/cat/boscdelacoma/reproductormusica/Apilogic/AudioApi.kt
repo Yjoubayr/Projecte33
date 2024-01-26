@@ -1,15 +1,21 @@
-
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Multipart
+import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
-import com.google.gson.JsonObject
 
-data class AudioResponse(val filename: String)
+interface AudioApiService {
+    @GET("FitxersAPI/v1/Audio/GetAudio/{UID}")
+    fun downloadAudio(@Path("UID") uid: String): Call<ResponseBody>
 
-interface AudioApi {
-    @GET("/api/Audio/{audioId}")
-    suspend fun getAudio(@Path("audioId") audioId: String): ResponseBody
-
-    @GET("/api/Audio/SongName/{idCanco}")
-    suspend fun getJson(@Path("idCanco") idCanco: String): JsonObject
+    @Multipart
+    @POST("FitxersAPI/v1/Audio")
+    fun uploadAudio(
+        @Part("uid") uid: RequestBody,
+        @Part audio: MultipartBody.Part
+    ): Call<ResponseBody>
 }

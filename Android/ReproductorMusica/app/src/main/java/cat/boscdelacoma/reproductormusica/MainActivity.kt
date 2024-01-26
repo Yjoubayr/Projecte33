@@ -57,13 +57,13 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: Pendent de revisar
 
-        //val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
 
-        //if (!absolutepathsong.isNullOrEmpty()) {
-        //    mediaPlayer.setDataSource(absolutepathsong)
-        //    mediaPlayer.prepare()
-        //}
+        if (!absolutepathsong.isNullOrEmpty()) {
+            mediaPlayer.setDataSource(absolutepathsong)
+            mediaPlayer.prepare()
+        }
 
         seekBarAudio.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

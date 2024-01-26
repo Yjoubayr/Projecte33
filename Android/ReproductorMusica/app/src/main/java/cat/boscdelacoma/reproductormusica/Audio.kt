@@ -163,8 +163,6 @@ class Audio {
             for (file in files) {
                 val path = file.absolutePath
                 val relativePath = path.substring(path.lastIndexOf(File.separator) + 1)
-
-                // Verificar si el archivo no es oculto
                 if (!file.isHidden && !relativePath.startsWith(".")) {
                     if (path.endsWith(".mp3")) {
                         list.add(relativePath)

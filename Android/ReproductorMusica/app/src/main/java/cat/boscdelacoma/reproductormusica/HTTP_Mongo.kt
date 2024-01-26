@@ -1,19 +1,19 @@
 package cat.boscdelacoma.reproductormusica
 
-import AudioApi
-import android.content.ContentValues
+import AudioApiService
 import android.content.Context
-import android.os.Build
 import android.os.Environment
-import android.provider.MediaStore
-import androidx.annotation.RequiresApi
-import com.github.kittinunf.fuel.Fuel
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
+import retrofit2.Call
 import java.io.File
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,84 +21,94 @@ import java.io.FileOutputStream
 
 
 class HTTP_Mongo(private val context: Context) {
-    private lateinit var audioApi: AudioApi
 
-    @RequiresApi(Build.VERSION_CODES.Q)
-    fun init() {
-        val gson = Gson()
-        val retrofit = createRetrofitInstance()
-
-        audioApi = retrofit.create(AudioApi::class.java)
-    }
-
-    fun createRetrofitInstance(): Retrofit {
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
-
-        return Retrofit.Builder()
-            .baseUrl("http://172.23.2.141:5264")
+    private lateinit var audioApi: AudioApiService
+    /**
+     * Metode per pujar una cançó a l'api de mongoDB gridfs
+     * @param uid UID de la cançó.
+     * @param filePath Path de la cançó.
+     * */
+    fun uploadAudio(uid: String, filePath: String) {
+        val gson: Gson = GsonBuilder().setLenient().create()
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://172.23.2.141:5264/") // Reemplaza con tu base URL
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-    }
+        audioApi = retrofit.create(AudioApiService::class.java)
+        val audioFile = File(filePath)
+        val requestFile: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), audioFile)
+        val body: MultipartBody.Part = MultipartBody.Part.createFormData("audio", audioFile.name, requestFile)
+        val uidPart: RequestBody = RequestBody.create(MediaType.parse("text/plain"), uid)
 
-    /**
-     * Metodo que ens permet descarregar una cançó de l'api de mongo
-     * @param songId GUID de la cancion
-     * @return {ByteArray} Retorna un array de bytes con la cancion
-     * */
-    fun DownloadSongFromMongoDb(audioId : String) {
-        init()
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
+        val call: Call<ResponseBody> = audioApi.uploadAudio(uidPart, body)
 
-                val responseBody: ResponseBody = audioApi.getAudio(audioId)
-                val audioBytes: ByteArray? = responseBody.bytes()
-
-                if (audioBytes != null) {
-                    println("Audio data is not null.")
-                    saveAudioToMediaStore(audioBytes, "test.mp3")
+        call.enqueue(object : retrofit2.Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    Log.d("Upload", "Archivo subido con éxito")
                 } else {
-                    println("Error: Audio data is null.")
+                    Log.e("Upload Error", "Error en la subida: ${response.code()}")
                 }
-            } catch (e: Exception) {
-                println("${e.message}")
             }
-        }
-    }
-    /**
-     * Metode que ens permet pujar una cançó a l'api de mongo
-     * @param filePath Ruta de la cançó
-     * @return {Boolean} Retorna true si s'ha pujat la cançó
-     * */
-    fun uploadSongToAPI(filePath: String): Boolean {
-        init()
-        return true
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("Upload Error", "Fallo en la subida: ${t.message}")
+            }
+        })
     }
 
     /**
-     * Metode que nes permet guardar un fitxer de audio a la memoria del dispositiu
-     * @param audioBytes Array de bytes de la cançó
-     * @param fileName Nom del fitxer
+     * Metode que ens ajuda a descarregar una cançó a partir d'una UID fent una petició cap a l'api.
+     * @param uid UID de la cançó.
      * */
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun saveAudioToMediaStore(audioBytes: ByteArray, fileName: String) {
-        val resolver = context.contentResolver
-        val contentValues = ContentValues().apply {
-            put(MediaStore.Audio.Media.DISPLAY_NAME, fileName)
-            put(MediaStore.Audio.Media.MIME_TYPE, "audio/mp3")
-            put(MediaStore.Audio.Media.RELATIVE_PATH, Environment.DIRECTORY_MUSIC)
-        }
-        val audioUri = resolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, contentValues)
-        audioUri?.let { uri ->
-            resolver.openFileDescriptor(uri, "w", null)?.use { parcelFileDescriptor ->
-                val fileDescriptor = parcelFileDescriptor.fileDescriptor
-                val fileOutputStream = FileOutputStream(fileDescriptor)
-                fileOutputStream.write(audioBytes)
-                fileOutputStream.close()
+    fun downloadAudio(uid: String) {
+        val gson: Gson = GsonBuilder().setLenient().create()
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://172.23.2.141:5264/") // Reemplaza con tu base URL
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
 
-                // Notify media scanner about the new file
-                resolver.update(uri, contentValues, null, null)
+        audioApi = retrofit.create(AudioApiService::class.java)
+
+        val call: Call<ResponseBody> = audioApi.downloadAudio(uid)
+
+        call.enqueue(object : retrofit2.Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    saveAudioFile(response.body() ,"cancion_descargada")
+                } else {
+                    Log.e("Download Error", "Error en la descarga: ${response.code()}")
+                }
+            }
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("Download Error", "Fallo en la descarga: ${t.message}")
+            }
+        })
+    }
+
+    /**
+     * Metode que ens permet guardar el fitxer descarregat de la musica.
+     * @param body Contingut del fitxer.
+     * @param FileName Nom del fitxer.
+     * */
+    private fun saveAudioFile(body: ResponseBody?, Filename : String) {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val file =  File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC),
+                    "${Filename}.mp3"
+                ) // Almacenamiento interno de la aplicación
+                val inputStream = body?.byteStream()
+                val outputStream = FileOutputStream(file)
+                val buffer = ByteArray(4096)
+                var bytesRead: Int
+                while (inputStream?.read(buffer).also { bytesRead = it!! } != -1) {
+                    outputStream.write(buffer, 0, bytesRead)
+                }
+                outputStream.close()
+                inputStream?.close()
+                Log.d("Download", "Archivo guardado en: ${file.absolutePath}")
+            } catch (e: Exception) {
+                Log.e("Download Error", "Error al guardar el archivo: ${e.message}")
             }
         }
     }
