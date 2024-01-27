@@ -11,9 +11,13 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA_Music
     {
+        // Obtenim el nom del controlador des del fitxer App.config
         public static string controller = ConfigurationManager.AppSettings["controllerMusic"];
-        //GETS
-        //Tots
+
+        /// <summary>
+        /// Fer una consulta a l'API que retorni tots les Musics
+        /// </summary>
+        /// <returns>Un llistat de tots els Musics</returns>
         public static async Task<List<Music>> GetMusicsAsync()
         {
             string apiUrl = CA.baseApi + controller + "getMusics";
@@ -22,6 +26,12 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             var data = JsonConvert.DeserializeObject<List<Music>>(result);
             return data;
         }
+
+        /// <summary>
+        /// Fer una consulta l'API que retorni un Music en concret
+        /// </summary>
+        /// <param name="nomMusic">Nom del Music a obtenir</param>
+        /// <returns>L'objecte del Music a obtenir</returns>
         public static async Task<Music> GetMusicAsync(string nomMusic)
         {
             string apiUrl = CA.baseApi + controller + "getMusic/" + nomMusic;
@@ -31,10 +41,14 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             return data;
         }
 
-        //POST
-        public static async Task PostMusicAsync(Music e)
+        /// <summary>
+        /// Fer una consulta a l'API per inserir un Music
+        /// </summary>
+        /// <param name="m">L'objecte del Music a inserir</param>
+        /// <returns>Verificació de que el Music s'ha inserit correctament</returns>
+        public static async Task PostMusicAsync(Music m)
         {
-            string jsonData = JsonConvert.SerializeObject(e);
+            string jsonData = JsonConvert.SerializeObject(m);
             string apiUrl = CA.baseApi + controller + "postMusic";
 
             await CA.PostDataAsync(apiUrl, jsonData);
