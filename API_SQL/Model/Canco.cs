@@ -7,7 +7,7 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         [MaxLength(20)]
         public string? Nom { get; set; }
         public int? Any { get; set; }
-        public float? Duracio { get; set; } = 0.0f;
+        [MaxLength(10)]
         public string? Estat { get; set; } = "Incompleta";
 
         public ICollection<Llista>? LListes { get; set; } = new List<Llista>();

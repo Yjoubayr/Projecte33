@@ -52,26 +52,6 @@ public class CancoService
         newCanco.IDCanco = Guid.NewGuid().ToString();
         await _context.Cancons.AddAsync(newCanco);
 
-        foreach (var extensio in newCanco.LExtensions) {
-            Extensio? extensioObj = await _extensioService.GetAsync(extensio.Nom);
-
-            if (extensioObj != null) {
-                extensioObj.LCancons.Add(newCanco);
-            }
-        }
-
-        // Afegim una nova extensio si no existeix, 
-        // obtenint-la del nom de la canco
-        /*string[] cancoSeparada = newCanco.Nom.Split('.');
-        string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
-        Extensio? extensio = await _extensioService.GetAsync(nomExtensio);
-
-        if (extensio == null) {
-            extensio = new Extensio();
-            extensio.Nom = nomExtensio;
-            await _extensioService.CreateAsync(extensio);
-        }*/
-        
         await _context.SaveChangesAsync();
     }
    
@@ -85,7 +65,6 @@ public class CancoService
     public async Task UpdateAsync(Canco cancoOriginal, Canco updatedCanco) {
         cancoOriginal.Nom = updatedCanco.Nom;
         cancoOriginal.Any = updatedCanco.Any;
-        cancoOriginal.Duracio = updatedCanco.Duracio;
         cancoOriginal.Estat = updatedCanco.Estat;
 
         await _context.SaveChangesAsync();
