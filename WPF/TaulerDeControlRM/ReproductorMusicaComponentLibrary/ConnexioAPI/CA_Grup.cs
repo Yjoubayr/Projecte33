@@ -2,6 +2,7 @@
 using ReproductorMusicaComponentLibrary.Classes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA_Grup
     {
-        public static string controller = "Grup/";
+        public static string controller = ConfigurationManager.AppSettings["controllerGrup"];
         //GETS
         public static async Task<List<Grup>> GetGrupsAsync()
         {

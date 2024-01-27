@@ -57,6 +57,7 @@ namespace TaulerDeControlRM
             {
                 this.nomsMusics.Add(llistaMusics[i].Nom);
             }
+
             CrearLlistaConjuntValors();
         }
 

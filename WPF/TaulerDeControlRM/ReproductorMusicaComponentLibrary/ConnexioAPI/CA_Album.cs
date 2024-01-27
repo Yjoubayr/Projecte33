@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA_Album
     {
-        public static string controller = "Album/";
+        public static string controller = ConfigurationManager.AppSettings["controllerAlbum"];
         //GETS
         public static async Task<List<Album>> GetAlbumsAsync()
         {

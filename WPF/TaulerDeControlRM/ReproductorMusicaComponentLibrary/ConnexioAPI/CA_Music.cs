@@ -2,6 +2,7 @@
 using ReproductorMusicaComponentLibrary.Classes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA_Music
     {
-        public static string controller = "Music/";
+        public static string controller = ConfigurationManager.AppSettings["controllerMusic"];
         //GETS
         //Tots
         public static async Task<List<Music>> GetMusicsAsync()

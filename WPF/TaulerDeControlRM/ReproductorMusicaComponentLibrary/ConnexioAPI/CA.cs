@@ -5,13 +5,13 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Configuration;
 
 namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA
     {
-        public static string baseApi = "http://localhost:5025/api/";
-
+        public static string baseApi = ConfigurationManager.AppSettings["baseApi"];
         private static readonly HttpClient _httpClient = new HttpClient();
 
         public static async Task<string> GetDataFromApiAsync(string apiUrl)

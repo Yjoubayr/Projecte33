@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 {
     public class CA_Canco
     {
-        public static string controller = "Canco/";
+        public static string controller = ConfigurationManager.AppSettings["controllerCanco"];
         //GETS
         public static async Task<List<Canco>> GetCanconsAsync()
         {
