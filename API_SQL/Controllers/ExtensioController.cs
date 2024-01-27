@@ -66,6 +66,10 @@ namespace API_SQL.Controllers
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
             IActionResult result;
 
+            if (updatedCanco.LExtensions == null) {
+                return BadRequest();
+            }
+
             var canco = await _cancoService.GetAsync(IDCanco);
 
             if (canco == null || IDCanco != updatedCanco.IDCanco)
@@ -73,6 +77,7 @@ namespace API_SQL.Controllers
                 return NotFound();
             }
 
+            await _cancoService.UpdateAsync(canco, updatedCanco);
             await _extensioService.UpdateCancoRemoveAsync(canco, updatedCanco);
             await _extensioService.UpdateCancoAddAsync(canco, updatedCanco);
             return Ok();

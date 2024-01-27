@@ -46,16 +46,22 @@ public class MusicService
     /// <param name="newMusic">L'objecte del Music a crear</param>
     /// <param name="grupService">Objecte de la classe GrupService</param>
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
-    public async Task CreateAsync(Music newMusic, GrupService grupService) {
+    public async Task CreateAsync(Music newMusic) {
         await _context.Musics.AddAsync(newMusic);
-        
+        /*
         foreach (var grup in newMusic.LGrups) {
             Grup? grupObj = await grupService.GetAsync(grup.Nom);
 
             if (grupObj != null) {
                 grupObj.LMusics.Add(newMusic);
+            } else {
+                grupObj = new Grup() {
+                    Nom = grup.Nom
+                };
+                await grupService.CreateAsync(grupObj, this);
+                grupObj.LMusics.Add(newMusic);
             }
-        }
+        }*/
         await _context.SaveChangesAsync();
     }
 
@@ -125,7 +131,7 @@ public class MusicService
             music = new Music() {
                 Nom = nomMusic
             };
-            await CreateAsync(music, grupService);
+            await CreateAsync(music);
         }
 
         music.LGrups.Add(grup);

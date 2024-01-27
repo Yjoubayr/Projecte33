@@ -17,13 +17,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly MusicService _musicService;
-        private readonly GrupService _grupService;
 
         public MusicController(DataContext context)
         {
             _context = context;
             _musicService = new MusicService(context);
-            _grupService = new GrupService(context);
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="Nom">Nom del grup a modificar</param>
         /// <param name="updatedGrup">Objecte del grup amb els elements modificats</param>
         /// <returns>Verificacio de que el grup s'ha modificat correctament</returns>
-        [HttpPut("updateGrup/{Nom}")]
+        /*[HttpPut("updateGrup/{Nom}")]
         public async Task<IActionResult> updateGrup(string Nom, Grup updatedGrup)
         {
             // Considerar la possibilitat de comprovar prèviament si existeix el nom del music i retornar un error 409
@@ -98,7 +96,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _musicService.UpdateGrupRemoveAsync(grup, updatedGrup);
             await _musicService.UpdateGrupAddAsync(_grupService, grup, updatedGrup);
             return Ok();
-        }
+        }*/
         
         /// <summary>
         /// Accedeix a la ruta /api/Music/postMusic per crear un music
@@ -110,26 +108,19 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
-            try
+
+            if (music.LGrups != null) {
+                return BadRequest();
+            } 
+
+            if (_musicService.GetAsync(music.Nom) != null)
             {
-                if (_musicService.GetAsync(music.Nom) == null)
-                {
-                    return Conflict();
-                }
-                await _musicService.CreateAsync(music, _grupService);
-                result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
+                return Conflict();
             }
-            catch (DbUpdateException)
-            {
-                if (_musicService.GetAsync(music.Nom) == null)
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            
+            await _musicService.CreateAsync(music);
+            result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
 
             return result;
         }

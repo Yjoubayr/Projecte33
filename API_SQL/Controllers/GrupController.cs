@@ -91,6 +91,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("updateMusic/{Nom}")]
         public async Task<IActionResult> updateMusic(string Nom, Music updatedMusic)
         {
+            
+            if (updatedMusic.LGrups == null) {
+                return BadRequest();
+            }
+
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
 
@@ -102,7 +107,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
 
             await _grupService.UpdateMusicRemoveAsync(music, updatedMusic);
-            await _grupService.UpdateMusicAddAsync(_musicService, music, updatedMusic);
+            await _grupService.UpdateMusicAddAsync(music, updatedMusic);
             return Ok();
         }
 
@@ -117,13 +122,20 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar previament si existeix el nom del grup i retornar un error 409
             IActionResult result;
 
+            if (grup.LMusics == null || grup.LMusics.Count < 1) {
+                return BadRequest();
+            }
+
             try
             {
-                await _grupService.CreateAsync(grup, _musicService);
+                await _grupService.CreateAsync(grup);
                 result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
             }
             catch (DbUpdateException)
             {
+                if (grup.LMusics == null || grup.LMusics.Count < 1) {
+                    return BadRequest();
+                }
                 if (_grupService.GetAsync(grup.Nom) == null)
                 {
                     return Conflict();
