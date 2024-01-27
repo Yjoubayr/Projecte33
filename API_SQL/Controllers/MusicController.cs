@@ -109,7 +109,6 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
 
-
             if (music.LGrups != null) {
                 return BadRequest();
             } 

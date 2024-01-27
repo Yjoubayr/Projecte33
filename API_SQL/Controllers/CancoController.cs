@@ -95,7 +95,11 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
             IActionResult result;
 
-            if (canco.LExtensions != null) {
+            if (canco.LListes != null
+            || canco.LVersions != null
+            || canco.LAlbums != null 
+            || canco.LTocar != null
+            || canco.LExtensions != null) {
                 return BadRequest();
             }
 
