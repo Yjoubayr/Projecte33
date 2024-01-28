@@ -37,11 +37,22 @@ namespace TaulerDeControlRM.EditaPages
         private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
         private List<Music> llistaMusics = new List<Music>();
         private List<string> nomsMusics = new List<string>();
+        private string IDCanco = string.Empty;
 
         public PageEditaCanco(string IDCanco)
         {
             InitializeComponent();
+            this.IDCanco = IDCanco;
         }
+
+        /// <summary>
+        /// Obtenim l'objecte de la Canco a Editar
+        /// </summary>
+        private async void ObtenirCanco()
+        {
+            this.canco = await CA_Canco.GetCancoAsync(this.IDCanco);
+        }
+
         /// <summary>
         /// Obtenim tots els musics fent una crida a l'API
         /// </summary>

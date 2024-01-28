@@ -49,17 +49,20 @@ namespace TaulerDeControlRM
                 switch (elementComboBox.SelectedItem.ToString())
                 {
                     case "Àlbum":
+                        Buscador.IsTextSearchEnabled = true;
                         Buscador.ItemsSource = this.llistaPK;
                         frameEditar.Navigate(new PageCreaAlbum());
                         break;
                     case "Cançó":
+                        Buscador.IsTextSearchEnabled = true;
                         this.ObtenirCancons();
                         Buscador.ItemsSource = this.llistaPK;
-                        frameEditar.Navigate(new PageEditaCanco(""));
                         break;
                     case "Grup":
+                        Buscador.IsTextSearchEnabled = true;
                         break;
                     case "Músic":
+                        Buscador.IsTextSearchEnabled = true;
                         this.ObtenirMusics();
                         Buscador.ItemsSource = this.llistaPK;
                         frameEditar.Navigate(new PageCreaMusic());
@@ -69,9 +72,39 @@ namespace TaulerDeControlRM
             }
         }
 
+        /// <summary>
+        /// Un cop l'usuari ha especificat l'objecte que vol editar 
+        /// juntament amb la seva classe, el portarà a la pàgina 
+        /// per editar-lo
+        /// </summary>
         private void Cerca_Click(object sender, RoutedEventArgs e)
         {
-            songListView.Visibility = Visibility.Visible;   
+            if (elementComboBox.SelectedItem != null && Buscador.SelectedItem != null)
+            {
+                switch (elementComboBox.SelectedItem.ToString())
+                {
+                    case "Àlbum":
+                        frameEditar.Navigate(new PageCreaAlbum());
+                        break;
+                    case "Cançó":
+                        frameEditar.Navigate(new PageEditaCanco(Buscador.Text));
+                        break;
+                    case "Grup":
+                        Buscador.IsTextSearchEnabled = true;
+                        break;
+                    case "Músic":
+                        frameEditar.Navigate(new PageCreaMusic());
+                        break;
+                        // Add more cases as needed
+                }
+            }
+            else
+            {
+                Buscador.IsTextSearchEnabled = false;
+                MessageBox.Show("Cal que especifiquis la classe i quin objecte vols editar");
+            }
+
+            songListView.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -102,6 +135,8 @@ namespace TaulerDeControlRM
             {
                 this.llistaPK.Add(llistaCancons[i].IDCanco);
             }
+
+            Buscador.ItemsSource = this.llistaPK;
         }
 
         /// <summary>

@@ -13,6 +13,9 @@
     <Compile Update="EditaPages\PageEditaCanco.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditaPages\PageEditaGrup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditaPages\PageEditaMusic.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditaPages\PageEditaCanco.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditaPages\PageEditaGrup.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditaPages\PageEditaMusic.xaml">
