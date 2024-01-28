@@ -54,5 +54,19 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             await CA.PostDataAsync(apiUrl, jsonData);
 
         }
+
+        /// <summary>
+        /// Fer una consulta a l'API per modificar un Music 
+        /// especificant a quins Grups volem que estigui
+        /// </summary>
+        /// <param name="m">L'objecte del Music a modificar</param>
+        /// <returns>L'objecte del Music a modificar</returns>
+        public static async Task UpdateMusicAsync(Music m)
+        {
+            string jsonData = JsonConvert.SerializeObject(m);
+            string apiUrl = CA.baseApi + controller + "updateMusic/" + m.Nom;
+
+            await CA.PutDataAsync(apiUrl, jsonData);
+        }
     }
 }

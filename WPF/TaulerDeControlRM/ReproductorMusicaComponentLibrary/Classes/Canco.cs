@@ -11,6 +11,7 @@ namespace ReproductorMusicaComponentLibrary.Classes
         public string IDCanco { get; set; }
         public string Nom { get; set; }
         public int? Any { get; set; }
+        public string? Estat { get; set; }
         public List<Llista> LLlistes { get; set; } = new List<Llista>();
         public List<Canco> LVersions { get; set; } = new List<Canco>();
         public List<Album> LAlbums { get; set; } = new List<Album>();

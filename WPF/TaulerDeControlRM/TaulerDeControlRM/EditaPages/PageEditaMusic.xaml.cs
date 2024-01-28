@@ -15,14 +15,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TaulerDeControlRM.CreaPages
+namespace TaulerDeControlRM.EditaPages
 {
     /// <summary>
-    /// Interaction logic for PageCreaMusic.xaml
+    /// Lógica de interacción para PageEditaMusic.xaml
     /// </summary>
-    public partial class PageCreaMusic : Page
+    public partial class PageEditaMusic : Page
     {
-        public PageCreaMusic()
+        public PageEditaMusic()
         {
             InitializeComponent();
         }
