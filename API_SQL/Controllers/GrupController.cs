@@ -125,26 +125,19 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             if (grup.LMusics == null || grup.LMusics.Count < 1) {
                 return BadRequest();
             }
+            
+            /*if (grup.LMusics != null) {
+                return BadRequest();
+            }
 
-            try
-            {
-                await _grupService.CreateAsync(grup);
-                result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
-            }
-            catch (DbUpdateException)
-            {
-                if (grup.LMusics == null || grup.LMusics.Count < 1) {
-                    return BadRequest();
-                }
-                if (_grupService.GetAsync(grup.Nom) == null)
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            List<Grup> lGrups = await _grupService.GetAsync();
+
+            if (lGrups.Any(g => g.Nom == grup.Nom)) {
+                return Conflict();
+            }*/
+
+            await _grupService.CreateAsync(grup);
+            result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
 
             return result;
         }

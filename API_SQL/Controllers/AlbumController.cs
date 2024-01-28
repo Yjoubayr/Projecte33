@@ -116,23 +116,17 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar previament si existeix el nom de l'album i retornar un error 409
             IActionResult result;
 
-            try
-            {
-                await _albumService.CreateAsync(album);
-                result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any, IDCanco = album.IDCanco }, album);
-            }
-            catch (DbUpdateException)
-            {
-                if (_albumService.GetAsync(album.Titol, album.Any, album.IDCanco) == null)
-                {
+            List<Album> lAlbums = _albumService.GetAsync().Result.ToList<Album>();
+
+            foreach (var albumAux in lAlbums) {
+                if (albumAux.Any == album.Any && albumAux.Titol == album.Titol && albumAux.IDCanco == album.IDCanco) {
                     return Conflict();
-                }
-                else
-                {
-                    throw;
                 }
             }
 
+            await _albumService.CreateAsync(album);
+            result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any, IDCanco = album.IDCanco }, album);
+            
             return result;
         }
 

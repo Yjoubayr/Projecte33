@@ -113,11 +113,12 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return BadRequest();
             } 
 
-            if (_musicService.GetAsync(music.Nom) != null)
+            List<Music> lMusics = _musicService.GetAsync().Result.ToList<Music>();
+
+            if (lMusics.Any(m => m.Nom == music.Nom))
             {
                 return Conflict();
             }
-
             
             await _musicService.CreateAsync(music);
             result = CreatedAtAction("GetMusic", new { Nom = music.Nom }, music);
