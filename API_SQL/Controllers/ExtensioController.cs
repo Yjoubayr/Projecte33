@@ -83,37 +83,5 @@ namespace API_SQL.Controllers
             return Ok();
         }
 
-        /// <summary>
-        /// Accedeix a la ruta /api/Extensio/postExtensio per crear una extensio
-        /// </summary>
-        /// <param name="extensio">L'objecte de la extensio a crear</param>
-        /// <returns>Verificacio de que la extensio s'ha creat correctament</returns>
-        [HttpPost]
-        public async Task<ActionResult<Extensio>> PostExtensio(Extensio extensio)
-        {
-            _context.Extensions.Add(extensio);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ExtensioExists(extensio.Nom))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetExtensio", new { id = extensio.Nom }, extensio);
-        }
-
-        private bool ExtensioExists(string id)
-        {
-            return _context.Extensions.Any(e => e.Nom == id);
-        }
     }
 }

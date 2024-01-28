@@ -147,23 +147,19 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar previament si existeix el nom de la llista i retornar un error 409
             IActionResult result;
 
-            try
-            {
-                await _llistaService.CreateAsync(llista);
-                result = CreatedAtAction("GetLlista", new { MACAddress = llista.MACAddress, NomLlista = llista.NomLlista }, llista);
-            }
-            catch (DbUpdateException)
-            {
-                if (_llistaService.GetAsync(llista.MACAddress, llista.NomLlista) == null)
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+            if (llista.LCancons != null) {
+                return BadRequest();
             }
 
+            List<Llista> lLlistes = await _llistaService.GetAsync();
+
+            if (lLlistes.Any(x => x.MACAddress == llista.MACAddress && x.NomLlista == llista.NomLlista)) {
+                return Conflict();
+            }
+
+            await _llistaService.CreateAsync(llista);
+            result = CreatedAtAction("GetLlista", new { MACAddress = llista.MACAddress, NomLlista = llista.NomLlista }, llista);
+        
             return result;
         }
 

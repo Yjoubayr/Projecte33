@@ -61,28 +61,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controllers
         [HttpPut("putInstrument/{Nom}")]
         public async Task<IActionResult> PutInstrument(string Nom, Instrument updatedInstrument)
         {
-            if (Nom != updatedInstrument.Nom)
+            var instrument = await _instrumentService.GetAsync(Nom);
+
+            if (instrument == null || Nom != updatedInstrument.Nom)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(updatedInstrument).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InstrumentExists(Nom))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _instrumentService.UpdateAsync(updatedInstrument);
 
             return NoContent();
         }
@@ -97,22 +83,16 @@ namespace dymj.ReproductorMusica.API_SQL.Controllers
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
             IActionResult result;
-            try
+
+            List<Instrument> lInstruments = await _instrumentService.GetAsync();
+
+            if (lInstruments.Any(i => i.Nom == instrument.Nom))
             {
-                await _instrumentService.CreateAsync(instrument);
-                result = CreatedAtAction("GetInstrument", new { Nom = instrument.Nom }, instrument);
+                return Conflict();
             }
-            catch (DbUpdateException)
-            {
-                if (_instrumentService.GetAsync(instrument.Nom) == null)
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            await _instrumentService.CreateAsync(instrument);
+            result = CreatedAtAction("GetInstrument", new { Nom = instrument.Nom }, instrument);
 
             return result;
         }
@@ -136,9 +116,5 @@ namespace dymj.ReproductorMusica.API_SQL.Controllers
             return NoContent();
         }
 
-        private bool InstrumentExists(string id)
-        {
-            return _context.Instruments.Any(e => e.Nom == id);
-        }
     }
 }
