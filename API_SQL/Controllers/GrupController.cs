@@ -117,7 +117,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="grup">L'objecte del Grup a crear</param>
         /// <returns>Verificacio de que el Grup s'ha creat correctament</returns>
         [HttpPost("postGrup")]
-        public async Task<IActionResult> PostGrup(Grup grup)
+        public async Task<ActionResult<IEnumerable<Grup>>> PostGrup(Grup grup)
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del grup i retornar un error 409
             IActionResult result;
@@ -136,10 +136,13 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return Conflict();
             }
 
+           
+
             await _grupService.CreateAsync(grup);
             result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);
+             return lGrups;
 
-            return result;
+            //return result;
         }
 
         /// <summary>
