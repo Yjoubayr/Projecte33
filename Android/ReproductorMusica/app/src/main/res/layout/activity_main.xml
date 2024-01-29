@@ -61,15 +61,6 @@
                 android:textSize="25dp"
                 android:fontFamily="@font/bold"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Artist name"
-                android:fontFamily="@font/regular"
-                android:textColor="@color/white"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="15dp"
-                />
 
         </RelativeLayout>
         <RelativeLayout

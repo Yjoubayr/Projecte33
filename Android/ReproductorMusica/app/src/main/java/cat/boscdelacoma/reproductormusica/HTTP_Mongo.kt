@@ -1,9 +1,10 @@
 package cat.boscdelacoma.reproductormusica
 
-import AudioApiService
 import android.content.Context
 import android.os.Environment
 import android.util.Log
+import cat.boscdelacoma.reproductormusica.Apilogic.Canco
+import cat.boscdelacoma.reproductormusica.Apilogic.CancoService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
@@ -18,11 +19,15 @@ import java.io.File
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.FileOutputStream
+import java.util.Date
 
 
 class HTTP_Mongo(private val context: Context) {
 
     private lateinit var audioApi: AudioApiService
+    private lateinit var historialService: CancoService
+
+    private var urlBase : String = "http://172.23.2.141:5050/"
     /**
      * Metode per pujar una cançó a l'api de mongoDB gridfs
      * @param uid UID de la cançó.
@@ -31,7 +36,7 @@ class HTTP_Mongo(private val context: Context) {
     fun uploadAudio(uid: String, filePath: String) {
         val gson: Gson = GsonBuilder().setLenient().create()
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("http://172.23.2.141:5264/") // Reemplaza con tu base URL
+            .baseUrl(urlBase) // Reemplaza con tu base URL
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
         audioApi = retrofit.create(AudioApiService::class.java)
@@ -63,7 +68,7 @@ class HTTP_Mongo(private val context: Context) {
     fun downloadAudio(uid: String) {
         val gson: Gson = GsonBuilder().setLenient().create()
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("http://172.23.2.141:5264/") // Reemplaza con tu base URL
+            .baseUrl(urlBase) // Reemplaza con tu base URL
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
@@ -74,7 +79,7 @@ class HTTP_Mongo(private val context: Context) {
         call.enqueue(object : retrofit2.Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
                 if (response.isSuccessful) {
-                    saveAudioFile(response.body() ,"cancion_descargada")
+                    saveAudioFile(response.body())
                 } else {
                     Log.e("Download Error", "Error en la descarga: ${response.code()}")
                 }
@@ -90,13 +95,13 @@ class HTTP_Mongo(private val context: Context) {
      * @param body Contingut del fitxer.
      * @param FileName Nom del fitxer.
      * */
-    private fun saveAudioFile(body: ResponseBody?, Filename : String) {
+    private fun saveAudioFile(body: ResponseBody?, Filename : String  = "cancion_descargada") {
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val file =  File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC),
                     "${Filename}.mp3"
-                ) // Almacenamiento interno de la aplicación
+                )
                 val inputStream = body?.byteStream()
                 val outputStream = FileOutputStream(file)
                 val buffer = ByteArray(4096)
@@ -112,4 +117,50 @@ class HTTP_Mongo(private val context: Context) {
             }
         }
     }
+
+    /**
+     * Aquest metode ens ajuda a fer un post del historial
+     * @param IDDispositiu ID del dispositiu.
+     * @param canco Cançó que s'ha escoltat.
+     * */
+    fun postHistorialOfSongs(id : String, data : String) {
+        // Aquí deberías crear una instancia de Canco con los datos relevantes
+        initializeRetrpofit()
+        val canco = Canco(id, data)
+        try {
+            val call: Call<ResponseBody> = historialService.postcanco(canco)
+            call.enqueue(object : retrofit2.Callback<ResponseBody> {
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: retrofit2.Response<ResponseBody>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.d("Post Historial", "Registro de historial enviado con éxito")
+                    } else {
+                        Log.e("Post Historial Error", "Error en el envío: ${response.code()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.e("Post Historial Error", "Fallo en el envío: ${t.message}")
+                }
+            })
+        } catch (Error: Exception) {
+            Log.e("Post Historial Error", "Fallo en el envío: ${Error.message}")
+        }
+    }
+
+    private fun initializeRetrpofit() {
+        val gson: Gson = GsonBuilder().setLenient().create()
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(urlBase)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+        historialService = retrofit.create(CancoService::class.java)
+    }
+
+
+
+
 }

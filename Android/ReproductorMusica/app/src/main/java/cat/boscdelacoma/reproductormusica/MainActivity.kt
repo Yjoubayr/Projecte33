@@ -1,22 +1,20 @@
 package cat.boscdelacoma.reproductormusica
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
-import org.w3c.dom.Text
+import cat.boscdelacoma.reproductormusica.Apilogic.Canco
+import java.io.File
+import java.io.FileInputStream
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     private lateinit var botoPlayPause: TextView
@@ -29,13 +27,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val returnBtn : TextView = findViewById(R.id.back)
-
         returnBtn.setOnClickListener(){
             finish()
         }
 
         initMainActivity()
         showFragments()
+        changeSongName()
     }
 
     /**
@@ -45,7 +43,8 @@ class MainActivity : AppCompatActivity() {
     fun tornarDesDeFragment() {
         supportFragmentManager.popBackStack()
     }
-
+    fun changeSongName(){
+    }
     /**
      * Metode que ens ajuda a inicialitzar la MainActivity.
      * @return {Unit} No retorna res.
@@ -55,10 +54,8 @@ class MainActivity : AppCompatActivity() {
         botoPlayPause = findViewById(R.id.startSong)
         seekBarAudio = findViewById(R.id.progressBar)
 
-        // TODO: Pendent de revisar
-
+        // TODO: Pendent de revisarl
         val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
-
 
         if (!absolutepathsong.isNullOrEmpty()) {
             mediaPlayer.setDataSource(absolutepathsong)
@@ -88,13 +85,10 @@ class MainActivity : AppCompatActivity() {
                 mediaPlayer.start()
                 seekBarAudio.max = mediaPlayer.duration
                 updateSeekBar()
+                postHistorial()
             }
         }
-
-
-
     }
-
     /**
      * Metode que ens ajuda a mostrar els fragments.
      * @return {Unit} No retorna res.
@@ -102,7 +96,6 @@ class MainActivity : AppCompatActivity() {
     private fun showFragments(){
         val AddSongToTrack: TextView = findViewById(R.id.AddSongToTrack)
         val addplaylist: TextView = findViewById(R.id.AddList)
-
 
         AddSongToTrack.setOnClickListener {
             val listOfSongsFragment = ListOfSongsFragment()
@@ -150,4 +143,11 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer.release()
     }
 
+
+    fun postHistorial() {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val formattedDate = LocalDateTime.now().format(formatter).toString()
+        HTTP_Mongo(this).postHistorialOfSongs("canço", formattedDate)
+
+    }
 }
