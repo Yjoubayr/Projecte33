@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nzxlZYkWfv/G+EHmDdX6uTIuo/hqJjFrtuV8xIigCteRGZG6/dMelQQiAr/t/fTYQdTwSwxZhQMGuS8S4H9KHg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\marc\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

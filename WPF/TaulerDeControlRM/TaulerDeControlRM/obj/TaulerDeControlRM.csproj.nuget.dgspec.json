@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\Projecte2 UPDATED\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj": {}
+    "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\Projecte2 UPDATED\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj": {
+    "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Projecte2 UPDATED\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
-        "projectName": "TaulerDeControlRM",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\Projecte2 UPDATED\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\Projecte2 UPDATED\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\obj\\",
+        "projectUniqueName": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj",
+        "projectName": "ReproductorMusicaComponentLibrary",
+        "projectPath": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj",
+        "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,9 +38,78 @@
           "warnAsError": [
             "NU1605"
           ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+        "projectName": "TaulerDeControlRM",
+        "projectPath": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+        "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\TaulerDeControlRM\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
-        "restoreAuditProperties": {
-          "enableAudit": "default"
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj": {
+                "projectPath": "C:\\Users\\marc\\Documents\\Insti\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
         }
       },
       "frameworks": {
@@ -57,24 +126,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -83,7 +134,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
