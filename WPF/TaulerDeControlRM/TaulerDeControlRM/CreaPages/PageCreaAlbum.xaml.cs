@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,7 @@ namespace TaulerDeControlRM.CreaPages
     /// </summary>
     public partial class PageCreaAlbum : Page
     {
+        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
         public PageCreaAlbum()
         {
             InitializeComponent();
@@ -42,13 +44,20 @@ namespace TaulerDeControlRM.CreaPages
 
         private async void btOk_Click(object sender, RoutedEventArgs e)
         {
-            if (elementComboBox.SelectedItem != null)
+            if (txtAlbumTitle.Text.ToString() != string.Empty 
+                && txtAlbumYear.Text.ToString() != string.Empty 
+                && !_regex.IsMatch(this.txtAlbumYear.Text.ToString()) 
+                && elementComboBox.SelectedItem != null)
             {
                 Album album = new Album();
                 album.Titol = this.txtAlbumTitle.Text.ToString();
                 album.Any = int.Parse(this.txtAlbumYear.Text);
                 album.IDCanco = elementComboBox.SelectedItem.ToString();
                 await CA_Album.PostAlbumAsync(album);
+                MessageBox.Show("Àlbum creat CORRECTAMENT!");
+            } else
+            {
+                MessageBox.Show("ERROR! \n Emplena els camps abans de pujar l'àlbum i que estiguin en el format correcte.");
             }
         }
     }
