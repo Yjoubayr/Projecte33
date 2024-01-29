@@ -39,6 +39,26 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return await _albumService.GetAsync();
         }
 
+        /// <summary>
+        /// Accedeix a la ruta /api/Album/getAlbums per obtenir els Anys d'un Album en concret
+        /// </summary>
+        /// <param name="Titol">Titol de l'Album del qual obtenir els anys</param>
+        /// <returns>Llistat dels Anys d'un Album</returns>
+        [HttpGet("getAnysAlbum/{Titol}")]
+        public async Task<ActionResult<IEnumerable<string>>> GetAlbumsByTitolAndAny(string Titol)
+        {
+            var album = await _albumService.GetAlbumsByTitolAsync(Titol);
+
+            if (album == null)
+            {
+                return NotFound();
+            }
+
+            var anysAlbum = await _albumService.GetYearsByTitle(Titol);
+
+            return anysAlbum;
+        }
+
 
         /// <summary>
         /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any}/{IDCanco} per obtenir un Album
