@@ -9,6 +9,14 @@
       Title="PageEditaAlbum">
 
     <Grid>
-        
+        <Label Content="Editar Àlbum" Margin="35,18,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Titol" HorizontalAlignment="Left" Margin="27,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="Any" HorizontalAlignment="Left" Margin="29,186,0,0" VerticalAlignment="Top"/>
+        <Label Content="IDCanco" HorizontalAlignment="Left" Margin="28,224,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAlbumTitle" HorizontalAlignment="Left" Margin="86,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" HorizontalContentAlignment="Right" InputScope="Number" TabIndex="0"/>
+        <TextBox x:Name="txtAlbumYear" HorizontalAlignment="Left" Margin="86,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" HorizontalContentAlignment="Right" InputScope="Number" TabIndex="0"/>
+        <ComboBox x:Name="comboBoxCancons" Margin="88,224,442,203">
+        </ComboBox>
+        <Button x:Name="btOk" Content="Ok" HorizontalAlignment="Left" Margin="34,290,0,0" VerticalAlignment="Top" Width="60" Click="btOk_Click" TabIndex="20"/>
     </Grid>
 </Page>

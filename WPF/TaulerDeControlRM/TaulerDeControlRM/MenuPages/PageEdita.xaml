@@ -13,8 +13,8 @@
             <TextBlock Text="Edita" Margin="5"/>
             <StackPanel Orientation="Horizontal">
                 <ComboBox x:Name="elementComboBox" Margin="5" Width="100" SelectionChanged="ComboBox_SelectionChanged"/>
-                <ComboBox x:Name="Buscador" IsTextSearchEnabled="True" IsEditable="True" Margin="5" Width="100"></ComboBox>
-                <ComboBox x:Name="ComboBoxAlbumYear" Margin="5" Width="100" Visibility="Hidden" SelectionChanged=""/>
+                <ComboBox x:Name="Buscador" IsTextSearchEnabled="True" IsEditable="True" Margin="5" Width="100" SelectionChanged="MostrarClauComposta"/>
+                <ComboBox x:Name="ComboBoxAlbumYear" IsTextSearchEnabled="True" IsEditable="True" Margin="5" Width="100" Visibility="Hidden"/>
                 <Button x:Name="Cerca" Content="Cerca" Click="Cerca_Click"/>
             </StackPanel>
             <ListView x:Name="songListView" Visibility="Hidden">

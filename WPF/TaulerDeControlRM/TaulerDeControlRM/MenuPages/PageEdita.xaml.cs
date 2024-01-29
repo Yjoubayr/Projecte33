@@ -28,13 +28,14 @@ namespace TaulerDeControlRM
         private List<Album> llistaAlbums = new List<Album>();
         private List<Music> llistaMusics = new List<Music>();
         private List<string> llistaPK = new List<string>();
-        private List<List<string>> llistaPKComposta = new List<List<string>>();
+        private List<string> llistaPKComposta = new List<string>();
 
         public PageEdita()
         {
             InitializeComponent();
             elementComboBox.ItemsSource = new List<string> { "Àlbum", "Cançó", "Grup", "Músic", "Llista de reproducció" };
         }
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -50,23 +51,26 @@ namespace TaulerDeControlRM
                 {
                     case "Àlbum":
                         Buscador.IsTextSearchEnabled = true;
-                        Buscador.ItemsSource = this.llistaPK;
+                        Buscador.SelectedItem = null;
+                        this.ObtenirAlbums();
                         ComboBoxAlbumYear.Visibility = Visibility.Visible;
-                        frameEditar.Navigate(new PageCreaAlbum());
                         break;
                     case "Cançó":
                         Buscador.IsTextSearchEnabled = true;
+                        Buscador.SelectedItem = null;
                         this.ObtenirCancons();
                         Buscador.ItemsSource = this.llistaPK;
                         break;
                     case "Grup":
                         Buscador.IsTextSearchEnabled = true;
+                        Buscador.SelectedItem = null;
                         break;
                     case "Músic":
                         Buscador.IsTextSearchEnabled = true;
+                        Buscador.SelectedItem = null;
                         this.ObtenirMusics();
                         Buscador.ItemsSource = this.llistaPK;
-                        frameEditar.Navigate(new PageCreaMusic());
+                        frameEditar.Navigate(new PageEditaMusic());
                         break;
                         // Add more cases as needed
                 }
@@ -74,38 +78,16 @@ namespace TaulerDeControlRM
         }
 
         /// <summary>
-        /// Un cop l'usuari ha especificat l'objecte que vol editar 
-        /// juntament amb la seva classe, el portarà a la pàgina 
-        /// per editar-lo
+        /// Obtenir tots els anys d'un Album segons el seu Titol
         /// </summary>
-        private void Cerca_Click(object sender, RoutedEventArgs e)
+        private async void MostrarClauComposta(object sender, SelectionChangedEventArgs e)
         {
-            if (elementComboBox.SelectedItem != null && Buscador.SelectedItem != null)
-            {
-                switch (elementComboBox.SelectedItem.ToString())
-                {
-                    case "Àlbum":
-                        frameEditar.Navigate(new PageCreaAlbum());
-                        break;
-                    case "Cançó":
-                        frameEditar.Navigate(new PageEditaCanco(Buscador.Text));
-                        break;
-                    case "Grup":
-                        Buscador.IsTextSearchEnabled = true;
-                        break;
-                    case "Músic":
-                        frameEditar.Navigate(new PageCreaMusic());
-                        break;
-                        // Add more cases as needed
-                }
+            switch (elementComboBox.SelectedItem.ToString()) {
+                case "Àlbum":
+                    this.llistaPKComposta = await CA_Album.GetAnysAlbumAsync(Buscador.SelectedItem.ToString());
+                    ComboBoxAlbumYear.ItemsSource = this.llistaPKComposta;
+                break;
             }
-            else
-            {
-                Buscador.IsTextSearchEnabled = false;
-                MessageBox.Show("Cal que especifiquis la classe i quin objecte vols editar");
-            }
-
-            songListView.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -117,10 +99,12 @@ namespace TaulerDeControlRM
 
             this.llistaPK = new List<string>();
 
-            for (int i = 0; i < this.llistaCancons.Count; i++)
+            for (int i = 0; i < this.llistaAlbums.Count; i++)
             {
-                this.llistaPKComposta.Add(new List<string> { this.llistaAlbums[i].Titol, llistaAlbums[i].Any.ToString(), this.llistaAlbums[i].IDCanco });
+                this.llistaPK.Add(this.llistaAlbums[i].Titol);
             }
+
+            Buscador.ItemsSource = this.llistaPK;
         }
 
         /// <summary>
@@ -154,5 +138,51 @@ namespace TaulerDeControlRM
                 this.llistaPK.Add(llistaMusics[i].Nom);
             }
         }
+
+        /// <summary>
+        /// Un cop l'usuari ha especificat l'objecte que vol editar 
+        /// juntament amb la seva classe, el portarà a la pàgina 
+        /// per editar-lo
+        /// </summary>
+        private void Cerca_Click(object sender, RoutedEventArgs e)
+        {
+            if (elementComboBox.SelectedItem != null && Buscador.SelectedItem != null)
+            {
+
+                if (elementComboBox.SelectedItem.ToString() == "Àlbum" && ComboBoxAlbumYear.SelectedItem != null)
+                {
+                    frameEditar.Navigate(new PageEditaAlbum(Buscador.Text, ComboBoxAlbumYear.Text));
+
+                } else if (elementComboBox.SelectedItem.ToString() == "Àlbum" 
+                    && ComboBoxAlbumYear.SelectedItem == null)
+                {
+                    MessageBox.Show("ERROR! \n Especifica de quin Any és l'Album que busques");
+                }
+
+
+                if (elementComboBox.SelectedItem.ToString() == "Cançó")
+                {
+                    frameEditar.Navigate(new PageEditaCanco(Buscador.Text));
+                }
+
+                if (elementComboBox.SelectedItem.ToString() == "Grup")
+                {
+
+                }
+                
+                if (elementComboBox.SelectedItem.ToString() == "Músic")
+                {
+                    frameEditar.Navigate(new PageCreaMusic());
+                } 
+            }
+            else
+            {
+                Buscador.IsTextSearchEnabled = false;
+                MessageBox.Show("ERROR! \n Cal que especifiquis la classe i quin objecte vols editar");
+            }
+
+            songListView.Visibility = Visibility.Visible;
+        }
+
     }
 }
