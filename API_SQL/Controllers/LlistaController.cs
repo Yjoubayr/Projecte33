@@ -106,8 +106,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _llistaService.UpdateCancoRemoveAsync(canco[0], updatedCanco);
-            await _llistaService.UpdateCancoAddAsync(canco[0], updatedCanco);
+            await _llistaService.UpdateCancoRemoveAsync(canco, updatedCanco);
+            await _llistaService.UpdateCancoAddAsync(canco, updatedCanco);
             return Ok();
         }
 
@@ -131,7 +131,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _llistaService.AddCancoAsync(llista.MACAddress, llista.NomLlista, canco[0]);
+            await _llistaService.AddCancoAsync(llista.MACAddress, llista.NomLlista, canco);
 
             return NoContent();
         }

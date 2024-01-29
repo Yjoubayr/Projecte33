@@ -53,8 +53,7 @@ public class AlbumService
     /// <param name="newAlbum">L'objecte de l'Album a crear</param>
     /// <returns>Verificacio de que l'Album s'ha creat correctament</returns>
     public async Task CreateAsync(Album newAlbum) {
-        var canco = await _cancoService.GetAsync(newAlbum.IDCanco);
-        newAlbum.CancoObj = canco[0];
+        newAlbum.CancoObj = await _cancoService.GetAsync(newAlbum.IDCanco);
         await _context.Albums.AddAsync(newAlbum);
         await _context.SaveChangesAsync();
     }
@@ -65,8 +64,7 @@ public class AlbumService
     /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
     /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
     public async Task UpdateAsync(Album updatedAlbum) {
-        var canco = await _cancoService.GetAsync(updatedAlbum.IDCanco);
-        updatedAlbum.CancoObj = canco[0];
+        updatedAlbum.CancoObj = await _cancoService.GetAsync(updatedAlbum.IDCanco);
         var albumOriginal = await GetAsync(updatedAlbum.Titol, updatedAlbum.Any, updatedAlbum.IDCanco);
         _context.Entry(albumOriginal).CurrentValues.SetValues(updatedAlbum);
         await _context.SaveChangesAsync();

@@ -77,9 +77,9 @@ namespace API_SQL.Controllers
                 return NotFound();
             }
 
-            await _cancoService.UpdateAsync(canco[0], updatedCanco);
-            await _extensioService.UpdateCancoRemoveAsync(canco[0], updatedCanco);
-            await _extensioService.UpdateCancoAddAsync(canco[0], updatedCanco);
+            await _cancoService.UpdateAsync(canco, updatedCanco);
+            await _extensioService.UpdateCancoRemoveAsync(canco, updatedCanco);
+            await _extensioService.UpdateCancoAddAsync(canco, updatedCanco);
             return Ok();
         }
 
