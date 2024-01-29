@@ -51,6 +51,7 @@ namespace TaulerDeControlRM
                     case "Àlbum":
                         Buscador.IsTextSearchEnabled = true;
                         Buscador.ItemsSource = this.llistaPK;
+                        ComboBoxAlbumYear.Visibility = Visibility.Visible;
                         frameEditar.Navigate(new PageCreaAlbum());
                         break;
                     case "Cançó":
