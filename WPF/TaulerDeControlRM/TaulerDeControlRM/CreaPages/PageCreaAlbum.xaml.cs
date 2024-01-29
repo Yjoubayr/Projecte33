@@ -22,7 +22,9 @@ namespace TaulerDeControlRM.CreaPages
     /// </summary>
     public partial class PageCreaAlbum : Page
     {
-        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+        // RegExp que comprova que nomes hi hagin numeros
+        private static readonly Regex _regex = new Regex("[^0-9.-]+");
+
         public PageCreaAlbum()
         {
             InitializeComponent();
@@ -39,25 +41,38 @@ namespace TaulerDeControlRM.CreaPages
                 idsCancons.Add(cancons[i].IDCanco);
             }
 
-            elementComboBox.ItemsSource = idsCancons;
+            comboBoxCancons.ItemsSource = idsCancons;
+        }
+
+        private async void reiniciarValors()
+        {
+            txtAlbumTitle.Text = string.Empty;
+            txtAlbumYear.Text = string.Empty;
+            comboBoxCancons.SelectedItem = null;
         }
 
         private async void btOk_Click(object sender, RoutedEventArgs e)
         {
-            if (txtAlbumTitle.Text.ToString() != string.Empty 
-                && txtAlbumYear.Text.ToString() != string.Empty 
-                && !_regex.IsMatch(this.txtAlbumYear.Text.ToString()) 
-                && elementComboBox.SelectedItem != null)
+            if (txtAlbumTitle.Text.ToString() == string.Empty
+                || txtAlbumYear.Text.ToString() == string.Empty
+                || _regex.IsMatch(this.txtAlbumYear.Text)
+                || comboBoxCancons.SelectedItem == null)
+            {
+                MessageBox.Show("ERROR! \n Emplena els camps abans de pujar l'àlbum i que estiguin en el format correcte.");
+            }
+            else if (txtAlbumTitle.Text.ToString().Length > 20)
+            {
+                MessageBox.Show("ERROR! \n El títol de l'Àlbum és massa llarg.");
+            }
+            else
             {
                 Album album = new Album();
                 album.Titol = this.txtAlbumTitle.Text.ToString();
                 album.Any = int.Parse(this.txtAlbumYear.Text);
-                album.IDCanco = elementComboBox.SelectedItem.ToString();
+                album.IDCanco = comboBoxCancons.SelectedItem.ToString();
                 await CA_Album.PostAlbumAsync(album);
+                reiniciarValors();
                 MessageBox.Show("Àlbum creat CORRECTAMENT!");
-            } else
-            {
-                MessageBox.Show("ERROR! \n Emplena els camps abans de pujar l'àlbum i que estiguin en el format correcte.");
             }
         }
     }
