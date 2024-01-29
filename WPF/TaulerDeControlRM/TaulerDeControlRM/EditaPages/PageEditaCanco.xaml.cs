@@ -43,6 +43,7 @@ namespace TaulerDeControlRM.EditaPages
         {
             InitializeComponent();
             this.IDCanco = IDCanco;
+            ObtenirCanco();
         }
 
         /// <summary>
