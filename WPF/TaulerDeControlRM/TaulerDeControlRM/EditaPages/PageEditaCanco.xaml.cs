@@ -36,6 +36,7 @@ namespace TaulerDeControlRM.EditaPages
         private Extensio e = new Extensio();
         private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
         private List<Music> llistaMusics = new List<Music>();
+        private List<Instrument> llistaInstruments = new List<Instrument>();
         private List<string> nomsMusics = new List<string>();
         private string IDCanco = string.Empty;
 
@@ -44,6 +45,7 @@ namespace TaulerDeControlRM.EditaPages
             InitializeComponent();
             this.IDCanco = IDCanco;
             ObtenirCanco();
+            CrearLlistaConjuntValors();
         }
 
         /// <summary>
@@ -68,15 +70,30 @@ namespace TaulerDeControlRM.EditaPages
                 this.nomsMusics.Add(llistaMusics[i].Nom);
             }
 
-            CrearLlistaConjuntValors();
+        }
+
+        /// <summary>
+        /// Obtenim tots els Instruments fent una crida a l'API
+        /// </summary>
+        private async void ObtenirExtensions()
+        {
+            this.llistaMusics = await CA_Extensio.GetExtensionsAsync();
+
+            this.nomsMusics = new List<string>();
+
+            for (int i = 0; i < this.llistaMusics.Count; i++)
+            {
+                this.nomsMusics.Add(llistaMusics[i].Nom);
+            }
+
         }
 
         private async void CrearLlistaConjuntValors()
         {
-            //ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},true,true);
 
             ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
             ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
+            ConjuntValors cvExtensions = new ConjuntValors("Extensió", this.nomsExtensions, true, true);
             List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
 
             GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
