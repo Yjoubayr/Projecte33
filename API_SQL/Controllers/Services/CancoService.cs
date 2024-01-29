@@ -36,12 +36,18 @@ public class CancoService
     /// </summary>
     /// <param name="IDCanco">Identificador de la Canco a obtenir</param>
     /// <returns>L'objecte de la Canco</returns>
-    public async Task<Canco?> GetAsync(string IDCanco) =>
+    public async Task<List<Canco>> GetAsync(string IDCanco) =>
         await _context.Cancons
                             .Include(x => x.LExtensions)
                             .Include(x => x.LListes)
                             .Include(x => x.LTocar)
-                            .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);
+                            .Where(x => x.IDCanco == IDCanco).ToListAsync();
+    /*public async Task<Canco?> GetAsync(string IDCanco) =>
+        await _context.Cancons
+                            .Include(x => x.LExtensions)
+                            .Include(x => x.LListes)
+                            .Include(x => x.LTocar)
+                            .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);*/
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/postCanco dins de CancoController per crear una Canco
