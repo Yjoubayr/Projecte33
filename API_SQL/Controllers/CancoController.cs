@@ -49,12 +49,12 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             var canco = await _cancoService.GetAsync(IDCanco);
 
-            if (canco[0] == null)
+            if (canco == null)
             {
                 return NotFound();
             }
 
-            return canco[0];
+            return canco;
         }
 
         
@@ -77,7 +77,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _cancoService.UpdateAsync(canco[0], updatedCanco);
+            await _cancoService.UpdateAsync(canco, updatedCanco);
             result = CreatedAtAction("GetCanco", new { IDCanco = updatedCanco.IDCanco }, updatedCanco);
 
             return result;
@@ -125,7 +125,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            await _cancoService.RemoveAsync(canco[0]);
+            await _cancoService.RemoveAsync(canco);
 
             return NoContent();
         }
