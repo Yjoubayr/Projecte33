@@ -67,11 +67,21 @@ public class GrupService
                 await _context.SaveChangesAsync();
             }*/
 
-            Music musicObj = await _context.Musics
+            Music musicObj = null; 
+            List<Music> listMusics = await _context.Musics
+                                    .Include(x => x.LGrups)
+                                    .Include(x => x.LTocar)
+                                    .Where(x => x.Nom == music.Nom).ToListAsync();
+
+            if (listMusics.Count > 0) {
+                musicObj = listMusics[0];
+            }
+
+            /*Music musicObj = await _context.Musics
                             .Include(x => x.LGrups)
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == music.Nom);
-            //Music? musicObj = await _musicService.GetAsync(music.Nom);
+            Music? musicObj = await _musicService.GetAsync(music.Nom);*/
 
             if (musicObj != null) {
                 musicObj.LGrups.Add(newGrup);

@@ -77,6 +77,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
+            if (updatedCanco.LListes != null
+            || updatedCanco.LVersions != null
+            || updatedCanco.LAlbums != null
+            || updatedCanco.LTocar == null
+            || updatedCanco.LExtensions != null) {
+                return BadRequest();
+            }
+
             await _cancoService.UpdateAsync(canco, updatedCanco);
             result = CreatedAtAction("GetCanco", new { IDCanco = updatedCanco.IDCanco }, updatedCanco);
 

@@ -128,13 +128,13 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             
             /*if (grup.LMusics != null) {
                 return BadRequest();
-            }
+            }*/
 
             List<Grup> lGrups = await _grupService.GetAsync();
 
             if (lGrups.Any(g => g.Nom == grup.Nom)) {
                 return Conflict();
-            }*/
+            }
 
             await _grupService.CreateAsync(grup);
             result = CreatedAtAction("GetGrup", new { Nom = grup.Nom }, grup);

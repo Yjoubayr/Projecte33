@@ -80,6 +80,10 @@ public class CancoService
         cancoOriginal.Any = updatedCanco.Any;
         cancoOriginal.Estat = updatedCanco.Estat;
 
+        if (updatedCanco.LTocar != null) {
+            cancoOriginal.LTocar = updatedCanco.LTocar;
+        }
+        
         await _context.SaveChangesAsync();
     }
 
