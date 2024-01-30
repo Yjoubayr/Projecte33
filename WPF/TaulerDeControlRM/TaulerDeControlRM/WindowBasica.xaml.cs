@@ -23,5 +23,13 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Cançó pujada correctament");
+            string[] pdfPages = { "C:/Users/ASUS/Desktop/asdfgh.pdf" }; // Array of PDF page paths
+            var pdfViewerWindow = new PdfViewerWindow(pdfPages);
+            pdfViewerWindow.ShowDialog();
+        }
     }
 }

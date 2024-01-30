@@ -40,6 +40,9 @@
     <Compile Update="Cercador.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PdfViewerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="WindowBasica.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PdfViewerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowBasica.xaml">

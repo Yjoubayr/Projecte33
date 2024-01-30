@@ -9,7 +9,45 @@
       Title="PageLlistes">
 
     <Grid>
-        <TextBlock Text="Llistes" Margin="5"/>
-        
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Llistes" Margin="5" Height="Auto" Width="Auto"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Cançons més escoltades"></Label>
+                <Label Content="Num."></Label>
+                <TextBox Name="txtNum" Width="50"></TextBox>
+                <Button Content="Mostrar"></Button>
+                <Button Content="Enviar socket" ></Button>
+                <Button Content="Generar i signar PDF" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5">
+                <Label Content="Llistes de reproducció amb una cançó"></Label>
+                <Label Content="Cançó:."></Label>
+                <TextBox Name="txtCançó" Width="50"></TextBox>
+                <Button Content="Mostrar"></Button>
+                <Button Content="Enviar socket" ></Button>
+                <Button Content="Generar i signar PDF" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="5">
+                <Label Content="Cançons d'una llistes de reproducció"></Label>
+                <Label Content="Llista:."></Label>
+                <TextBox Name="txtLlista" Width="50"></TextBox>
+                <Button Content="Mostrar"></Button>
+                <Button Content="Enviar socket" ></Button>
+                <Button Content="Generar i signar PDF" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5">
+                <Label Content="Totes les cançons"></Label>
+                <Button Content="Mostrar" Click="BtMostrarCancons_Click"></Button>
+                <Button Content="Enviar socket" ></Button>
+            </StackPanel>
+            <ListView x:Name="songListView" Width="786" Grid.Row="4">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="260" Header="Nom" DisplayMemberBinding="{Binding Nom}" />
+                        <GridViewColumn Width="260" Header="Data" DisplayMemberBinding="{Binding Any}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

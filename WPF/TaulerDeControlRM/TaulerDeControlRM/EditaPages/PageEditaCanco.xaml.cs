@@ -77,7 +77,7 @@ namespace TaulerDeControlRM.EditaPages
         /// </summary>
         private async void ObtenirExtensions()
         {
-            this.llistaMusics = await CA_Extensio.GetExtensionsAsync();
+            //this.llistaMusics = await CA_Extensio.GetExtensionsAsync();
 
             this.nomsMusics = new List<string>();
 
@@ -93,7 +93,7 @@ namespace TaulerDeControlRM.EditaPages
 
             ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
             ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
-            ConjuntValors cvExtensions = new ConjuntValors("Extensió", this.nomsExtensions, true, true);
+            //ConjuntValors cvExtensions = new ConjuntValors("Extensió", this.nomsExtensions, true, true);
             List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
 
             GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
