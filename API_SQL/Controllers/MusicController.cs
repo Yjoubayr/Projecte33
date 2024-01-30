@@ -74,7 +74,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return NoContent();
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Accedeix a la ruta /api/Music/updateGrup/{Nom} per modificar un grup
         /// </summary>
         /// <param name="Nom">Nom del grup a modificar</param>
@@ -96,7 +96,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _musicService.UpdateGrupRemoveAsync(grup, updatedGrup);
             await _musicService.UpdateGrupAddAsync(_grupService, grup, updatedGrup);
             return Ok();
-        }
+        }*/
         
         /// <summary>
         /// Accedeix a la ruta /api/Music/postMusic per crear un music

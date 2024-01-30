@@ -55,7 +55,7 @@ public class GrupService
 
         //List<Music> lMusicsComplet = await _musicService.GetAsync();
 
-        foreach (var music in newGrup.LMusics) {
+        //foreach (var music in newGrup.LMusics) {
 
             /*if (!lMusicsComplet.Any(x => x.Nom == music.Nom)) {
                 music.LGrups.Add(newGrup);
@@ -105,7 +105,7 @@ public class GrupService
                // await _musicService.CreateAsync(musicObj);
                 await _context.SaveChangesAsync();
             }*/
-        }
+        //}
     }
 
 
