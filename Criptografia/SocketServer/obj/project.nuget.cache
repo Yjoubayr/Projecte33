@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "emsP469aay/kbPNTYM8zBQeGvkIxm+O6CpnQSyBqoDqQF8+avxPyWtbgbO7yfDW0yPcs8p0cg0hWkK1EyE0Jzw==",
+  "dgSpecHash": "p4YWAzq78WgdKunQ5LuxAaO/ngjThnux4hiG26/qUZ3BjzYYqsdmSio1yuJ0GNgzM/GynwK5ykJJPtIr6juPKw==",
   "success": true,
-  "projectFilePath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\SocketServer.csproj",
+  "projectFilePath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\SocketServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marc\\.nuget\\packages\\aspose.pdf\\23.11.1\\aspose.pdf.23.11.1.nupkg.sha512",
     "C:\\Users\\marc\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

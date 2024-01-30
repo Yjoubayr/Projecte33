@@ -892,15 +892,6 @@
         "runtime": {
           "DAMSecurityLib.dll": {}
         }
-      },
-      "ProvaDeLlibreries/1.0.0": {
-        "dependencies": {
-          "CreatePDFSigned": "1.0.0",
-          "DAMSecurityLib": "1.0.0"
-        },
-        "runtime": {
-          "ProvaDeLlibreries.dll": {}
-        }
       }
     }
   },
@@ -1560,11 +1551,6 @@
       "sha512": ""
     },
     "DAMSecurityLib/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ProvaDeLlibreries/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

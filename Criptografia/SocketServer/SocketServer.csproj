@@ -15,7 +15,7 @@
     <ProjectReference Include="..\ConsultasAPIs\ConsultasAPIs.csproj" />
     <ProjectReference Include="..\CreatePDFSigned\CreatePDFSigned.csproj" />
     <ProjectReference Include="..\DAMSecurityLib\DAMSecurityLib.csproj" />
-    <ProjectReference Include="..\ProvaDeLlibreries\ProvaDeLlibreries.csproj" />
+    <ProjectReference Include="..\ProvaDeLlibreries\ExemplePDF.csproj" />
     <ProjectReference Include="..\SocketClient\SocketClient.csproj" />
   </ItemGroup>
 

@@ -244,7 +244,7 @@ namespace DAMSecurityLib.Crypto
         /// A function to create a blanc PDF
         /// </summary>
         /// <param name="rutaPdf">param of the file path</param>
-        public void CreateBlancPDF(String rutaPdf)
+        public static void CreateBlancPDF(String rutaPdf)
         {
             try
             {
@@ -266,7 +266,7 @@ namespace DAMSecurityLib.Crypto
 
         }
   
-        private static byte[] CreatePDFinMemory()
+        public static byte[] CreatePDFinMemory()
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {}
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {}
   },
   "projects": {
-    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
         "projectName": "CreatePDFSigned",
-        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
         "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
-        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
+        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
+              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
               }
             }
           }
@@ -67,14 +67,14 @@
         }
       }
     },
-    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
         "projectName": "DAMSecurityLib",
-        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj",
         "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
-        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\obj\\",
+        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -144,14 +144,14 @@
         }
       }
     },
-    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {
+    "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
+        "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
         "projectName": "ProvaDeLlibreries",
-        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
+        "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj",
         "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
-        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\obj\\",
+        "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -172,11 +172,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
-                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj"
+              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
+                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj"
               },
-              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
+              "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+                "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
               }
             }
           }

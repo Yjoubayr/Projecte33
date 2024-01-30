@@ -22,3 +22,15 @@ E:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musi
 E:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\refint\ConsultasAPIs.dll
 E:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.pdb
 E:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ref\ConsultasAPIs.dll
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\bin\Debug\net6.0\ConsultasAPIs.deps.json
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\bin\Debug\net6.0\ConsultasAPIs.dll
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\bin\Debug\net6.0\ConsultasAPIs.pdb
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.GeneratedMSBuildEditorConfig.editorconfig
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.AssemblyInfoInputs.cache
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.AssemblyInfo.cs
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.csproj.CoreCompileInputs.cache
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.sourcelink.json
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.dll
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\refint\ConsultasAPIs.dll
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ConsultasAPIs.pdb
+D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\ConsultasAPIs\obj\Debug\net6.0\ref\ConsultasAPIs.dll

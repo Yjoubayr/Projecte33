@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SocketServer
-build_property.ProjectDir = D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte2_reproductor\Reproductor_Musica\Criptografia\SocketServer\
+build_property.ProjectDir = D:\Informatica\GrauSuperiorDAM\C.G.S_DAM2\projecte_2_reproductor\Reproductor_Musica\Criptografia\SocketServer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

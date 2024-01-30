@@ -11,7 +11,7 @@
           "ConsultasAPIs": "1.0.0",
           "CreatePDFSigned": "1.0.0",
           "DAMSecurityLib": "1.0.0",
-          "ProvaDeLlibreries": "1.0.0",
+          "ExemplePDF": "1.0.0",
           "SocketClient": "1.0.0",
           "itext7": "8.0.2"
         },
@@ -900,13 +900,13 @@
           "DAMSecurityLib.dll": {}
         }
       },
-      "ProvaDeLlibreries/1.0.0": {
+      "ExemplePDF/1.0.0": {
         "dependencies": {
           "CreatePDFSigned": "1.0.0",
           "DAMSecurityLib": "1.0.0"
         },
         "runtime": {
-          "ProvaDeLlibreries.dll": {}
+          "ExemplePDF.dll": {}
         }
       },
       "SocketClient/1.0.0": {
@@ -1587,7 +1587,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ProvaDeLlibreries/1.0.0": {
+    "ExemplePDF/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

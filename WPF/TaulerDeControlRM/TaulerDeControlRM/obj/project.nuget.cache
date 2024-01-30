@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "SXEdEJxH7wdvcgWKl9lXvkXsu9vYXautlPbcTkTeD6vnJ59eUVkJwYXQE9CvkV6bZsr3WLPToA9+JAmdsShapA==",
+  "dgSpecHash": "0kwxeXuJCyhnK4G/bAAEKfOO9qYVkGSp0lqx7vu5LZYLR2KqNiao9mKI1vMTrKX9GjMDhg6jxR0MWoxyWngdeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (5)\\Reproductor_Musica-Marc\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+  "projectFilePath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\fdily\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\marc\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

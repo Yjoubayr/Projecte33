@@ -76,23 +76,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fdily\\.nuget\\packages\\": {},
+    "C:\\Users\\marc\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (5)\\Reproductor_Musica-Marc\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+      "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
       "projectName": "TaulerDeControlRM",
-      "projectPath": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (5)\\Reproductor_Musica-Marc\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
-      "packagesPath": "C:\\Users\\fdily\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (5)\\Reproductor_Musica-Marc\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\obj\\",
+      "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\TaulerDeControlRM.csproj",
+      "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
+      "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\TaulerDeControlRM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\fdily\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -101,15 +101,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (5)\\Reproductor_Musica-Marc\\WPF\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj": {
-              "projectPath": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (5)\\Reproductor_Musica-Marc\\WPF\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\WPF\\TaulerDeControlRM\\ReproductorMusicaComponentLibrary\\ReproductorMusicaComponentLibrary.csproj"
             }
           }
         }
@@ -142,7 +141,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

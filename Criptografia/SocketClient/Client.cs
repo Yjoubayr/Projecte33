@@ -37,11 +37,8 @@ namespace SocketProvaClient
             String response = Console.ReadLine();
             RSACrypt.SavePublicKey(RutaCertificado, CertPass, ClauPublicaRuta);
             RSA rsa = RSACrypt.LoadPublicKey(ClauPublicaRuta);
-            // Exportar clave pública a una cadena
             byte[] publicKeyBytes = rsa.ExportRSAPublicKey();
             String publicKeyString = Convert.ToBase64String(publicKeyBytes);
-            
-            // Ahora puedes usar publicKeyString como una cadena en tu respuesta.
             response = response + "|" + publicKeyString;
             SenderMessage(response);
             NetworkStream networkStream = ActualClient.GetStream();
@@ -91,16 +88,12 @@ namespace SocketProvaClient
                 using (FileStream fileStream = File.Create(rutaDestino))
                 {
                     int bytesRead;
-
-                    // Recibir el archivo en bloques
                     while ((bytesRead = networkStream.Read(buffer, 0, bufferSize)) > 0)
                     {
                         fileStream.Write(buffer, 0, bytesRead);
                     }
                 }
-                //Desencriptar Archivo
                 Encryption.DecryptPDF(PDFRebut, PDFDesencriptat, claveAesEncriptada, RutaCertificado, CertPass);
-                // Cerrar la conexión
                 networkStream.Close();
             }
             catch (Exception ex)
@@ -113,11 +106,10 @@ namespace SocketProvaClient
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        static async Task SenderMessage(string message)
+        public static async Task SenderMessage(string message)
         {
             try
             {
-                // Obtener la referencia al flujo de red del cliente
                 NetworkStream stream = ActualClient.GetStream();
                 var EncMessage = Encoding.UTF8.GetBytes(message);
                 StreamWriter writer = new StreamWriter(stream);

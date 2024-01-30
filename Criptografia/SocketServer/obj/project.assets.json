@@ -1647,6 +1647,20 @@
           "bin/placeholder/DAMSecurityLib.dll": {}
         }
       },
+      "ExemplePDF/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CreatePDFSigned": "1.0.0",
+          "DAMSecurityLib": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ExemplePDF.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExemplePDF.dll": {}
+        }
+      },
       "ProvaDeLlibreries/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -5215,6 +5229,11 @@
       "path": "../DAMSecurityLib/DAMSecurityLib.csproj",
       "msbuildProject": "../DAMSecurityLib/DAMSecurityLib.csproj"
     },
+    "ExemplePDF/1.0.0": {
+      "type": "project",
+      "path": "../ProvaDeLlibreries/ExemplePDF.csproj",
+      "msbuildProject": "../ProvaDeLlibreries/ExemplePDF.csproj"
+    },
     "ProvaDeLlibreries/1.0.0": {
       "type": "project",
       "path": "../ProvaDeLlibreries/ProvaDeLlibreries.csproj",
@@ -5231,7 +5250,7 @@
       "ConsultasAPIs >= 1.0.0",
       "CreatePDFSigned >= 1.0.0",
       "DAMSecurityLib >= 1.0.0",
-      "ProvaDeLlibreries >= 1.0.0",
+      "ExemplePDF >= 1.0.0",
       "SocketClient >= 1.0.0",
       "itext7 >= 8.0.2"
     ]
@@ -5243,11 +5262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\SocketServer.csproj",
+      "projectUniqueName": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\SocketServer.csproj",
       "projectName": "SocketServer",
-      "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\SocketServer.csproj",
+      "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\SocketServer.csproj",
       "packagesPath": "C:\\Users\\marc\\.nuget\\packages\\",
-      "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\obj\\",
+      "outputPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\SocketServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5268,20 +5287,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ConsultasAPIs\\ConsultasAPIs.csproj": {
-              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ConsultasAPIs\\ConsultasAPIs.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ConsultasAPIs\\ConsultasAPIs.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ConsultasAPIs\\ConsultasAPIs.csproj"
             },
-            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
-              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj"
             },
-            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\DAMSecurityLib\\DAMSecurityLib.csproj"
             },
-            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj": {
-              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ProvaDeLlibreries.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ExemplePDF.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\ProvaDeLlibreries\\ExemplePDF.csproj"
             },
-            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketClient\\SocketClient.csproj": {
-              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\SocketClient\\SocketClient.csproj"
+            "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\SocketClient\\SocketClient.csproj": {
+              "projectPath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\SocketClient\\SocketClient.csproj"
             }
           }
         }

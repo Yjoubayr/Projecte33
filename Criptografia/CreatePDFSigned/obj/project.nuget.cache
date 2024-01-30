@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ebekQH651mSDldXk1FBHejPeCpSPYTwoS2e7/PE17m52buZVgYjLPmVnjOh9zBizkypHJ5R6pUdp+Rq9vJHbrg==",
+  "dgSpecHash": "I9Db3qw6MWe3RWiI/1NT1MVMPmQq565IQI8vsabYw0kgN+v6WxdfsGRSfGFwHRMvcQIXnl2bb6YPSEzLNTkdcA==",
   "success": true,
-  "projectFilePath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
+  "projectFilePath": "D:\\Informatica\\GrauSuperiorDAM\\C.G.S_DAM2\\projecte_2_reproductor\\Reproductor_Musica\\Criptografia\\CreatePDFSigned\\CreatePDFSigned.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marc\\.nuget\\packages\\aspose.pdf\\23.11.1\\aspose.pdf.23.11.1.nupkg.sha512",
     "C:\\Users\\marc\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
