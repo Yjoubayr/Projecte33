@@ -81,22 +81,41 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Album/getAlbumsByTitolAndAny/{Titol}/{Any} per obtenir un Album
+        /// Accedeix a la ruta /api/Album/getTitlesAlbums per obtenir tots
+        /// els titols de tots els Albums
         /// </summary>
-        /// <param name="Titol">Titol de l'Album a consultar</param>
-        /// <param name="Any">Any de l'Album a consultar</param>
-        /// <returns>L'objecte de l'Album consultat</returns>
-        [HttpGet("getAlbumsByTitolAndAny/{Titol}/{Any}")]
-        public async Task<ActionResult<IEnumerable<Album>>> GetAlbumsByTitolAndAny(string Titol, int Any)
+        /// <returns>El llistat de tots els Titols dels Albums</returns>
+        [HttpGet("getTitlesAlbums")]
+        public async Task<ActionResult<IEnumerable<string>>> GetTitlesAlbums()
         {
-            var album = await _albumService.GetAsync(Titol, Any);
+            var albums = await _albumService.GetTitles();
 
-            if (album == null)
+            if (albums == null)
             {
                 return NotFound();
             }
 
-            return album;
+            return albums;
+        }
+
+        /// <summary>
+        /// Accedeix a la ruta /api/Album/getAlbumsByTitolAndAny/{Titol}/{Any} per obtenir 
+        /// els Albums amb un Titol i Any concrets
+        /// </summary>
+        /// <param name="Titol">Titol de l'Album a consultar</param>
+        /// <param name="Any">Any de l'Album a consultar</param>
+        /// <returns>Llistat dels Albums amb el Titol i Any especificats</returns>
+        [HttpGet("getAlbumsByTitolAndAny/{Titol}/{Any}")]
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbumsByTitolAndAny(string Titol, int Any)
+        {
+            var albums = await _albumService.GetAsync(Titol, Any);
+
+            if (albums == null)
+            {
+                return NotFound();
+            }
+
+            return albums;
         }
 
         /// <summary>

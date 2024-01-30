@@ -41,6 +41,18 @@ public class AlbumService
     }
     
     /// <summary>
+    /// Accedeix a la ruta /api/Album/getTitlesAlbums dins de AlbumController 
+    /// per obtenir tots els titols dels albums
+    /// </summary>
+    /// <returns>El llistat de tots els Titols dels Albums</returns>
+    public async Task<List<string>> GetTitles() {
+        return await _context.Albums
+                                .Select(x => x.Titol)
+                                .Distinct()
+                                .ToListAsync();
+    }
+
+    /// <summary>
     /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any}/{IDCanco} dins de AlbumController per obtenir un album
     /// </summary>
     /// <param name="Titol">El titol de l'album a obtenir</param>
