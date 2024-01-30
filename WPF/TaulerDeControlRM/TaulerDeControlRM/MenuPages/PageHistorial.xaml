@@ -25,8 +25,8 @@
         <ListView x:Name="songListView" Width="786" Grid.Row="4">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="260" Header="Nom" DisplayMemberBinding="{Binding Nom}" />
-                    <GridViewColumn Width="260" Header="Grup" DisplayMemberBinding="{Binding Grup}" />
+                    <GridViewColumn Width="260" Header="MAC" DisplayMemberBinding="{Binding MAC}" />
+                    <GridViewColumn Width="260" Header="Nom" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Width="260" Header="Data" DisplayMemberBinding="{Binding Data}" />
                 </GridView>
             </ListView.View>

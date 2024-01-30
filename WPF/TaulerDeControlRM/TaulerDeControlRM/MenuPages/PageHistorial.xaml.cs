@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Net.Http.Json;
 using System.Printing;
 using System.Security.Policy;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -23,16 +25,20 @@ using static TaulerDeControlRM.PageHistorial;
 
 namespace TaulerDeControlRM
 {
-    /// <summary>
+
+
+  /// <summary>
     /// Interaction logic for PageHistorial.xaml
     /// </summary>
     public partial class PageHistorial : Page
     {
+        private string url = "http://172.23.2.141:5050/api/v1/Canco/";
+
         public class Item
         {
-            public string Nom { get; set; }
-            public string Grup { get; set; }
-            public string Data { get; set; }
+            public string? MAC { get; set; }
+            public string? Name { get; set; }
+            public string? Data { get; set; }
         }
 
         private ObservableCollection<Item> items;
@@ -41,42 +47,48 @@ namespace TaulerDeControlRM
             InitializeComponent();
             items = new ObservableCollection<Item>();
             songListView.ItemsSource = items;
-            
+
         }
-        
+
         public async void clickHandler(object sender, RoutedEventArgs e)
         {
             var itemsGrid = new ObservableCollection<Item>();
 
             songListView.ItemsSource = itemsGrid;
-            String[] comprovacio = InputID.Text.Split("-");
+
             if (InputID.Text != null /*&& comprovacio.Length == 3*/)
             {
-               try
+                try
                 {
                     List<Item> items = await PeticioGET(InputID.Text);
-                    foreach (Item item in items) { 
-                        FicarItem(item.Nom, item.Grup, item.Data);
+                    foreach (Item item in items)
+                    {
+                        FicarItem(item.MAC, item.Name, item.Data);
                     }
+                    songListView.ItemsSource = items;
 
-                }catch (Exception ex)
-                {
-                    throw new Exception("Error en la peticio GET 1" + ex);
                 }
-                
-               
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en la peticio GET: " + ex.Message);
+                }
+
+
             }
         }
-        private void FicarItem(string nom, string grup, string data)
+        private void FicarItem(string? MAC, string? name, string? data)
         {
-            items.Add(new Item { Nom = nom, Grup = grup, Data = data });
+            if (MAC != null && name != null && data != null)
+            {
+                items.Add(new Item { MAC = MAC, Name = name, Data = data });
+            }
         }
 
 
         public async Task<List<Item>> PeticioGET(String ID)
         {
+            url = url + ID;
             List<Item> items = new List<Item>();
-            String url = "http://localhost:5050/api/v1/Historial/" + ID;
             try
             {
                 using (HttpClient httpClient = new HttpClient())
@@ -84,18 +96,21 @@ namespace TaulerDeControlRM
                     HttpResponseMessage response = await httpClient.GetAsync(url);
                     if (response.IsSuccessStatusCode)
                     {
-                        
                         string jsonContent = await response.Content.ReadAsStringAsync();
-
-                        
-                        items = JsonConvert.DeserializeObject<List<Item>>(jsonContent);
+                        List<Item> itemList = JsonConvert.DeserializeObject<List<Item>>(jsonContent);
+                        items.AddRange(itemList);
                         return items;
                     }
+                    else
+                    {
+                        MessageBox.Show(response.ToString());
+                    }
                 }
-                
-            }catch(Exception ex)
+
+            }
+            catch (Exception ex)
             {
-                throw new Exception("Error en la peticio GET 2" + ex.Message);
+                throw new Exception("Error en la peticio GET: " + ex.Message);
             }
             return items;
         }

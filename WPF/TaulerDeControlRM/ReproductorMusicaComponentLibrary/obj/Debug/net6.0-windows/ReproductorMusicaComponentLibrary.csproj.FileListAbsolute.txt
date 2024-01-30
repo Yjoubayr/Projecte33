@@ -16,3 +16,15 @@ C:\Users\marc\Documents\Insti\TaulerDeControlRM\ReproductorMusicaComponentLibrar
 C:\Users\marc\Documents\Insti\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\refint\ReproductorMusicaComponentLibrary.dll
 C:\Users\marc\Documents\Insti\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.pdb
 C:\Users\marc\Documents\Insti\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ref\ReproductorMusicaComponentLibrary.dll
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\bin\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.deps.json
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\bin\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.dll
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\bin\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.pdb
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.csproj.AssemblyReference.cache
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.AssemblyInfoInputs.cache
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.AssemblyInfo.cs
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.csproj.CoreCompileInputs.cache
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.dll
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\refint\ReproductorMusicaComponentLibrary.dll
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ReproductorMusicaComponentLibrary.pdb
+C:\Users\fdily\Downloads\Reproductor_Musica-Marc (5)\Reproductor_Musica-Marc\WPF\TaulerDeControlRM\ReproductorMusicaComponentLibrary\obj\Debug\net6.0-windows\ref\ReproductorMusicaComponentLibrary.dll
