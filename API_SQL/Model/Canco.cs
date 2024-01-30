@@ -10,10 +10,10 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         [MaxLength(10)]
         public string? Estat { get; set; } = "Incompleta";
 
-        public ICollection<Llista>? LListes { get; set; } = new List<Llista>();
-        public ICollection<Canco>? LVersions { get; set; } = new List<Canco>();
-        public ICollection<Album>? LAlbums { get; set; } = new List<Album>();
-        public ICollection<Tocar>? LTocar { get; set; } = new List<Tocar>();
-        public ICollection<Extensio>? LExtensions { get; set; } = new List<Extensio>();
+        public ICollection<Llista>? LListes { get; set; } = null;
+        public ICollection<Canco>? LVersions { get; set; } = null;
+        public ICollection<Album>? LAlbums { get; set; } = null;
+        public ICollection<Tocar>? LTocar { get; set; } = null;
+        public ICollection<Extensio>? LExtensions { get; set; } = null;
     }
 }

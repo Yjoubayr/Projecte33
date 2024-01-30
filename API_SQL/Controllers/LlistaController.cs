@@ -147,10 +147,6 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar previament si existeix el nom de la llista i retornar un error 409
             IActionResult result;
 
-            if (llista.LCancons != null) {
-                return BadRequest();
-            }
-
             List<Llista> lLlistes = await _llistaService.GetAsync();
 
             if (lLlistes.Any(x => x.MACAddress == llista.MACAddress && x.NomLlista == llista.NomLlista)) {

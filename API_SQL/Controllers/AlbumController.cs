@@ -54,7 +54,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            var anysAlbum = await _albumService.GetYearsByTitle(Titol);
+            var anysAlbum = await _albumService.GetYearsByTitleAsync(Titol);
 
             return anysAlbum;
         }
@@ -88,7 +88,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpGet("getTitlesAlbums")]
         public async Task<ActionResult<IEnumerable<string>>> GetTitlesAlbums()
         {
-            var albums = await _albumService.GetTitles();
+            var albums = await _albumService.GetTitlesAsync();
 
             if (albums == null)
             {

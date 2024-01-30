@@ -49,12 +49,6 @@ public class CancoService
             return listCancons[0];
         }
     }
-    /*public async Task<Canco?> GetAsync(string IDCanco) =>
-        await _context.Cancons
-                            .Include(x => x.LExtensions)
-                            .Include(x => x.LListes)
-                            .Include(x => x.LTocar)
-                            .FirstOrDefaultAsync(x => x.IDCanco == IDCanco);*/
 
     /// <summary>
     /// Accedeix a la ruta /api/Canco/postCanco dins de CancoController per crear una Canco
@@ -84,6 +78,79 @@ public class CancoService
             cancoOriginal.LTocar = updatedCanco.LTocar;
         }
         
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Canco/updateLlista/{MACAddress}/{NomLlista}/{IDCanco} dins de CancoController per modificar una Canco
+    /// </summary>
+    /// <param name="llistaOriginal">L'objecte de la Llista original que volem modificar</param>
+    /// <param name="updatedLlista">L'objecte de la Llista amb els elements modificats</param>
+    /// <returns>Verificacio de que la Llista s'ha modificat correctament</returns>
+    public async Task UpdateLlistaRemoveAsync(Llista llistaOriginal, Llista updatedLlista) {
+        List<Canco> lCancons = llistaOriginal.LCancons.ToList<Canco>();
+
+        foreach (var canco in lCancons) {
+            if (!updatedLlista.LCancons.Contains(canco)) {
+                await RemoveLlistaAsync(canco.IDCanco, llistaOriginal);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Canco/updateLlista/{MACAddress}/{NomLlista}/{IDCanco} dins de CancoController per modificar una Canco
+    /// </summary>
+    /// <param name="llistaOriginal">L'objecte de la Llista original que volem modificar</param>
+    /// <param name="updatedLlista">L'objecte de la Llista amb els elements modificats</param>
+    /// <returns>Verificacio de que la Llista s'ha modificat correctament</returns>
+    public async Task UpdateLlistaAddAsync(Llista llistaOriginal, Llista updatedLlista) {
+        List<Canco> lCancons = updatedLlista.LCancons.ToList<Canco>();
+
+        foreach (var canco in lCancons) {
+            if (!llistaOriginal.LCancons.Contains(canco)) {
+                await AddLlistaAsync(canco.IDCanco, llistaOriginal);
+            }
+        }
+    }
+
+    
+    /// <summary>
+    /// Accedeix a la ruta /api/Canco/updateLlista/{MACAddress}/{NomLlista}/{IDCanco} dins de CancoController per modificar una Llista
+    /// </summary>
+    /// <param name="IDCanco">Identificador de la Canco que volem afegir a la Llista de Reproduccio</param>
+    /// <param name="llista">L'objecte de la Llista amb els elements modificats</param>
+    /// <returns>Verificacio de que la Llista s'ha modificat correctament</returns>
+    public async Task AddLlistaAsync(string IDCanco, Llista llista) {
+        Canco? canco = await GetAsync(IDCanco);
+
+        if (canco == null) {
+            canco = new Canco() {
+                IDCanco = IDCanco
+            };
+            await CreateAsync(canco);
+        }
+
+        if (canco.LListes == null) canco.LListes = new List<Llista>();
+
+        canco.LListes.Add(llista);
+        _context.Entry(canco).State = EntityState.Modified;
+
+        await _context.SaveChangesAsync();
+    }
+    
+
+    /// <summary>
+    /// Accedeix a la ruta /api/Canco/updateLlista/{MACAddress}/{NomLlista}/{IDCanco} dins de CancoController per modificar una Llista
+    /// </summary>
+    /// <param name="IDCanco">Identificador de la Canco que volem eliminar de la Llista de Reproduccio</param>
+    /// <param name="llista">L'objecte de la Llista amb els elements modificats</param>
+    /// <returns>Verificacio de que la Llista s'ha modificat correctament</returns>
+    public async Task RemoveLlistaAsync(string IDCanco, Llista llista) {
+        Canco? canco = await GetAsync(IDCanco);
+
+        canco.LListes.Remove(llista);
+        _context.Entry(canco).State = EntityState.Modified;
+
         await _context.SaveChangesAsync();
     }
 
