@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MenuPages\PageEditaDenís.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MenuPages\PageEditaDenís.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ReproductorMusicaComponentLibrary\ReproductorMusicaComponentLibrary.csproj" />
   </ItemGroup>
 

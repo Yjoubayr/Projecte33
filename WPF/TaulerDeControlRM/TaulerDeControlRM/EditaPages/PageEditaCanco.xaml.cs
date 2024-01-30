@@ -96,7 +96,7 @@ namespace TaulerDeControlRM.EditaPages
 
             ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
             ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
-            ConjuntValors cvExtensions = new ConjuntValors("Extensió", this.nomsExtensions, true, true);
+            //ConjuntValors cvExtensions = new ConjuntValors("Extensió", this.nomsExtensions, true, true);
             List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
 
             GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);

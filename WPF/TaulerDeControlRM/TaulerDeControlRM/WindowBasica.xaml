@@ -7,13 +7,12 @@
         mc:Ignorable="d"
         Title="WindowBasica" Height="450" Width="800">
     <Grid>
-
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Content="Cançons més escoltades"></Label>
                 <Label Content="Num."></Label>
                 <TextBox Name="txtNum" Width="50"></TextBox>
-                <Button Content="Mostrar"></Button>
+                <Button Content="Mostrar" Click="Button_Click"></Button>
                 <Button Content="Enviar socket" ></Button>
                 <Button Content="Generar i signar PDF" ></Button>
             </StackPanel>
