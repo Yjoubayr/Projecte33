@@ -28,6 +28,20 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         }
 
         /// <summary>
+        /// Fer una consulta a l'API que retorni el llistat de tots els
+        /// Titols de tots els Albums
+        /// </summary>
+        /// <returns>El llistat de tots els Titols dels Albums</returns>
+        public static async Task<List<string>> GetTitlesAlbumsAync()
+        {
+            string apiUrl = CA.baseApi + controller + "getTitlesAlbums";
+
+            string result = await CA.GetDataFromApiAsync(apiUrl);
+            var data = JsonConvert.DeserializeObject<List<string>>(result);
+            return data;
+        }
+
+        /// <summary>
         /// Fer una consulta a l'API que retorni el llistat d'Anys d'un Album
         /// segons el seu Titol
         /// </summary>

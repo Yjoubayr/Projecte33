@@ -25,7 +25,6 @@ namespace TaulerDeControlRM
     public partial class PageEdita : Page
     {
         private List<Canco> llistaCancons = new List<Canco>();
-        private List<Album> llistaAlbums = new List<Album>();
         private List<Music> llistaMusics = new List<Music>();
         private List<string> llistaPK = new List<string>();
         private List<string> llistaPKComposta = new List<string>();
@@ -95,14 +94,7 @@ namespace TaulerDeControlRM
         /// </summary>
         private async void ObtenirAlbums()
         {
-            this.llistaAlbums = await CA_Album.GetAlbumsAsync();
-
-            this.llistaPK = new List<string>();
-
-            for (int i = 0; i < this.llistaAlbums.Count; i++)
-            {
-                this.llistaPK.Add(this.llistaAlbums[i].Titol);
-            }
+            this.llistaPK = await CA_Album.GetTitlesAlbumsAync();
 
             Buscador.ItemsSource = this.llistaPK;
         }
