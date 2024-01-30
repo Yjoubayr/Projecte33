@@ -39,14 +39,6 @@ public class MusicService
                             .Include(x => x.LGrups)
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
-    /*public async Task<Music?> GetAsync(string Nom) {
-        var musicObj = await _context.Musics.FindAsync(Nom);
-        if (musicObj != null) {
-            await _context.Entry(musicObj).Collection(x => x.LGrups).LoadAsync();
-            await _context.Entry(musicObj).Collection(x => x.LTocar).LoadAsync();
-        }
-        return musicObj;
-    }*/
 
     /// <summary>
     /// Accedeix a la ruta /api/Music/postMusic dins de MusicController per crear un Music

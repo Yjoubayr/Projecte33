@@ -32,7 +32,7 @@ public class AlbumService
     /// Accedeix a la ruta /api/Album/getAnysAlbum/{Titol} dins de AlbumController per obtenir tots els albums
     /// </summary>
     /// <returns>El llistat d'anys d'un Album en concret</returns>
-    public async Task<List<string>> GetYearsByTitle(string Titol) {
+    public async Task<List<string>> GetYearsByTitleAsync(string Titol) {
         return await _context.Albums
                                 .Where(x => x.Titol == Titol)
                                 .Select(x => x.Any.ToString())
@@ -45,7 +45,7 @@ public class AlbumService
     /// per obtenir tots els titols dels albums
     /// </summary>
     /// <returns>El llistat de tots els Titols dels Albums</returns>
-    public async Task<List<string>> GetTitles() {
+    public async Task<List<string>> GetTitlesAsync() {
         return await _context.Albums
                                 .Select(x => x.Titol)
                                 .Distinct()

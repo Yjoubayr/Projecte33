@@ -17,6 +17,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly CancoService _cancoService;
+        private readonly LlistaService _llistaService;
 
         /// <summary>
         /// Constructor de la classe CancoController
@@ -26,6 +27,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             _context = context;
             _cancoService = new CancoService(context);
+            _llistaService = new LlistaService(context);
         }
 
         /// <summary>
@@ -80,7 +82,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             if (updatedCanco.LListes != null
             || updatedCanco.LVersions != null
             || updatedCanco.LAlbums != null
-            || updatedCanco.LTocar == null
+            || updatedCanco.LTocar != null
             || updatedCanco.LExtensions != null) {
                 return BadRequest();
             }
@@ -91,7 +93,31 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return result;
         }
 
-        
+        /// <summary>
+        /// Accedeix a la ruta /api/Canco/updateLlista/{MACAddress}/{NomLlista} per modificar una Llista de reproduccio
+        /// </summary>
+        /// <param name="MACAddress">Adreça MAC de la Llista de reproduccio a modificar</param>
+        /// <param name="NomLlista">Nom de la Llista de reproduccio a modificar</param>
+        /// <param name="updatedLlista">L'objecte de la Llista de reproduccio a modificar</param>
+        /// <returns>Verificacio de que la Llista de reproduccio s'ha modificat correctament</returns>
+        [HttpPut("updateLlista/{MACAddress}/{NomLlista}")]
+        public async Task<IActionResult> updateLlista(string MACAddress, string NomLlista, Llista updatedLlista) 
+        {
+            if (updatedLlista == null) {
+                return BadRequest();
+            }
+
+            var llista = await _llistaService.GetAsync(MACAddress, NomLlista);
+
+            if (llista == null || MACAddress != updatedLlista.MACAddress || NomLlista != updatedLlista.NomLlista) {
+                return NotFound();
+            }
+
+            await _cancoService.UpdateLlistaRemoveAsync(llista, updatedLlista);
+            await _cancoService.UpdateLlistaAddAsync(llista, updatedLlista);
+            return Ok();
+        }
+
         /// <summary>
         /// Accedeix a la ruta /api/Canco/postCanco per inserir una canco
         /// </summary>
