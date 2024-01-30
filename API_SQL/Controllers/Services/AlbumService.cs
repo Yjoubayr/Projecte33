@@ -29,15 +29,65 @@ public class AlbumService
     }
     
     /// <summary>
+    /// Accedeix a la ruta /api/Album/getAnysAlbum/{Titol} dins de AlbumController per obtenir tots els albums
+    /// </summary>
+    /// <returns>El llistat d'anys d'un Album en concret</returns>
+    public async Task<List<string>> GetYearsByTitle(string Titol) {
+        return await _context.Albums
+                                .Where(x => x.Titol == Titol)
+                                .Select(x => x.Any.ToString())
+                                .Distinct()
+                                .ToListAsync();
+    }
+    
+    /// <summary>
+    /// Accedeix a la ruta /api/Album/getTitlesAlbums dins de AlbumController 
+    /// per obtenir tots els titols dels albums
+    /// </summary>
+    /// <returns>El llistat de tots els Titols dels Albums</returns>
+    public async Task<List<string>> GetTitles() {
+        return await _context.Albums
+                                .Select(x => x.Titol)
+                                .Distinct()
+                                .ToListAsync();
+    }
+
+    /// <summary>
     /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any}/{IDCanco} dins de AlbumController per obtenir un album
     /// </summary>
     /// <param name="Titol">El titol de l'album a obtenir</param>
     /// <param name="Any">L'any de publicacio de l'album a obtenir</param>
     /// <param name="IDCanco">L'identificador de la canco de l'album a obtenir</param>
     /// <returns>L'objecte de l'Album trobat</returns>
-    public async Task<Album?> GetAsync(string Titol, int Any, string IDCanco) =>
-        await _context.Albums.FirstOrDefaultAsync(x => x.Titol == Titol && x.Any == Any && x.IDCanco == IDCanco);
+    public async Task<Album?> GetAsync(string Titol, int Any, string IDCanco) {
+        List<Album> listAlbums = await _context.Albums
+                                    .Include(x => x.CancoObj)
+                                    .Where(x => x.Titol == Titol && x.Any == Any && x.IDCanco == IDCanco).ToListAsync();
 
+        if (listAlbums.Count == 0) {
+            return null;
+        } else {
+            return listAlbums[0];
+        }
+    }
+
+    /// <summary>
+    /// Obte tots els albums amb el mateix titol
+    /// </summary>
+    /// <param name="Titol">El titol del/s Album/s a obtenir</param>
+    /// <returns>El llistat d'Albums trobats</returns>
+    public async Task<List<Album>> GetAlbumsByTitolAsync(string Titol) {
+        List<Album> listAlbums = await _context.Albums
+                                    .Include(x => x.CancoObj)
+                                    .Where(x => x.Titol == Titol).ToListAsync();
+
+        if (listAlbums.Count == 0) {
+            return null;
+        } else {
+            return listAlbums;
+        }
+    }
+        
     /// <summary>
     /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any} dins de AlbumController per obtenir un album
     /// </summary>

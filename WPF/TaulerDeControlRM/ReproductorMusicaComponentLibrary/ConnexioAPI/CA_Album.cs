@@ -28,17 +28,48 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         }
 
         /// <summary>
-        /// Fer una consulta l'API que retorni un Album en concret
+        /// Fer una consulta a l'API que retorni el llistat de tots els
+        /// Titols de tots els Albums
         /// </summary>
-        /// <param name="Titol">Titol de l'Album a obtenir</param>
-        /// <param name="Any">Any de l'Album a obtenir</param>
-        /// <returns>L'objecte de l'Album a obtenir</returns>
-        public static async Task<Album> GetAlbumAsync(string Titol, string Any)
+        /// <returns>El llistat de tots els Titols dels Albums</returns>
+        public static async Task<List<string>> GetTitlesAlbumsAync()
         {
-            string apiUrl = CA.baseApi + controller + "getAlbum/" + Titol + "/" + Any;
+            string apiUrl = CA.baseApi + controller + "getTitlesAlbums";
 
             string result = await CA.GetDataFromApiAsync(apiUrl);
-            var data = JsonConvert.DeserializeObject<Album>(result);
+            var data = JsonConvert.DeserializeObject<List<string>>(result);
+            return data;
+        }
+
+        /// <summary>
+        /// Fer una consulta a l'API que retorni el llistat d'Anys d'un Album
+        /// segons el seu Titol
+        /// </summary>
+        /// <param name="Titol">Titol de l'Album del qual obtenir els anys</param>
+        /// <returns>El llistat de tots els anys d'un Album</returns>
+        public static async Task<List<string>> GetAnysAlbumAsync(string Titol)
+        {
+            string apiUrl = CA.baseApi + controller + "getAnysAlbum/" + Titol;
+
+            string result = await CA.GetDataFromApiAsync(apiUrl);
+            var data = JsonConvert.DeserializeObject<List<string>>(result);
+            return data;
+        }
+
+
+        /// <summary>
+        /// Fer una consulta l'API que retorni un llistat d'Albums
+        /// amb un Titol i Any en concret
+        /// </summary>
+        /// <param name="Titol">Titol de l'Album o Albums a obtenir</param>
+        /// <param name="Any">Any de l'Album o Albums a obtenir</param>
+        /// <returns>Llista dels Albums obtingus</returns>
+        public static async Task<List<Album>> GetAlbumsByTitolAndAnyAsync(string Titol, string Any)
+        {
+            string apiUrl = CA.baseApi + controller + "getAlbumsByTitolAndAny/" + Titol + "/" + Any;
+
+            string result = await CA.GetDataFromApiAsync(apiUrl);
+            var data = JsonConvert.DeserializeObject<List<Album>>(result);
             return data;
         }
 

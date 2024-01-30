@@ -10,6 +10,9 @@
     <Compile Update="CreaPages\PageCreaMusic.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditaPages\PageEditaAlbum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditaPages\PageEditaCanco.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="CreaPages\PageCreaMusic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditaPages\PageEditaAlbum.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditaPages\PageEditaCanco.xaml">

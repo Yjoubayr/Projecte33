@@ -37,7 +37,10 @@ namespace TaulerDeControlRM.EditaPages
         private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
         private List<Music> llistaMusics = new List<Music>();
         private List<Instrument> llistaInstruments = new List<Instrument>();
+        private List<Extensio> llistaExtensions = new List<Extensio>();
         private List<string> nomsMusics = new List<string>();
+        private List<string> nomsInstruments = new List<string>();
+        private List<string> nomsExtensions = new List<string>();
         private string IDCanco = string.Empty;
 
         public PageEditaCanco(string IDCanco)
@@ -73,17 +76,17 @@ namespace TaulerDeControlRM.EditaPages
         }
 
         /// <summary>
-        /// Obtenim tots els Instruments fent una crida a l'API
+        /// Obtenim totes les Extensions fent una crida a l'API
         /// </summary>
         private async void ObtenirExtensions()
         {
-            //this.llistaMusics = await CA_Extensio.GetExtensionsAsync();
+            this.llistaExtensions = await CA_Extensio.GetExtensionsAsync();
 
-            this.nomsMusics = new List<string>();
+            this.nomsExtensions = new List<string>();
 
-            for (int i = 0; i < this.llistaMusics.Count; i++)
+            for (int i = 0; i < this.llistaExtensions.Count; i++)
             {
-                this.nomsMusics.Add(llistaMusics[i].Nom);
+                this.nomsMusics.Add(llistaExtensions[i].Nom);
             }
 
         }

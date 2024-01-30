@@ -26,13 +26,23 @@ namespace TaulerDeControlRM.CreaPages
         {
             InitializeComponent();
         }
+
         private void Upload_Click(object sender, RoutedEventArgs e)
         {
-            Music music = new Music();
-            music.Nom = txtNom.Text;
-            music.LGrups = null;
-
-            CA_Music.PostMusicAsync(music);
+            if (txtNom.Text.ToString() == string.Empty) {
+                MessageBox.Show("ERROR! \n Has de ficar un nom vàlid abans de pujar el Músic.");
+            } 
+            else if (txtNom.Text.ToString().Length > 20) {
+                MessageBox.Show("ERROR! \n El nom del músic és massa llarg.");
+            }
+            else {
+                Music music = new Music();
+                music.Nom = txtNom.Text;
+                music.LGrups = null;
+                CA_Music.PostMusicAsync(music);
+                txtNom.Text = string.Empty;
+                MessageBox.Show("Músic creat CORRECTAMENT!");
+            }
         }
     }
 }
