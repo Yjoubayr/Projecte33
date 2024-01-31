@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var passSing : TextView
     private lateinit var prevSong : TextView
     private lateinit var downloadSong : TextView
+    private lateinit var showTracks : TextView
+
     private lateinit var coverImage : ImageView
     private var mediaPlayer: MediaPlayer = MediaPlayer()
     private lateinit var seekBarAudio: SeekBar
@@ -67,8 +69,18 @@ class MainActivity : AppCompatActivity() {
         initMainActivity()
         changeSongName()
         showFragments()
+
+        showTracks = findViewById(R.id.ShowTracks)
+
+        showTracks.setOnClickListener {
+            val intent = Intent(this, Llist::class.java)
+            this.startActivity(intent)
+        }
     }
 
+    /**
+     * Metode que ens permet mourens per tirar enrere la canço
+     * */
     private fun playPreviousSong() {
         if (listOfSongs.isNotEmpty()) {
             currentSongIndex = (currentSongIndex + 1) % listOfSongs.size
@@ -79,6 +91,11 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.setDataSource(path)
             mediaPlayer.prepare()
             mediaPlayer.start()
+            if (mediaPlayer.isPlaying) {
+                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
+            } else {
+                botoPlayPause.setBackgroundResource(R.drawable.playbtn)
+            }
             rotationAnim()
             seekBarAudio.max = mediaPlayer.duration
             updateSeekBar()
@@ -98,7 +115,11 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.setDataSource(path)
             mediaPlayer.prepare()
             mediaPlayer.start()
-
+            if (mediaPlayer.isPlaying) {
+                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
+            } else {
+                botoPlayPause.setBackgroundResource(R.drawable.playbtn)
+            }
             rotationAnim()
             seekBarAudio.max = mediaPlayer.duration
             updateSeekBar()

@@ -84,6 +84,13 @@
                 android:background="@drawable/addsongplaylist"
 
                 />
+            <TextView
+                android:id="@+id/ShowTracks"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@drawable/showmenusvg"
+                android:layout_alignParentRight="true"
+                />
         </RelativeLayout>
         <FrameLayout
             android:layout_width="match_parent"
