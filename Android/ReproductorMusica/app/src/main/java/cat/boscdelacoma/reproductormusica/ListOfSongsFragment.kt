@@ -44,9 +44,8 @@ class ListOfSongsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         val view = inflater.inflate(R.layout.fragment_list_of_songs, container, false)
+
         val createNewPlaylist: TextView = view.findViewById(R.id.CreateNewPlayList)
         createNewPlaylist.setOnClickListener {
             // Crear una instancia del fragmento TrackName

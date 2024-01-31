@@ -12,6 +12,7 @@ import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import cat.boscdelacoma.reproductormusica.Apilogic.Canco
@@ -128,15 +129,27 @@ class MainActivity : AppCompatActivity() {
 
                 mediaPlayer.pause()
             } else {
-                botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
-                mediaPlayer.start()
-                rotationAnim()
-                seekBarAudio.max = mediaPlayer.duration
-                updateSeekBar()
-                postHistorial()
+                if (absolutepathsong != "null") {
+
+                    botoPlayPause.setBackgroundResource(R.drawable.stopbtn)
+                    mediaPlayer.start()
+                    rotationAnim()
+                    seekBarAudio.max = mediaPlayer.duration
+                    updateSeekBar()
+                    postHistorial()
+                }else{
+                    showlocalSongs()
+                }
+
             }
         }
     }
+
+    private fun showlocalSongs() {
+        val intent = Intent(this, ShowLocalSongs::class.java)
+        this.startActivity(intent)
+    }
+
     /**
      * Metode que ens ajuda a mostrar els fragments.
      * @return {Unit} No retorna res.
@@ -147,11 +160,13 @@ class MainActivity : AppCompatActivity() {
 
         AddSongToTrack.setOnClickListener {
             val listOfSongsFragment = ListOfSongsFragment()
+
             listOfSongsFragment.SongName = intent.getStringExtra("absolutepathsong").toString()
             val fragmentManager = supportFragmentManager
+
+
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
             val fadeIn: Animation = AlphaAnimation(0f, 1f)
-
             fadeIn.duration = 500 // Duración de la animación en milisegundos
             transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             transaction.replace(R.id.fragment_container, listOfSongsFragment)
@@ -182,7 +197,7 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 if (isPlaying) {
                     seekBarAudio.progress = mediaPlayer.currentPosition
-                    handler.postDelayed(this, 100) // Actualizar cada 100 milisegundos
+                    handler.postDelayed(this, 100)
                 }
             }
         }, 100)
@@ -196,7 +211,10 @@ class MainActivity : AppCompatActivity() {
     fun postHistorial() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val formattedDate = LocalDateTime.now().format(formatter).toString()
-        HTTP_Mongo(this).postHistorialOfSongs("45","canço", formattedDate)
+        // TODO : Agafar la MAC del dispositiu
+        var songname = intent.getStringExtra("songName").toString()
+
+        HTTP_Mongo(this).postHistorialOfSongs("45",songname, formattedDate)
 
     }
 }

@@ -121,10 +121,10 @@ class HTTP_Mongo(private val context: Context) {
      * @param IDDispositiu ID del dispositiu.
      * @param data data de la canço a la que s'ha escoltat.
      * */
-    fun postHistorialOfSongs(MAC : String ,id : String, data : String) {
+    fun postHistorialOfSongs(MAC : String ,Nom : String, data : String) {
         // Aquí deberías crear una instancia de Canco con los datos relevantes
         initializeRetrpofit()
-        val canco = Canco(MAC ,id, data)
+        val canco = Canco(MAC ,Nom, data)
         try {
             val call: Call<ResponseBody> = historialService.postcanco(canco)
             call.enqueue(object : retrofit2.Callback<ResponseBody> {

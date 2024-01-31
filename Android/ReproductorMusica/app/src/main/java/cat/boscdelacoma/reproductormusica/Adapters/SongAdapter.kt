@@ -35,7 +35,6 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
             holder.textBox.text = currentItem.songName
 
             holder.downloadLogo.setOnClickListener {
-                val intent = Intent(holder.itemView.context, MainActivity::class.java)
 
                 HTTP_Mongo(context = holder.itemView.context).downloadAudio(currentItem.UID, currentItem.songName)
 

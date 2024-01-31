@@ -66,7 +66,6 @@
                 android:text="Song name"
                 android:textColor="@color/white"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="40dp"
                 android:textSize="25dp"
                 android:fontFamily="@font/bold"
                 />
@@ -84,14 +83,6 @@
                 android:layout_height="30dp"
                 android:background="@drawable/addsongplaylist"
 
-                />
-            <TextView
-                android:id="@+id/SongLike"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/addsongplaylist_track_songs_list_item"
-                android:backgroundTint="@color/white"
-                android:layout_alignParentRight="true"
                 />
         </RelativeLayout>
         <FrameLayout
