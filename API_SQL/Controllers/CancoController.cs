@@ -72,6 +72,14 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar prèviament si existeix el nom de la canco i retornar un error 409
             IActionResult result;
 
+            if (updatedCanco.LListes != null
+            || updatedCanco.LVersions != null
+            || updatedCanco.LAlbums != null
+            || updatedCanco.LTocar == null
+            || updatedCanco.LExtensions != null) {
+                return BadRequest();
+            }
+            
             var canco = await _cancoService.GetAsync(IDCanco);
 
             if (canco == null || IDCanco != updatedCanco.IDCanco)
@@ -79,15 +87,9 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            if (updatedCanco.LListes != null
-            || updatedCanco.LVersions != null
-            || updatedCanco.LAlbums != null
-            || updatedCanco.LTocar != null
-            || updatedCanco.LExtensions != null) {
-                return BadRequest();
-            }
-
             await _cancoService.UpdateAsync(canco, updatedCanco);
+            await _cancoService.UpdateLTocarRemoveAsync(canco, updatedCanco);
+            await _cancoService.UpdateLTocarAddAsync(canco, updatedCanco);
             result = CreatedAtAction("GetCanco", new { IDCanco = updatedCanco.IDCanco }, updatedCanco);
 
             return result;
