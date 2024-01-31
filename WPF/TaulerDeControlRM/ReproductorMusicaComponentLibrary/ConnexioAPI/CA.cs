@@ -28,6 +28,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
                 else
                 {
                     // Handle the error
+                    MessageBox.Show($"Error");
                     return null;
                     /*return $"Error: {response.StatusCode}";*/
                 }
@@ -35,6 +36,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             catch (Exception ex)
             {
                 // Handle exceptions
+                MessageBox.Show($"Exception: {ex.Message}");    
                 return $"Exception: {ex.Message}";
             }
         }

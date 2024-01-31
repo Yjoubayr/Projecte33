@@ -12,11 +12,11 @@ namespace ReproductorMusicaComponentLibrary.Classes
         public string Nom { get; set; }
         public int? Any { get; set; }
         public string? Estat { get; set; }
-        public List<Llista> LLlistes { get; set; } = new List<Llista>();
-        public List<Canco> LVersions { get; set; } = new List<Canco>();
-        public List<Album> LAlbums { get; set; } = new List<Album>();
-        public List<Tocar> LTocar { get; set; } = new List<Tocar>();
-        public List<Extensio> LExtensions { get; set; } = new List<Extensio>();
+        public List<Llista> Llistes { get; set; } 
+        public List<Canco> LVersions { get; set; }
+        public List<Album> LAlbums { get; set; } 
+        public List<Tocar> LTocar { get; set; } 
+        public List<Extensio> LExtensions { get; set; }
 
     }
 }
