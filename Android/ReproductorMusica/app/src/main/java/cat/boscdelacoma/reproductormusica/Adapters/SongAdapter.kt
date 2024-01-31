@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.Audio
 import cat.boscdelacoma.reproductormusica.HTTP_Mongo
+import cat.boscdelacoma.reproductormusica.HTTP_SQL
 import cat.boscdelacoma.reproductormusica.MainActivity
 import cat.boscdelacoma.reproductormusica.R
 
@@ -17,7 +18,10 @@ import cat.boscdelacoma.reproductormusica.R
 class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<SongAdapter.ViewHolder>() {
 
 
-    data class SongItem(val songName: String)
+    data class SongItem(
+        val songName: String,
+        val UID :String
+    )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_song_item, parent, false)
@@ -31,9 +35,8 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
 
             holder.downloadLogo.setOnClickListener {
                 val intent = Intent(holder.itemView.context, MainActivity::class.java)
-                HTTP_Mongo(context = holder.itemView.context).downloadAudio("123")
-                   Toast.makeText(holder.itemView.context, "Descargando cancion", Toast.LENGTH_SHORT).show()
-                val path = audio.getMp3Path("cancion_descargada.mp3")
+                HTTP_Mongo(context = holder.itemView.context).downloadAudio(currentItem.UID)
+                val path = audio.getMp3Path(currentItem.songName)
                 intent.putExtra("absolutepathsong", path)
                 holder.itemView.context.startActivity(intent)
             }

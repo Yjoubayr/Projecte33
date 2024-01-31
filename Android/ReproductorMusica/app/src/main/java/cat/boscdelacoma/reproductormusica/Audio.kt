@@ -48,30 +48,6 @@ class Audio {
     }
 
     /**
-     * Ens ajuda a descarregar una cançó a partir d'una URL.
-     * @param context Context de l'activitat.
-     * @param songUrl URL de la cançó.
-     * @return {Unit} No retorna res.
-     * */
-    fun downloadSongAPI(context: Context, songUrl: String) {
-        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val request = DownloadManager.Request(Uri.parse(songUrl))
-
-        request.setTitle("Descarga de canción")
-        request.setDescription("Descargando archivo MP3")
-
-        val musicDirectory =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-        val fileName = "cancion_descargada.mp3"
-        val destinationFile = File(musicDirectory, fileName)
-        request.setDestinationUri(Uri.fromFile(destinationFile))
-
-        val downloadId = downloadManager.enqueue(request)
-
-        Toast.makeText(context, "Descarga iniciada", Toast.LENGTH_SHORT).show()
-    }
-
-    /**
      * Obte una llista de noms de fitxers al directori de música,
      * excluint els fitxers ocults i aquells que acaben amb ".mp3".
      * @return {ArrayList<String>} Llistat dels noms.
@@ -88,6 +64,31 @@ class Audio {
                 val relativePath = path.substring(path.lastIndexOf("/") + 1)
                 if (!file.isHidden && !relativePath.startsWith(".")) {
                     if (!path.endsWith(".mp3")) {
+                        list.add(relativePath)
+                    }
+                }
+            }
+        }
+
+        return list
+    }
+    /**
+     * Obte una llista de noms de fitxers al directori de música,
+     * excluint els fitxers ocults i aquells que acaben amb ".mp3".
+     * @return {ArrayList<String>} Llistat dels noms.
+     */
+    fun getAllFilesListMP3(): ArrayList<String> {
+        val list: ArrayList<String> = ArrayList()
+        val musicDirectory =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+        val files = musicDirectory.listFiles()
+
+        if (files != null) {
+            for (file in files) {
+                val path = file.absolutePath
+                val relativePath = path.substring(path.lastIndexOf("/") + 1)
+                if (!file.isHidden && !relativePath.startsWith(".")) {
+                    if (path.endsWith(".mp3")) {
                         list.add(relativePath)
                     }
                 }

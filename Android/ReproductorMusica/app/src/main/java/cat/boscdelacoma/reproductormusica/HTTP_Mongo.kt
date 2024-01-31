@@ -19,7 +19,6 @@ import java.io.File
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.FileOutputStream
-import java.util.Date
 
 
 class HTTP_Mongo(private val context: Context) {
@@ -121,12 +120,12 @@ class HTTP_Mongo(private val context: Context) {
     /**
      * Aquest metode ens ajuda a fer un post del historial
      * @param IDDispositiu ID del dispositiu.
-     * @param canco Cançó que s'ha escoltat.
+     * @param data data de la canço a la que s'ha escoltat.
      * */
-    fun postHistorialOfSongs(id : String, data : String) {
+    fun postHistorialOfSongs(MAC : String ,id : String, data : String) {
         // Aquí deberías crear una instancia de Canco con los datos relevantes
         initializeRetrpofit()
-        val canco = Canco(id, data)
+        val canco = Canco(MAC ,id, data)
         try {
             val call: Call<ResponseBody> = historialService.postcanco(canco)
             call.enqueue(object : retrofit2.Callback<ResponseBody> {
@@ -156,11 +155,6 @@ class HTTP_Mongo(private val context: Context) {
             .baseUrl(urlBase)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-
         historialService = retrofit.create(CancoService::class.java)
     }
-
-
-
-
 }

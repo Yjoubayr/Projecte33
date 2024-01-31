@@ -4,12 +4,19 @@ import android.Manifest
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telecom.Call
+import android.util.Log
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.Adapters.SongAdapter
+import cat.boscdelacoma.reproductormusica.Apilogic.CancoSQL
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DownloadSongs : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,25 +27,39 @@ class DownloadSongs : AppCompatActivity() {
             finish()
         }
 
-        emplenarRecycleView()
+        lifecycleScope.launch {
+            emplenarRecycleView()
+        }
     }
     /**
      * Metode per emplenar el recycleView amb les cançons que es poden descarregar.
      * */
-    fun emplenarRecycleView(){
+    suspend fun emplenarRecycleView(){
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val songList = mutableListOf<SongAdapter.SongItem>()
+        try{
 
+            val songs = HTTP_SQL().getAllSongs()
 
-        for (i in 1..60) {
-            val songName = "Song $i"
-            val songItem = SongAdapter.SongItem(songName = songName)
-            songList.add(songItem)
+            val songList = mutableListOf<SongAdapter.SongItem>()
+
+            val songsBody = songs.body()
+            if (songsBody != null) {
+                for (i in songsBody.indices) {
+                    val songName = "${songsBody[i]?.Nom}"
+                    val UID = "${songsBody[i]?.IDCanco}"
+                    val songItem = SongAdapter.SongItem(songName = songName, UID = UID)
+                    songList.add(songItem)
+                }
+            }
+            withContext(Dispatchers.Main) {
+                val adapter = SongAdapter(songList)
+                recyclerView.layoutManager = LinearLayoutManager(this@DownloadSongs)
+                recyclerView.adapter = adapter
+            }
+
+        }catch (e: Exception){
+            Log.d("GetAllSongs", "Error: ${e.message}")
         }
-
-        val adapter = SongAdapter(songList)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
-
     }
+
 }

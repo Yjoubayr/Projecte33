@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val returnBtn : TextView = findViewById(R.id.back)
+        val title : TextView = findViewById(R.id.songname)
+
         returnBtn.setOnClickListener(){
             finish()
         }
@@ -147,7 +149,7 @@ class MainActivity : AppCompatActivity() {
     fun postHistorial() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val formattedDate = LocalDateTime.now().format(formatter).toString()
-        HTTP_Mongo(this).postHistorialOfSongs("canço", formattedDate)
+        HTTP_Mongo(this).postHistorialOfSongs("45","canço", formattedDate)
 
     }
 }
