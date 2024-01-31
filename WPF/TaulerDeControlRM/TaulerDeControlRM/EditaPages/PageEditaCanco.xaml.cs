@@ -48,15 +48,36 @@ namespace TaulerDeControlRM.EditaPages
             InitializeComponent();
             this.IDCanco = IDCanco;
             ObtenirCanco();
-            CrearLlistaConjuntValors();
         }
 
         /// <summary>
         /// Obtenim l'objecte de la Canco a Editar
         /// </summary>
-        private async void ObtenirCanco()
+
+        /// <summary>
+        /// Obtenim l'objecte de la Canco a Editar
+        /// </summary>
+        private async Task ObtenirCanco()
         {
             this.canco = await CA_Canco.GetCancoAsync(this.IDCanco);
+            txtAny.Text = this.canco.Any.ToString();
+            txtNom.Text = this.canco.Nom;
+            foreach (Tocar t in this.canco.LTocar)
+            {
+                cmbGrup.Items.Add(t.NomGrup);
+                cmbGrup.SelectionChanged += CmbGrup_SelectionChanged;
+            }
+            
+            //Músics i Instruments
+
+        }
+
+        private void CmbGrup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cmbGrup.SelectedValue != null)
+            {
+                CrearLlistaMusicsValors(this.canco, cmbGrup.SelectedValue.ToString());
+            }
         }
 
         /// <summary>
@@ -91,16 +112,48 @@ namespace TaulerDeControlRM.EditaPages
 
         }
 
-        private async void CrearLlistaConjuntValors()
+        private async void CrearLlistaMusicsValors(Canco c, string nomGrup)
         {
+            List<Music> llistaMusics = await CA_Music.GetMusicsAsync();
+            List<string>nomsMusic= new List<string>();
 
-            ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
-            ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
-            //ConjuntValors cvExtensions = new ConjuntValors("Extensió", this.nomsExtensions, true, true);
+
+            foreach (Music m in llistaMusics)
+            {
+                nomsMusic.Add(m.Nom);
+            }
+
+            List<Instrument> llistaInstruments = await CA_Instrument.GetInstrumentsAsync();
+            List<string> nomsInstruments = new List<string>();
+            foreach (Instrument i in llistaInstruments)
+            {
+                nomsInstruments.Add(i.Nom);
+            }
+
+           
+            foreach (Tocar t in c.LTocar)
+            {
+                if (t.NomGrup == nomGrup)
+                {
+                    nomsMusics.Add(t.NomMusic);
+                    nomsInstruments.Add(t.NomInstrument);
+                }
+            }
+            ConjuntValors cvInstrument = new ConjuntValors("Instrument", nomsInstruments, true, true);
+            ConjuntValors cvMusics = new ConjuntValors("Músic", nomsMusic, true, true);
+ 
             List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
 
             GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
             spMusics.Children.Add(gcv);
+
+            foreach (Tocar t in c.LTocar)
+            {
+                if (t.NomGrup == nomGrup)
+                {
+                    gcv.AfegirValors(new List<string> { t.NomMusic, t.NomInstrument });
+                }
+            }
 
         }
 

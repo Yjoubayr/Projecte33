@@ -200,8 +200,6 @@ namespace TaulerDeControlRM
                 Buscador.IsTextSearchEnabled = false;
                 MessageBox.Show("ERROR! \n Cal que especifiquis la classe i quin objecte vols editar");
             }
-
-            songListView.Visibility = Visibility.Visible;
         }
 
     }

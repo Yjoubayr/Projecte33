@@ -101,6 +101,11 @@ namespace TaulerDeControlRM
         /// <param name="e"></param>
         private void btAfegir_Click(object sender, RoutedEventArgs e)
         {
+            afegirValors();
+        }
+
+        private void afegirValors()
+        {
             if (lastValuesNotNull())
             {
                 gridConjuntValors.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -147,6 +152,7 @@ namespace TaulerDeControlRM
 
             }
         }
+
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
@@ -462,6 +468,31 @@ namespace TaulerDeControlRM
             }
         }
 
-
+        internal void AfegirValors(List<string> valors)
+        {
+            afegirValors();
+            int rowIndex = gridConjuntValors.RowDefinitions.Count - 1;
+            int colIndex = 0;
+            for (int i=0; i<valors.Count; i++)
+            {
+                foreach (UIElement child in gridConjuntValors.Children.Cast<UIElement>().ToList())
+                {
+                    int row = Grid.GetRow(child);
+                    int col = Grid.GetColumn(child);
+                    if (child is ComboBox)
+                    {
+                        ComboBox cb = (ComboBox)child;
+                        if (col == colIndex)
+                        {
+                            if (row == rowIndex)
+                            {
+                                cb.SelectedItem = valors[i];
+                            }
+                        }
+                    }
+                }
+                colIndex++;
+            }
+        }
     }
 }
