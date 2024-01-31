@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaulerDeControlRM.MenuPages;
 
 namespace TaulerDeControlRM
 {
@@ -46,6 +47,9 @@ namespace TaulerDeControlRM
                         break;
                     case "Llistats":
                         mainFrame.Navigate(new PageLlistes()); // Replace Page4 with your actual user control
+                        break;
+                    case "Pdf Viewer":
+                        mainFrame.Navigate(new PagePDF()); // Replace Page4 with your actual user control
                         break;
                         // Add more cases as needed
                 }

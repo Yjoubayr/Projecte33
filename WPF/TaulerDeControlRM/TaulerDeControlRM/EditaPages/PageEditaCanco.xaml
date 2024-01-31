@@ -48,6 +48,6 @@
         <StackPanel Orientation="Vertical" Name="spMusics"  Grid.Column="1" Grid.Row="5">
 
         </StackPanel>
-        <Button Content="Pujar" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Click="Upload_Click"/>
+        <Button Content="Guardar" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Click="Upload_Click"/>
     </Grid>
 </Page>

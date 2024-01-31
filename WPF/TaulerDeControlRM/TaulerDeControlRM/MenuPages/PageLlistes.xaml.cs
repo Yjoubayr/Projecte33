@@ -50,14 +50,7 @@ namespace TaulerDeControlRM
             List<Llista> llistaLlistes = await CA_Llista.GetLlistesAsync();
             foreach (Llista llista in llistaLlistes)
             {
-                if (llista != null)
-                {
-                    cmbLlistaMAC.Items.Add(llista.MACAddress);
-                }
-                else
-                {
-                    throw new Exception("No s'ha pogut carregar la llista de cançons");
-                }
+                   cmbLlistaMAC.Items.Add(llista.MACAddress);
             }
         }
 

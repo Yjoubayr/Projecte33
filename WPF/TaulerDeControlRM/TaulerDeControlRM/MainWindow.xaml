@@ -1,26 +1,28 @@
-﻿<Window x:Class="TaulerDeControlRM.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaulerDeControlRM"
+        xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="TaulerDeControlRM.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <!-- Sidebar -->
-            <ListBox x:Name="sidebarList" Grid.Column="0" SelectionChanged="OnSidebarItemSelected">
-                <ListBoxItem Content="Nou"/>
-                <ListBoxItem Content="Edita"/>
-                <ListBoxItem Content="Historial"/>
-                <ListBoxItem Content="Llistats"/>
-            </ListBox>
+        <!-- Sidebar -->
+        <ListBox x:Name="sidebarList" Grid.Column="0" SelectionChanged="OnSidebarItemSelected">
+            <ListBoxItem Content="Nou"/>
+            <ListBoxItem Content="Edita"/>
+            <ListBoxItem Content="Historial"/>
+            <ListBoxItem Content="Llistats"/>
+            <ListBoxItem Content="Pdf Viewer"/>
+        </ListBox>
 
-            <!-- Main Content -->
-            <Frame x:Name="mainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
-        </Grid>
+        <!-- Main Content -->
+        <Frame x:Name="mainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
 </Window>
