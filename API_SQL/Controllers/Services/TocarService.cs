@@ -30,10 +30,19 @@ public class TocarService
     }
     
 
+    /// <summary>
+    /// Accedeix a la ruta /api/Tocar/getAllTocar dins de TocarController per obtenir tots els
+    /// registres de Tocar
+    /// </summary>
+    /// <returns>Una llista de tots els registres de Tocar</returns>
     public async Task<List<Tocar>> GetAsync() {
-        return await _context.Tocar.ToListAsync();
+        return await _context.Tocar
+                                .Include(t => t.CancoObj)
+                                .Include(t => t.MusicObj)
+                                .Include(t => t.GrupObj)
+                                .Include(t => t.InstrumentObj)
+                                .ToListAsync();
     }
-
 
 
     /// <summary>

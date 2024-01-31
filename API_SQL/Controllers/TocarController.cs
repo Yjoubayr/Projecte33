@@ -32,7 +32,19 @@ namespace API_SQL.Controllers
             _instrumentService = new InstrumentService(context);
         }
 
-         /// <summary>
+        
+        /// <summary>
+        /// Accedeix a la ruta /api/Tocar/getAllTocar per obtenir tots els registres de la classe Tocar
+        /// </summary>
+        /// <returns>Una llista de tots els registres de la classe Tocar</returns>
+        [HttpGet("getAllTocar")]
+        public async Task<ActionResult<IEnumerable<Tocar>>> GetAllTocar()
+        {
+            return await _tocarService.GetAsync();
+        }
+
+
+        /// <summary>
         /// Accedeix a la ruta /api/Tocar/getTocar/{IDCanco}/{NomMusic}/{NomGrup}/{NomInstrument} 
         /// per obtenir un registre de la classe Tocar
         /// </summary>
