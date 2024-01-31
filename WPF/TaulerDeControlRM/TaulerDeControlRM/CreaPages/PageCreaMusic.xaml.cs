@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,20 +28,21 @@ namespace TaulerDeControlRM.CreaPages
             InitializeComponent();
         }
 
-        private void Upload_Click(object sender, RoutedEventArgs e)
+        private void btOk_Click(object sender, RoutedEventArgs e)
         {
-            if (txtNom.Text.ToString() == string.Empty) {
+            if (this.txtNom.Text.ToString() == string.Empty) {
                 MessageBox.Show("ERROR! \n Has de ficar un nom vàlid abans de pujar el Músic.");
             } 
-            else if (txtNom.Text.ToString().Length > 20) {
+            else if (this.txtNom.Text.ToString().Length > 20) {
                 MessageBox.Show("ERROR! \n El nom del músic és massa llarg.");
             }
             else {
                 Music music = new Music();
-                music.Nom = txtNom.Text;
+                music.Nom = this.txtNom.Text;
                 music.LGrups = null;
+                music.LTocar = null;
                 CA_Music.PostMusicAsync(music);
-                txtNom.Text = string.Empty;
+                this.txtNom.Text = string.Empty;
                 MessageBox.Show("Músic creat CORRECTAMENT!");
             }
         }
