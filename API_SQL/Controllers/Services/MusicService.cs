@@ -48,20 +48,6 @@ public class MusicService
     /// <returns>Verificacio de que la Canco s'ha creat correctament</returns>
     public async Task CreateAsync(Music newMusic) {
         await _context.Musics.AddAsync(newMusic);
-        /*
-        foreach (var grup in newMusic.LGrups) {
-            Grup? grupObj = await grupService.GetAsync(grup.Nom);
-
-            if (grupObj != null) {
-                grupObj.LMusics.Add(newMusic);
-            } else {
-                grupObj = new Grup() {
-                    Nom = grup.Nom
-                };
-                await grupService.CreateAsync(grupObj, this);
-                grupObj.LMusics.Add(newMusic);
-            }
-        }*/
         await _context.SaveChangesAsync();
     }
 
@@ -101,17 +87,16 @@ public class MusicService
     /// Accedeix a la ruta /api/Music/updateGrup/{Nom} dins de MusicController per afegir un Grup
     /// a la llista de Grups d'un Music
     /// </summary>
-    /// <param name="grupService">Objecte de la classe GrupService per afegir el grup </param>
     /// <param name="grupOriginal">L'objecte del Grup original que volem modificar</param>
     /// <param name="updatedGrup">L'objecte del Grup amb els elements modificats</param>
     /// <returns>Verificacio que el Grup s'ha afegit correctament al llistat de Grups</returns>
-    public async Task UpdateGrupAddAsync(GrupService grupService, Grup grupOriginal, Grup updatedGrup) {
+    public async Task UpdateGrupAddAsync(Grup grupOriginal, Grup updatedGrup) {
         
         List<Music> lMusics = updatedGrup.LMusics.ToList<Music>();
         
         foreach (var music in lMusics) {
             if (!grupOriginal.LMusics.Contains(music)) {
-                await AddGrupAsync(grupService, music.Nom, grupOriginal);
+                await AddGrupAsync(music.Nom, grupOriginal);
             }
         }
     }
@@ -120,11 +105,10 @@ public class MusicService
     /// <summary>
     /// Per Afegir un Grup de la llista de Grups d'un Music
     /// </summary>
-    /// <param name="grupService">Objecte de la classe GrupService per afegir el grup </param>
     /// <param name="nomMusic">Nom del Music a modificar</param>
     /// <param name="grup">L'objecte del Grup a afegir</param>
     /// <returns>Verificacio que el Grup s'ha afegit correctament al llistat de Grups</returns>
-    public async Task AddGrupAsync(GrupService grupService, string nomMusic, Grup grup) {
+    public async Task AddGrupAsync(string nomMusic, Grup grup) {
         Music? music = await GetAsync(nomMusic);
 
         if (music == null) {
