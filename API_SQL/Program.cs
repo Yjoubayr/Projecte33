@@ -12,6 +12,7 @@ builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.AlbumService>
 builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.MusicService>(); 
 builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.LlistaService>(); 
 builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.InstrumentService>(); 
+builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.TocarService>(); 
 
 
 builder.Services.AddControllers();
