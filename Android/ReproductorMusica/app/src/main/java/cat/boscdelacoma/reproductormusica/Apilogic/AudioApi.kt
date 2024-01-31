@@ -13,7 +13,6 @@ import retrofit2.http.Path
 interface AudioApiService {
     @GET("FitxersAPI/v1/Audio/GetAudio/{UID}")
     fun downloadAudio(@Path("UID") uid: String): Call<ResponseBody>
-
     @Multipart
     @POST("FitxersAPI/v1/Audio")
     fun uploadAudio(

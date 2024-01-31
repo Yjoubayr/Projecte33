@@ -13,8 +13,5 @@ class song_item : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_item)
-
-        val search: EditText = findViewById(R.id.SearchSong)
-
     }
 }

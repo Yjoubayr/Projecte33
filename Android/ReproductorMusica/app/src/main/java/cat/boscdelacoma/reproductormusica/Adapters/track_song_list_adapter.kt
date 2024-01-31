@@ -14,7 +14,9 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongListItem>) : RecyclerView.Adapter<track_song_list_adapter.ViewHolder>() {
-    data class trackSongListItem(val trackName: String)
+    data class trackSongListItem(
+        val trackName: String
+    )
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val trackName: TextView = itemView.findViewById(R.id.TrackName)
@@ -40,10 +42,11 @@ class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongL
         holder.trackName.text = currentItem.trackName
 
         holder.addtoPlayList.setOnClickListener {
-            // TODO Aqui tiene que llegar el nombre de la cancion
+
 
             val FolderName = Audio().getFolderPath(currentItem.trackName)
-            val songName = Audio().getMp3Path("cancion_descargada.mp3")
+
+            val songName = Audio().getMp3Path("Bad Bunny-Where She Goes")
 
             val folderPath: Path = Paths.get(FolderName)
             val songPath: Path = Paths.get(songName)

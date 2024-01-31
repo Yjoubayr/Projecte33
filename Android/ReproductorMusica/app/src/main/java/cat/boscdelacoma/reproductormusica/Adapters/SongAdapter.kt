@@ -13,6 +13,7 @@ import cat.boscdelacoma.reproductormusica.HTTP_Mongo
 import cat.boscdelacoma.reproductormusica.HTTP_SQL
 import cat.boscdelacoma.reproductormusica.MainActivity
 import cat.boscdelacoma.reproductormusica.R
+import kotlinx.coroutines.awaitAll
 
 
 class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<SongAdapter.ViewHolder>() {
@@ -35,10 +36,10 @@ class SongAdapter(private val songList: List<SongItem>) : RecyclerView.Adapter<S
 
             holder.downloadLogo.setOnClickListener {
                 val intent = Intent(holder.itemView.context, MainActivity::class.java)
-                HTTP_Mongo(context = holder.itemView.context).downloadAudio(currentItem.UID)
-                val path = audio.getMp3Path(currentItem.songName)
-                intent.putExtra("absolutepathsong", path)
-                holder.itemView.context.startActivity(intent)
+
+                HTTP_Mongo(context = holder.itemView.context).downloadAudio(currentItem.UID, currentItem.songName)
+
+
             }
         }
         override fun getItemCount(): Int {
