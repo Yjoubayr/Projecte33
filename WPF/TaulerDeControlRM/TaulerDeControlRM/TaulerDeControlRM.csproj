@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -14,6 +14,10 @@
 
   <ItemGroup>
     <Page Remove="MenuPages\PageEditaDenís.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="24.2.3" />
   </ItemGroup>
 
   <ItemGroup>

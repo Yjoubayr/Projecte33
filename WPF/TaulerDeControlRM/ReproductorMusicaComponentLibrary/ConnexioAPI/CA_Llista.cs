@@ -24,8 +24,15 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             string apiUrl = CA.baseApi + controller + "getLlistes";
 
             string result = await CA.GetDataFromApiAsync(apiUrl);
-            var data = JsonConvert.DeserializeObject<List<Llista>>(result);
-            return data;
+            if (result != null)
+            {
+                var data = JsonConvert.DeserializeObject<List<Llista>>(result);
+                return data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
