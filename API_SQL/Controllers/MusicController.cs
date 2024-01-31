@@ -83,7 +83,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="Nom">Nom del grup a modificar</param>
         /// <param name="updatedGrup">Objecte del grup amb els elements modificats</param>
         /// <returns>Verificacio de que el grup s'ha modificat correctament</returns>
-        /*[HttpPut("updateGrup/{Nom}")]
+        [HttpPut("updateGrup/{Nom}")]
         public async Task<IActionResult> updateGrup(string Nom, Grup updatedGrup)
         {
             // Considerar la possibilitat de comprovar prèviament si existeix el nom del music i retornar un error 409
@@ -99,11 +99,12 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             {
                 return NotFound();
             }
-
+            
+            await _grupService.UpdateAsync(grup, updatedGrup);
             await _musicService.UpdateGrupRemoveAsync(grup, updatedGrup);
             await _musicService.UpdateGrupAddAsync(grup, updatedGrup);
             return Ok();
-        }*/
+        }
         
         /// <summary>
         /// Accedeix a la ruta /api/Music/postMusic per crear un music

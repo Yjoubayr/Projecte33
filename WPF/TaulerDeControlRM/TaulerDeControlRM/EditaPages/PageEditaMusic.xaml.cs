@@ -22,17 +22,34 @@ namespace TaulerDeControlRM.EditaPages
     /// </summary>
     public partial class PageEditaMusic : Page
     {
-        public PageEditaMusic()
+        private Music music = new Music();
+        private List<string> nomsGrups = new List<string>();
+
+        public PageEditaMusic(string NomMusic)
         {
             InitializeComponent();
+            this.ObtenirMusic(NomMusic);
+            LblNomMusic.Content = "Músic: " + music.Nom;
         }
-        private void Upload_Click(object sender, RoutedEventArgs e)
-        {
-            Music music = new Music();
-            music.Nom = txtNom.Text;
-            music.LGrups = null;
 
-            CA_Music.PostMusicAsync(music);
+        private async void ObtenirNomsMusics()
+        {
+            for (int i = 0; i < this.music.LGrups.Count; i++)
+            {
+                this.nomsGrups.Add(this.music.LGrups[i].Nom);
+            }
+        }
+
+        private async void ObtenirMusic(string NomMusic)
+        {
+            this.music = await CA_Music.GetMusicAsync(NomMusic);
+            this.ObtenirNomsMusics();
+        }
+
+        private async void Save_Click(object sender, RoutedEventArgs e)
+        {
+            await CA_Grup.UpdateMusicAsync(this.music);
+            MessageBox.Show("Grup modificat correctament");
         }
     }
 }

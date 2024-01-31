@@ -22,46 +22,59 @@ namespace TaulerDeControlRM.EditaPages
     /// </summary>
     public partial class PageEditaGrup : Page
     {
-        private List<Grup> llistaGrups = new List<Grup>();
-        private List<string> nomsGrups = new List<string>();
+        public Grup grup = new Grup();
+        public List<string> nomsMusics = new List<string>();
 
-        public PageEditaGrup()
+        public PageEditaGrup(string NomGrup)
         {
             InitializeComponent();
-            ConjuntValors cvMusics = new ConjuntValors("Músic", new List<string> { "Joan", "Josep", "Ferran", "Maria", "Miquel" }, false, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics };
-            GridConjuntValors gcv = new GridConjuntValors(false, llistaConjutValors);
-            spMusics.Children.Add(gcv);
+            this.ObtenirGrup(NomGrup);
         }
 
-        private async void CrearLlistaConjuntValors()
+        private async void btEliminar_Click(object sender, RoutedEventArgs e)
         {
-            ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
-            ConjuntValors cvGrups = new ConjuntValors("Grup", this.nomsGrups, true, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvGrups, cvInstrument };
+            Button btn = sender as Button;
 
-            GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
-            spMusics.Children.Add(gcv);
-
-        }
-
-        private async void ObtenirGrups()
-        {
-            this.llistaGrups = await CA_Grup.GetGrupsAsync();
-
-            this.nomsGrups = new List<string>();
-
-            for (int i = 0; i < this.llistaGrups.Count; i++)
+            if (btn != null && btn.DataContext is Music music)
             {
-                this.nomsGrups.Add(llistaGrups[i].Nom);
+                foreach (Music musicLlista in this.grup.LMusics)
+                {
+                    if (musicLlista.Nom == music.Nom)
+                    {
+                        this.grup.LMusics.Remove(musicLlista);
+                        await CA_Music.UpdateGrupAsync(this.grup);
+                        MessageBox.Show("Grup modificat correctament");
+                    }
+                }
             }
-
-            CrearLlistaConjuntValors();
         }
 
-        private void Upload_Click(object sender, RoutedEventArgs e)
+        private async void ObtenirNomsMusics(Grup grup)
         {
+            MusicsGrup.ItemsSource = grup.LMusics;
+            MusicsGrup.AutoGenerateColumns = false;
 
+            DataGridTextColumn nomMusicColumn = new DataGridTextColumn();
+            nomMusicColumn.Header = "NomMusic";
+            nomMusicColumn.Binding = new System.Windows.Data.Binding("NomMusic");
+            MusicsGrup.Columns.Add(nomMusicColumn);
+
+            DataGridTemplateColumn eliminarCancoColumn = new DataGridTemplateColumn();
+            eliminarCancoColumn.Header = "Eliminar Músic";
+            FrameworkElementFactory btnEliminar = new FrameworkElementFactory(typeof(Button));
+            btnEliminar.SetValue(Button.ContentProperty, "Eliminar");
+            btnEliminar.AddHandler(Button.ClickEvent, new RoutedEventHandler(btEliminar_Click));
+            eliminarCancoColumn.CellTemplate = new DataTemplate() { VisualTree = btnEliminar };
+            MusicsGrup.Columns.Add(eliminarCancoColumn);
         }
+
+        private async void ObtenirGrup(string NomGrup)
+        {
+            this.grup = await CA_Grup.GetGrupAsync(NomGrup);
+            this.LblNomGrup.Content = "Nom: " + this.grup.Nom;
+            this.LblAnyGrup.Content = "Any: " + this.grup.Any;
+            this.ObtenirNomsMusics(this.grup);
+        }
+
     }
 }
