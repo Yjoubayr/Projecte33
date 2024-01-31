@@ -22,46 +22,45 @@ namespace TaulerDeControlRM.EditaPages
     /// </summary>
     public partial class PageEditaGrup : Page
     {
-        private List<Grup> llistaGrups = new List<Grup>();
-        private List<string> nomsGrups = new List<string>();
+        public Grup grup = new Grup();
+        public List<string> nomsMusics = new List<string>();
 
-        public PageEditaGrup()
+        public PageEditaGrup(string NomGrup)
         {
             InitializeComponent();
-            ConjuntValors cvMusics = new ConjuntValors("Músic", new List<string> { "Joan", "Josep", "Ferran", "Maria", "Miquel" }, false, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics };
-            GridConjuntValors gcv = new GridConjuntValors(false, llistaConjutValors);
-            spMusics.Children.Add(gcv);
+            this.ObtenirGrup(NomGrup);
+            this.LblNomGrup.Content = "Nom " + this.grup.Nom;
+            this.LblAnyGrup.Content = "Any " + this.grup.Any;
+
+            this.CrearLlistaConjuntValors();
+        }
+
+        private async void ObtenirNomsMusics()
+        {
+            for (int i = 0; i < this.grup.LMusics.Count; i++)
+            {
+                this.nomsMusics.Add(this.grup.LMusics[i].Nom);
+            }
+        }
+
+        private async void ObtenirGrup(string NomGrup)
+        {
+            this.grup = await CA_Grup.GetGrupAsync(NomGrup);
+            this.ObtenirNomsMusics();
         }
 
         private async void CrearLlistaConjuntValors()
         {
-            ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
-            ConjuntValors cvGrups = new ConjuntValors("Grup", this.nomsGrups, true, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvGrups, cvInstrument };
-
+            ConjuntValors cvMusics= new ConjuntValors("Music", this.nomsMusics, true, true);
+            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics };
             GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
             spMusics.Children.Add(gcv);
-
         }
 
-        private async void ObtenirGrups()
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            this.llistaGrups = await CA_Grup.GetGrupsAsync();
-
-            this.nomsGrups = new List<string>();
-
-            for (int i = 0; i < this.llistaGrups.Count; i++)
-            {
-                this.nomsGrups.Add(llistaGrups[i].Nom);
-            }
-
-            CrearLlistaConjuntValors();
-        }
-
-        private void Upload_Click(object sender, RoutedEventArgs e)
-        {
-
+            await CA_Music.UpdateGrupAsync(this.grup);
+            MessageBox.Show("Grup modificat correctament");
         }
     }
 }

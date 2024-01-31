@@ -26,6 +26,7 @@ namespace TaulerDeControlRM
     {
         private List<Canco> llistaCancons = new List<Canco>();
         private List<Music> llistaMusics = new List<Music>();
+        private List<Grup> llistaGrups = new List<Grup>();
         private List<string> llistaPK = new List<string>();
         private List<string> llistaPKComposta = new List<string>();
 
@@ -52,24 +53,25 @@ namespace TaulerDeControlRM
                         Buscador.IsTextSearchEnabled = true;
                         Buscador.SelectedItem = null;
                         this.ObtenirAlbums();
-                        ComboBoxAlbumYear.Visibility = Visibility.Visible;
+                        this.ComboBoxAlbumYear.Visibility = Visibility.Visible;
                         break;
                     case "Cançó":
                         Buscador.IsTextSearchEnabled = true;
                         Buscador.SelectedItem = null;
                         this.ObtenirCancons();
-                        Buscador.ItemsSource = this.llistaPK;
+                        this.ComboBoxAlbumYear.Visibility = Visibility.Hidden;
                         break;
                     case "Grup":
                         Buscador.IsTextSearchEnabled = true;
                         Buscador.SelectedItem = null;
+                        this.ObtenirGrups();
+                        this.ComboBoxAlbumYear.Visibility = Visibility.Hidden;
                         break;
                     case "Músic":
                         Buscador.IsTextSearchEnabled = true;
                         Buscador.SelectedItem = null;
                         this.ObtenirMusics();
-                        Buscador.ItemsSource = this.llistaPK;
-                        frameEditar.Navigate(new PageEditaMusic());
+                        this.ComboBoxAlbumYear.Visibility = Visibility.Hidden;
                         break;
                         // Add more cases as needed
                 }
@@ -81,12 +83,19 @@ namespace TaulerDeControlRM
         /// </summary>
         private async void MostrarClauComposta(object sender, SelectionChangedEventArgs e)
         {
-            switch (elementComboBox.SelectedItem.ToString()) {
-                case "Àlbum":
-                    this.llistaPKComposta = await CA_Album.GetAnysAlbumAsync(Buscador.SelectedItem.ToString());
-                    ComboBoxAlbumYear.ItemsSource = this.llistaPKComposta;
-                break;
-            }
+            /*if (Buscador.SelectedItem != null)
+            {
+                Buscador.SelectedItem = null;
+            } else
+            {*/
+                switch (elementComboBox.SelectedItem.ToString())
+                {
+                    case "Àlbum":
+                        this.llistaPKComposta = await CA_Album.GetAnysAlbumAsync(Buscador.SelectedItem.ToString());
+                        this.ComboBoxAlbumYear.ItemsSource = this.llistaPKComposta;
+                        break;
+                }
+            //}
         }
 
         /// <summary>
@@ -117,6 +126,23 @@ namespace TaulerDeControlRM
         }
 
         /// <summary>
+        /// Obtenim totes les Grups fent una crida a l'API
+        /// </summary>
+        private async void ObtenirGrups()
+        {
+            this.llistaGrups = await CA_Grup.GetGrupsAsync();
+
+            this.llistaPK = new List<string>();
+
+            for (int i = 0; i < this.llistaGrups.Count; i++)
+            {
+                this.llistaPK.Add(llistaGrups[i].Nom);
+            }
+
+            Buscador.ItemsSource = this.llistaPK;
+        }
+        
+        /// <summary>
         /// Obtenim totes les Musics fent una crida a l'API
         /// </summary>
         private async void ObtenirMusics()
@@ -129,6 +155,8 @@ namespace TaulerDeControlRM
             {
                 this.llistaPK.Add(llistaMusics[i].Nom);
             }
+
+            Buscador.ItemsSource = this.llistaPK;
         }
 
         /// <summary>
@@ -159,13 +187,13 @@ namespace TaulerDeControlRM
 
                 if (elementComboBox.SelectedItem.ToString() == "Grup")
                 {
-
+                    frameEditar.Navigate(new PageEditaGrup(Buscador.Text));
                 }
                 
                 if (elementComboBox.SelectedItem.ToString() == "Músic")
                 {
-                    frameEditar.Navigate(new PageCreaMusic());
-                } 
+                    frameEditar.Navigate(new PageEditaMusic(Buscador.Text));
+                }
             }
             else
             {

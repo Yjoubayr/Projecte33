@@ -60,7 +60,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         /// especificant a quins Grups volem que estigui
         /// </summary>
         /// <param name="m">L'objecte del Music a modificar</param>
-        /// <returns>L'objecte del Music a modificar</returns>
+        /// <returns>Verificació de que el Music s'ha modificat correctament</returns>
         public static async Task UpdateMusicAsync(Music m)
         {
             string jsonData = JsonConvert.SerializeObject(m);
