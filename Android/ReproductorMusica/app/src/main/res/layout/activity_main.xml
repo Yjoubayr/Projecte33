@@ -28,7 +28,15 @@
                 android:elevation="5dp"
                 android:layout_alignParentRight="true"
                 />
+            <TextView
+                android:id="@+id/DownloadSong"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_download"
+                android:layout_centerHorizontal="true"
 
+
+                />
             <TextView
                 android:id="@+id/back"
                 android:layout_width="50dp"
@@ -45,6 +53,7 @@
             android:layout_centerVertical="true"
             >
             <ImageView
+                android:id="@+id/CoverImage"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:background="@mipmap/cover"

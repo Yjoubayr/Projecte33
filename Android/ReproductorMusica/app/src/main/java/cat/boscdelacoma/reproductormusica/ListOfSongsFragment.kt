@@ -8,15 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.boscdelacoma.reproductormusica.Adapters.TrackAdapter
 import cat.boscdelacoma.reproductormusica.Adapters.track_song_list_adapter
-import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,6 +29,8 @@ class ListOfSongsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var audio: Audio = Audio()
+    var SongName : String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,7 +39,6 @@ class ListOfSongsFragment : Fragment() {
         }
 
     }
-
     @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,7 +86,7 @@ class ListOfSongsFragment : Fragment() {
 
         for (i in 1..list.size) {
             val trackName = list[i-1].toString()
-            val trackItem = track_song_list_adapter.trackSongListItem(trackName = trackName)
+            val trackItem = track_song_list_adapter.trackSongListItem(trackName = trackName, SongName = SongName.toString())
             trackList.add(trackItem)
         }
 

@@ -80,6 +80,7 @@ class HTTP_Mongo(private val context: Context) {
                     val intent = Intent(context, MainActivity::class.java)
                     val path = Audio().getMp3Path("${FileName}.mp3")
                     intent.putExtra("absolutepathsong", path)
+                    intent.putExtra("songname", FileName)
                     context.startActivity(intent)
                 } else {
                     Log.e("Download Error", "Error en la descarga: ${response.code()}")

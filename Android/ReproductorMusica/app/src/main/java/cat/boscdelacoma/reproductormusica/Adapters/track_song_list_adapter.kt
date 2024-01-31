@@ -1,21 +1,19 @@
 package cat.boscdelacoma.reproductormusica.Adapters
 
-import android.Manifest
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.Audio
 import cat.boscdelacoma.reproductormusica.R
-import org.w3c.dom.Text
 import java.nio.file.Path
 import java.nio.file.Paths
 
 class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongListItem>) : RecyclerView.Adapter<track_song_list_adapter.ViewHolder>() {
     data class trackSongListItem(
-        val trackName: String
+        val trackName: String,
+        val SongName: String,
     )
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -46,10 +44,8 @@ class track_song_list_adapter(private  val trackSongListAdapter: List<trackSongL
 
             val FolderName = Audio().getFolderPath(currentItem.trackName)
 
-            val songName = Audio().getMp3Path("Bad Bunny-Where She Goes")
-
             val folderPath: Path = Paths.get(FolderName)
-            val songPath: Path = Paths.get(songName)
+            val songPath: Path = Paths.get(currentItem.SongName)
             if (Audio().putSongIntoPlaylist(songPath,folderPath)){
                 holder.addtoPlayList.setBackgroundResource(R.drawable.confirm_song_to_track)
             }else{
