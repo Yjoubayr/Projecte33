@@ -35,22 +35,81 @@ class MainActivity : AppCompatActivity() {
     private val handler = Handler()
     private var rotationAnimator: ObjectAnimator? = null
 
-
+    private var currentSongIndex = 0
+    private lateinit var listOfSongs: ArrayList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val returnBtn : TextView = findViewById(R.id.back)
-        val title : TextView = findViewById(R.id.songname)
-
+        passSing = findViewById(R.id.PassSong)
+        prevSong = findViewById(R.id.BackSong)
         returnBtn.setOnClickListener(){
             finish()
         }
+        passSing.setOnClickListener {
+            playNextSong()
+        }
 
+        prevSong.setOnClickListener {
+            playPreviousSong()
+        }
+        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+
+        if (absolutepathsong != "null") {
+            // Obtén la lista de canciones del directorio
+            val parentDirectory = File(absolutepathsong).parent
+            listOfSongs = ArrayList(File(parentDirectory).list().toList())
+
+            val directoryPath = absolutepathsong.substring(0, absolutepathsong.lastIndexOf(File.separator) + 1)
+
+            currentSongIndex = listOfSongs.indexOf(absolutepathsong)
+        }
         initMainActivity()
         changeSongName()
-
         showFragments()
     }
+
+    private fun playPreviousSong() {
+        if (listOfSongs.isNotEmpty()) {
+            currentSongIndex = (currentSongIndex + 1) % listOfSongs.size
+            val nextSongPath = listOfSongs[currentSongIndex]
+            val path = Audio().getMp3Path(nextSongPath)
+
+            mediaPlayer.reset()
+            mediaPlayer.setDataSource(path)
+            mediaPlayer.prepare()
+            mediaPlayer.start()
+            rotationAnim()
+            seekBarAudio.max = mediaPlayer.duration
+            updateSeekBar()
+
+            intent.putExtra("absolutepathsong", path)
+            changeSongName()
+        }
+
+    }
+
+    private fun playNextSong() {
+        if (listOfSongs.isNotEmpty()) {
+            currentSongIndex = (currentSongIndex + 1) % listOfSongs.size
+            val nextSongPath = listOfSongs[currentSongIndex]
+            val path = Audio().getMp3Path(nextSongPath)
+            mediaPlayer.reset()
+            mediaPlayer.setDataSource(path)
+            mediaPlayer.prepare()
+            mediaPlayer.start()
+
+            rotationAnim()
+            seekBarAudio.max = mediaPlayer.duration
+            updateSeekBar()
+
+            // Actualiza el nombre de la canción en la interfaz
+            intent.putExtra("absolutepathsong", path)
+
+            changeSongName()
+        }
+    }
+
     private fun rotationAnim(){
         coverImage = findViewById(R.id.CoverImage)
         val rotation = RotateAnimation(
@@ -74,18 +133,19 @@ class MainActivity : AppCompatActivity() {
     /**
      * Ens permet posar el nom de la canço que estem reproduïnt
      * */
-    fun changeSongName(){
-        val songName = intent.getStringExtra("songName").toString()
-        val title : TextView = findViewById(R.id.songname)
+    fun changeSongName() {
+        val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
+        val title: TextView = findViewById(R.id.songname)
 
-        if (songName == "null"){
+        if (absolutepathsong == "null") {
             title.text = ""
-
-        }else{
+        } else {
+            // Extrae el nombre de la canción del path
+            val songName = File(absolutepathsong).name
             title.text = songName
-
         }
     }
+
     /**
      * Metode que ens ajuda a inicialitzar la MainActivity.
      * @return {Unit} No retorna res.
