@@ -99,7 +99,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             {
                 return NotFound();
             }
-
+            
+            await _grupService.UpdateAsync(grup, updatedGrup);
             await _musicService.UpdateGrupRemoveAsync(grup, updatedGrup);
             await _musicService.UpdateGrupAddAsync(grup, updatedGrup);
             return Ok();

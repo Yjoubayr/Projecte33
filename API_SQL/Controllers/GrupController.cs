@@ -77,7 +77,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
 
             updatedGrup.Nom = grup.Nom;
 
-            await _grupService.UpdateAsync(updatedGrup);
+            await _grupService.UpdateAsync(grup, updatedGrup);
 
             return NoContent();
         }
