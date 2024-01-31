@@ -29,38 +29,52 @@ namespace TaulerDeControlRM.EditaPages
         {
             InitializeComponent();
             this.ObtenirGrup(NomGrup);
-            this.LblNomGrup.Content = "Nom " + this.grup.Nom;
-            this.LblAnyGrup.Content = "Any " + this.grup.Any;
-
-            this.CrearLlistaConjuntValors();
         }
 
-        private async void ObtenirNomsMusics()
+        private async void btEliminar_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < this.grup.LMusics.Count; i++)
+            Button btn = sender as Button;
+
+            if (btn != null && btn.DataContext is Music music)
             {
-                this.nomsMusics.Add(this.grup.LMusics[i].Nom);
+                foreach (Music musicLlista in this.grup.LMusics)
+                {
+                    if (musicLlista.Nom == music.Nom)
+                    {
+                        this.grup.LMusics.Remove(musicLlista);
+                        await CA_Music.UpdateGrupAsync(this.grup);
+                        MessageBox.Show("Grup modificat correctament");
+                    }
+                }
             }
+        }
+
+        private async void ObtenirNomsMusics(Grup grup)
+        {
+            MusicsGrup.ItemsSource = grup.LMusics;
+            MusicsGrup.AutoGenerateColumns = false;
+
+            DataGridTextColumn nomMusicColumn = new DataGridTextColumn();
+            nomMusicColumn.Header = "NomMusic";
+            nomMusicColumn.Binding = new System.Windows.Data.Binding("NomMusic");
+            MusicsGrup.Columns.Add(nomMusicColumn);
+
+            DataGridTemplateColumn eliminarCancoColumn = new DataGridTemplateColumn();
+            eliminarCancoColumn.Header = "Eliminar Músic";
+            FrameworkElementFactory btnEliminar = new FrameworkElementFactory(typeof(Button));
+            btnEliminar.SetValue(Button.ContentProperty, "Eliminar");
+            btnEliminar.AddHandler(Button.ClickEvent, new RoutedEventHandler(btEliminar_Click));
+            eliminarCancoColumn.CellTemplate = new DataTemplate() { VisualTree = btnEliminar };
+            MusicsGrup.Columns.Add(eliminarCancoColumn);
         }
 
         private async void ObtenirGrup(string NomGrup)
         {
             this.grup = await CA_Grup.GetGrupAsync(NomGrup);
-            this.ObtenirNomsMusics();
+            this.LblNomGrup.Content = "Nom: " + this.grup.Nom;
+            this.LblAnyGrup.Content = "Any: " + this.grup.Any;
+            this.ObtenirNomsMusics(this.grup);
         }
 
-        private async void CrearLlistaConjuntValors()
-        {
-            ConjuntValors cvMusics= new ConjuntValors("Music", this.nomsMusics, true, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics };
-            GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
-            spMusics.Children.Add(gcv);
-        }
-
-        private async void Save_Click(object sender, RoutedEventArgs e)
-        {
-            await CA_Music.UpdateGrupAsync(this.grup);
-            MessageBox.Show("Grup modificat correctament");
-        }
     }
 }
