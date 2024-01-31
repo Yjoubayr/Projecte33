@@ -35,6 +35,6 @@
         <Label Content="Nom:" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="1"/>
         <TextBox Grid.Column="1" Grid.Row="1" Name="txtNom" Margin="10,10,-114,10"/>
 
-        <Button Content="Pujar" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Click="Upload_Click"/>
+        <Button Content="Pujar" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Click="btOk_Click"/>
     </Grid>
 </Page>

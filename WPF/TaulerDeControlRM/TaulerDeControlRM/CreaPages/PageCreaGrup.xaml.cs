@@ -1,7 +1,10 @@
-﻿using System;
+﻿using ReproductorMusicaComponentLibrary.Classes;
+using ReproductorMusicaComponentLibrary.ConnexioAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,18 +23,41 @@ namespace TaulerDeControlRM.CreaPages
     /// </summary>
     public partial class PageCreaGrup : Page
     {
+        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+
         public PageCreaGrup()
         {
             InitializeComponent();
-            ConjuntValors cvMusics = new ConjuntValors("Músic", new List<string> { "Joan", "Josep", "Ferran", "Maria", "Miquel" }, false, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics };
-            GridConjuntValors gcv = new GridConjuntValors(false, llistaConjutValors);
-            spMusics.Children.Add(gcv);
         }
 
-        private void Upload_Click(object sender, RoutedEventArgs e)
+        private void btOk_Click(object sender, RoutedEventArgs e)
         {
 
+            if (this.txtNom.Text.ToString() == string.Empty
+                || this.txtAny.Text.ToString() == string.Empty)
+            {
+                MessageBox.Show("ERROR! \n Emplena el formulari abans de pujar el Grup.");
+            }
+            else if (this.txtNom.Text.ToString().Length > 30)
+            {
+                MessageBox.Show("ERROR! \n El nom del grup és massa llarg.");
+            }
+            else if (_regex.IsMatch(this.txtAny.Text.ToString()))
+            {
+                MessageBox.Show("ERROR! \n Has de ficar l'Any del grup amb el format vàlid.");
+            }
+            else
+            {
+                Grup grup = new Grup();
+                grup.Nom = this.txtNom.Text;
+                grup.Any = int.Parse(this.txtAny.Text);
+                grup.LMusics = null;
+                grup.LTocar = null;
+                CA_Grup.PostGrupAsync(grup);
+                this.txtNom.Text = string.Empty;
+                this.txtAny.Text = string.Empty;
+                MessageBox.Show("Grup creat CORRECTAMENT!");
+            }
         }
     }
 }

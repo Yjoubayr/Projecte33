@@ -85,5 +85,19 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 
             await CA.PostDataAsync(apiUrl, jsonData);
         }
+
+        /// <summary>
+        /// Fer una consulta a l'API per eliminar un Album
+        /// </summary>
+        /// <param name="Titol">Titol de l'Album a eliminar</param>
+        /// <param name="Any">Any de l'Album a eliminar</param>
+        /// <param name="IDCanco">ID de la Canco de l'Album a eliminar</param>
+        /// <returns>Verificació de que l'Album s'ha eliminat correctament</returns>
+        public static async Task DeleteAlbumAsync(string Titol, int? Any, string IDCanco)
+        {
+            string apiUrl = CA.baseApi + controller + "deleteAlbum/" + Titol + "/" + Any + "/" + IDCanco;
+
+            await CA.DeleteDataFromApiAsync(apiUrl);
+        }
     }
 }

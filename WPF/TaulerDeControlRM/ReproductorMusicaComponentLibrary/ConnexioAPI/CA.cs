@@ -101,5 +101,31 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             }
         }
 
+        public static async Task<string> DeleteDataFromApiAsync(string apiUrl)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.DeleteAsync(apiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Read the response content
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    // Handle the error
+                    return null;
+                    /*return $"Error: {response.StatusCode}";*/
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                return $"Exception: {ex.Message}";
+            }
+
+        }
+
     }
 }

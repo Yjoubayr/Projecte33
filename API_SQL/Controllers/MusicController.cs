@@ -17,11 +17,13 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly MusicService _musicService;
+        private readonly GrupService _grupService;
 
         public MusicController(DataContext context)
         {
             _context = context;
             _musicService = new MusicService(context);
+            _grupService = new GrupService(context);
         }
 
         /// <summary>
@@ -75,7 +77,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         }
 
         /// <summary>
-        /// Accedeix a la ruta /api/Music/updateGrup/{Nom} per modificar un grup
+        /// Accedeix a la ruta /api/Music/updateGrup/{Nom} per afegir/eliminar Musics
+        /// de la llista de Musics d'un Grup
         /// </summary>
         /// <param name="Nom">Nom del grup a modificar</param>
         /// <param name="updatedGrup">Objecte del grup amb els elements modificats</param>
@@ -86,6 +89,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             // Considerar la possibilitat de comprovar prèviament si existeix el nom del music i retornar un error 409
             IActionResult result;
 
+            if (updatedGrup.LMusics == null) {
+                return BadRequest();
+            }
+
             var grup = await _grupService.GetAsync(Nom);
 
             if (grup == null || Nom != updatedGrup.Nom)
@@ -94,7 +101,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
 
             await _musicService.UpdateGrupRemoveAsync(grup, updatedGrup);
-            await _musicService.UpdateGrupAddAsync(_grupService, grup, updatedGrup);
+            await _musicService.UpdateGrupAddAsync(grup, updatedGrup);
             return Ok();
         }*/
         
