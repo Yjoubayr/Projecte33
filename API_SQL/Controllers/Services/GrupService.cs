@@ -58,11 +58,11 @@ public class GrupService
     /// <summary>
     /// Actualitza les dades d'un grup de musica existent a la base de dades.
     /// </summary>
+    /// <param name="grupOriginal">Dades originals del grup de musica.</param>
     /// <param name="updatedGrup">Dades actualitzades del grup de musica.</param>
     /// <returns>Verificacio de que el grup de musica s'ha actualitzat correctament.</returns>
-    public async Task UpdateAsync(Grup updatedGrup) {
-        var grupOriginal = await GetAsync(updatedGrup.Nom);
-        _context.Entry(grupOriginal).CurrentValues.SetValues(updatedGrup);
+    public async Task UpdateAsync(Grup grupOriginal, Grup updatedGrup) {
+        grupOriginal.Any = updatedGrup.Any;
         await _context.SaveChangesAsync();
     }
 
