@@ -75,7 +75,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             if (updatedCanco.LListes != null
             || updatedCanco.LVersions != null
             || updatedCanco.LAlbums != null
-            || updatedCanco.LTocar == null
+            || updatedCanco.LTocar != null
             || updatedCanco.LExtensions != null) {
                 return BadRequest();
             }
@@ -88,8 +88,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             }
 
             await _cancoService.UpdateAsync(canco, updatedCanco);
-            await _cancoService.UpdateLTocarRemoveAsync(canco, updatedCanco);
-            await _cancoService.UpdateLTocarAddAsync(canco, updatedCanco);
+            //await _cancoService.UpdateLTocarRemoveAsync(canco, updatedCanco);
+            //await _cancoService.UpdateLTocarAddAsync(canco, updatedCanco);
             result = CreatedAtAction("GetCanco", new { IDCanco = updatedCanco.IDCanco }, updatedCanco);
 
             return result;
