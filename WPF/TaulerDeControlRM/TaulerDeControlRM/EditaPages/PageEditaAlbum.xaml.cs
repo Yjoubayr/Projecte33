@@ -2,6 +2,7 @@
 using ReproductorMusicaComponentLibrary.ConnexioAPI;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -37,6 +38,7 @@ namespace TaulerDeControlRM.EditaPages
             LblAlbumTitle.Content = "Àlbum: " + this.TitolAlbum;
             LblAlbumYear.Content = "Any: " + this.AnyAlbum;
             this.ObtenirAlbums(this.TitolAlbum, this.AnyAlbum);
+            this.GetIDsCancons();
         }
         
         
@@ -54,6 +56,11 @@ namespace TaulerDeControlRM.EditaPages
             idCancoColumn.Binding = new System.Windows.Data.Binding("IDCanco");
             CanconsAlbum.Columns.Add(idCancoColumn);
 
+            DataGridTextColumn nomCancoColumn = new DataGridTextColumn();
+            nomCancoColumn.Header = "Nom";
+            nomCancoColumn.Binding = new System.Windows.Data.Binding("CancoObj.Nom");
+            CanconsAlbum.Columns.Add(nomCancoColumn);
+
             DataGridTemplateColumn eliminarCancoColumn = new DataGridTemplateColumn();
             eliminarCancoColumn.Header = "Eliminar Cançó";
             FrameworkElementFactory btnEliminar = new FrameworkElementFactory(typeof(Button));
@@ -63,19 +70,40 @@ namespace TaulerDeControlRM.EditaPages
             CanconsAlbum.Columns.Add(eliminarCancoColumn);
         }
 
+        private async void GetIDsCancons()
+        {
+            List<Canco> cancons = await CA_Canco.GetCanconsAsync();
+            List<string> idsCancons = new List<string>();
+
+            for (int i = 0; i < cancons.Count; i++)
+            {
+                idsCancons.Add(cancons[i].IDCanco);
+            }
+
+            comboBoxCancons.ItemsSource = idsCancons;
+        }
+
+
         private async void btEliminar_Click(object sender, RoutedEventArgs e)
         {
+            Button btn = sender as Button;
+
+            if (btn != null && btn.DataContext is Album album) {
+                await CA_Album.DeleteAlbumAsync(album.Titol, album.Any, album.IDCanco);
+                this.ObtenirAlbums(this.TitolAlbum, this.AnyAlbum);
+            }
         }
 
         private async void btOk_Click(object sender, RoutedEventArgs e)
         {
-            if (comboBoxCancons.SelectedItem == null)
+            if (comboBoxCancons.SelectedItem != null)
             {
                 Album album = new Album();
                 album.Titol = this.TitolAlbum;
                 album.Any = int.Parse(this.AnyAlbum);
                 album.IDCanco = comboBoxCancons.SelectedItem.ToString();
                 await CA_Album.PostAlbumAsync(album);
+                this.ObtenirAlbums(this.TitolAlbum, this.AnyAlbum);
                 MessageBox.Show("Cançó afegida a l'Àlbum CORRECTAMENT!");
             } else
             {
