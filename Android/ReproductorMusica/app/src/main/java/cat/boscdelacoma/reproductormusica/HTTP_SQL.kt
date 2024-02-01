@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class HTTP_SQL {
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.18.11:5025/")
+        .baseUrl("http://192.168.1.60:5025/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

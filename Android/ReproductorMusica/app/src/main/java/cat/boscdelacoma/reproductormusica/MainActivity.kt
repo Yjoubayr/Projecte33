@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         val absolutepathsong = intent.getStringExtra("absolutepathsong").toString()
 
         if (absolutepathsong != "null") {
-            // Obtén la lista de canciones del directorio
             val parentDirectory = File(absolutepathsong).parent
             listOfSongs = ArrayList(File(parentDirectory).list().toList())
 
@@ -96,16 +95,18 @@ class MainActivity : AppCompatActivity() {
             } else {
                 botoPlayPause.setBackgroundResource(R.drawable.playbtn)
             }
-            rotationAnim()
             seekBarAudio.max = mediaPlayer.duration
             updateSeekBar()
 
             intent.putExtra("absolutepathsong", path)
+            postHistorial()
             changeSongName()
         }
 
     }
-
+    /**
+     * Metode que ens permet mourens per avançar la canço
+     * */
     private fun playNextSong() {
         if (listOfSongs.isNotEmpty()) {
             currentSongIndex = (currentSongIndex + 1) % listOfSongs.size
@@ -120,17 +121,18 @@ class MainActivity : AppCompatActivity() {
             } else {
                 botoPlayPause.setBackgroundResource(R.drawable.playbtn)
             }
-            rotationAnim()
             seekBarAudio.max = mediaPlayer.duration
             updateSeekBar()
 
             // Actualiza el nombre de la canción en la interfaz
             intent.putExtra("absolutepathsong", path)
-
+            postHistorial()
             changeSongName()
         }
     }
-
+    /**
+     * Metoque que ens ajuda a fer l'animacio de rotació de la imatge
+     * */
     private fun rotationAnim(){
         coverImage = findViewById(R.id.CoverImage)
         val rotation = RotateAnimation(
@@ -292,10 +294,10 @@ class MainActivity : AppCompatActivity() {
     fun postHistorial() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val formattedDate = LocalDateTime.now().format(formatter).toString()
-        // TODO : Agafar la MAC del dispositiu
         var songname = intent.getStringExtra("songName").toString()
-
-        HTTP_Mongo(this).postHistorialOfSongs("45",songname, formattedDate)
+        HTTP_MONGO_HIstorial().postHistorialOfSongs(songname, formattedDate)
 
     }
+
+
 }
