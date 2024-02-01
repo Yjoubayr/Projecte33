@@ -23,12 +23,14 @@ namespace TaulerDeControlRM.EditaPages
     public partial class PageEditaGrup : Page
     {
         public Grup grup = new Grup();
+        public List<Music> musics = new List<Music>();
         public List<string> nomsMusics = new List<string>();
 
         public PageEditaGrup(string NomGrup)
         {
             InitializeComponent();
             this.ObtenirGrup(NomGrup);
+            this.ObtenirMusics();
         }
 
         private async void btEliminar_Click(object sender, RoutedEventArgs e)
@@ -43,6 +45,7 @@ namespace TaulerDeControlRM.EditaPages
                     {
                         this.grup.LMusics.Remove(musicLlista);
                         await CA_Music.UpdateGrupAsync(this.grup);
+                        this.ObtenirGrup(this.grup.Nom);
                         MessageBox.Show("Grup modificat correctament");
                     }
                 }
@@ -56,7 +59,7 @@ namespace TaulerDeControlRM.EditaPages
 
             DataGridTextColumn nomMusicColumn = new DataGridTextColumn();
             nomMusicColumn.Header = "NomMusic";
-            nomMusicColumn.Binding = new System.Windows.Data.Binding("NomMusic");
+            nomMusicColumn.Binding = new System.Windows.Data.Binding("Nom");
             MusicsGrup.Columns.Add(nomMusicColumn);
 
             DataGridTemplateColumn eliminarCancoColumn = new DataGridTemplateColumn();
@@ -68,6 +71,19 @@ namespace TaulerDeControlRM.EditaPages
             MusicsGrup.Columns.Add(eliminarCancoColumn);
         }
 
+        private async void ObtenirMusics()
+        {
+            this.musics = await CA_Music.GetMusicsAsync();
+            this.nomsMusics = new List<string>();
+
+            for (int i = 0; i < musics.Count; i++)
+            {
+                nomsMusics.Add(musics[i].Nom);
+            }
+
+            comboBoxMusics.ItemsSource = nomsMusics;
+        }
+
         private async void ObtenirGrup(string NomGrup)
         {
             this.grup = await CA_Grup.GetGrupAsync(NomGrup);
@@ -76,5 +92,20 @@ namespace TaulerDeControlRM.EditaPages
             this.ObtenirNomsMusics(this.grup);
         }
 
+        private async void btOk_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxMusics.SelectedItem != null)
+            {
+                Music music = await CA_Music.GetMusicAsync(comboBoxMusics.SelectedItem.ToString());
+                this.grup.LMusics.Add(music);
+                await CA_Music.UpdateGrupAsync(this.grup);
+                this.ObtenirGrup(this.grup.Nom);
+                MessageBox.Show("Músic afegit al Grup CORRECTAMENT!");
+            }
+            else
+            {
+                MessageBox.Show("ERROR! \n Cal que especifiquis quin Músic vols afegir.");
+            }
+        }
     }
 }
