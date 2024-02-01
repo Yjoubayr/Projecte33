@@ -10,8 +10,26 @@
       Title="PagePDF">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <PdfViewer:PdfViewerControl x:Name="pdfViewer"/>
+        <!-- Navigation controls -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <Button Content="Previous" Click="btnPrevious_Click"/>
+            <Button Content="Next" Click="btnNext_Click" Margin="5,0,0,0"/>
+        </StackPanel>
 
+        <!-- Text box to display PDF content -->
+        <TextBox x:Name="txtBoxPdf" Grid.Row="1" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="5"/>
+
+        <!-- Status bar -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock x:Name="statusBar" Text=""/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Page>

@@ -1,8 +1,11 @@
-﻿using ReproductorMusicaComponentLibrary.Classes;
+﻿using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using ReproductorMusicaComponentLibrary.Classes;
 using ReproductorMusicaComponentLibrary.ConnexioAPI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +18,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.Generic;
+using iText.Layout;
 
 namespace TaulerDeControlRM
 {
@@ -26,11 +31,14 @@ namespace TaulerDeControlRM
         public PageLlistes()
         {
             InitializeComponent();
-
-            ObtenirCancons();
-            ObtenirLlistes();
+            carregarValors();
         }
-        private async void ObtenirCancons()
+        private async Task carregarValors()
+        {
+            await ObtenirCancons();
+            await ObtenirLlistes();
+        }
+        private async Task ObtenirCancons()
         {
             List<Canco> llistaCancons = await CA_Canco.GetCanconsAsync(); 
             foreach (Canco canco in llistaCancons)
@@ -45,7 +53,7 @@ namespace TaulerDeControlRM
                 }
             }
         }
-        private async void ObtenirLlistes()
+        private async Task ObtenirLlistes()
         {
             List<Llista> llistaLlistes = await CA_Llista.GetLlistesAsync();
             foreach (Llista llista in llistaLlistes)
@@ -192,7 +200,6 @@ namespace TaulerDeControlRM
                 MessageBox.Show("No has seleccionat cap canço");
             }
         }
-
         private async void canconsLlista(object sender, RoutedEventArgs e)
         {
             EliminarListView();
@@ -242,6 +249,45 @@ namespace TaulerDeControlRM
 
 
 
+        }
+        private void ExportToPDF_Click(object sender, RoutedEventArgs e)
+        {
+            // Create a Document
+            Document doc = new Document(PageSize.A4);
+
+            // Set the path for the PDF file
+            string filePath = "listViewData.pdf";
+
+            // Create a PdfWriter instance
+            PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
+
+            // Open the Document
+            doc.Open();
+
+            // Create a PdfPTable with columns based on the ListView
+            PdfPTable table = new PdfPTable(listView.View.Columns.Count);
+
+            // Add column headers from the ListView
+            foreach (GridViewColumn column in listView.View.Columns)
+            {
+                table.AddCell(new Phrase(column.Header.ToString()));
+            }
+
+            // Add data rows from the ListView
+            foreach (Person person in listView.ItemsSource)
+            {
+                table.AddCell(new Phrase(person.Name));
+                table.AddCell(new Phrase(person.Age.ToString()));
+                // Add more cells if necessary
+            }
+
+            // Add the PdfPTable to the Document
+            doc.Add(table);
+
+            // Close the Document
+            doc.Close();
+
+            MessageBox.Show("PDF created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
