@@ -36,18 +36,20 @@ namespace TaulerDeControlRM
                         mainFrame.Navigate(new PageCrea()); 
                         break;
                     case "Edita":
-                        mainFrame.Navigate(new PageEdita()); // Replace Page2 with your actual user control
+                        mainFrame.Navigate(new PageEdita());
                         break;
                     case "Historial":
-                        mainFrame.Navigate(new PageHistorial()); // Replace Page3 with your actual user control
+                        mainFrame.Navigate(new PageHistorial());
                         break;
                     case "Llistats":
-                        mainFrame.Navigate(new PageLlistes()); // Replace Page4 with your actual user control
+                        mainFrame.Navigate(new PageLlistes()); 
                         break;
                     case "Pdf Viewer":
-                        mainFrame.Navigate(new PagePDF()); // Replace Page4 with your actual user control
+                        mainFrame.Navigate(new PagePDF()); 
                         break;
-                        // Add more cases as needed
+                    case "Pdf Viewer 2":
+                        mainFrame.Navigate(new PagePDF2());
+                        break;
                 }
                 //mainFrame.NavigationService.Navigate(selectedPage);
             }

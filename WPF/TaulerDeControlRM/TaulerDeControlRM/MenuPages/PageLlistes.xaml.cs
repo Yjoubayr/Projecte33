@@ -250,44 +250,5 @@ namespace TaulerDeControlRM
 
 
         }
-        private void ExportToPDF_Click(object sender, RoutedEventArgs e)
-        {
-            // Create a Document
-            Document doc = new Document(PageSize.A4);
-
-            // Set the path for the PDF file
-            string filePath = "listViewData.pdf";
-
-            // Create a PdfWriter instance
-            PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
-
-            // Open the Document
-            doc.Open();
-
-            // Create a PdfPTable with columns based on the ListView
-            PdfPTable table = new PdfPTable(listView.View.Columns.Count);
-
-            // Add column headers from the ListView
-            foreach (GridViewColumn column in listView.View.Columns)
-            {
-                table.AddCell(new Phrase(column.Header.ToString()));
-            }
-
-            // Add data rows from the ListView
-            foreach (Person person in listView.ItemsSource)
-            {
-                table.AddCell(new Phrase(person.Name));
-                table.AddCell(new Phrase(person.Age.ToString()));
-                // Add more cells if necessary
-            }
-
-            // Add the PdfPTable to the Document
-            doc.Add(table);
-
-            // Close the Document
-            doc.Close();
-
-            MessageBox.Show("PDF created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
     }
 }

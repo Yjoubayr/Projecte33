@@ -18,7 +18,11 @@
 
         <!-- Navigation controls -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <TextBlock Grid.Row="0" Margin="5" Text="Selected PDF File:"/>
+            <TextBox x:Name="path" Grid.Row="1" Margin="5" IsReadOnly="True"/>
+            <Button Grid.Row="2" Margin="5" Content="Selecciona" Click="BrowseButton_Click"/>
             <Button Content="Previous" Click="btnPrevious_Click"/>
+            <TextBlock x:Name="txtBPageNumber" Margin="5" Text=""/>  
             <Button Content="Next" Click="btnNext_Click" Margin="5,0,0,0"/>
         </StackPanel>
 

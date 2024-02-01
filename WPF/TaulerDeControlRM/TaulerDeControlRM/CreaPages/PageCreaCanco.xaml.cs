@@ -39,65 +39,15 @@ namespace TaulerDeControlRM
         public  PageCreaCanco()
         {
             InitializeComponent();
-
-            //2 coses:
-            //contemplar músic 2 o més instruments
-            //contemplar 2 o més registres nous iguals
-
-            this.ObtenirMusics();
         }
 
-        private async void ObtenirMusics()
-        {
-            this.llistaMusics = await CA_Music.GetMusicsAsync();
-
-            this.nomsMusics = new List<string>();
-
-            for (int i = 0; i < this.llistaMusics.Count; i++)
-            {
-                this.nomsMusics.Add(llistaMusics[i].Nom);
-            }
-
-            CrearLlistaConjuntValors();
-        }
-
-        private async void CrearLlistaConjuntValors()
-        {
-            //ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},true,true);
-
-            ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
-            ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
-            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
-
-            GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
-            spMusics.Children.Add(gcv);
-
-        }
-
-        private void BrowseButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                // Set the selected file path to the TextBox
-                FilePathTextBox.Text = openFileDialog.FileName;
-                string[] cancoSeparada = FilePathTextBox.Text.Split('.');
-                string nomExtensio = cancoSeparada[cancoSeparada.Length - 1];
-                this.e.Nom = nomExtensio;
-            }
-        }
+      
         private void Upload_Click(object sender, RoutedEventArgs e)
         {
             if (this.txtNom.Text.ToString() != string.Empty && this.txtAny.Text.ToString() != string.Empty && !_regex.IsMatch(this.txtAny.Text.ToString()))
             {
                 this.canco.Nom = this.txtNom.Text.ToString();
                 this.canco.Any = int.Parse(this.txtAny.Text);
-
-                if (this.e != new Extensio())
-                {
-                    this.canco.LExtensions.Add(this.e);
-                }
 
                 MessageBox.Show("Nom: " + this.canco.Nom + " Any: " + this.canco.Any + " LExtensions: " + JsonConvert.SerializeObject(this.canco.LExtensions));
                 //await CA_Canco.PostCancoAsync(this.canco);

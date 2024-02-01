@@ -16,6 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace TaulerDeControlRM.MenuPages
 {
@@ -26,24 +29,36 @@ namespace TaulerDeControlRM.MenuPages
     {
         private PdfDocument pdfDoc;
         private int currentPage = 1;
+        private string _selectedPDFPath;
+
+        public string SelectedPDFPath
+        {
+            get { return _selectedPDFPath; }
+            set
+            {
+                _selectedPDFPath = value;
+                OnPropertyChanged();
+            }
+        }
 
         public PagePDF()
         {
             InitializeComponent();
-            Loaded += PagePDF_Loaded;
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void PagePDF_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // Specify the path to the PDF file you want to read
-            string filePath = "C:\\Users\\ASUS\\Downloads\\pdfExemple.pdf";
-
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             // Open the PDF document
-            pdfDoc = new PdfDocument(new PdfReader(filePath));
+            pdfDoc = new PdfDocument(new PdfReader(SelectedPDFPath));
+            path.Text = SelectedPDFPath;
 
             // Display the text of the first page
             DisplayPageText(currentPage);
+            txtBPageNumber.Text = currentPage.ToString();
         }
+
 
         private void DisplayPageText(int pageNum)
             {
@@ -64,6 +79,7 @@ namespace TaulerDeControlRM.MenuPages
                 {
                     currentPage--;
                     DisplayPageText(currentPage);
+                    txtBPageNumber.Text = currentPage.ToString();
                 }
             }
 
@@ -74,8 +90,18 @@ namespace TaulerDeControlRM.MenuPages
                 {
                     currentPage++;
                     DisplayPageText(currentPage);
+                    txtBPageNumber.Text = currentPage.ToString();
                 }
             }
-        
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                SelectedPDFPath = openFileDialog.FileName;
+            }
+        }
     }
 }

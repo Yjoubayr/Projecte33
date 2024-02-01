@@ -11,21 +11,11 @@
     <Grid>
         <StackPanel x:Name="spGlobal" Orientation="Vertical">
             <TextBlock Text="Llistes" Margin="5" Height="Auto" Width="Auto"/>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <Label Content="Cançons més escoltades"></Label>
-                <Label Content="Num."></Label>
-                <TextBox Name="txtNum" Width="50"></TextBox>
-                <Button Content="Mostrar"></Button>
-                <Button Content="Enviar socket" ></Button>
-                <Button Content="Generar i signar PDF" ></Button>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5">
                 <Label Content="Llistes de reproducció amb una cançó"></Label>
                 <Label Content="Cançó:."></Label>
                 <ComboBox Name="cmbCanco" Width="50"></ComboBox>
                 <Button Content="Mostrar" Click="llistesCanco"></Button>
-                <Button Content="Enviar socket" ></Button>
-                <Button Content="Generar i signar PDF" ></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="5">
                 <Label Content="Cançons d'una llistes de reproducció"></Label>
@@ -33,13 +23,11 @@
                 <ComboBox Name="cmbLlistaMAC" SelectionChanged="cmbLlistaMAC_SelectionChanged" Width="50"></ComboBox>
                 <ComboBox Name="cmbLlistaNom" Width="50"></ComboBox>
                 <Button Content="Mostrar" Click="canconsLlista"></Button>
-                <Button Content="Enviar socket" ></Button>
-                <Button Content="Generar i signar PDF" ></Button>
+               
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5">
                 <Label Content="Totes les cançons"></Label>
                 <Button Content="Mostrar" Click="BtMostrarCancons_Click"></Button>
-                <Button Content="Enviar socket" ></Button>
             </StackPanel>
             
         </StackPanel>

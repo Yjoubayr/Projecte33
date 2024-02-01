@@ -20,6 +20,7 @@
             <ListBoxItem Content="Historial"/>
             <ListBoxItem Content="Llistats"/>
             <ListBoxItem Content="Pdf Viewer"/>
+            <ListBoxItem Content="Pdf Viewer 2"></ListBoxItem>
         </ListBox>
 
         <!-- Main Content -->

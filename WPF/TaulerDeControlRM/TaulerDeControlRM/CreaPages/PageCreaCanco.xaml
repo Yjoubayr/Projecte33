@@ -37,17 +37,6 @@
         <Label Content="Any:" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Margin="10"/>
         <TextBox Grid.Column="1" Grid.Row="2" Name="txtAny" Margin="10"/>
 
-        <Label Content="Fitxer:" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Margin="10"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-            <Button Content="Browse" Click="BrowseButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
-            <TextBox x:Name="FilePathTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"  Width="400"/>
-        </StackPanel>
-        <Label Content="Grup:" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" Margin="10"/>
-        <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbGrup"  Margin="10" IsEditable="True" IsTextSearchEnabled="True"/>
-        <Label Content="Musics:" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10"/>
-        <StackPanel Orientation="Vertical" Name="spMusics"  Grid.Column="1" Grid.Row="5">
-            
-        </StackPanel>
-        <Button Content="Pujar" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Click="Upload_Click"/>
+        <Button Content="Crear" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Click="Upload_Click"/>
     </Grid>
 </Page>
