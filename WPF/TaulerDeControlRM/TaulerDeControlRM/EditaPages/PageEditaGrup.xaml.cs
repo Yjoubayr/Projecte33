@@ -39,16 +39,10 @@ namespace TaulerDeControlRM.EditaPages
 
             if (btn != null && btn.DataContext is Music music)
             {
-                foreach (Music musicLlista in this.grup.LMusics)
-                {
-                    if (musicLlista.Nom == music.Nom)
-                    {
-                        this.grup.LMusics.Remove(musicLlista);
-                        await CA_Music.UpdateGrupAsync(this.grup);
-                        this.ObtenirGrup(this.grup.Nom);
-                        MessageBox.Show("Grup modificat correctament");
-                    }
-                }
+                this.grup.LMusics.Remove(music);
+                await CA_Music.UpdateGrupAsync(this.grup);
+                this.ObtenirGrup(this.grup.Nom);
+                MessageBox.Show("Grup modificat correctament");
             }
         }
 
@@ -78,10 +72,10 @@ namespace TaulerDeControlRM.EditaPages
 
             for (int i = 0; i < musics.Count; i++)
             {
-                nomsMusics.Add(musics[i].Nom);
+                this.nomsMusics.Add(musics[i].Nom);
             }
 
-            comboBoxMusics.ItemsSource = nomsMusics;
+            comboBoxMusics.ItemsSource = this.nomsMusics;
         }
 
         private async void ObtenirGrup(string NomGrup)

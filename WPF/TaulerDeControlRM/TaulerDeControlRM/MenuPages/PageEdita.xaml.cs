@@ -83,11 +83,6 @@ namespace TaulerDeControlRM
         /// </summary>
         private async void MostrarClauComposta(object sender, SelectionChangedEventArgs e)
         {
-            /*if (Buscador.SelectedItem != null)
-            {
-                Buscador.SelectedItem = null;
-            } else
-            {*/
                 switch (elementComboBox.SelectedItem.ToString())
                 {
                     case "Àlbum":
@@ -95,7 +90,6 @@ namespace TaulerDeControlRM
                         this.ComboBoxAlbumYear.ItemsSource = this.llistaPKComposta;
                         break;
                 }
-            //}
         }
 
         /// <summary>
@@ -197,7 +191,7 @@ namespace TaulerDeControlRM
             }
             else
             {
-                Buscador.IsTextSearchEnabled = false;
+                //Buscador.IsTextSearchEnabled = false;
                 MessageBox.Show("ERROR! \n Cal que especifiquis la classe i quin objecte vols editar");
             }
         }
