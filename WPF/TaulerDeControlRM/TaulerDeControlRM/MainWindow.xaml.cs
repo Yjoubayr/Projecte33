@@ -20,10 +20,6 @@ namespace TaulerDeControlRM
         public MainWindow()
         {
             InitializeComponent();
-            //menuPujarCanco secondWindow = new menuPujarCanco();
-
-            // Show the SecondWindow
-            //secondWindow.ShowDialog();
         }
         private void OnSidebarItemSelected(object sender, SelectionChangedEventArgs e)
         {
