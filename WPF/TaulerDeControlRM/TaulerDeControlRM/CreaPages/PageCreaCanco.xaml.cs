@@ -39,10 +39,35 @@ namespace TaulerDeControlRM
         public  PageCreaCanco()
         {
             InitializeComponent();
+            this.ObtenirMusics();
+        }
+        private async void ObtenirMusics()
+        {
+            this.llistaMusics = await CA_Music.GetMusicsAsync();
+
+            this.nomsMusics = new List<string>();
+
+            for (int i = 0; i < this.llistaMusics.Count; i++)
+            {
+                this.nomsMusics.Add(llistaMusics[i].Nom);
+            }
+
+            CrearLlistaConjuntValors();
+        }
+        private async void CrearLlistaConjuntValors()
+        {
+            //ConjuntValors cvMusics = new ConjuntValors("Músic",new List<string>{"Joan","Josep","Ferran","Maria","Miquel"},true,true);
+
+            ConjuntValors cvInstrument = new ConjuntValors("Instrument", new List<string> { "Flauta", "Guitarra", "Trompeta" }, true, true);
+            ConjuntValors cvMusics = new ConjuntValors("Músic", this.nomsMusics, true, true);
+            List<ConjuntValors> llistaConjutValors = new List<ConjuntValors> { cvMusics, cvInstrument };
+
+            GridConjuntValors gcv = new GridConjuntValors(true, llistaConjutValors);
+            spMusics.Children.Add(gcv);
+
         }
 
-      
-        private void Upload_Click(object sender, RoutedEventArgs e)
+        private async void Upload_Click(object sender, RoutedEventArgs e)
         {
             if (this.txtNom.Text.ToString() != string.Empty && this.txtAny.Text.ToString() != string.Empty && !_regex.IsMatch(this.txtAny.Text.ToString()))
             {
@@ -50,7 +75,9 @@ namespace TaulerDeControlRM
                 this.canco.Any = int.Parse(this.txtAny.Text);
 
                 MessageBox.Show("Nom: " + this.canco.Nom + " Any: " + this.canco.Any + " LExtensions: " + JsonConvert.SerializeObject(this.canco.LExtensions));
-                //await CA_Canco.PostCancoAsync(this.canco);
+                string id=await CA_Canco.PostCancoAsync(this.canco);
+
+                llegirValorsTocar();
 
             } else
             {

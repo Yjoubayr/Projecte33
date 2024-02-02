@@ -47,12 +47,13 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         /// </summary>
         /// <param name="c">L'objecte de la Canco a inserir</param>
         /// <returns>Verificació de que la Canco s'ha inserit correctament</returns>
-        public static async Task PostCancoAsync(Canco c)
+        public static async Task<string> PostCancoAsync(Canco c)
         {
             string jsonData = JsonConvert.SerializeObject(c);
             string apiUrl = CA.baseApi + controller + "postCanco";
 
-            await CA.PostDataAsync(apiUrl, jsonData);
+            string response=await CA.PostDataAsync(apiUrl, jsonData);
+            return response;
         }
     }
 }
