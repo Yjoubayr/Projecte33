@@ -33,7 +33,7 @@ namespace TaulerDeControlRM
         public PageEdita()
         {
             InitializeComponent();
-            elementComboBox.ItemsSource = new List<string> { "Àlbum", "Cançó", "Grup", "Músic", "Llista de reproducció" };
+            elementComboBox.ItemsSource = new List<string> { "Àlbum", "Grup", "Músic", "Llista de reproducció" };
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,12 +54,6 @@ namespace TaulerDeControlRM
                         Buscador.SelectedItem = null;
                         this.ObtenirAlbums();
                         this.ComboBoxAlbumYear.Visibility = Visibility.Visible;
-                        break;
-                    case "Cançó":
-                        Buscador.IsTextSearchEnabled = true;
-                        Buscador.SelectedItem = null;
-                        this.ObtenirCancons();
-                        this.ComboBoxAlbumYear.Visibility = Visibility.Hidden;
                         break;
                     case "Grup":
                         Buscador.IsTextSearchEnabled = true;

@@ -25,7 +25,7 @@ namespace TaulerDeControlRM
         public PageCrea()
         {
             InitializeComponent();
-            elementComboBox.ItemsSource = new List<string> { "Àlbum", "Cançó", "Grup", "Músic" };
+            elementComboBox.ItemsSource = new List<string> { "Àlbum", "Grup", "Músic" };
             
         }
 
@@ -44,8 +44,6 @@ namespace TaulerDeControlRM
                 {
                     case "Àlbum":
                         frameCrear.Navigate(new PageCreaAlbum());
-                        break;
-                    case "Cançó":
                         break;
                     case "Grup":
                         frameCrear.Navigate(new PageCreaGrup());
