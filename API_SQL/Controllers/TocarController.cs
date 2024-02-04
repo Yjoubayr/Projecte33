@@ -79,6 +79,7 @@ namespace API_SQL.Controllers
 
             if (tocar.CancoObj != null 
             || tocar.MusicObj != null 
+            || tocar.GrupObj != null
             || tocar.InstrumentObj != null) {
                 return BadRequest();
             }
