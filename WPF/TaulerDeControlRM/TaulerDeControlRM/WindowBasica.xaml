@@ -1,0 +1,43 @@
+﻿<Window x:Class="TaulerDeControlRM.WindowBasica"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaulerDeControlRM"
+        mc:Ignorable="d"
+        Title="WindowBasica" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Cançons més escoltades"></Label>
+                <Label Content="Num."></Label>
+                <TextBox Name="txtNum" Width="50"></TextBox>
+                <Button Content="Mostrar" Click="Button_Click"></Button>
+                <Button Content="Enviar socket" ></Button>
+                <Button Content="Generar i signar PDF" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5">
+                <Label Content="Llistes de reproducció amb una cançó"></Label>
+                <Label Content="Cançó:."></Label>
+                <TextBox Name="txtCançó" Width="50"></TextBox>
+                <Button Content="Mostrar"></Button>
+                <Button Content="Enviar socket" ></Button>
+                <Button Content="Generar i signar PDF" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="5">
+                <Label Content="Cançons d'una llistes de reproducció"></Label>
+                <Label Content="Llista:."></Label>
+                <TextBox Name="txtLlista" Width="50"></TextBox>
+                <Button Content="Mostrar"></Button>
+                <Button Content="Enviar socket" ></Button>
+                <Button Content="Generar i signar PDF" ></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5">
+                <Label Content="Totes les cançons"></Label>
+
+                <Button Content="Mostrar"></Button>
+                <Button Content="Enviar socket" ></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

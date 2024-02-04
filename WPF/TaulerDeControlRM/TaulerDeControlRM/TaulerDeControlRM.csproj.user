@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="CreaPages\PageCreaMusic.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditaPages\PageEditaAlbum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditaPages\PageEditaGrup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditaPages\PageEditaMusic.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GridConjuntValors.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageCrea.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageEdita.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageHistorial.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PageLlistes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Cercador.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PagePDF.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MenuPages\PagePDF2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PdfViewerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowBasica.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CreaPages\PageCreaMusic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditaPages\PageEditaAlbum.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditaPages\PageEditaGrup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditaPages\PageEditaMusic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GridConjuntValors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageCrea.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageEdita.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageHistorial.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PageLlistes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Cercador.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PagePDF.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MenuPages\PagePDF2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PdfViewerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowBasica.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

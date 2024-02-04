@@ -1,0 +1,41 @@
+﻿<Page x:Class="TaulerDeControlRM.EditaPages.PageEditaGrup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaulerDeControlRM.EditaPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageEditaGrup">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="486"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Editar Grup" Margin="10,10,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Height="37" Width="117"/>
+        <Label x:Name="LblNomGrup" VerticalAlignment="Center" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" Height="10"/>
+        <Label x:Name="LblAnyGrup" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Margin="10,0,10,0" Height="10"/>
+        <ComboBox x:Name="comboBoxMusics" Margin="108,364,217,15"/>
+
+        <DataGrid x:Name="MusicsGrup" Margin="61,93,25,121" />
+        <Label Content="Afegir Músic" HorizontalAlignment="Left" Margin="21,360,0,0" VerticalAlignment="Top" Height="26" Width="76"/>
+        <Button x:Name="btAfegir_Click" Content="Afegir" HorizontalAlignment="Left" Margin="295,365,0,0" VerticalAlignment="Top" Width="60" Click="btOk_Click" TabIndex="20" Height="20"/>
+    </Grid>
+</Page>
