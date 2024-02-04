@@ -56,6 +56,10 @@ public class TocarService
     /// <returns>L'objecte de la classe Tocar</returns>
     public async Task<Tocar?> GetAsync(string IDCanco, string NomMusic, string NomGrup, string NomInstrument) {
         List<Tocar> listTocar = await _context.Tocar
+                                    .Include(t => t.CancoObj)
+                                    .Include(t => t.MusicObj)
+                                    .Include(t => t.GrupObj)
+                                    .Include(t => t.InstrumentObj)
                                     .Where(x => x.IDCanco == IDCanco 
                                     && x.NomMusic == NomMusic 
                                     && x.NomGrup == NomGrup 
@@ -77,9 +81,9 @@ public class TocarService
     public async Task CreateAsync(Tocar newTocar) {
         newTocar.CancoObj = await _cancoService.GetAsync(newTocar.IDCanco);
         newTocar.MusicObj = await _musicService.GetAsync(newTocar.NomMusic);
-        if (newTocar.NomGrup != null) {
+        //if (newTocar.NomGrup != null) {
             newTocar.GrupObj = await _grupService.GetAsync(newTocar.NomGrup);
-        }
+        //}
         newTocar.InstrumentObj = await _instrumentService.GetAsync(newTocar.NomInstrument);
         await _context.Tocar.AddAsync(newTocar);
         await _context.SaveChangesAsync();
