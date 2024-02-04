@@ -13,9 +13,6 @@
     <Compile Update="EditaPages\PageEditaAlbum.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="EditaPages\PageEditaCanco.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="EditaPages\PageEditaGrup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,9 +20,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GridConjuntValors.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="CreaPages\PageCreaCanco.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MenuPages\PageCrea.xaml.cs">
@@ -63,9 +57,6 @@
     <Page Update="EditaPages\PageEditaAlbum.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="EditaPages\PageEditaCanco.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="EditaPages\PageEditaGrup.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -73,9 +64,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GridConjuntValors.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="CreaPages\PageCreaCanco.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MenuPages\PageCrea.xaml">

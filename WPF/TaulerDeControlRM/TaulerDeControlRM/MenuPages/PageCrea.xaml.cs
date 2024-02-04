@@ -46,7 +46,6 @@ namespace TaulerDeControlRM
                         frameCrear.Navigate(new PageCreaAlbum());
                         break;
                     case "Cançó":
-                        frameCrear.Navigate(new PageCreaCanco());
                         break;
                     case "Grup":
                         frameCrear.Navigate(new PageCreaGrup());

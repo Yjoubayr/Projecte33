@@ -176,7 +176,6 @@ namespace TaulerDeControlRM
 
                 if (elementComboBox.SelectedItem.ToString() == "Cançó")
                 {
-                    frameEditar.Navigate(new PageEditaCanco(Buscador.Text));
                 }
 
                 if (elementComboBox.SelectedItem.ToString() == "Grup")
