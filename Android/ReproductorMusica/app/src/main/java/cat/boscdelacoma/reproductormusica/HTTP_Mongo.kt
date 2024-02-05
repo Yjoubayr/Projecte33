@@ -28,7 +28,7 @@ class HTTP_Mongo(private val context: Context) {
     private lateinit var audioApi: AudioApiService
     private lateinit var historialService: CancoService
 
-    private var urlBase : String = "http://192.168.1.60:5264/"
+    private var urlBase : String = "http://172.23.2.141:5264/"
     /**
      * Metode per pujar una cançó a l'api de mongoDB gridfs
      * @param uid UID de la cançó.

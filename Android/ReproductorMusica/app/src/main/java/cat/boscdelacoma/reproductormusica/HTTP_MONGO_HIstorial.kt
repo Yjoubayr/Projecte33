@@ -13,7 +13,7 @@ import java.net.NetworkInterface
 
 class HTTP_MONGO_HIstorial {
     private lateinit var historialService: CancoService
-    private var urlBase : String = "http://192.168.1.60:5050/"
+    private var urlBase : String = "http://172.23.2.141:5050/"
     /**
      * Aquest metode ens ajuda a fer un post del historial
      * @param IDDispositiu ID del dispositiu.
