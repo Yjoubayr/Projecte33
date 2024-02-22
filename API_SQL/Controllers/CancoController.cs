@@ -45,7 +45,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// Accedeix a la ruta /api/Canco/getCanco/{IDCanco} per obtenir una canco
         /// </summary>
         /// <param name="IDCanco">Identifiador de la Canco a consultar</param>
-        /// <returns>L'objecte de la Canco consultada</returns>
+        /// <returns>L'objecte de la Canco consultada</returns>I
         [HttpGet("getCanco/{IDCanco}")]
         public async Task<ActionResult<Canco>> GetCanco(string IDCanco)
         {

@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Options;
+/*using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
@@ -151,4 +151,4 @@ public class GrupService
         _context.Grups.Remove(grup);
         await _context.SaveChangesAsync();
     }
-}
+}*/

@@ -7,25 +7,25 @@ namespace gridfsapi
 {
 
     /// <summary>
-    /// Representa un objecte d'àudio.
+    /// Representa un objecte d'ï¿½udio.
     /// </summary>
     public class Audio
     {
         /// <summary>
-        /// Obté o estableix l'identificador de l'àudio.
+        /// Obtï¿½ o estableix l'identificador de l'ï¿½udio.
         /// </summary>
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _ID { get; set; } = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
 
         /// <summary>
-        /// Obté o estableix l'identificador de la cançó en SQL.
+        /// Obtï¿½ o estableix l'identificador de la canï¿½ï¿½ en SQL.
         /// </summary>
         [BsonElement("UID")]
         public string IdCanco_SQL { get; set; }
 
         /// <summary>
-        /// Obté o estableix l'identificador de fitxer d'àudio.
+        /// Obtï¿½ o estableix l'identificador de fitxer d'ï¿½udio.
         /// </summary>
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId AudioFileId { get; set; }

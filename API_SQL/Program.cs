@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.CancoService>();
-builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.GrupService>();
+//builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.CancoService>();
+//builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.GrupService>();
 builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.AlbumService>();
-builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.MusicService>(); 
+//builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.MusicService>(); 
 builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.LlistaService>(); 
 builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.InstrumentService>(); 
-builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.TocarService>(); 
+//builder.Services.AddScoped<dymj.ReproductorMusica.API_SQL.Services.TocarService>(); 
 
 
 builder.Services.AddControllers();

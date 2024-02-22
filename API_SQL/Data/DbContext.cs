@@ -14,12 +14,15 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
         public DbSet<Llista> Llista { get; set; }
         public DbSet<Tocar> Tocar { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
+        public DbSet<Agrupa> Agrupa { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AgrupaConfiguration());
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
             modelBuilder.ApplyConfiguration(new TocarConfiguration());
+            modelBuilder.ApplyConfiguration(new GrupConfiguration());
         }
     }
 }
