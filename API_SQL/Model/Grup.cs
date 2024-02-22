@@ -7,7 +7,7 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         public string DataFundacio {get; set;}
         public int? Any { get; set; }
         public ICollection<Tocar>? LTocar { get; set; } = new List<Tocar>();
-        public ICollection<Agrupa>? LAgrupa {get; set;} = new List<Agrupa>();
+        public ICollection<Agrupa>? LAgrupes {get; set;} = new List<Agrupa>();
 
     }
 }
