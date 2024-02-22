@@ -65,7 +65,7 @@ public class AlbumController: ControllerBase
                 return Conflict("No se ha podido recuperar el archivo de audio");
             }
 
-            return File(albumStream, "audio/mp3", $"audio_{UID}.mp3");
+            return File(albumStream, "imatge/png", $"imatge_{UID}.png");
         }
         catch (Exception ex)
         {

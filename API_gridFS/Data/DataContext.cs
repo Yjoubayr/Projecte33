@@ -3,7 +3,7 @@ namespace gridfsapi {
     /// <summary>
     /// Context de dades per a l'API de GridFS.
     /// </summary>
-    public class DataContext : DbContext
+    public class DataContext 
     {
         /// <summary>
         /// Obt� o estableix el nom de la base de dades.
