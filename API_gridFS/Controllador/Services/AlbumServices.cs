@@ -5,11 +5,11 @@ using MongoDB.Driver.GridFS;
 
 namespace gridfsapi;
 
-public class SongService{
+public class AlbumService{
     private readonly IMongoCollection<Album> _albumCollection;
      private readonly GridFSBucket _gridFsBucket;
 
-     public SongService(IOptions<DataContext> MongoStoreDatabaseSettings)
+     public AlbumService(IOptions<DataContext> MongoStoreDatabaseSettings)
      {
          IMongoClient mongoClient = new MongoClient(MongoStoreDatabaseSettings.Value.ConnectionString);
          IMongoDatabase mongoDatabase = mongoClient.GetDatabase(MongoStoreDatabaseSettings.Value.DatabaseName);
@@ -17,15 +17,19 @@ public class SongService{
          _gridFsBucket = new GridFSBucket(mongoDatabase);
      }
 
-      public async Task<List<Album>> GetAsync() => 
-            (await _albumCollection.FindAsync(Song => true)).ToList();
+     public async Task<Album?> GetByAlbumIDAsync(string UID) =>
+            await _albumCollection.Find(x => x.UIDSong == UID).FirstOrDefaultAsync();
     
+    public async Task<List<Album>> GetAsync() => 
+            (await _albumCollection.FindAsync(Album => true)).ToList();
+            
      public async Task<Album?> GetAsync(string id) =>
             await _albumCollection.Find(x => x._ID== id).FirstOrDefaultAsync();
     
       public async Task CreateAsync(Album newAlbum) =>
         await _albumCollection.InsertOneAsync(newAlbum);
-    
+    public async Task UpdateAsync(string id, Album updatedAlbum) =>
+            await _albumCollection.ReplaceOneAsync(x => x._ID == id, updatedAlbum);
     public async Task<ObjectId> UploadAlbumAsync(string filename, Stream stream, GridFSUploadOptions options)
         {
             return await _gridFsBucket.UploadFromStreamAsync(filename, stream, options);
