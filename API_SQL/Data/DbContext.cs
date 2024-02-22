@@ -18,6 +18,7 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AgrupaConfiguration());
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
             modelBuilder.ApplyConfiguration(new TocarConfiguration());
