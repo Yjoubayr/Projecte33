@@ -32,6 +32,7 @@ namespace TaulerDeControlRM
         {
             InitializeComponent();
             carregarValors();
+            cmbAnyAlbum.IsEnabled = false; // fer funcio
         }
         private async Task carregarValors()
         {
@@ -89,10 +90,10 @@ namespace TaulerDeControlRM
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="Exception"></exception>
-        private async void cmbNomArtistesCanconsAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void cmbTitolAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cmbNomArtistesAlbum.Items.Clear();
-            string? Album = cmbNomArtistesAlbum.SelectedItem.ToString();
+            cmbTitolAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
             List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
             foreach (Album album in llistaAlbums)
             {
@@ -100,7 +101,7 @@ namespace TaulerDeControlRM
                 {
                     if(album.Titol == Album)
                     {
-                        cmbNomArtistesAlbum.Items.Add(album.Titol);
+                        cmbTitolAlbum.Items.Add(album.Titol);
                     }
                 }
                 else
@@ -108,7 +109,32 @@ namespace TaulerDeControlRM
                     throw new Exception("No s'ha pogut carregar la llistad d'albums");
                 }
             }
+            
+            if (cmbTitolAlbum.SelectedItem != null)
+            {
+                cmbAnyAlbum.IsEnabled = true;
+            } else
+            {
+                cmbAnyAlbum.IsEnabled = false;
+            }
         }
+
+        // fiuaewhlfaiuehfaeiulhfaiuefheailufhliuhfilfghiulaegfiuegiageliufhaeulifahliheiugefiulag
+        private async void cmbAnyAlbum_SelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            cmbAnyAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<string> llistaAnysAlbums = await CA_Album.GetAnysAlbumAsync(Album);
+            foreach (string anyAlbum in llistaAnysAlbums)
+            { 
+                if (anyAlbum != null)
+                {
+                    cmbAnyAlbum.Items.Add(anyAlbum);
+                }
+            }
+
+        }
+
         /// <summary>
         /// 
         /// </summary>

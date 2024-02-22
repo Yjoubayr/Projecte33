@@ -56,6 +56,12 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             return data;
         }
 
+        /*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
+        {
+
+
+            return ;
+        }*/
 
         /// <summary>
         /// Fer una consulta l'API que retorni un llistat d'Albums
