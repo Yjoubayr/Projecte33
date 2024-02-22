@@ -1,0 +1,6 @@
+@gridfsapi_HostAddress = http://localhost:5264
+
+GET {{gridfsapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

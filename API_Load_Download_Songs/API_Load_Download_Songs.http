@@ -1,6 +1,0 @@
-@API_Load_Download_Songs_HostAddress = http://localhost:5191
-
-GET {{API_Load_Download_Songs_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
