@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Options;
+/*using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
@@ -150,4 +150,4 @@ public class MusicService
         _context.Musics.Remove(music);
         await _context.SaveChangesAsync();
     }
-}
+}*/
