@@ -15,7 +15,7 @@ namespace gridfsapi
         public string UIDSong { get; set; }
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId ImatgePortadaeId { get; set; }
-         public ObjectId ImatgeContraPortadaId { get; set; }
+        public ObjectId ImatgeContraPortadaId { get; set; }
 
     }
 

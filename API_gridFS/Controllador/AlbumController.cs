@@ -120,9 +120,18 @@ public class AlbumController: ControllerBase
     public async Task<IActionResult> Update(string _ID, Album updatedAlbum)
     {
         var album = await _albumService.GetAsync(_ID);
-        if (album is null)
+        if (album == null)
         {
             return NotFound();
+        }
+        
+        if(updatedAlbum.ImatgePortadaeId != null)
+        {
+            album.ImatgePortadaeId = updatedAlbum.ImatgePortadaeId;
+        }
+        if(updatedAlbum.ImatgeContraPortadaId != null)
+        {
+            album.ImatgeContraPortadaId = updatedAlbum.ImatgeContraPortadaId;
         }
         updatedAlbum._ID = album._ID;
         await _albumService.UpdateAsync(_ID, updatedAlbum);
