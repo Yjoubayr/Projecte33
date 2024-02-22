@@ -20,6 +20,7 @@ namespace dymj.ReproductorMusica.API_SQL.Data {
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistesConfiguration());
             modelBuilder.ApplyConfiguration(new TocarConfiguration());
+            modelBuilder.ApplyConfiguration(new GrupConfiguration());
         }
     }
 }
