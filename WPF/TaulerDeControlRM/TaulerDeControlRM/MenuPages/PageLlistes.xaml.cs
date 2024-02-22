@@ -36,7 +36,7 @@ namespace TaulerDeControlRM
         }
         private async Task carregarValors()
         {
-            await ObtenirCancons();
+            await Obtenirns();
             await ObtenirLlistes();
         }
         private async Task ObtenirCancons()
@@ -132,7 +132,6 @@ namespace TaulerDeControlRM
                     cmbAnyAlbum.Items.Add(anyAlbum);
                 }
             }
-
         }
 
         /// <summary>
@@ -299,9 +298,12 @@ namespace TaulerDeControlRM
             {
                 MessageBox.Show("No has seleccionat cap canço");
             }
-
-
-
         }
+
+        private async void albumsLlista(object sender, RoutedEventArgs e)
+        {
+            EliminarListView();
+        }
+
     }
 }
