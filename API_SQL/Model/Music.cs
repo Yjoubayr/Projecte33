@@ -6,7 +6,6 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         [MaxLength(20)]
         public string Nom {get; set;}
         public ICollection<Agrupa>? LAgrupa {get; set;} = new List<Agrupa>();
-        public ICollection<Grup>? LGrups{get; set;} = new List<Grup>();
         public ICollection<Tocar>? LTocar { get; set; } = new List<Tocar>();
     }
 }
