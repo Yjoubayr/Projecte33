@@ -1,0 +1,60 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListOfSongsFragment"
+    android:background="@color/negro_semi_transparente"
+    >
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="20dp"
+       android:background="@drawable/backgruond_frame_create_track"
+       android:layout_gravity="bottom"
+       >
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:text="Add to playlist"
+                 android:fontFamily="@font/bold"
+                 android:textColor="@color/white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/white"
+                android:id="@+id/Back"
+
+                />
+         </RelativeLayout>
+         <TextView
+             android:id="@+id/CreateNewPlayList"
+             android:layout_width="150dp"
+             android:layout_height="wrap_content"
+             android:text="New Playlist"
+             android:fontFamily="@font/regular"
+             android:background="@drawable/btn_white"
+             android:layout_centerHorizontal="true"
+             android:layout_marginTop="45dp"
+             android:padding="10dp"
+             android:textAlignment="center"
+
+             />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/recyclerView"
+           android:layout_width="match_parent"
+           android:layout_height="500dp"
+           android:layout_centerInParent="true"
+           tools:listitem="@layout/track_songs_list_item" />
+      </RelativeLayout>
+
+
+</FrameLayout>

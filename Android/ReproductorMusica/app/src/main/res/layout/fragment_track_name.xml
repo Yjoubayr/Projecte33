@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/negro_semi_transparente"
+    tools:context=".TrackName">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgruond_frame_create_track"
+        android:padding="45dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/PlayListName"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Put the name of your track"
+            android:fontFamily="@font/bold"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/PlayListName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="45dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:fontFamily="@font/regular"
+            />
+
+        <TextView
+            android:fontFamily="@font/bold"
+            android:id="@+id/Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PlayListName"
+            android:background="@drawable/btn"
+            android:layout_centerHorizontal="true"
+            android:padding="15dp"
+            android:text="Create"
+            android:textAlignment="center"
+            android:textColor="#171717" />
+    </RelativeLayout>
+
+
+</LinearLayout>
