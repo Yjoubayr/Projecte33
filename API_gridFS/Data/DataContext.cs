@@ -6,18 +6,20 @@ namespace gridfsapi {
     public class DataContext : DbContext
     {
         /// <summary>
-        /// Obté o estableix el nom de la base de dades.
+        /// Obtï¿½ o estableix el nom de la base de dades.
         /// </summary>
         public string DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Obté o estableix la cadena de connexió.
+        /// Obtï¿½ o estableix la cadena de connexiï¿½.
         /// </summary>
         public string ConnectionString { get; set; } = null!;
 
         /// <summary>
-        /// Obté o estableix el nom de la col·lecció d'àudio.
+        /// Obtï¿½ o estableix el nom de la colï¿½lecciï¿½ d'ï¿½udio.
         /// </summary>
         public string AudioCollectionName { get; set; } = null!;
+
+        public string AlbumCollectionName { get; set; } = null!;
     }
 }
