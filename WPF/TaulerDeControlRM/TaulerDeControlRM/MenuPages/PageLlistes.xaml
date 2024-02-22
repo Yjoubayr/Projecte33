@@ -34,7 +34,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="5">
                 <Label Content="Noms de cançons d'un album"></Label>
-                <Label Content="Llista:."></Label>
+                <Label Content="Album:."></Label>
                 <ComboBox Name="cmbNomArtistesAlbum" SelectionChanged="cmbNomArtistesCanconsAlbum_SelectionChanged" Width="50"></ComboBox>
                 <Button Content="Mostrar" Click="canconsLlista"></Button>
             </StackPanel>

@@ -82,6 +82,33 @@ namespace TaulerDeControlRM
                 }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="Exception"></exception>
+        private async void cmbNomArtistesCanconsAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cmbNomArtistesAlbum.Items.Clear();
+            string? Album = cmbNomArtistesAlbum.SelectedItem.ToString();
+            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
+            foreach (Album album in llistaAlbums)
+            {
+                if (album != null)
+                {
+                    if(album.Titol == Album)
+                    {
+                        cmbNomArtistesAlbum.Items.Add(album.Titol);
+                    }
+                }
+                else
+                {
+                    throw new Exception("No s'ha pogut carregar la llistad d'albums");
+                }
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
