@@ -14,6 +14,7 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         public Music? MusicObj {get; set;}
         
         public string NomGrup {get; set;}
+        public DateTime DataFundacioGrup {get; set;}
         [AllowNull]
         public Grup? GrupObj {get; set;}
         
