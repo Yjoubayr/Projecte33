@@ -8963,23 +8963,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fdily\\.nuget\\packages\\": {},
+    "C:\\Users\\guill\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (3)\\Reproductor_Musica-Marc\\API_GridFS\\gridfsapi\\gridfsapi.csproj",
+      "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\Projecte33\\API_gridFS\\gridfsapi.csproj",
       "projectName": "gridfsapi",
-      "projectPath": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (3)\\Reproductor_Musica-Marc\\API_GridFS\\gridfsapi\\gridfsapi.csproj",
-      "packagesPath": "C:\\Users\\fdily\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fdily\\Downloads\\Reproductor_Musica-Marc (3)\\Reproductor_Musica-Marc\\API_GridFS\\gridfsapi\\obj\\",
+      "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\Projecte33\\API_gridFS\\gridfsapi.csproj",
+      "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\Projecte33\\API_gridFS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\fdily\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\guill\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8988,7 +8988,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
