@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
     /**
      * Metode que ens permet mourens per avançar la canço
      * */
@@ -130,6 +131,7 @@ class MainActivity : AppCompatActivity() {
             changeSongName()
         }
     }
+
     /**
      * Metoque que ens ajuda a fer l'animacio de rotació de la imatge
      * */
@@ -153,6 +155,7 @@ class MainActivity : AppCompatActivity() {
     fun tornarDesDeFragment() {
         supportFragmentManager.popBackStack()
     }
+
     /**
      * Ens permet posar el nom de la canço que estem reproduïnt
      * */
@@ -246,7 +249,6 @@ class MainActivity : AppCompatActivity() {
 
             listOfSongsFragment.SongName = intent.getStringExtra("absolutepathsong").toString()
             val fragmentManager = supportFragmentManager
-
 
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
             val fadeIn: Animation = AlphaAnimation(0f, 1f)
