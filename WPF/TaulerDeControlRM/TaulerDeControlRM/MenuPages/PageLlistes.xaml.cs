@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
 using iText.Layout;
+using System.Net.Mail;
 
 namespace TaulerDeControlRM
 {
@@ -36,7 +37,7 @@ namespace TaulerDeControlRM
         }
         private async Task carregarValors()
         {
-            await Obtenirns();
+            await ObtenirCancons();
             await ObtenirLlistes();
         }
         private async Task ObtenirCancons()
@@ -132,6 +133,7 @@ namespace TaulerDeControlRM
                     cmbAnyAlbum.Items.Add(anyAlbum);
                 }
             }
+
         }
 
         /// <summary>
@@ -298,12 +300,37 @@ namespace TaulerDeControlRM
             {
                 MessageBox.Show("No has seleccionat cap canço");
             }
+
+
+
         }
 
-        private async void albumsLlista(object sender, RoutedEventArgs e)
+        private async void nomArtistesAlbum(object sender, RoutedEventArgs e)
         {
             EliminarListView();
-        }
 
+            ListView albumArtistNomListView = new ListView(); albumArtistNomListView.Name = "songListView";
+            albumArtistNomListView.Width = 786;
+
+            var gridView = new GridView();
+
+            var nomColumn = new GridViewColumn();
+            nomColumn.Width = 260;
+            nomColumn.Header = "Nom Artista";
+            nomColumn.DisplayMemberBinding = new Binding("Nom");
+
+            gridView.Columns.Add(nomColumn);
+
+            albumArtistNomListView.View = gridView;
+
+            spGlobal.Children.Add(albumArtistNomListView);
+
+            if (cmbTitolAlbum.SelectedItem != null && cmbAnyAlbum.SelectedItem != null)
+            {
+                string nomAlbum = cmbTitolAlbum.SelectedItem.ToString();
+                string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
+                // Album llista = await CA_Album.GetNomArtisteAlbumsAsyinc(nomAlbum, anyAlbum);
+            }
+        }
     }
 }
