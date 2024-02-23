@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Options;
+/*using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
@@ -103,4 +103,4 @@ public class TocarService
         _context.Tocar.Remove(tocar);
         await _context.SaveChangesAsync();
     }
-}
+}*/

@@ -39,6 +39,7 @@ class ListOfSongsFragment : Fragment() {
         }
 
     }
+
     @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

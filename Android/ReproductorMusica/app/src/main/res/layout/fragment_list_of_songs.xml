@@ -45,7 +45,6 @@
              android:layout_marginTop="45dp"
              android:padding="10dp"
              android:textAlignment="center"
-
              />
 
        <androidx.recyclerview.widget.RecyclerView

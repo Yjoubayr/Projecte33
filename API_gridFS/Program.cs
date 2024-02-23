@@ -7,20 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<DataContext>(
     builder.Configuration.GetSection("DataContext"));
 
-builder.Services.AddSingleton<IMongoClient>(provider =>
-{
-    var settings = provider.GetRequiredService<IOptions<DataContext>>().Value;
-    return new MongoClient(settings.ConnectionString);
-});
 
-builder.Services.AddSingleton<IMongoDatabase>(provider =>
-{
-    var mongoClient = provider.GetRequiredService<IMongoClient>();
-    var settings = provider.GetRequiredService<IOptions<DataContext>>().Value;
-    return mongoClient.GetDatabase(settings.DatabaseName);
-});
+
 
 builder.Services.AddSingleton<AudioService>();
+builder.Services.AddSingleton<AlbumService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
