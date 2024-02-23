@@ -42,36 +42,59 @@ public class AlbumController: ControllerBase
 
         return album;
     }
-       [HttpGet("GetAudio/{UID}")]
-     public async Task<IActionResult> GetAlbum(string UID)
+      [HttpGet("GetPortada/{UID}")]
+public async Task<IActionResult> GetPortada(string UID)
+{
+    try
     {
-        try
+        var album = await _albumService.GetByAlbumIDAsync(UID);
+
+        if (album == null)
         {
-            var album = await _albumService.GetByAlbumIDAsync(UID);
-
-            if (album == null)
-            {
-                return NotFound("No existe la canción");
-            }
-
-            var albumStream = await _albumService.GetAlbumStreamAsync(album.ImatgePortadaeId);
-            var albumStream2 = await _albumService.GetAlbumStreamAsync(album.ImatgeContraPortadaId);
-            if (albumStream == null)
-            {
-                return Conflict("No se ha podido recuperar el archivo de audio");
-            }
-              if (albumStream2 == null)
-            {
-                return Conflict("No se ha podido recuperar el archivo de audio");
-            }
-
-            return File(albumStream, "imatge/png", $"imatge_{UID}.png");
+            return NotFound("No existe la canción");
         }
-        catch (Exception ex)
+
+        var albumStream = await _albumService.GetAlbumStreamAsync(album.ImatgePortadaeId);
+    
+        if (albumStream == null)
         {
-            return StatusCode(500, new { Message = "Error interno del servidor.", Error = ex.Message });
-        }
+            return Conflict("No se ha podido recuperar el archivo de audio");
+        } 
+        
+        return  File(albumStream, "image/png", $"image_{UID}.png");
     }
+    catch (Exception ex)
+    {
+        return StatusCode(500, $"Internal server error: {ex.Message}");
+    }
+}
+[HttpGet("GetContraPortada/{UID}")]
+public async Task<IActionResult> GetContraPortada(string UID)
+{
+    try
+    {
+        var album = await _albumService.GetByAlbumIDAsync(UID);
+
+        if (album == null)
+        {
+            return NotFound("No existe la canción");
+        }
+
+        var albumStream = await _albumService.GetAlbumStreamAsync(album.ImatgeContraPortadaId);
+    
+        if (albumStream == null)
+        {
+            return Conflict("No se ha podido recuperar el archivo de audio");
+        } 
+        
+        return  File(albumStream, "image/png", $"image_{UID}.png");
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, $"Internal server error: {ex.Message}");
+    }
+}
+
      [HttpPost]
     public async Task<IActionResult> UploadAlbum([FromForm] AlbumUpload albumModel)
     {
@@ -120,7 +143,7 @@ public class AlbumController: ControllerBase
     public async Task<IActionResult> Update(string _ID, Album updatedAlbum)
     {
         var album = await _albumService.GetAsync(_ID);
-        if (album == null)
+        if (album is null)
         {
             return NotFound();
         }
@@ -129,10 +152,11 @@ public class AlbumController: ControllerBase
         {
             album.ImatgePortadaeId = updatedAlbum.ImatgePortadaeId;
         }
-        if(updatedAlbum.ImatgeContraPortadaId != null)
+         if(updatedAlbum.ImatgeContraPortadaId != null)
         {
             album.ImatgeContraPortadaId = updatedAlbum.ImatgeContraPortadaId;
         }
+        
         updatedAlbum._ID = album._ID;
         await _albumService.UpdateAsync(_ID, updatedAlbum);
         return NoContent();
