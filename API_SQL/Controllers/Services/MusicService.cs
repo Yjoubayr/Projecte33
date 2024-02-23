@@ -36,7 +36,7 @@ public class MusicService
     /// <returns>L'objecte del Music</returns>
     public async Task<Music?> GetAsync(string Nom) =>
         await _context.Musics
-                            .Include(x => x.LGrups)
+                            .Include(x => x.LAgrupes)
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
@@ -71,7 +71,7 @@ public class MusicService
     /// <param name="grupOriginal">L'objecte del Grup original que volem modificar</param>
     /// <param name="updatedGrup">L'objecte del Grup amb els elements modificats</param>
     /// <returns>Verificacio que el Grup s'ha eliminat correctament al llistat de Grups</returns>
-    public async Task UpdateGrupRemoveAsync(Grup grupOriginal, Grup updatedGrup) {
+    /*public async Task UpdateGrupRemoveAsync(Grup grupOriginal, Grup updatedGrup) {
         
         List<Music> lMusics = grupOriginal.LMusics.ToList<Music>();
 
@@ -80,7 +80,7 @@ public class MusicService
                 await RemoveGrupAsync(music.Nom, grupOriginal);
             }
         }
-    }
+    }*/
 
 
     /// <summary>
@@ -90,7 +90,7 @@ public class MusicService
     /// <param name="grupOriginal">L'objecte del Grup original que volem modificar</param>
     /// <param name="updatedGrup">L'objecte del Grup amb els elements modificats</param>
     /// <returns>Verificacio que el Grup s'ha afegit correctament al llistat de Grups</returns>
-    public async Task UpdateGrupAddAsync(Grup grupOriginal, Grup updatedGrup) {
+    /*public async Task UpdateGrupAddAsync(Grup grupOriginal, Grup updatedGrup) {
         
         List<Music> lMusics = updatedGrup.LMusics.ToList<Music>();
         
@@ -99,7 +99,7 @@ public class MusicService
                 await AddGrupAsync(music.Nom, grupOriginal);
             }
         }
-    }
+    }*/
 
 
     /// <summary>
@@ -108,7 +108,7 @@ public class MusicService
     /// <param name="nomMusic">Nom del Music a modificar</param>
     /// <param name="grup">L'objecte del Grup a afegir</param>
     /// <returns>Verificacio que el Grup s'ha afegit correctament al llistat de Grups</returns>
-    public async Task AddGrupAsync(string nomMusic, Grup grup) {
+    /*public async Task AddGrupAsync(string nomMusic, Grup grup) {
         Music? music = await GetAsync(nomMusic);
 
         if (music == null) {
@@ -118,11 +118,11 @@ public class MusicService
             await CreateAsync(music);
         }
 
-        music.LGrups.Add(grup);
+        music.LAgrupes.Add(grup);
         _context.Entry(music).State = EntityState.Modified;
         
         await _context.SaveChangesAsync();
-    }
+    }*/
 
 
     /// <summary>
@@ -131,14 +131,14 @@ public class MusicService
     /// <param name="nomMusic">Nom del Music a modificar</param>
     /// <param name="grup">L'objecte del Grup a eliminar</param>
     /// <returns>Verificacio que el Grup s'ha eliminat correctament al llistat de Grups</returns>
-    public async Task RemoveGrupAsync(string nomMusic, Grup grup) {
+    /*public async Task RemoveGrupAsync(string nomMusic, Grup grup) {
         Music? music = await GetAsync(nomMusic);
 
         music.LGrups.Remove(grup);
         _context.Entry(music).State = EntityState.Modified;
         
         await _context.SaveChangesAsync();
-    }
+    }*/
 
 
     /// <summary>
