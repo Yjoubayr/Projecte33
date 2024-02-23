@@ -83,6 +83,36 @@ namespace TaulerDeControlRM
             }
         }
 
+        private async void cmbTitolAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cmbTitolAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
+            foreach (Album album in llistaAlbums)
+            {
+                if (album != null)
+                {
+                    if (album.Titol == Album)
+                    {
+                        cmbTitolAlbum.Items.Add(album.Titol);
+                    }
+                }
+                else
+                {
+                    throw new Exception("No s'ha pogut carregar la llistad d'albums");
+                }
+            }
+
+            if (cmbTitolAlbum.SelectedItem != null)
+            {
+                cmbAnyAlbum.IsEnabled = true;
+            }
+            else
+            {
+                cmbAnyAlbum.IsEnabled = false;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
