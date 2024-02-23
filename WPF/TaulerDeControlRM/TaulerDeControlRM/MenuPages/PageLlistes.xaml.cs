@@ -305,7 +305,7 @@ namespace TaulerDeControlRM
 
         }
 
-        private async void nomArtistesAlbum(object sender, RoutedEventArgs e)
+        private async void ArtistesAlbum(object sender, RoutedEventArgs e)
         {
             EliminarListView();
 
