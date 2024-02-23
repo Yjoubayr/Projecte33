@@ -62,7 +62,36 @@ public class AlbumController : ControllerBase
                 return Conflict("No se ha podido recuperar el archivo de audio");
             }
 
-            return File(albumStream, "image/png", $"image_{albumName}_{year}.png");
+            return File(albumStream, "image/png", $"contraportada_{albumName}_{year}.png");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+
+    }
+
+
+    [HttpGet("GetPortada/{albumName}/{year}")]
+    public async Task<IActionResult> GetContraPortada(string albumName, int year)
+    {
+        try
+        {
+            var album = await _albumService.GetByAlbumNameAndYearAsync(albumName, year);
+
+            if (album == null)
+            {
+                return NotFound("No existe la canción");
+            }
+
+            var albumStream = await _albumService.GetAlbumStreamAsync(album.ImatgeContraPortadaId);
+
+            if (albumStream == null)
+            {
+                return Conflict("No se ha podido recuperar el archivo de audio");
+            }
+
+            return File(albumStream, "image/png", $"portada_{albumName}_{year}.png");
         }
         catch (Exception ex)
         {
@@ -133,7 +162,7 @@ public class AlbumController : ControllerBase
             var album = new Album
             {
                 UIDSong = albumModel.UIDSong,
-                Any = albumModel.Any
+                Any = albumModel.Any,
                 Genere = albumModel.Genere,
                 Titol = albumModel.Titol
             };
@@ -149,7 +178,6 @@ public class AlbumController : ControllerBase
                 Metadata = new BsonDocument("contentType", albumModel.ImatgePortada.ContentType)
 
             };
-
 
             using (var stream = albumModel.ImatgePortada.OpenReadStream())
             {
