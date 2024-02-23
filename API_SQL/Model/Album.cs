@@ -6,6 +6,6 @@ namespace dymj.ReproductorMusica.API_SQL.Model {
         public string Titol { get; set; }
         public int Any { get; set; }
         public string IDCanco { get; set; }
-        public Canco? CancoObj {get; set;}
+        public ICollection<Canco> LCancons { get; set; } = new List<Canco>();
     }
 }
