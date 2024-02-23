@@ -75,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Llist::class.java)
             this.startActivity(intent)
         }
+
+        findViewById<TextView>(R.id.albumbtn).setOnClickListener {
+            val intent = Intent(this, AlbumActivity::class.java)
+            this.startActivity(intent)
+        }
     }
 
     /**
