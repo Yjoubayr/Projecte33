@@ -294,7 +294,7 @@ namespace TaulerDeControlRM
             }
         }
 
-        private async void btMostrarArtistesAlbum(object sender, RoutedEventArgs e)
+        private async void BtMostrarArtistesAlbum(object sender, RoutedEventArgs e)
         {
             EliminarListView();
 
@@ -326,6 +326,14 @@ namespace TaulerDeControlRM
                  */
             }
         }
+
+        
+/*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
+{
+
+
+    return ;
+}*/
 
 
     }
