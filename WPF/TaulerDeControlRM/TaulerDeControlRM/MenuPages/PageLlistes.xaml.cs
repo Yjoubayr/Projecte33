@@ -82,6 +82,7 @@ namespace TaulerDeControlRM
                 }
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -246,9 +247,6 @@ namespace TaulerDeControlRM
             {
                 MessageBox.Show("No has seleccionat cap canço");
             }
-
-
-
         }
     }
 }
