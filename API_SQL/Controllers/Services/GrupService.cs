@@ -147,8 +147,8 @@ public class GrupService
     /// </summary>
     /// <param name="grup">L'objecte del grup de musica a eliminar.</param>
     /// <returns>Verificacio de que el grup de musica s'ha eliminat correctament.</returns>
-    /*public async Task RemoveAsync(Grup grup) {
+    public async Task RemoveAsync(Grup grup) {
         _context.Grups.Remove(grup);
         await _context.SaveChangesAsync();
-    }*/
+    }
 }
