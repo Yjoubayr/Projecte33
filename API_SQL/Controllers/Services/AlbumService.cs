@@ -1,4 +1,4 @@
-/*using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
@@ -60,33 +60,19 @@ public class AlbumService
     /// <param name="IDCanco">L'identificador de la canco de l'album a obtenir</param>
     /// <returns>L'objecte de l'Album trobat</returns>
     public async Task<Album?> GetAsync(string Titol, int Any, string IDCanco) {
-        List<Album> listAlbums = await _context.Albums
-                                    .Include(x => x.CancoObj)
-                                    .Where(x => x.Titol == Titol && x.Any == Any && x.IDCanco == IDCanco).ToListAsync();
+        Album listAlbums = await _context.Albums
+                                    .Include(x => x.LCancons)
+                                    .Where(x => x.Titol == Titol && x.Any == Any && x.IDCanco == IDCanco).FirstOrDefaultAsync();
 
-        if (listAlbums.Count == 0) {
-            return null;
-        } else {
-            return listAlbums[0];
-        }
-    }
-
-    /// <summary>
-    /// Obte tots els albums amb el mateix titol
-    /// </summary>
-    /// <param name="Titol">El titol del/s Album/s a obtenir</param>
-    /// <returns>El llistat d'Albums trobats</returns>
-    public async Task<List<Album>> GetAlbumsByTitolAsync(string Titol) {
-        List<Album> listAlbums = await _context.Albums
-                                    .Include(x => x.CancoObj)
-                                    .Where(x => x.Titol == Titol).ToListAsync();
-
-        if (listAlbums.Count == 0) {
+        if (listAlbums == null) {
             return null;
         } else {
             return listAlbums;
         }
     }
+
+
+
         
     /// <summary>
     /// Accedeix a la ruta /api/Album/getAlbum/{Titol}/{Any} dins de AlbumController per obtenir un album
@@ -102,22 +88,13 @@ public class AlbumService
     /// </summary>
     /// <param name="newAlbum">L'objecte de l'Album a crear</param>
     /// <returns>Verificacio de que l'Album s'ha creat correctament</returns>
-    public async Task CreateAsync(Album newAlbum) {
-        newAlbum.CancoObj = await _cancoService.GetAsync(newAlbum.IDCanco);
+    public async Task<Album> CreateAsync(Album newAlbum) {
+        if(newAlbum == null){
+            return null;
+        }
         await _context.Albums.AddAsync(newAlbum);
         await _context.SaveChangesAsync();
-    }
-
-    /// <summary>
-    /// Accedeix a la ruta /api/Album/putAlbum/{Titol}/{Any} dins de AlbumController per modificar un album
-    /// </summary>
-    /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
-    /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
-    public async Task UpdateAsync(Album updatedAlbum) {
-        updatedAlbum.CancoObj = await _cancoService.GetAsync(updatedAlbum.IDCanco);
-        var albumOriginal = await GetAsync(updatedAlbum.Titol, updatedAlbum.Any, updatedAlbum.IDCanco);
-        _context.Entry(albumOriginal).CurrentValues.SetValues(updatedAlbum);
-        await _context.SaveChangesAsync();
+        return newAlbum;
     }
 
     /// <summary>
@@ -129,4 +106,4 @@ public class AlbumService
         _context.Albums.Remove(album);
         await _context.SaveChangesAsync();
     }
-}*/
+}
