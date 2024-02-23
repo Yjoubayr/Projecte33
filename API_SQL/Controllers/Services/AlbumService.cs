@@ -62,7 +62,7 @@ public class AlbumService
     public async Task<Album?> GetAsync(string Titol, int Any, string IDCanco) {
         Album listAlbums = await _context.Albums
                                     .Include(x => x.LCancons)
-                                    .Where(x => x.Titol == Titol && x.Any == Any && x.IDCanco == IDCanco).FirstOrDefaultAsync();
+                                    .Where(x => x.Titol == Titol && x.Any == Any).FirstOrDefaultAsync();
 
         if (listAlbums == null) {
             return null;
