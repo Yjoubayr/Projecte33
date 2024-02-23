@@ -82,6 +82,52 @@ namespace TaulerDeControlRM
                 }
             }
         }
+
+        private async void cmbTitolAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cmbTitolAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
+            foreach (Album album in llistaAlbums)
+            {
+                if (album != null)
+                {
+                    if (album.Titol == Album)
+                    {
+                        cmbTitolAlbum.Items.Add(album.Titol);
+                    }
+                }
+                else
+                {
+                    throw new Exception("No s'ha pogut carregar la llistad d'albums");
+                }
+            }
+
+            if (cmbTitolAlbum.SelectedItem != null)
+            {
+                cmbAnyAlbum.IsEnabled = true;
+            }
+            else
+            {
+                cmbAnyAlbum.IsEnabled = false;
+            }
+        }
+
+        private async void cmbAnyAlbum_SelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            cmbAnyAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<string> llistaAnysAlbums = await CA_Album.GetAnysAlbumAsync(Album);
+            foreach (string anyAlbum in llistaAnysAlbums)
+            {
+                if (anyAlbum != null)
+                {
+                    cmbAnyAlbum.Items.Add(anyAlbum);
+                }
+            }
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -246,9 +292,6 @@ namespace TaulerDeControlRM
             {
                 MessageBox.Show("No has seleccionat cap canço");
             }
-
-
-
         }
     }
 }
