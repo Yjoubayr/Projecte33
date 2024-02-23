@@ -158,13 +158,13 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             List<Album> lAlbums = _albumService.GetAsync().Result.ToList<Album>();
 
             foreach (var albumAux in lAlbums) {
-                if (albumAux.Any == album.Any && albumAux.Titol == album.Titol && albumAux.IDCanco == album.IDCanco) {
+                if (albumAux.Any == album.Any && albumAux.Titol == album.Titol) {
                     return Conflict();
                 }
             }
 
             await _albumService.CreateAsync(album);
-            result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any, IDCanco = album.IDCanco }, album);
+            result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any}, album);
             
             return result;
         }
