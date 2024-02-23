@@ -1,4 +1,4 @@
-/*using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
@@ -39,7 +39,7 @@ public class GrupService
     /// <returns>Grup de musica corresponent al nom especificat.</returns>
     public async Task<Grup?> GetAsync(string Nom) =>
         await _context.Grups
-                            .Include(x => x.LMusics)
+                            .Include(x => x.LAgrupes)
                             .Include(x => x.LTocar)
                             .FirstOrDefaultAsync(x => x.Nom == Nom);
 
@@ -74,7 +74,7 @@ public class GrupService
     /// <param name="musicOriginal">L'objecte del Mus original que volem modificar</param>
     /// <param name="updatedMusic">L'objecte del Music amb els elements modificats</param>
     /// <returns>Verificacio que el Music s'ha eliminat correctament al llistat de Musics</returns>
-    public async Task UpdateMusicRemoveAsync(Music musicOriginal, Music updatedMusic) {
+    /*public async Task UpdateMusicRemoveAsync(Music musicOriginal, Music updatedMusic) {
         
         List<Grup> lGrups = musicOriginal.LGrups.ToList<Grup>();
 
@@ -83,7 +83,7 @@ public class GrupService
                 await RemoveMusicAsync(grup.Nom, musicOriginal);
             }
         }
-    }
+    }*/
 
     /// <summary>
     /// Accedeix a la ruta /api/Grup/updateMusic/{Nom} dins de GrupController per afegir un Music
@@ -92,7 +92,7 @@ public class GrupService
     /// <param name="musicOriginal">L'objecte del Music original que volem modificar</param>
     /// <param name="updatedMusic">L'objecte del Music amb els elements modificats</param>
     /// <returns>Verificacio que el Music s'ha afegit correctament al llistat de Musics</returns>
-    public async Task UpdateMusicAddAsync(Music musicOriginal, Music updatedMusic) {
+    /*public async Task UpdateMusicAddAsync(Music musicOriginal, Music updatedMusic) {
         
         List<Grup> lGrups = updatedMusic.LGrups.ToList<Grup>();
         
@@ -101,7 +101,7 @@ public class GrupService
                 await AddMusicAsync(grup.Nom, musicOriginal);
             }
         }
-    }
+    }*/
 
     /// <summary>
     /// Per afegir un Music de la llista de Musics d'un Grup
@@ -109,7 +109,7 @@ public class GrupService
     /// <param name="nomGrup">Nom del Grup al qual volem afegir el Music</param>
     /// <param name="music">L'objecte del Music a afegir</param>
     /// <returns>Verificacio de que el Music s'ha afegit correctament al llistat de Musics del Grup</returns>
-    public async Task AddMusicAsync(string nomGrup, Music music) {
+    /*public async Task AddMusicAsync(string nomGrup, Music music) {
         Grup? grup = await GetAsync(nomGrup);
         
         if (grup == null) {
@@ -123,7 +123,7 @@ public class GrupService
         _context.Entry(grup).State = EntityState.Modified;
         
         await _context.SaveChangesAsync();
-    }
+    }*/
 
     
     /// <summary>
@@ -132,14 +132,14 @@ public class GrupService
     /// <param name="nomGrup">Nom del Grup al qual volem eliminar el Music</param>
     /// <param name="music">L'objecte del Music a eliminar</param>
     /// <returns>Verificacio de que el Music s'ha eliminat correctament al llistat de Musics del Grup</returns>
-    public async Task RemoveMusicAsync(string nomGrup, Music music) {
+    /*public async Task RemoveMusicAsync(string nomGrup, Music music) {
         Grup? grup = await GetAsync(nomGrup);
 
         grup.LMusics.Remove(music);
         _context.Entry(grup).State = EntityState.Modified;
         
         await _context.SaveChangesAsync();
-    }
+    }*/
 
 
     /// <summary>
@@ -147,8 +147,8 @@ public class GrupService
     /// </summary>
     /// <param name="grup">L'objecte del grup de musica a eliminar.</param>
     /// <returns>Verificacio de que el grup de musica s'ha eliminat correctament.</returns>
-    public async Task RemoveAsync(Grup grup) {
+    /*public async Task RemoveAsync(Grup grup) {
         _context.Grups.Remove(grup);
         await _context.SaveChangesAsync();
-    }
-}*/
+    }*/
+}
