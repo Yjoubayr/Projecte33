@@ -328,12 +328,12 @@ namespace TaulerDeControlRM
         }
 
         
-/*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
-{
+        /*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
+        {
 
 
-    return ;
-}*/
+            return ;
+        }*/
 
 
     }
