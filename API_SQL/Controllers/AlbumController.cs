@@ -44,7 +44,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// </summary>
         /// <param name="Titol">Titol de l'Album del qual obtenir els anys</param>
         /// <returns>Llistat dels Anys d'un Album</returns>
-        [HttpGet("getAnysAlbum/{Titol}")]
+        /*[HttpGet("getAnysAlbum/{Titol}")]
         public async Task<ActionResult<IEnumerable<string>>> GetAlbumsByTitolAndAny(string Titol)
         {
             var album = await _albumService.GetAlbumsByTitolAsync(Titol);
@@ -57,7 +57,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             var anysAlbum = await _albumService.GetYearsByTitleAsync(Titol);
 
             return anysAlbum;
-        }
+        }*/
 
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="IDCanco">Identificador de la Canco de l'Album a modificar</param>
         /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
         /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
-        [HttpPut("putAlbum/{Titol}/{Any}/{IDCanco}")]
+        /*[HttpPut("putAlbum/{Titol}/{Any}/{IDCanco}")]
         public async Task<IActionResult> PutAlbum(string Titol, int Any, string IDCanco, Album updatedAlbum)
         {
             var album = await _albumService.GetAsync(Titol, Any, IDCanco);
@@ -142,7 +142,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _albumService.UpdateAsync(updatedAlbum);
 
             return NoContent();
-        }
+        }*/
 
         /// <summary>
         /// Accedeix a la ruta /api/Album/postAlbum per crear un album
