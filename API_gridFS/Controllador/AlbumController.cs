@@ -62,7 +62,7 @@ public class AlbumController : ControllerBase
                 return Conflict("No se ha podido recuperar el archivo de audio");
             }
 
-            return File(albumStream, "image/png", $"contraportada_{albumName}_{year}.png");
+            return File(albumStream, "image/png", $"portada_{albumName}_{year}.png");
         }
         catch (Exception ex)
         {
@@ -72,7 +72,7 @@ public class AlbumController : ControllerBase
     }
 
 
-    [HttpGet("GetPortada/{albumName}/{year}")]
+    [HttpGet("GetContraPortada/{albumName}/{year}")]
     public async Task<IActionResult> GetContraPortada(string albumName, int year)
     {
         try
@@ -83,7 +83,6 @@ public class AlbumController : ControllerBase
             {
                 return NotFound("No existe la canción");
             }
-
             var albumStream = await _albumService.GetAlbumStreamAsync(album.ImatgeContraPortadaId);
 
             if (albumStream == null)
@@ -91,7 +90,7 @@ public class AlbumController : ControllerBase
                 return Conflict("No se ha podido recuperar el archivo de audio");
             }
 
-            return File(albumStream, "image/png", $"portada_{albumName}_{year}.png");
+            return File(albumStream, "image/png", $"contraPortada_{albumName}_{year}.png");
         }
         catch (Exception ex)
         {
