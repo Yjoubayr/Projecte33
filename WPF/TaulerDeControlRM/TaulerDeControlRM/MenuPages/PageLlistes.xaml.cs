@@ -82,6 +82,52 @@ namespace TaulerDeControlRM
                 }
             }
         }
+
+        private async void cmbTitolAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cmbTitolAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
+            foreach (Album album in llistaAlbums)
+            {
+                if (album != null)
+                {
+                    if (album.Titol == Album)
+                    {
+                        cmbTitolAlbum.Items.Add(album.Titol);
+                    }
+                }
+                else
+                {
+                    throw new Exception("No s'ha pogut carregar la llistad d'albums");
+                }
+            }
+
+            if (cmbTitolAlbum.SelectedItem != null)
+            {
+                cmbAnyAlbum.IsEnabled = true;
+            }
+            else
+            {
+                cmbAnyAlbum.IsEnabled = false;
+            }
+        }
+
+        private async void cmbAnyAlbum_SelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            cmbAnyAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<string> llistaAnysAlbums = await CA_Album.GetAnysAlbumAsync(Album);
+            foreach (string anyAlbum in llistaAnysAlbums)
+            {
+                if (anyAlbum != null)
+                {
+                    cmbAnyAlbum.Items.Add(anyAlbum);
+                }
+            }
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -246,9 +292,49 @@ namespace TaulerDeControlRM
             {
                 MessageBox.Show("No has seleccionat cap canço");
             }
-
-
-
         }
+
+        private async void BtMostrarArtistesAlbum(object sender, RoutedEventArgs e)
+        {
+            EliminarListView();
+
+            ListView albumArtistNomListView = new ListView(); albumArtistNomListView.Name = "songListView";
+            albumArtistNomListView.Width = 786;
+
+            var gridView = new GridView();
+
+            var nomColumn = new GridViewColumn();
+            nomColumn.Width = 260;
+            nomColumn.Header = "Nom Artista";
+            nomColumn.DisplayMemberBinding = new Binding("Nom");
+
+            gridView.Columns.Add(nomColumn);
+
+            albumArtistNomListView.View = gridView;
+
+            spGlobal.Children.Add(albumArtistNomListView);
+
+            if (cmbTitolAlbum.SelectedItem != null && cmbAnyAlbum.SelectedItem != null)
+            {
+                string nomAlbum = cmbTitolAlbum.SelectedItem.ToString();
+                string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
+                /** Album album = await CA_Album.GetNomArtisteAlbumsAsyinc(nomAlbum, anyAlbum);
+                 * 
+                 * foreach (Music music in album."EN PROCECSO") {
+                 *      
+                 * }
+                 */
+            }
+        }
+
+        
+        /*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
+        {
+
+
+            return ;
+        }*/
+
+
     }
 }
