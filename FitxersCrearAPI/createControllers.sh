@@ -1,1 +1,1 @@
-dotnet aspnet-codegenerator controller -name CategoryController -async -api -m Category -dc DataContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name AgrupaController -async -api -m Agrupa -dc DataContext -outDir Controllers
