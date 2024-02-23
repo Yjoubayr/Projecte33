@@ -113,6 +113,21 @@ namespace TaulerDeControlRM
             }
         }
 
+        private async void cmbAnyAlbum_SelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            cmbAnyAlbum.Items.Clear();
+            string Album = cmbTitolAlbum.SelectedItem.ToString();
+            List<string> llistaAnysAlbums = await CA_Album.GetAnysAlbumAsync(Album);
+            foreach (string anyAlbum in llistaAnysAlbums)
+            {
+                if (anyAlbum != null)
+                {
+                    cmbAnyAlbum.Items.Add(anyAlbum);
+                }
+            }
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
