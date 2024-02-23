@@ -90,16 +90,16 @@ public class MusicService
     /// <param name="grupOriginal">L'objecte del Grup original que volem modificar</param>
     /// <param name="updatedGrup">L'objecte del Grup amb els elements modificats</param>
     /// <returns>Verificacio que el Grup s'ha afegit correctament al llistat de Grups</returns>
-    /*public async Task UpdateGrupAddAsync(Grup grupOriginal, Grup updatedGrup) {
+    // /*public async Task UpdateGrupAddAsync(Grup grupOriginal, Grup updatedGrup) {
         
-        List<Music> lMusics = updatedGrup.LMusics.ToList<Music>();
+    //     List<Music> lMusics = updatedGrup.LMusics.ToList<Music>();
         
-        foreach (var music in lMusics) {
-            if (!grupOriginal.LMusics.Contains(music)) {
-                await AddGrupAsync(music.Nom, grupOriginal);
-            }
-        }
-    }*/
+    //     foreach (var music in lMusics) {
+    //         if (!grupOriginal.LMusics.Contains(music)) {
+    //             await AddGrupAsync(music.Nom, grupOriginal);
+    //         }
+    //     }
+    // }*/
 
 
     /// <summary>
