@@ -37,7 +37,7 @@
                 <Label Content="Album:."></Label>
                 <ComboBox Name="cmbTitolAlbum" SelectionChanged="cmbTitolAlbum_SelectionChanged" Width="50"></ComboBox>
                 <ComboBox Name="cmbAnyAlbum" SelectionChanged="cmbAnyAlbum_SelectionChanged" Width="50"></ComboBox>
-                <Button Content="Mostrar" Click="btMostrarArtistesAlbum"></Button>
+                <Button Content="Mostrar" Click="BtMostrarArtistesAlbum"></Button>
             </StackPanel>
 
         </StackPanel>
