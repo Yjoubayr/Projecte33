@@ -1,4 +1,4 @@
-/*using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using dymj.ReproductorMusica.API_SQL.Model;
 using dymj.ReproductorMusica.API_SQL.Data;
@@ -24,7 +24,7 @@ public class MusicService
     /// <returns>El llistat d'artistes</returns>
     public async Task<List<Music>> GetAsync() {
         return await _context.Musics
-                            .Include(x => x.LGrups)
+                            .Include(x => x.LAgrupes)
                             .Include(x => x.LTocar)
                             .ToListAsync();
     }
@@ -150,4 +150,4 @@ public class MusicService
         _context.Musics.Remove(music);
         await _context.SaveChangesAsync();
     }
-}*/
+}
