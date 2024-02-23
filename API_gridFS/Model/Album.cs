@@ -13,8 +13,11 @@ namespace gridfsapi
         public string Titol { get; set; }
         public string Genere { get; set; }
         public string UIDSong { get; set; }
+
         [BsonRepresentation(BsonType.ObjectId)]
-        public ObjectId ImatgePortadaeId { get; set; }
+        public ObjectId ImatgePortadaId { get; set; }
+        
+        [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId ImatgeContraPortadaId { get; set; }
 
     }
