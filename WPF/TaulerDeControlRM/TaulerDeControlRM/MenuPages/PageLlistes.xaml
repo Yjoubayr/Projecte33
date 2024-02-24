@@ -36,8 +36,8 @@
                 <Label Content="Noms de cançons d'un album"></Label>
                 <Label Content="Album:."></Label>
                 <ComboBox Name="cmbTitolAlbum" SelectionChanged="cmbTitolAlbum_SelectionChanged" Width="50"></ComboBox>
-                <ComboBox Name="cmbAnyAlbum" SelectionChanged="cmbAnyAlbum_SelectionChanged" Width="50"></ComboBox>
-                <Button Content="Mostrar" Click="ArtistesAlbum"></Button>
+                <ComboBox Name="cmbAnyAlbum" SelectionChanged="cmbAnyAlbum_SelectionChanged" IsEnabled="False" Width="50"></ComboBox>
+                <Button Content="Mostrar" Click="BtMostrarArtistesAlbum"></Button>
             </StackPanel>
 
         </StackPanel>

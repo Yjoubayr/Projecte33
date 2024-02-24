@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -88,7 +88,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="Nom">Nom del Music a modificar</param>
         /// <param name="updatedMusic">Objecte del Music amb els elements modificats</param>
         /// <returns>Verificacio de que el Music s'ha modificat correctament</returns>
-        [HttpPut("updateMusic/{Nom}")]
+        /*[HttpPut("updateMusic/{Nom}")]
         public async Task<IActionResult> updateMusic(string Nom, Music updatedMusic)
         {
             // Considerar la possibilitat de comprovar previament si existeix el nom del music i retornar un error 409
@@ -108,7 +108,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _grupService.UpdateMusicRemoveAsync(music, updatedMusic);
             await _grupService.UpdateMusicAddAsync(music, updatedMusic);
             return Ok();
-        }
+        }*/
 
         /// <summary>
         /// Accedeix a la ruta /api/Grup/postGrup per crear un grup
@@ -122,7 +122,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             IActionResult result;
 
             
-            if (grup.LMusics != null) {
+            if (grup.LAgrupes != null) {
                 return BadRequest();
             }
 
@@ -158,4 +158,4 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return NoContent();
         }
     }
-}*/
+}
