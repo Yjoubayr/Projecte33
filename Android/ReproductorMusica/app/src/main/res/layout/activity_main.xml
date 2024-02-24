@@ -10,12 +10,15 @@
 
     <TextView
         android:id="@+id/albumbtn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:elevation="4dp"
+        android:background="@color/white"
         android:textSize="20dp"
         android:text="Open Album"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         />
 
     <RelativeLayout
@@ -125,11 +128,9 @@
                 android:id="@+id/BackSong"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="left|bottom"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/prevbtnsvg"
                 android:textColor="@color/white"
-                android:textAlignment="center"
                 />
             <TextView
                 android:id="@+id/startSong"
@@ -155,6 +156,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:id="@+id/fragment_container"
         />
 </RelativeLayout>

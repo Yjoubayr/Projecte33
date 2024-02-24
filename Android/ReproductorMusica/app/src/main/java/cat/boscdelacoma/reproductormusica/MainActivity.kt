@@ -15,13 +15,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
-import cat.boscdelacoma.reproductormusica.Apilogic.Canco
-import org.w3c.dom.Text
+import cat.boscdelacoma.reproductormusica.AlbumLogic.AlbumActivity
 import java.io.File
-import java.io.FileInputStream
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     private lateinit var botoPlayPause: TextView
@@ -42,6 +39,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        findViewById<TextView>(R.id.albumbtn).setOnClickListener {
+            Toast.makeText(this, "Click open album", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AlbumActivity::class.java)
+            startActivity(intent);
+        }
+
+
+
+
+
         val returnBtn : TextView = findViewById(R.id.back)
         passSing = findViewById(R.id.PassSong)
         prevSong = findViewById(R.id.BackSong)
@@ -76,10 +84,7 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
 
-        findViewById<TextView>(R.id.albumbtn).setOnClickListener {
-            val intent = Intent(this, AlbumActivity::class.java)
-            this.startActivity(intent)
-        }
+
     }
 
     /**
