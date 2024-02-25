@@ -1,6 +1,7 @@
 package cat.boscdelacoma.reproductormusica.AlbumLogic
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.R
@@ -13,11 +14,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Response
 import retrofit2.http.GET
 
+
+
+data class ImageInfo(
+    val timestamp: Long,
+    val machine: Long,
+    val pid: Int,
+    val increment: Long,
+    val creationTime: String
+)
+
 interface AlbumService {
-    @GET("albums")
+    @GET("Album")
     suspend fun getAlbums(): Response<List<Album>>
 }
-
 
 class AlbumActivity : AppCompatActivity() {
 
@@ -38,7 +48,7 @@ class AlbumActivity : AppCompatActivity() {
 
     private fun fetchData() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://localhost:5264/FitxersAPI/v1/Album/GetPortada/yossef/2024")
+            .baseUrl("http://192.168.0.16:5264/FitxersAPI/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -47,14 +57,16 @@ class AlbumActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.Main) {
             val response = service.getAlbums()
             if (response.isSuccessful) {
+                Log.d("AlbumActivity", "Response: ${response.body()}")
                 val albums = response.body()
+                Log.d("AlbumActivity", "Albums: $albums")
                 albums?.let {
                     adapter.setAlbums(it)
                 }
             } else {
                 // Manejar el error de la petición
+                Log.e("AlbumActivity", "Error: ${response.errorBody()}")
             }
         }
     }
 }
-

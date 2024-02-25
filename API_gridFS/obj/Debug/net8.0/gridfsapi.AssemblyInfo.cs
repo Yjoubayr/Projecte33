@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("gridfsapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a0e3bf92fe8e6e4d685ef96438e8d2df5e109d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+412d3cf1dc212b096d599f93dde876a702d261e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("gridfsapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gridfsapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

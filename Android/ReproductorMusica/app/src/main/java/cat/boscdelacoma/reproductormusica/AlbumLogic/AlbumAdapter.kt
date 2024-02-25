@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.boscdelacoma.reproductormusica.R
 
 data class Album(
-    val imageUrl: String,
-    val name: String,
-    val year: Int
+    val _ID: String,
+    val any: Int,
+    val titol: String,
+    val genere: String,
+    val uidSong: String,
+    val imatgePortadaId: ImageInfo,
+    val imatgeContraPortadaId: ImageInfo
 )
-
 class AlbumAdapter : RecyclerView.Adapter<AlbumViewHolder>() {
 
     private var albums: List<Album> = listOf()
@@ -41,8 +44,8 @@ class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     fun bind(album: Album) {
-        albumName.text = album.name
-        albumYear.text = album.year.toString()
+        albumName.text = album.titol
+        albumYear.text = album.any.toString()
 
     }
 }
