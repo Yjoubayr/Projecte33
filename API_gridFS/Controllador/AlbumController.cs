@@ -30,7 +30,7 @@ public class AlbumController : ControllerBase
         }
         return album;
     }
-    
+
     [HttpGet("{_ID}")]
     public async Task<ActionResult<Album>> GetSong(string _ID)
     {
@@ -63,13 +63,17 @@ public class AlbumController : ControllerBase
                 return Conflict("No se ha podido recuperar el archivo de audio");
             }
 
-            return File(albumStream, "image/png", $"portada_{albumName}_{year}.png");
+            // Devolver el archivo de imagen al cliente para su descarga
+            // return File(albumStream, "image/png", $"portada_{albumName}_{year}.png");
+
+            // Devolver el archivo de imagen al cliente para su visualización en el navegador
+            return File(albumStream, "image/png");
+
         }
         catch (Exception ex)
         {
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
-
     }
 
 
