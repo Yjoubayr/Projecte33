@@ -314,12 +314,24 @@ namespace TaulerDeControlRM
             {
                 string nomAlbum = cmbTitolAlbum.SelectedItem.ToString();
                 string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
-                /** Album album = await CA_Album.GetNomArtisteAlbumsAsyinc(nomAlbum, anyAlbum);
-                 * 
-                 * foreach (Music music in album."EN PROCECSO") {
-                 *      
-                 * }
+
+                // 1r.Comprobar que album existeix.
+                List<Album> albums = await CA_Album.GetAlbumsByTitolAndAnyAsync(nomAlbum, anyAlbum);
+
+                foreach (Album album in albums)
+                {
+                    
+                }
+
+                /*
+                 * 2n. Mirar cançons que hi han dins de l'album (Array bidireccional)
+                 * A = "Existeix?" -> true / fals
+                 * A[C] = C ------ "Array de cançons ja que poden haber varies dins d'un album"
+                 * C[Ar] = Ar ------ "També serà array de cançons ja que aquestes tenen varis artistes"
+                 * Ar[Ar] = Ar.algo ------ "Menys data naixament"
                  */
+
+                /*foreach (Music music in album.) {  }*/
             }
         }
 
