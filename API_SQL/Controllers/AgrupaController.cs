@@ -47,7 +47,6 @@ namespace API_SQL.Controllers
             var agrupa = new Agrupa();
             agrupa.NomGrup = NomGrup;
             agrupa.DataFundacioGrup = DataFundacioGrup;
-            agrupa.NomMusic = NomMusic;
             agrupa.DataIncorporacio = DataIncorporacio;
             _context.Agrupa.Add(agrupa);
             await _context.SaveChangesAsync();
