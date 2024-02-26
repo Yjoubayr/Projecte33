@@ -115,7 +115,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            return albums;
+            return Ok(albums);
         }
 
         /// <summary>
@@ -126,23 +126,22 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="IDCanco">Identificador de la Canco de l'Album a modificar</param>
         /// <param name="updatedAlbum">L'objecte de l'Album a modificar</param>
         /// <returns>Verificacio de que l'Album s'ha modificat correctament</returns>
-        /*[HttpPut("putAlbum/{Titol}/{Any}/{IDCanco}")]
-        public async Task<IActionResult> PutAlbum(string Titol, int Any, string IDCanco, Album updatedAlbum)
+        [HttpPut("putAlbum/{Titol}/{Any}")]
+        public async Task<IActionResult> PutAlbum(string Titol, int Any, Album updatedAlbum)
         {
-            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
+            var album = await _albumService.GetAsync(Titol, Any);
 
-            if (album == null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any || IDCanco != updatedAlbum.IDCanco) {
+            if (album == null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any) {
                 return NotFound();
             }
 
             updatedAlbum.Titol = album.Titol;
             updatedAlbum.Any = album.Any;
-            updatedAlbum.IDCanco = album.IDCanco;
 
-            await _albumService.UpdateAsync(updatedAlbum);
+            //await _albumService.UpdateAsync(updatedAlbum);
 
             return NoContent();
-        }*/
+        }
 
         /// <summary>
         /// Accedeix a la ruta /api/Album/postAlbum per crear un album
@@ -152,21 +151,27 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPost("postAlbum")]
         public async Task<IActionResult> PostAlbum(Album album)
         {
-            // Considerar la possibilitat de comprovar previament si existeix el nom de l'album i retornar un error 409
-            IActionResult result;
+            try{
+                // Considerar la possibilitat de comprovar previament si existeix el nom de l'album i retornar un error 409
+                IActionResult result;
 
-            List<Album> lAlbums = _albumService.GetAsync().Result.ToList<Album>();
+                List<Album> lAlbums = _albumService.GetAsync().Result.ToList<Album>();
 
-            foreach (var albumAux in lAlbums) {
-                if (albumAux.Any == album.Any && albumAux.Titol == album.Titol && albumAux.IDCanco == album.IDCanco) {
-                    return Conflict();
+                foreach (var albumAux in lAlbums) {
+                    if (albumAux.Any == album.Any && albumAux.Titol == album.Titol) {
+                        return Conflict();
+                    }
                 }
+
+                await _albumService.CreateAsync(album);
+                result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any}, album);
+            
+            return StatusCode(201);
+            }
+            catch(Exception e){
+                return BadRequest(e.Message);
             }
 
-            await _albumService.CreateAsync(album);
-            result = CreatedAtAction("GetAlbum", new { Titol = album.Titol, Any = album.Any, IDCanco = album.IDCanco }, album);
-            
-            return result;
         }
 
         /// <summary>

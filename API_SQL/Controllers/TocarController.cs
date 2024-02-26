@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -65,6 +65,19 @@ namespace API_SQL.Controllers
 
             return tocar;
         }
+        
+        /*[HttpGet("getTocarByCanco/{IDCanco}")]
+        public async Task<ActionResult<IEnumerable<Tocar>>> GetTocarByCanco(string IDCanco)
+        {
+            var tocar = await _tocarService.GetAsyncByCanco(IDCanco);
+
+            if (tocar == null)
+            {
+                return NotFound();
+            }
+
+            return tocar;
+        }*/
 
         /// <summary>
         /// Accedeix a la ruta /api/Tocar/postTocar per crear un registre de la classe Tocar
@@ -127,4 +140,4 @@ namespace API_SQL.Controllers
         }
 
     }
-}*/
+}
