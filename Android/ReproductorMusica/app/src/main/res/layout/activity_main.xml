@@ -6,13 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@color/background"
-    >
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/albumbtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:elevation="4dp"
+        android:background="@color/white"
+        android:textSize="20dp"
+        android:text="Open Album"
+        android:textColor="@color/black"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="40dp"
-        >
+        android:padding="40dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +50,7 @@
 
 
                 />
+
             <TextView
                 android:id="@+id/back"
                 android:layout_width="50dp"
@@ -114,11 +128,9 @@
                 android:id="@+id/BackSong"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="left|bottom"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/prevbtnsvg"
                 android:textColor="@color/white"
-                android:textAlignment="center"
                 />
             <TextView
                 android:id="@+id/startSong"
@@ -136,13 +148,15 @@
                 android:layout_height="40dp"
                 android:textColor="@color/white"
                 android:layout_gravity="right|bottom"
-
                 />
+
         </FrameLayout>
     </RelativeLayout>
+
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:id="@+id/fragment_container"
         />
 </RelativeLayout>
