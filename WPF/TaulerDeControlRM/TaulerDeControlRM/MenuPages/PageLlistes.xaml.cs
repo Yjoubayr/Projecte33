@@ -188,10 +188,6 @@ namespace TaulerDeControlRM
             {
                 throw new Exception("No s'ha fet correctament la petico a l'api" + ex );
             }
-            /*Canco canco = new Canco();
-             canco.Nom = "Canço1";
-             canco.Any = 2021;
-             songListView.Items.Add(canco);*/
         }
         private void EliminarListView()
         {
