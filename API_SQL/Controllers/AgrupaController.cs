@@ -41,6 +41,18 @@ namespace API_SQL.Controllers
 
             return agrupa;
         }
+        [HttpPost("AfegirGrupMusic/{NomGrup}/{DataFundacioGrup}/{NomMusic}/{DataIncorporacio}")]
+        public async Task<IActionResult> AfegirGrupMusic(string NomGrup, DateTime DataFundacioGrup, string NomMusic, DateTime DataIncorporacio)
+        {
+            var agrupa = new Agrupa();
+            agrupa.NomGrup = NomGrup;
+            agrupa.DataFundacioGrup = DataFundacioGrup;
+            agrupa.NomMusic = NomMusic;
+            agrupa.DataIncorporacio = DataIncorporacio;
+            _context.Agrupa.Add(agrupa);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
         // PUT: api/Agrupa/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
