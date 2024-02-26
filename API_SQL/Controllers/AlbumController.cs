@@ -115,7 +115,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
                 return NotFound();
             }
 
-            return albums;
+            return Ok(albums);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpPut("putAlbum/{Titol}/{Any}")]
         public async Task<IActionResult> PutAlbum(string Titol, int Any, Album updatedAlbum)
         {
-            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
+            var album = await _albumService.GetAsync(Titol, Any);
 
             if (album == null || Titol != updatedAlbum.Titol || Any != updatedAlbum.Any) {
                 return NotFound();
@@ -138,7 +138,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             updatedAlbum.Titol = album.Titol;
             updatedAlbum.Any = album.Any;
 
-            await _albumService.UpdateAsync(updatedAlbum);
+            //await _albumService.UpdateAsync(updatedAlbum);
 
             return NoContent();
         }
