@@ -118,7 +118,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             IActionResult result;
 
             if (music.LAgrupes != null) {
-                return BadRequest();
+                return StatusCode(401);
             } 
 
             List<Music> lMusics = _musicService.GetAsync().Result.ToList<Music>();
