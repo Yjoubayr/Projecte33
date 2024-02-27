@@ -44,6 +44,9 @@ namespace API_SQL.Controllers
         [HttpPost("AfegirGrupMusic")]
     public async Task<IActionResult> AfegirGrupMusic(Agrupa agrupa)
     {
+        if(agrupa.DataIncorporacio == null){
+            agrupa.DataIncorporacio =  agrupa.DataFundacioGrup;
+        }
         _context.Agrupa.Add(agrupa);
         return Ok(await _context.SaveChangesAsync());
     }
