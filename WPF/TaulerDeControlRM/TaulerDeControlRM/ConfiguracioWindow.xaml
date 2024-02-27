@@ -1,0 +1,37 @@
+﻿<Window x:Class="TaulerDeControlRM.ConfiguracioWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaulerDeControlRM"
+        mc:Ignorable="d"
+        Title="ConfiguracioWindow" Height="auto" Width="auto">
+    <Grid Margin="40" >
+
+        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" TextWrapping="Wrap" Text="Configuració" VerticalAlignment="Top" FontSize="20"/>
+        <!-- IP -->
+    <!--
+        <TextBlock HorizontalAlignment="Center" Margin="10,50,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="ipTextBox" HorizontalAlignment="Center" Height="23" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    -->
+
+        
+        <!-- port-->
+    <!--
+        <TextBlock HorizontalAlignment="Center" Margin="10,120,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="portTextBox" HorizontalAlignment="Center" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    -->
+        
+        <!-- ListBox para mostrar las opciones de base de datos -->
+        <ListBox x:Name="databaseListBox" HorizontalAlignment="Center" Margin="10,200,0,0" VerticalAlignment="Top" Width="209" Height="141">
+            <!-- Definición de los elementos en el ListBox -->
+            <ListBoxItem HorizontalAlignment="Center">PostgreSQL</ListBoxItem>
+            <ListBoxItem HorizontalAlignment="Center">MySQL</ListBoxItem>
+            <ListBoxItem HorizontalAlignment="Center">Microsoft SQL Server</ListBoxItem>
+        </ListBox>
+
+        <Button x:Name="guardarButton" Content="Guardar" HorizontalAlignment="Center" Margin="10,360,0,0" VerticalAlignment="Top" Width="75" Click="guardarButton_Click"/>
+
+
+    </Grid>
+</Window>

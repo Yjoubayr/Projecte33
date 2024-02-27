@@ -61,7 +61,7 @@ class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bindImagePortada(){
         // Cargar la imagen utilizando Picasso
         Glide.with(itemView)
-            .load("http://192.168.0.16:5264/FitxersAPI/v1/Album/GetPortada/${album.titol}/${album.any.toString()}")
+            .load("http://172.23.3.204:5264/FitxersAPI/v1/Album/GetPortada/${album.titol}/${album.any.toString()}")
             .placeholder(R.drawable.btn_white) // Placeholder opcional
             .error(R.drawable.btn_exit) // Imagen de error opcional
             .into(albumPortada)
@@ -70,7 +70,7 @@ class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bindImageContraPortada() {
         // Cargar la imagen utilizando Picasso
         Glide.with(itemView)
-            .load("http://192.168.0.16:5264/FitxersAPI/v1/Album/GetContraPortada/${album.titol}/${album.any}")
+            .load("http://172.23.3.204:5264/FitxersAPI/v1/Album/GetContraPortada/${album.titol}/${album.any}")
             .placeholder(R.drawable.btn_white) // Placeholder opcional
             .error(R.drawable.btn_exit) // Imagen de error opcional
             .into(albumContraPortada)
