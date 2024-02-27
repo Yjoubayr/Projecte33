@@ -74,6 +74,21 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         }
 
         /// <summary>
+        /// Get album by titol and any as an asynchronous operation.
+        /// </summary>
+        /// <param name="Titol">The titol.</param>
+        /// <param name="Any">Any.</param>
+        /// <returns>A Task&lt;Album&gt; representing the asynchronous operation.</returns>
+        public static async Task<Album> GetAlbumByTitolAndAnyAsync(string Titol, string Any)
+        {
+            string apiUrl = CA.baseApi + controller + "getAlbumByTitolAndAny/" + Titol + "/" + Any;
+
+            string result = await CA.GetDataFromApiAsync(apiUrl);
+            var data = JsonConvert.DeserializeObject<Album>(result);
+            return data;
+        }
+
+        /// <summary>
         /// Fer una consulta a l'API per inserir un Album
         /// </summary>
         /// <param name="a">L'objecte de l'Album a inserir</param>

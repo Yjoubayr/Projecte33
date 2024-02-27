@@ -316,12 +316,16 @@ namespace TaulerDeControlRM
                 string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
 
                 // 1r.Comprobar que album existeix.
-                List<Album> albums = await CA_Album.GetAlbumsByTitolAndAnyAsync(nomAlbum, anyAlbum);
+                /*List<Album> albums = await CA_Album.GetAlbumsByTitolAndAnyAsync(nomAlbum, anyAlbum);
 
                 foreach (Album album in albums)
                 {
                     
-                }
+                }*/
+
+                Album album = await CA_Album.GetAlbumByTitolAndAnyAsync(nomAlbum, anyAlbum);
+
+
 
                 /*
                  * 2n. Mirar cançons que hi han dins de l'album (Array bidireccional)
