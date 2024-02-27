@@ -48,7 +48,7 @@ class AlbumActivity : AppCompatActivity() {
 
     private fun fetchData() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.0.16:5264/FitxersAPI/v1/")
+            .baseUrl("http://172.23.3.204:5264/FitxersAPI/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

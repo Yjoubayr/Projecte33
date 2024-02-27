@@ -54,5 +54,13 @@ namespace TaulerDeControlRM
                 //mainFrame.NavigationService.Navigate(selectedPage);
             }
         }
+
+        private void Config_Click(object sender, RoutedEventArgs e)
+        {
+            // show dialog configuration
+            ConfiguracioWindow config = new ConfiguracioWindow();
+            config.ShowDialog();
+
+        }
     }
 }
