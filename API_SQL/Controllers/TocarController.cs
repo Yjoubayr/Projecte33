@@ -66,7 +66,8 @@ namespace API_SQL.Controllers
             return tocar;
         }
         
-        /*[HttpGet("getTocarByCanco/{IDCanco}")]
+
+        [HttpGet("getTocarByCanco/{IDCanco}")]
         public async Task<ActionResult<IEnumerable<Tocar>>> GetTocarByCanco(string IDCanco)
         {
             var tocar = await _tocarService.GetAsyncByCanco(IDCanco);
@@ -77,7 +78,7 @@ namespace API_SQL.Controllers
             }
 
             return tocar;
-        }*/
+        }
 
         /// <summary>
         /// Accedeix a la ruta /api/Tocar/postTocar per crear un registre de la classe Tocar
@@ -106,11 +107,11 @@ namespace API_SQL.Controllers
                 return Conflict();
             }
 
-            if (_cancoService.GetAsync(tocar.IDCanco) == null
+            /*if (_cancoService.GetAsync(tocar.IDCanco) == null
             || _musicService.GetAsync(tocar.NomMusic) == null
             || _instrumentService.GetAsync(tocar.NomInstrument) == null){
                 return NotFound();
-            }
+            }*/
 
             await _tocarService.CreateAsync(tocar);
             result = CreatedAtAction("GetTocar", new { IDCanco = tocar.IDCanco, NomMusic = tocar.NomMusic, NomGrup = tocar.NomGrup, NomInstrument = tocar.NomInstrument }, tocar);
