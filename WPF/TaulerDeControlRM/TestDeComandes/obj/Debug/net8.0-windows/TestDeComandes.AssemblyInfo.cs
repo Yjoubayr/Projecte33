@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestDeComandes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d82cee804227662e69b5a0cd2e04e66466b03098")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3633334c3fce9dbc6ccc1b59893c5fcedc32431")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestDeComandes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestDeComandes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
