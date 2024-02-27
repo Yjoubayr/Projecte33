@@ -37,17 +37,22 @@ public class CancoService
     /// <param name="IDCanco">Identificador de la Canco a obtenir</param>
     /// <returns>L'objecte de la Canco</returns>
     public async Task<Canco?> GetAsync(string IDCanco) {
-        List<Canco> listCancons = await _context.Cancons
+        return await _context.Cancons
+        .Where(c => c.IDCanco == IDCanco)
+        .FirstOrDefaultAsync();
+        /*Canco listCancons = await _context.Cancons
                                     .Include(x => x.LExtensions)
                                     .Include(x => x.LListes)
                                     .Include(x => x.LTocar)
-                                    .Where(x => x.IDCanco == IDCanco).ToListAsync();
+                                    .Where(x => x.IDCanco == IDCanco).FirstOrDefaultAsync();*/
 
-        if (listCancons.Count == 0) {
+        /*if (listCancons.Count == 0) {
             return null;
         } else {
             return listCancons[0];
-        }
+        }*/
+        //return listCancons;
+
     }
 
     /// <summary>
