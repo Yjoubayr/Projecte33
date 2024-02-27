@@ -13,11 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using System.Windows;
+using System.Configuration;
+using System.Net.Http;
 
 namespace TaulerDeControlRM
 {
     public partial class ConfiguracioWindow : Window
     {
+
+        public static string baseApi = ConfigurationManager.AppSettings["baseApi"];
+        private static readonly HttpClient _httpClient = new HttpClient();
+
+
         public ConfiguracioWindow()
         {
             InitializeComponent();
@@ -34,13 +41,47 @@ namespace TaulerDeControlRM
             // string port = portTextBox.Text;
             string selectedDatabase = (databaseListBox.SelectedItem as ListBoxItem)?.Content.ToString();
 
+            if (selectedDatabase == null)
+            {
+                MessageBox.Show("Por favor, selecciona una base de datos");
+                return;
+            }
+            if (selectedDatabase == "PostgreSQL")
+            {
+                changeDockerApi("PostgreSQL");
 
+            }
+            else if (selectedDatabase == "MySQL")
+            {
+                changeDockerApi("MySQL");
+
+            }
+            else if (selectedDatabase == "Microsoft SQL Server")
+            {
+                changeDockerApi("MicrosoftSQLServer");
+
+            }
 
             // Ejemplo de acción: mostrar un mensaje con la configuración seleccionada
             MessageBox.Show($"Base de datos seleccionada: {selectedDatabase}");
         }
 
+        private async Task<string?> changeDockerApi(string database)
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(baseApi+"/"+database);
 
+            if (response.IsSuccessStatusCode)
+            {
+                // Read the response content
+                return await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                // Handle the error
+                // MessageBox.Show($"Error: " + response.ReasonPhrase);
+                return null;
+            }
+        }
     }
 }
 
