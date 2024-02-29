@@ -58,7 +58,7 @@ namespace TaulerDeControlRM
                     {
                         if (selectedDatabase == null)
                         {
-                            MessageBox.Show("Siusplau, escull una base de dades");
+                            MessageBox.Show("Plisplau, escull una base de dades");
                             return;
                         }
                         else if (selectedDatabase == "PostgreSQL")
