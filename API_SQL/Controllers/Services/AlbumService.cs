@@ -28,6 +28,21 @@ public class AlbumService
         return await _context.Albums.ToListAsync();
     }
     
+public async Task<Album> AfegirAlbumSong(string titolAlbum, int anyAlbum, string idCanco) {
+    try{
+        Album album = await GetAsyncAlbum(titolAlbum, anyAlbum);
+        if(album == null){
+            return null;
+        } else {
+            album.LCancons.Add(await _cancoService.GetAsync(idCanco));
+            return album;
+        }
+    }catch(Exception e){
+        return null;
+
+    }
+    }
+
     /// <summary>
     /// Accedeix a la ruta /api/Album/getAnysAlbum/{Titol} dins de AlbumController per obtenir tots els albums
     /// </summary>
@@ -59,7 +74,7 @@ public class AlbumService
     /// <param name="Any">L'any de publicacio de l'album a obtenir</param>
     /// <param name="IDCanco">L'identificador de la canco de l'album a obtenir</param>
     /// <returns>L'objecte de l'Album trobat</returns>
-    public async Task<Album?> GetAsync(string Titol, int Any, string IDCanco) {
+    public async Task<Album?> GetAsync(string Titol, int Any) {
         Album listAlbums = await _context.Albums
                                     .Include(x => x.LCancons)
                                     .Where(x => x.Titol == Titol && x.Any == Any).FirstOrDefaultAsync();
@@ -80,7 +95,7 @@ public class AlbumService
     /// <param name="Titol">El titol de l'album a obtenir</param>
     /// <param name="Any">L'any de publicacio de l'album a obtenir</param>
     /// <returns>L'objecte de l'Album trobat</returns>
-    public async Task<Album> GetAsync(string Titol, int Any) {
+    public async Task<Album> GetAsyncAlbum(string Titol, int Any) {
         
         var albumTrobat = await _context.Albums.Where(x => x.Titol == Titol && x.Any == Any).FirstOrDefaultAsync();
         return albumTrobat;
