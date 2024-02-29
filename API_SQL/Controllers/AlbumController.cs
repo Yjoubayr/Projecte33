@@ -67,10 +67,10 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         /// <param name="Any">Any de l'Album a consultar</param>
         /// <param name="IDCanco">Identificador de la Canco de l'Album a consultar</param>
         /// <returns>L'objecte de l'Album consultat</returns>
-        [HttpGet("getAlbum/{Titol}/{Any}/{IDCanco}")]
-        public async Task<ActionResult<Album>> GetAlbum(string Titol, int Any, string IDCanco)
+        [HttpGet("getAlbum/{Titol}/{Any}")]
+        public async Task<ActionResult<Album>> GetAlbum(string Titol, int Any)
         {
-            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
+            var album = await _albumService.GetAsync(Titol, Any);
 
             if (album == null)
             {
@@ -184,7 +184,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         [HttpDelete("deleteAlbum/{Titol}/{Any}/{IDCanco}")]
         public async Task<IActionResult> DeleteAlbum(string Titol, int Any, string IDCanco)
         {
-            var album = await _albumService.GetAsync(Titol, Any, IDCanco);
+            var album = await _albumService.GetAsync(Titol, Any);
             
             if (album == null)
             {
@@ -194,6 +194,16 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             await _albumService.RemoveAsync(album);
 
             return NoContent();
+        }
+
+        [HttpPut("AfegirSongAlbum")]
+        public async Task<IActionResult> AfegirSongAlbum(string Titol, int Any, string IDCanco)
+        {
+            var album = await _albumService.AfegirAlbumSong(Titol, Any, IDCanco);
+            if (album == null)
+            {
+                return NotFound();
+            }return StatusCode(201);
         }
     }
 }
