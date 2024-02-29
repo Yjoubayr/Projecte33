@@ -12,7 +12,7 @@ namespace ReproductorMusicaComponentLibrary.Classes
     {
         private const string ConfigFilePath = "config.json";
 
-        public static AppConfig ObtenerConfiguracion()
+        public static AppConfig ObtenirConfiguracio()
         {
             try
             {
@@ -28,6 +28,19 @@ namespace ReproductorMusicaComponentLibrary.Classes
             }
 
             return new AppConfig { PrimeraExecucio = true };
+        }
+
+        public static void ActualitzarConfiguracio(AppConfig config)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(config);
+                File.WriteAllText(ConfigFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualitzar la configuració: {ex.Message}");
+            }
         }
     }
 }
