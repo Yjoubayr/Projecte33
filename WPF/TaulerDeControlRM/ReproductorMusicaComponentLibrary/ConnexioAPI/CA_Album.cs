@@ -73,18 +73,12 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
             return data;
         }
 
-        /// <summary>
-        /// Get album by titol and any as an asynchronous operation.
-        /// </summary>
-        /// <param name="Titol">The titol.</param>
-        /// <param name="Any">Any.</param>
-        /// <returns>A Task&lt;Album&gt; representing the asynchronous operation.</returns>
-        public static async Task<Album> GetAlbumByTitolAndAnyAsync(string Titol, string Any)
+        public static async Task<List<Tocar>> GetNomArtistesByAlbumAsync(string Titol, string Any)
         {
             string apiUrl = CA.baseApi + controller + "getAlbumByTitolAndAny/" + Titol + "/" + Any;
 
             string result = await CA.GetDataFromApiAsync(apiUrl);
-            var data = JsonConvert.DeserializeObject<Album>(result);
+            var data = JsonConvert.DeserializeObject<List<Tocar>>(result);
             return data;
         }
 
