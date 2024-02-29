@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.Classes
 {
-    internal class DockerManager
+    public class DockerManager
     {
         public static void DescarregarMicrosoftSqlServer()
         {

@@ -25,7 +25,6 @@ namespace TaulerDeControlRM
         public static string baseApi = ConfigurationManager.AppSettings["baseApi"];
         private static readonly HttpClient _httpClient = new HttpClient();
 
-
         public ConfiguracioWindow()
         {
             InitializeComponent();
@@ -41,30 +40,55 @@ namespace TaulerDeControlRM
             // string ip = ipTextBox.Text;
             // string port = portTextBox.Text;
             string selectedDatabase = (databaseListBox.SelectedItem as ListBoxItem)?.Content.ToString();
+            var ipDocker = ipTextBox.ToString();
+            var portDocker = portTextBox.ToString();
+            var nomDocker = nomTextBox.ToString();
+            var passwdDocker = passwdTextBox.ToString();
 
-            if (selectedDatabase == null)
+            try
             {
-                MessageBox.Show("Por favor, selecciona una base de datos");
-                return;
+                if (!string.IsNullOrEmpty(nomDocker) && !string.IsNullOrEmpty(passwdDocker))
+                {
+                    if (passwdDocker.Length < 10)
+                    {
+                        MessageBox.Show($"És obligat posar 10 caracters o més a la contrasenya");
+                        return;
+                    }
+                    else
+                    {
+                        if (selectedDatabase == null)
+                        {
+                            MessageBox.Show("Siusplau, escull una base de dades");
+                            return;
+                        }
+                        else if (selectedDatabase == "PostgreSQL")
+                        {
+                            changeDockerApi("PostgreSQL");
+                        }
+                        else if (selectedDatabase == "MySQL")
+                        {
+                            changeDockerApi("MySQL");
+
+                        }
+                        else if (selectedDatabase == "Microsoft SQL Server")
+                        {
+                            changeDockerApi("MicrosoftSQLServer");
+
+                            DockerManager.DescarregarMicrosoftSqlServer();
+
+                            DockerManager.ExecutarContenidorMicrosoftSqlServer(nomDocker, passwdDocker);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"És obligat posar un nom i una contrasenya");
+                }
             }
-            if (selectedDatabase == "PostgreSQL")
+            catch(Exception ex)
             {
-                changeDockerApi("PostgreSQL");
+                
             }
-            else if (selectedDatabase == "MySQL")
-            {
-                changeDockerApi("MySQL");
-
-            }
-            else if (selectedDatabase == "Microsoft SQL Server")
-            {
-                changeDockerApi("MicrosoftSQLServer");
-
-
-            }
-
-            // Ejemplo de acción: mostrar un mensaje con la configuración seleccionada
-            MessageBox.Show($"Base de datos seleccionada: {selectedDatabase}");
         }
 
         private async Task<string?> changeDockerApi(string database)

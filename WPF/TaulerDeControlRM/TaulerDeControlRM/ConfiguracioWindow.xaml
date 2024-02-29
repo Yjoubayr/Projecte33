@@ -7,31 +7,35 @@
         mc:Ignorable="d"
         Title="ConfiguracioWindow" Height="auto" Width="auto">
     <Grid Margin="40" >
+        <StackPanel>
 
-        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" TextWrapping="Wrap" Text="Configuració" VerticalAlignment="Top" FontSize="20"/>
-        <!-- IP -->
-    <!--
-        <TextBlock HorizontalAlignment="Center" Margin="10,50,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" FontSize="15"/>
-        <TextBox x:Name="ipTextBox" HorizontalAlignment="Center" Height="23" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-    -->
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Configuració" VerticalAlignment="Top" FontSize="20"/>
 
-        
-        <!-- port-->
-    <!--
-        <TextBlock HorizontalAlignment="Center" Margin="10,120,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" FontSize="15"/>
-        <TextBox x:Name="portTextBox" HorizontalAlignment="Center" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-    -->
-        
-        <!-- ListBox para mostrar las opciones de base de datos -->
-        <ListBox x:Name="databaseListBox" HorizontalAlignment="Center" Margin="10,200,0,0" VerticalAlignment="Top" Width="209" Height="141">
-            <!-- Definición de los elementos en el ListBox -->
-            <ListBoxItem HorizontalAlignment="Center">PostgreSQL</ListBoxItem>
-            <ListBoxItem HorizontalAlignment="Center">MySQL</ListBoxItem>
-            <ListBoxItem HorizontalAlignment="Center">Microsoft SQL Server</ListBoxItem>
-        </ListBox>
+            <!-- IP -->
+            <TextBlock Text="IP" HorizontalAlignment="Center" FontSize="15" Margin="0,15,0,0"/>
+            <TextBox x:Name="ipTextBox" Height="23" Width="120" Margin="0,10,0,0"/>
 
-        <Button x:Name="guardarButton" Content="Guardar" HorizontalAlignment="Center" Margin="10,360,0,0" VerticalAlignment="Top" Width="75" Click="guardarButton_Click"/>
+            <!-- Port -->
+            <TextBlock Text="Port" HorizontalAlignment="Center" FontSize="15" Margin="0,10,0,0"/>
+            <TextBox x:Name="portTextBox" Height="23" Width="120" Margin="0,10,0,0"/>
 
+            <!-- Otros campos -->
+            <TextBlock Text="Nom" HorizontalAlignment="Center" FontSize="15" Margin="0,10,0,0" />
+            <TextBox x:Name="nomTextBox" Height="23" Width="120" Margin="0,10,0,0"/>
 
+            <TextBlock Text="Contrassenya" HorizontalAlignment="Center" FontSize="15" Margin="0,10,0,0"/>
+            <TextBox x:Name="passwdTextBox" Height="23" Width="120" Margin="0,10,0,0"/>
+
+            <!-- ListBox para mostrar las opciones de base de datos -->
+            <ListBox x:Name="databaseListBox" Margin="0,30,0,0" VerticalAlignment="Top" Width="auto" Height="auto">
+                <!-- Definición de los elementos en el ListBox -->
+                <ListBoxItem HorizontalAlignment="Center">PostgreSQL</ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">MySQL</ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">Microsoft SQL Server</ListBoxItem>
+            </ListBox>
+
+            <Button x:Name="guardarButton" Content="Guardar" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Width="75" Click="guardarButton_Click"/>
+
+        </StackPanel>
     </Grid>
 </Window>

@@ -315,9 +315,12 @@ namespace TaulerDeControlRM
                 string nomAlbum = cmbTitolAlbum.SelectedItem.ToString();
                 string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
 
-                List<Tocar> tocar = await CA_Album.GetNomArtistesByAlbumAsync(nomAlbum, anyAlbum);
+                List<Tocar> tocarLlista = await CA_Album.GetNomArtistesByAlbumAsync(nomAlbum, anyAlbum);
 
-
+                foreach (Tocar tocar in tocarLlista)
+                {
+                    albumArtistNomListView.Items.Add(tocar.NomMusic);
+                }
 
                 /*
                  * 2n. Mirar cançons que hi han dins de l'album (Array bidireccional)
