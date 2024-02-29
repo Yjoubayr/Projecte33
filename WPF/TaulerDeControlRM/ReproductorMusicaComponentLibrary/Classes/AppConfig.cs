@@ -8,5 +8,6 @@ namespace ReproductorMusicaComponentLibrary.Classes
 {
     internal class AppConfig
     {
+        public bool PrimeraExecucio { get; set; }
     }
 }
