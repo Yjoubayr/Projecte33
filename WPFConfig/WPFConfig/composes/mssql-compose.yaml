@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: Y
+      SA_USERNAME: sa
+      SA_PASSWORD: Passw0rd!
+    ports:
+      - "1435:1435"
+    container_name: microsoftSqlServer
+    hostname: sql1
+    restart: unless-stopped

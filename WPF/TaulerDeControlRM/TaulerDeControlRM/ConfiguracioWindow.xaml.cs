@@ -68,7 +68,7 @@ namespace TaulerDeControlRM
 
         private async Task<string?> changeDockerApi(string database)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync(baseApi+"/"+database);
+            HttpResponseMessage response = await _httpClient.GetAsync(baseApi+"/database/"+database);
 
             if (response.IsSuccessStatusCode)
             {
