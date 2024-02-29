@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Passw0rd!
+    ports:
+      - "5435:5432"
+    container_name: postgresSqlServer
+    hostname: postgres1
+    restart: unless-stopped

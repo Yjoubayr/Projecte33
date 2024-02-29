@@ -315,17 +315,12 @@ namespace TaulerDeControlRM
                 string nomAlbum = cmbTitolAlbum.SelectedItem.ToString();
                 string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
 
-                // 1r.Comprobar que album existeix.
-                /*List<Album> albums = await CA_Album.GetAlbumsByTitolAndAnyAsync(nomAlbum, anyAlbum);
+                List<Tocar> tocarLlista = await CA_Album.GetNomArtistesByAlbumAsync(nomAlbum, anyAlbum);
 
-                foreach (Album album in albums)
+                foreach (Tocar tocar in tocarLlista)
                 {
-                    
-                }*/
-
-                Album album = await CA_Album.GetAlbumByTitolAndAnyAsync(nomAlbum, anyAlbum);
-
-
+                    albumArtistNomListView.Items.Add(tocar.NomMusic);
+                }
 
                 /*
                  * 2n. Mirar cançons que hi han dins de l'album (Array bidireccional)
@@ -338,15 +333,5 @@ namespace TaulerDeControlRM
                 /*foreach (Music music in album.) {  }*/
             }
         }
-
-        
-        /*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
-        {
-
-
-            return ;
-        }*/
-
-
     }
 }
