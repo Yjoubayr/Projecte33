@@ -21,7 +21,7 @@ namespace ReproductorMusicaComponentLibrary.Classes
 
         public static void DescarregarPostgresSqlServer()
         {
-
+            ExecutarComandaDocker("");
         }
 
         public static void ExecutarContenidorMicrosoftSqlServer(string nameContenidor, string saPassword)

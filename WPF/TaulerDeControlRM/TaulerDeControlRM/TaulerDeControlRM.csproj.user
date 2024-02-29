@@ -10,9 +10,6 @@
     <Compile Update="ConfiguracioWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CreacioDockerWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="CreaPages\PageCreaMusic.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -58,9 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="ConfiguracioWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="CreacioDockerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CreaPages\PageCreaMusic.xaml">

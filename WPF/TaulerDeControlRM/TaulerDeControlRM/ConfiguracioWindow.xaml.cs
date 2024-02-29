@@ -11,10 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 using System.Windows;
 using System.Configuration;
 using System.Net.Http;
+using ReproductorMusicaComponentLibrary.Classes;
+using ReproductorMusicaComponentLibrary.ConnexioAPI;
 
 namespace TaulerDeControlRM
 {
@@ -49,7 +50,6 @@ namespace TaulerDeControlRM
             if (selectedDatabase == "PostgreSQL")
             {
                 changeDockerApi("PostgreSQL");
-
             }
             else if (selectedDatabase == "MySQL")
             {
@@ -59,6 +59,7 @@ namespace TaulerDeControlRM
             else if (selectedDatabase == "Microsoft SQL Server")
             {
                 changeDockerApi("MicrosoftSQLServer");
+
 
             }
 

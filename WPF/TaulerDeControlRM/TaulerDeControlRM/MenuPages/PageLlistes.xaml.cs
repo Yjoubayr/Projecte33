@@ -315,15 +315,7 @@ namespace TaulerDeControlRM
                 string nomAlbum = cmbTitolAlbum.SelectedItem.ToString();
                 string anyAlbum = cmbAnyAlbum.SelectedItem.ToString();
 
-                // 1r.Comprobar que album existeix.
-                /*List<Album> albums = await CA_Album.GetAlbumsByTitolAndAnyAsync(nomAlbum, anyAlbum);
-
-                foreach (Album album in albums)
-                {
-                    
-                }*/
-
-                Album album = await CA_Album.GetAlbumByTitolAndAnyAsync(nomAlbum, anyAlbum);
+                List<Tocar> tocar = await CA_Album.GetNomArtistesByAlbumAsync(nomAlbum, anyAlbum);
 
 
 
@@ -338,15 +330,5 @@ namespace TaulerDeControlRM
                 /*foreach (Music music in album.) {  }*/
             }
         }
-
-        
-        /*public static async Task<List<Album>> GetNomArtistesByTitolAlbumAndCancoAsync(string TitolAlbum)
-        {
-
-
-            return ;
-        }*/
-
-
     }
 }
