@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReproductorMusicaComponentLibrary.Classes
 {
-    internal class AppConfig
+    public class AppConfig
     {
         public bool PrimeraExecucio { get; set; }
     }
