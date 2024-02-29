@@ -40,21 +40,24 @@ namespace WPFConfig
             }
             // C:\Users\yosse\Dropbox\PC\Desktop\PROGRAMACIO\PROGRAMES\2nDAM\PROJECTEv3\Projecte33\WPFConfig\WPFConfig\composes\mssql-compose.yaml
             // 
+            string baseDirectory = @"..\..\..\composes";
 
-            string composeFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "composes");
+            string composeFolder = System.IO.Path.GetFullPath(baseDirectory);
+            string composeFile = "";
+
             MessageBox.Show(composeFile);
 
             if (selectedDatabase == "PostgreSQL")
             {
-                composeFile = System.IO.Path.Combine(composeFile, "postgres-compose.yaml");
+                composeFile = System.IO.Path.Combine(composeFolder, "postgres-compose.yaml");
             }
             else if (selectedDatabase == "MySQL")
             {
-                composeFile = System.IO.Path.Combine(composeFile, "mysql-compose.yaml");
+                composeFile = System.IO.Path.Combine(composeFolder, "mysql-compose.yaml");
             }
             else if (selectedDatabase == "Microsoft SQL Server")
             {
-                composeFile = System.IO.Path.Combine(composeFile, "mssql-compose.yaml");
+                composeFile = System.IO.Path.Combine(composeFolder, "mssql-compose.yaml");
             }
             else
             {
@@ -70,7 +73,7 @@ namespace WPFConfig
             }
             else
             {
-                MessageBox.Show($"Instalando {composeFile} en modo local...");
+                MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
             }
         }
 
