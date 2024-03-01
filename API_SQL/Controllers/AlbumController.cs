@@ -17,6 +17,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
     {
         private readonly DataContext _context;
         private readonly AlbumService _albumService;
+        private readonly TocarService _tocarService;
+
 
         /// <summary>
         /// Constructor de la classe AlbumController
@@ -27,6 +29,8 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
         {
             _context = context;
             _albumService = new AlbumService(context);
+            _tocarService = new TocarService(context);
+
         }
 
         /// <summary>
@@ -196,7 +200,7 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             return NoContent();
         }
 
-        [HttpPut("AfegirSongAlbum")]
+        [HttpPut("AfegirSongAlbum/{Titol}/{Any}/{IDCanco}")]
         public async Task<IActionResult> AfegirSongAlbum(string Titol, int Any, string IDCanco)
         {
             var album = await _albumService.AfegirAlbumSong(Titol, Any, IDCanco);
@@ -204,6 +208,23 @@ namespace dymj.ReproductorMusica.API_SQL.Controller
             {
                 return NotFound();
             }return StatusCode(201);
+        }
+
+        [HttpGet("getAlbumMusics/{Titol}/{Any}")]
+        public async Task<List<Tocar>> GetAlbumMusics(string Titol, int Any)
+        {
+            var album = await _albumService.GetAsync(Titol, Any);
+            if (album == null)
+            {
+                return null;
+            }
+            List<Tocar> list = new List<Tocar>();
+            foreach (var canco in album.LCancons)
+            {
+                var tocarList = await _tocarService.GetAsyncByCanco(canco.IDCanco);
+                list.AddRange(tocarList);
+            }
+            return list;
         }
     }
 }
