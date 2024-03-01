@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Passw0rd!
+      MYSQL_DATABASE: mySQLDb
+      MYSQL_USER: sa
+      MYSQL_PASSWORD: Passw0rd!
+    ports:
+      - "3308:3308"
+    container_name: mysqlServer
+    hostname: mysql2
+    restart: unless-stopped

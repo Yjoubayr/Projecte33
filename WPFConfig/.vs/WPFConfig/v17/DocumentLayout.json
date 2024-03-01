@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\composes\\mysql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\composes\\mysql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\composes\\mssql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\composes\\mssql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "WPFConfig\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml",
+              "RelativeToolTip": "WPFConfig\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-02-29T14:43:37.797Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WPFConfig\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml.cs",
+              "RelativeToolTip": "WPFConfig\\MainWindow.xaml.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAgwEEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T14:43:37.653Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "mysql-compose.yaml",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mysql-compose.yaml",
+              "RelativeDocumentMoniker": "WPFConfig\\composes\\mysql-compose.yaml",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mysql-compose.yaml",
+              "RelativeToolTip": "WPFConfig\\composes\\mysql-compose.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-02-29T18:29:22.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "mssql-compose.yaml",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mssql-compose.yaml",
+              "RelativeDocumentMoniker": "WPFConfig\\composes\\mssql-compose.yaml",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mssql-compose.yaml",
+              "RelativeToolTip": "WPFConfig\\composes\\mssql-compose.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-02-29T18:18:47.244Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
