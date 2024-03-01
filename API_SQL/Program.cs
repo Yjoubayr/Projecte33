@@ -1,7 +1,7 @@
 using Newtonsoft.Json.Serialization;
-using dymj.ReproductorMusica.API_SQL.Data;
 using Microsoft.EntityFrameworkCore;
-using dymj.ReproductorMusica.API_SQL.Controller;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,17 +28,12 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-ConfigDocker configDocker = new ConfigDocker();
-// var connectionString = "Server=localhost;Port=3308;Database=mySQLDb;Uid=sa;Pwd=Passw0rd!;";
-    var connectionString = "Server=localhost;Port=3308;Database=mySQLDb;Uid=sa;Pwd=Passw0rd!;";
 
-builder.Services.AddDbContext<DataContext>(options => 
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer("Server=localhost,1435;Database=master;User Id=sa;Password=Passw0rd!;");
+});
 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton
-    //options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionProvaMSSQL")), ServiceLifetime.Singleton
-    //options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-
-);
 
 var app = builder.Build();
 

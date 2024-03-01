@@ -8,8 +8,18 @@ using System.Windows;
 
 namespace WPFConfig
 {
+
+    /// <summary>
+    /// Ejecuta comandos en la consola de Windows
+    /// </summary>
     public class ConsoleCommandExecutor
     {
+
+        /// <summary>
+        /// Ejecuta un comando en la consola de Windows
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="arguments"></param>
         public void executeInShell(string command, string arguments)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -53,7 +63,10 @@ namespace WPFConfig
         }
 
 
-
+        /// <summary>
+        /// Ejecuta el comando "dotnet run" en el directorio de trabajo especificado
+        /// </summary>
+        /// <param name="workingDirectory"></param>
         public void ExecuteDotnetRun(string workingDirectory)
         {
             try
@@ -65,13 +78,11 @@ namespace WPFConfig
                 process.StartInfo.WorkingDirectory = workingDirectory; // Establecer el directorio de trabajo
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+
                 process.Start();
-
-                // Leer la salida del proceso (opcional)
-                string output = process.StandardOutput.ReadToEnd();
-                Console.WriteLine(output);
-
-                process.WaitForExit();
+                
                 process.Close();
             }
             catch (Exception ex)

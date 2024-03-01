@@ -24,16 +24,23 @@ namespace WPFConfig
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        // Instancia de las clases necesarias
         FileOperations fileOperations = new FileOperations();
         ConsoleCommandExecutor executor = new ConsoleCommandExecutor();
 
+        /// <summary>
+        /// Este es el constructor de la clase MainWindow
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Este método se ejecuta cuando el usuario hace clic en el botón "Instalar base de datos localmente"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void instalarLocalbtn_Click(object sender, RoutedEventArgs e)
         {
             // Lógica para instalar la base de datos seleccionada localmente
@@ -44,14 +51,12 @@ namespace WPFConfig
                 MessageBox.Show("Por favor seleccione una base de datos");
                 return;
             }
-            // C:\Users\yosse\Dropbox\PC\Desktop\PROGRAMACIO\PROGRAMES\2nDAM\PROJECTEv3\Projecte33\WPFConfig\WPFConfig\composes\mssql-compose.yaml
             
             string baseDirectory = @"..\..\..\composes";
 
             string composeFolder = System.IO.Path.GetFullPath(baseDirectory);
             string composeFile = "";
 
-            MessageBox.Show(composeFile);
 
             if (selectedDatabase == "PostgreSQL")
             {
@@ -68,9 +73,10 @@ namespace WPFConfig
                     executor.executeInShell("docker-compose", $"-f {composeFile} up -d");
 
                     // file to be copied
-                    string sourceFilePath = @"..\..\..\programs\programPostgres.skip";
+                    string sourceFilePath = System.IO.Path.GetFullPath(@"..\..\..\programs\programPostgres.skip");
+
                     // file where the content will be written
-                    string destinationFilePath = @"..\..\..\..\..\API_SQL\Program.cs";
+                    string destinationFilePath = System.IO.Path.GetFullPath(@"..\..\..\..\API_SQL\Program.cs");
                     fileOperations.CopyFileContent(sourceFilePath, destinationFilePath);
 
                 }
@@ -90,9 +96,9 @@ namespace WPFConfig
                     executor.executeInShell("docker-compose", $"-f {composeFile} up -d");
 
                     // file to be copied
-                    string sourceFilePath = @"..\..\..\programs\programMYSQL.skip";
+                    string sourceFilePath = System.IO.Path.GetFullPath(@"..\..\..\programs\programMYSQL.skip");
                     // file where the content will be written
-                    string destinationFilePath = @"..\..\..\..\..\API_SQL\Program.cs";
+                    string destinationFilePath = System.IO.Path.GetFullPath(@"..\..\..\..\API_SQL\Program.cs");
                     fileOperations.CopyFileContent(sourceFilePath, destinationFilePath);
 
                 }
@@ -112,9 +118,9 @@ namespace WPFConfig
                     executor.executeInShell("docker-compose", $"-f {composeFile} up -d");
 
                     // file to be copied
-                    string sourceFilePath = @"..\..\..\programs\programMSSQL.skip";
+                    string sourceFilePath = System.IO.Path.GetFullPath(@"..\..\..\programs\programMSSQL.skip");
                     // file where the content will be written
-                    string destinationFilePath = @"..\..\..\..\..\API_SQL\Program.cs";
+                    string destinationFilePath = System.IO.Path.GetFullPath(@"..\..\..\..\API_SQL\Program.cs");
                     fileOperations.CopyFileContent(sourceFilePath, destinationFilePath);
 
                 }
@@ -126,13 +132,16 @@ namespace WPFConfig
             }
 
             // la ruta real del directorio de trabajo
-            string workingDirectory = @"..\..\..\..\..\API_SQL";
+            string workingDirectory = System.IO.Path.GetFullPath(@"..\..\..\..\API_SQL");
             MessageBox.Show($"Ejecutando dotnet run en {workingDirectory}...");
             executor.ExecuteDotnetRun(workingDirectory);
         }
 
-
-
+    /// <summary>
+    /// Este método se ejecuta cuando el usuario hace clic en el botón "Conectar a la base de datos remota"
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void conectarBdbtn_Click(object sender, RoutedEventArgs e)
         {
         // Lógica para conectarse a la base de datos remota
