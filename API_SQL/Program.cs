@@ -29,10 +29,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 ConfigDocker configDocker = new ConfigDocker();
+// var connectionString = "Server=localhost;Port=3308;Database=mySQLDb;Uid=sa;Pwd=Passw0rd!;";
+    var connectionString = "Server=localhost;Port=3308;Database=mySQLDb;Uid=sa;Pwd=Passw0rd!;";
 
 builder.Services.AddDbContext<DataContext>(options => 
 
-    options.UseSqlServer(builder.Configuration.GetConnectionString(configDocker.Database)), ServiceLifetime.Singleton
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton
+    //options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionProvaMSSQL")), ServiceLifetime.Singleton
+    //options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+
 );
 
 var app = builder.Build();
