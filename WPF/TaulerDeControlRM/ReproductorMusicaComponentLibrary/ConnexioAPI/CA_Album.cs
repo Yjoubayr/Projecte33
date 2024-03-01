@@ -66,7 +66,7 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
         /// <returns>Llista dels Albums obtingus</returns>
         public static async Task<List<Album>> GetAlbumsByTitolAndAnyAsync(string Titol, string Any)
         {
-            string apiUrl = CA.baseApi + controller + "getAlbumsByTitolAndAny/" + Titol + "/" + Any;
+            string apiUrl = CA.baseApi + controller + "getAlbum/" + Titol + "/" + Any;
 
             string result = await CA.GetDataFromApiAsync(apiUrl);
             var data = JsonConvert.DeserializeObject<List<Album>>(result);
@@ -75,10 +75,10 @@ namespace ReproductorMusicaComponentLibrary.ConnexioAPI
 
         public static async Task<List<Tocar>> GetNomArtistesByAlbumAsync(string Titol, string Any)
         {
-            string apiUrl = CA.baseApi + controller + "getAlbumByTitolAndAny/" + Titol + "/" + Any;
+            string apiUrl = CA.baseApi + controller + "getAlbumMusics/" + Titol + "/" + Any;
 
             string result = await CA.GetDataFromApiAsync(apiUrl);
-            var data = JsonConvert.DeserializeObject<List<Tocar>>(result);
+            List<Tocar> data = JsonConvert.DeserializeObject<List<Tocar>>(result);
             return data;
         }
 

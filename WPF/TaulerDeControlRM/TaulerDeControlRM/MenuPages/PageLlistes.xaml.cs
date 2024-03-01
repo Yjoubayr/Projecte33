@@ -37,10 +37,13 @@ namespace TaulerDeControlRM
         {
             await ObtenirCancons();
             await ObtenirLlistes();
+            await ObtenirTitolAlbums();
+            await ObtenirAnyAlbums();
         }
+
         private async Task ObtenirCancons()
         {
-            List<Canco> llistaCancons = await CA_Canco.GetCanconsAsync(); 
+            List<Canco> llistaCancons = await CA_Canco.GetCanconsAsync();
             foreach (Canco canco in llistaCancons)
             {
                 if (canco != null)
@@ -58,7 +61,25 @@ namespace TaulerDeControlRM
             List<Llista> llistaLlistes = await CA_Llista.GetLlistesAsync();
             foreach (Llista llista in llistaLlistes)
             {
-                   cmbLlistaMAC.Items.Add(llista.MACAddress);
+                cmbLlistaMAC.Items.Add(llista.MACAddress);
+            }
+        }
+
+        private async Task ObtenirTitolAlbums()
+        {
+            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
+            foreach (Album album in llistaAlbums)
+            {
+                cmbTitolAlbum.Items.Add(album.Titol);
+            }
+        }
+
+        private async Task ObtenirAnyAlbums()
+        {
+            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
+            foreach (Album album in llistaAlbums)
+            {
+                cmbAnyAlbum.Items.Add(album.Any);
             }
         }
 
@@ -85,24 +106,6 @@ namespace TaulerDeControlRM
 
         private async void cmbTitolAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cmbTitolAlbum.Items.Clear();
-            string Album = cmbTitolAlbum.SelectedItem.ToString();
-            List<Album> llistaAlbums = await CA_Album.GetAlbumsAsync();
-            foreach (Album album in llistaAlbums)
-            {
-                if (album != null)
-                {
-                    if (album.Titol == Album)
-                    {
-                        cmbTitolAlbum.Items.Add(album.Titol);
-                    }
-                }
-                else
-                {
-                    throw new Exception("No s'ha pogut carregar la llistad d'albums");
-                }
-            }
-
             if (cmbTitolAlbum.SelectedItem != null)
             {
                 cmbAnyAlbum.IsEnabled = true;
@@ -111,21 +114,6 @@ namespace TaulerDeControlRM
             {
                 cmbAnyAlbum.IsEnabled = false;
             }
-        }
-
-        private async void cmbAnyAlbum_SelectionChanged(object sender, SelectionChangedEventArgs args)
-        {
-            cmbAnyAlbum.Items.Clear();
-            string Album = cmbTitolAlbum.SelectedItem.ToString();
-            List<string> llistaAnysAlbums = await CA_Album.GetAnysAlbumAsync(Album);
-            foreach (string anyAlbum in llistaAnysAlbums)
-            {
-                if (anyAlbum != null)
-                {
-                    cmbAnyAlbum.Items.Add(anyAlbum);
-                }
-            }
-
         }
 
         /// <summary>
@@ -140,9 +128,10 @@ namespace TaulerDeControlRM
 
             //CrearListView
 
-            ListView songListView= new ListView(); songListView.Name = "songListView";
+            ListView songListView = new ListView();
+            songListView.Name = "songListView";
             songListView.Width = 786;
-            
+
             var gridView = new GridView();
 
             var nomColumn = new GridViewColumn();
@@ -184,9 +173,9 @@ namespace TaulerDeControlRM
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception("No s'ha fet correctament la petico a l'api" + ex );
+                throw new Exception("No s'ha fet correctament la petico a l'api" + ex);
             }
         }
         private void EliminarListView()
@@ -203,8 +192,8 @@ namespace TaulerDeControlRM
         private async void llistesCanco(object sender, RoutedEventArgs e)
         {
             EliminarListView();
-            ListView llistaListView = new ListView(); llistaListView.Name = "llistaListView";
-            llistaListView.Width = 786;
+            ListView llistaListView = new ListView();
+            llistaListView.Name = "llistaListView";
 
             var gridView = new GridView();
 
@@ -231,7 +220,7 @@ namespace TaulerDeControlRM
             {
                 string uid = cmbCanco.SelectedItem.ToString();
                 Canco canco = await CA_Canco.GetCancoAsync(uid);
-                
+
                 foreach (Llista llista in canco.Llistes)
                 {
                     llistaListView.Items.Add(llista);
@@ -273,12 +262,12 @@ namespace TaulerDeControlRM
             // Add ListView to the grid (assuming you have a Grid named "yourGrid" in your Window)
             spGlobal.Children.Add(songListView);
 
-            if (cmbLlistaNom.SelectedItem != null && cmbLlistaMAC.SelectedItem!=null)
+            if (cmbLlistaNom.SelectedItem != null && cmbLlistaMAC.SelectedItem != null)
             {
                 string nomLlista = cmbLlistaNom.SelectedItem.ToString();
                 string MACAddress = cmbLlistaMAC.SelectedItem.ToString();
-                Llista llista = await CA_Llista.GetLlistaAsync(nomLlista,MACAddress);
-                
+                Llista llista = await CA_Llista.GetLlistaAsync(nomLlista, MACAddress);
+
                 foreach (Canco canco in llista.LCancons)
                 {
                     songListView.Items.Add(canco);
@@ -294,17 +283,18 @@ namespace TaulerDeControlRM
         {
             EliminarListView();
 
-            ListView albumArtistNomListView = new ListView(); albumArtistNomListView.Name = "songListView";
-            albumArtistNomListView.Width = 786;
+            ListView albumArtistNomListView = new ListView();
+            albumArtistNomListView.Name = "albumArtistNomListView";
 
             var gridView = new GridView();
 
-            var nomColumn = new GridViewColumn();
-            nomColumn.Width = 260;
-            nomColumn.Header = "Nom Artista";
-            nomColumn.DisplayMemberBinding = new Binding("Nom");
+            var NomColumn = new GridViewColumn();
+            NomColumn.Width = 260;
+            NomColumn.Header = "Artista";
+            NomColumn.DisplayMemberBinding = new Binding("NomMusic");
 
-            gridView.Columns.Add(nomColumn);
+            // Add columns to GridView
+            gridView.Columns.Add(NomColumn);
 
             albumArtistNomListView.View = gridView;
 
@@ -319,18 +309,15 @@ namespace TaulerDeControlRM
 
                 foreach (Tocar tocar in tocarLlista)
                 {
-                    albumArtistNomListView.Items.Add(tocar.NomMusic);
+                    if (!albumArtistNomListView.Items.Contains(tocar.NomMusic))
+                    {
+                        albumArtistNomListView.Items.Add(tocar);
+                    }
                 }
-
-                /*
-                 * 2n. Mirar cançons que hi han dins de l'album (Array bidireccional)
-                 * A = "Existeix?" -> true / fals
-                 * A[C] = C ------ "Array de cançons ja que poden haber varies dins d'un album"
-                 * C[Ar] = Ar ------ "També serà array de cançons ja que aquestes tenen varis artistes"
-                 * Ar[Ar] = Ar.algo ------ "Menys data naixament"
-                 */
-
-                /*foreach (Music music in album.) {  }*/
+            }
+            else
+            {
+                MessageBox.Show("No has seleccionat ni el nom ni l'any");
             }
         }
     }
