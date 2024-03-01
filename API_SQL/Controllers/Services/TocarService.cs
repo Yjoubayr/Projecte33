@@ -89,8 +89,7 @@ public class TocarService
         await _context.SaveChangesAsync();
     }
     public async Task <List<Tocar>> GetAsyncByCanco(string IDCanco) {
-        return await _context.Tocar
-                                .Where(x => x.IDCanco == IDCanco).ToListAsync();
+        return await _context.Tocar.Where(x => x.IDCanco == IDCanco).ToListAsync();
     }
 
 
