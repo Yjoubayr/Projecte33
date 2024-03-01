@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\consolecommandexecutor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\consolecommandexecutor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\api_sql\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|solutionrelative:api_sql\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\api_sql\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|solutionrelative:api_sql\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\api_sql\\api_sql.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|solutionrelative:api_sql\\api_sql.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\api_sql\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDB7BEA1-AFF4-4134-8ECF-FF2DC2C6A627}|API_SQL\\API_SQL.csproj|solutionrelative:api_sql\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\composes\\mysql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\composes\\mysql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\composes\\mssql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\composes\\mssql-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\fileoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|solutionrelative:wpfconfig\\fileoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{272733AC-C5E8-4F79-B62C-F586FF52EAC7}|WPFConfig\\WPFConfig.csproj|c:\\users\\yosse\\dropbox\\pc\\desktop\\programacio\\programes\\2ndam\\projectev3\\projecte33\\wpfconfig\\wpfconfig\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -26,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WPFConfig\\MainWindow.xaml",
@@ -43,42 +59,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WPFConfig\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\MainWindow.xaml.cs",
               "RelativeToolTip": "WPFConfig\\MainWindow.xaml.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAgwEEAAAAAAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAgwH4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T14:43:37.653Z",
+              "WhenOpened": "2024-03-01T17:30:04.223Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "mysql-compose.yaml",
-              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mysql-compose.yaml",
-              "RelativeDocumentMoniker": "WPFConfig\\composes\\mysql-compose.yaml",
-              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mysql-compose.yaml",
-              "RelativeToolTip": "WPFConfig\\composes\\mysql-compose.yaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-02-29T18:29:22.155Z",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "API_SQL\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\Properties\\launchSettings.json",
+              "RelativeToolTip": "API_SQL\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-01T17:58:29.416Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "mssql-compose.yaml",
-              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mssql-compose.yaml",
-              "RelativeDocumentMoniker": "WPFConfig\\composes\\mssql-compose.yaml",
-              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\composes\\mssql-compose.yaml",
-              "RelativeToolTip": "WPFConfig\\composes\\mssql-compose.yaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-02-29T18:18:47.244Z",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\appsettings.json",
+              "RelativeDocumentMoniker": "API_SQL\\appsettings.json",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\appsettings.json",
+              "RelativeToolTip": "API_SQL\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-01T17:58:23.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "API_SQL.http",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\API_SQL.http",
+              "RelativeDocumentMoniker": "API_SQL\\API_SQL.http",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\API_SQL.http",
+              "RelativeToolTip": "API_SQL\\API_SQL.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-03-01T17:58:22.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\Program.cs",
+              "RelativeDocumentMoniker": "API_SQL\\Program.cs",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\API_SQL\\Program.cs",
+              "RelativeToolTip": "API_SQL\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T17:58:21.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsoleCommandExecutor.cs",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\ConsoleCommandExecutor.cs",
+              "RelativeDocumentMoniker": "WPFConfig\\ConsoleCommandExecutor.cs",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\ConsoleCommandExecutor.cs",
+              "RelativeToolTip": "WPFConfig\\ConsoleCommandExecutor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T17:55:13.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FileOperations.cs",
+              "DocumentMoniker": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\FileOperations.cs",
+              "RelativeDocumentMoniker": "WPFConfig\\FileOperations.cs",
+              "ToolTip": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\PROJECTEv3\\Projecte33\\WPFConfig\\WPFConfig\\FileOperations.cs",
+              "RelativeToolTip": "WPFConfig\\FileOperations.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T17:43:16.173Z",
               "EditorCaption": ""
             }
           ]

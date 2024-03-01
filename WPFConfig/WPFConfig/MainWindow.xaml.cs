@@ -24,6 +24,10 @@ namespace WPFConfig
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        FileOperations fileOperations = new FileOperations();
+        ConsoleCommandExecutor executor = new ConsoleCommandExecutor();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,7 +45,7 @@ namespace WPFConfig
                 return;
             }
             // C:\Users\yosse\Dropbox\PC\Desktop\PROGRAMACIO\PROGRAMES\2nDAM\PROJECTEv3\Projecte33\WPFConfig\WPFConfig\composes\mssql-compose.yaml
-            // 
+            
             string baseDirectory = @"..\..\..\composes";
 
             string composeFolder = System.IO.Path.GetFullPath(baseDirectory);
@@ -61,8 +65,13 @@ namespace WPFConfig
                 else
                 {
                     MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
-                    executeInShell("docker-compose", $"-f {composeFile} up -d");
-                    // install dependecias de postgres
+                    executor.executeInShell("docker-compose", $"-f {composeFile} up -d");
+
+                    // file to be copied
+                    string sourceFilePath = @"..\..\..\programs\programPostgres.skip";
+                    // file where the content will be written
+                    string destinationFilePath = @"..\..\..\..\..\API_SQL\Program.cs";
+                    fileOperations.CopyFileContent(sourceFilePath, destinationFilePath);
 
                 }
             }
@@ -78,7 +87,13 @@ namespace WPFConfig
                 else
                 {
                     MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
-                    executeInShell("docker-compose", $"-f {composeFile} up -d");
+                    executor.executeInShell("docker-compose", $"-f {composeFile} up -d");
+
+                    // file to be copied
+                    string sourceFilePath = @"..\..\..\programs\programMYSQL.skip";
+                    // file where the content will be written
+                    string destinationFilePath = @"..\..\..\..\..\API_SQL\Program.cs";
+                    fileOperations.CopyFileContent(sourceFilePath, destinationFilePath);
 
                 }
             }
@@ -94,7 +109,13 @@ namespace WPFConfig
                 else
                 {
                     MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
-                    executeInShell("docker-compose", $"-f {composeFile} up -d");
+                    executor.executeInShell("docker-compose", $"-f {composeFile} up -d");
+
+                    // file to be copied
+                    string sourceFilePath = @"..\..\..\programs\programMSSQL.skip";
+                    // file where the content will be written
+                    string destinationFilePath = @"..\..\..\..\..\API_SQL\Program.cs";
+                    fileOperations.CopyFileContent(sourceFilePath, destinationFilePath);
 
                 }
             }
@@ -104,51 +125,12 @@ namespace WPFConfig
                 return;
             }
 
-            
+            // la ruta real del directorio de trabajo
+            string workingDirectory = @"..\..\..\..\..\API_SQL";
+            MessageBox.Show($"Ejecutando dotnet run en {workingDirectory}...");
+            executor.ExecuteDotnetRun(workingDirectory);
         }
 
-
-    private void executeInShell(string command, string arguments)
-    {
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = command,
-            Arguments = arguments,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
-
-        Process process = new Process
-        {
-            StartInfo = startInfo
-        };
-
-        process.OutputDataReceived += (sender, e) =>
-        {
-            // Muestra la salida en tiempo real en un MessageBox
-            MessageBox.Show(e.Data);
-        };
-
-        process.Start();
-        MessageBox.Show("Proceso iniciado");
-        process.WaitForExit();
-        MessageBox.Show("Proceso finalizado");
-
-        string output = process.StandardOutput.ReadToEnd();
-        string error = process.StandardError.ReadToEnd();
-
-        if (!string.IsNullOrEmpty(output))
-        {
-            MessageBox.Show($"Proceso finalizado con Output: {output}");
-        }
-
-        if (!string.IsNullOrEmpty(error))
-        {
-            MessageBox.Show($"Proceso finalizado con Error: {error}");
-        }
-    }
 
 
     private void conectarBdbtn_Click(object sender, RoutedEventArgs e)
