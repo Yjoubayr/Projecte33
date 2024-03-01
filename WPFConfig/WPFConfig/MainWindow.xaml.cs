@@ -13,6 +13,8 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows;
 using System.IO;
+using System.Diagnostics;
+
 
 namespace WPFConfig
 {
@@ -50,14 +52,51 @@ namespace WPFConfig
             if (selectedDatabase == "PostgreSQL")
             {
                 composeFile = System.IO.Path.Combine(composeFolder, "postgres-compose.yaml");
+                // Comprueba si el archivo de configuración existe
+                if (!File.Exists(composeFile))
+                {
+                    MessageBox.Show("El archivo de configuración no existe");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
+                    executeInShell("docker-compose", $"-f {composeFile} up -d");
+                    // install dependecias de postgres
+
+                }
             }
             else if (selectedDatabase == "MySQL")
             {
                 composeFile = System.IO.Path.Combine(composeFolder, "mysql-compose.yaml");
+                // Comprueba si el archivo de configuración existe
+                if (!File.Exists(composeFile))
+                {
+                    MessageBox.Show("El archivo de configuración no existe");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
+                    executeInShell("docker-compose", $"-f {composeFile} up -d");
+
+                }
             }
-            else if (selectedDatabase == "Microsoft SQL Server")
+            else if (selectedDatabase == "MicrosoftSQLServer")
             {
                 composeFile = System.IO.Path.Combine(composeFolder, "mssql-compose.yaml");
+                // Comprueba si el archivo de configuración existe
+                if (!File.Exists(composeFile))
+                {
+                    MessageBox.Show("El archivo de configuración no existe");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
+                    executeInShell("docker-compose", $"-f {composeFile} up -d");
+
+                }
             }
             else
             {
@@ -65,19 +104,54 @@ namespace WPFConfig
                 return;
             }
 
-            // Comprueba si el archivo de configuración existe
-            if (!File.Exists(composeFile))
-            {
-                MessageBox.Show("El archivo de configuración no existe");
-                return;
-            }
-            else
-            {
-                MessageBox.Show($"Instalando {selectedDatabase} en modo local...");
-            }
+            
         }
 
-        private void conectarBdbtn_Click(object sender, RoutedEventArgs e)
+
+    private void executeInShell(string command, string arguments)
+    {
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = command,
+            Arguments = arguments,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        Process process = new Process
+        {
+            StartInfo = startInfo
+        };
+
+        process.OutputDataReceived += (sender, e) =>
+        {
+            // Muestra la salida en tiempo real en un MessageBox
+            MessageBox.Show(e.Data);
+        };
+
+        process.Start();
+        MessageBox.Show("Proceso iniciado");
+        process.WaitForExit();
+        MessageBox.Show("Proceso finalizado");
+
+        string output = process.StandardOutput.ReadToEnd();
+        string error = process.StandardError.ReadToEnd();
+
+        if (!string.IsNullOrEmpty(output))
+        {
+            MessageBox.Show($"Proceso finalizado con Output: {output}");
+        }
+
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show($"Proceso finalizado con Error: {error}");
+        }
+    }
+
+
+    private void conectarBdbtn_Click(object sender, RoutedEventArgs e)
         {
         // Lógica para conectarse a la base de datos remota
         string ipAddress = ipTextBox.Text;
